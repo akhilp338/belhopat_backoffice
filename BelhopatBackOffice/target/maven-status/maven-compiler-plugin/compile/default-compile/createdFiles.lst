@@ -1,0 +1,8 @@
+com/belhopat/backoffice/model/User.class
+com/belhopat/backoffice/configuration/HelloWorldInitializer.class
+com/belhopat/backoffice/configuration/CORSFilter.class
+com/belhopat/backoffice/service/UserService.class
+com/belhopat/backoffice/controller/HelloWorldRestController.class
+com/belhopat/backoffice/controller/IndexController.class
+com/belhopat/backoffice/service/UserServiceImpl.class
+com/belhopat/backoffice/configuration/HelloWorldConfiguration.class
