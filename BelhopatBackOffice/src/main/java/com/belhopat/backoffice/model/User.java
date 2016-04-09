@@ -1,7 +1,18 @@
 package com.belhopat.backoffice.model;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+import org.springframework.stereotype.Component;
+
+@Entity
+@Table( name = "Employee" )
 public class User {
 
+	@Id
+	@GeneratedValue
 	private long id;
 	
 	private String username;

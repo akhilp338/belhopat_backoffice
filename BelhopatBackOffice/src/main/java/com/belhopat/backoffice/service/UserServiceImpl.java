@@ -5,14 +5,19 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicLong;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.belhopat.backoffice.model.User;
+import com.belhopat.backoffice.repository.UserRepository;
 
-@Service("userService")
+@Component
 @Transactional
 public class UserServiceImpl implements UserService{
+	@Autowired
+	UserRepository userRepo;
 	
 	private static final AtomicLong counter = new AtomicLong();
 	
@@ -45,6 +50,7 @@ public class UserServiceImpl implements UserService{
 	}
 	
 	public void saveUser(User user) {
+		userRepo.save(user);
 		user.setId(counter.incrementAndGet());
 		users.add(user);
 	}
@@ -74,6 +80,7 @@ public class UserServiceImpl implements UserService{
 
 	private static List<User> populateDummyUsers(){
 		List<User> users = new ArrayList<User>();
+		
 		users.add(new User(counter.incrementAndGet(),"Sam", "NY", "sam@abc.com"));
 		users.add(new User(counter.incrementAndGet(),"Tomy", "ALBAMA", "tomy@abc.com"));
 		users.add(new User(counter.incrementAndGet(),"Kelly", "NEBRASKA", "kelly@abc.com"));
