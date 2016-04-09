@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import com.belhopat.backoffice.repository.UserRepository;
 
 @Controller
-@RequestMapping("/")
+@RequestMapping("/*")
 public class IndexController {
 
 	
@@ -16,7 +16,7 @@ public class IndexController {
 	  @RequestMapping(method = RequestMethod.GET)
 	    public String getIndexPage() {
 		  
-	        return "UserManagement";
+	        return "index";
 	    }
 
 }	

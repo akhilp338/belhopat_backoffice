@@ -1,0 +1,21 @@
+(function(angular) {
+    angular.module('app.common')
+            .factory('Core_HttpRequest', function($http, urlConfig) {
+                var service = this;                
+                var getUrl = function(path) {
+                    return urlConfig.api_endpoint + path + ".json";
+                };
+                service.get = function(path) {
+                    return $http.get(getUrl(path));
+                };
+                service.post = function(path, jsonData, id) {
+                    return $http.post(getUrl(path), jsonData); //temporary post with get
+                };
+                service.formPost = function(path, jsonData, id) {
+                    return $http.post(getUrl(path), jsonData, {
+                        transformRequest: angular.identity,
+                        headers: {'Content-Type': undefined}});
+                };
+                return service;
+            });
+})(angular);

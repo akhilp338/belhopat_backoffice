@@ -1,0 +1,8 @@
+ <div id="sidebar-wrapper">
+            <ul class="sidebar-nav nav-pills nav-stacked" id="menu"> 
+                <li ng-repeat="service in vm.services track by $index" ng-class="{'active':service.name==active}" ng-click="vm.menuClick($event)">
+                    <a ui-sref= "{{service.state}}"><span class="fa-stack fa-lg pull-left"><i class="fa {{service.icon}} fa-stack-1x "></i></span>{{service.label}}</a>
+
+                </li>
+            </ul>
+        </div>
