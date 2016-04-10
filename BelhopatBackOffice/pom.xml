@@ -12,7 +12,7 @@
 		<!-- Spring -->
 		<java.version>1.8</java.version>
 		<org.springframework.version>4.2.2.RELEASE</org.springframework.version>
-		<spring-data-jpa-datatables.version>1.2</spring-data-jpa-datatables.version>
+		<spring-data-jpa-datatables.version>2.1</spring-data-jpa-datatables.version>
 		<maven-compiler-plugin.version>3.3</maven-compiler-plugin.version>
 
 		<spring.security.version>4.0.2.RELEASE</spring.security.version>
@@ -35,7 +35,7 @@
 		<maven-compiler-plugin.version>3.1</maven-compiler-plugin.version>
 		<maven-war-plugin.version>2.4</maven-war-plugin.version>
 		<maven-surefire-plugin.version>2.17</maven-surefire-plugin.version>
-		<maven-resources-plugin.version>2.6</maven-resources-plugin.version>
+		<maven-resources-plugin.version>2.7</maven-resources-plugin.version>
 		<cargo-maven2-plugin.version>1.4.8</cargo-maven2-plugin.version>
 		<jersey.version>2.9</jersey.version>
 
@@ -354,8 +354,41 @@
 			<artifactId>json</artifactId>
 			<version>20090211</version>
 		</dependency>
+		<dependency>
+		    <groupId>com.github.darrachequesne</groupId>
+		    <artifactId>spring-data-jpa-datatables</artifactId>
+		    <version>${spring-data-jpa-datatables.version}</version>
+		</dependency>
+
 	</dependencies>
+	
 	<build>
+		<resources>
+			<resource>
+				<directory>src/main/resources</directory>
+				<includes>
+					<include>src/main/resources/*.*</include>
+				</includes>
+				<filtering>true</filtering>
+			</resource>
+		</resources>
+		<testResources>
+			<testResource>
+				<directory>src/test/resources</directory>
+				<filtering>true</filtering>
+				<excludes>
+					<exclude>**/*.xls*</exclude>
+				</excludes>
+			</testResource>
+			<testResource>
+				<directory>src/test/resources</directory>
+				<filtering>false</filtering>
+				<includes>
+					<include>**/*.xls*</include>
+				</includes>
+			</testResource>
+		</testResources>
+	
 		<pluginManagement>
 			<plugins>
 				<plugin>
@@ -373,11 +406,36 @@
 			        <artifactId>maven-compiler-plugin</artifactId>
 			        <version>${maven-compiler-plugin.version}</version>
 			        <configuration>
-			          <!-- or whatever version you use -->
 			          <source>${java.version}</source>
 			          <target>${java.version}</target>
 			        </configuration>
 		      </plugin>
+		      <plugin>
+				<artifactId>maven-resources-plugin</artifactId>
+				<version>${maven-resources-plugin.version}</version>
+				<executions>
+					<execution>
+						<id>copy-resources</id>
+						<phase>validate</phase>
+						<goals>
+							<goal>copy-resources</goal>
+						</goals>
+						<configuration>
+							<outputDirectory>${project.build.directory}/classes</outputDirectory>
+							<resources>
+								<resource>
+									<directory>src/main/resources</directory>
+									<includes>
+										<include>**/*.*</include>
+									</includes>
+									<filtering>true</filtering>
+									<filtering>true</filtering>
+								</resource>
+							</resources>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
 			</plugins>
 		</pluginManagement>
 		<finalName>BelhopatBackOffice</finalName>
