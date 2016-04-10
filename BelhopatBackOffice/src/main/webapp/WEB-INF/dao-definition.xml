@@ -28,7 +28,7 @@
 	<jpa:repositories base-package="com.belhopat.*"  ></jpa:repositories>
 	<bean id="dataSource" class="org.apache.commons.dbcp2.BasicDataSource" destroy-method="close">
 		<property name="driverClassName" value="com.mysql.jdbc.Driver"/>
-        <property name="url" value="jdbc:mysql://localhost:3306/belhopat"></property>
+        <property name="url" value="jdbc:mysql://localhost:3306/belhopat_backoffice"></property>
 		<property name="username" value="root" />
 		<property name="password" value="" />
 		<property name="initialSize" value="5" />
