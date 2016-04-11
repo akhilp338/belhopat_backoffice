@@ -21,7 +21,7 @@
         
 	<context:component-scan base-package="com.belhopat"></context:component-scan>
 	
-	<jpa:repositories base-package="com.belhopat.*"  ></jpa:repositories>
+	<jpa:repositories base-package="com.belhopat.*" factory-class="org.springframework.data.jpa.datatables.repository.DataTablesRepositoryFactoryBean" ></jpa:repositories>
 	
 	<bean id="dataSource" class="org.apache.commons.dbcp2.BasicDataSource" destroy-method="close">
 		<property name="driverClassName" value="${jdbc.driverClassName}" />

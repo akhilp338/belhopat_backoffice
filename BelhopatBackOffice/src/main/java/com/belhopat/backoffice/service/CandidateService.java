@@ -13,12 +13,12 @@ import com.belhopat.backoffice.model.Candidate;
 @Service
 public interface CandidateService {
 	
+	DataTablesOutput<Candidate> getCandidates(DataTablesInput input);
+	
 	ResponseEntity<Candidate> getCandidate(Long candidateId);
 	
 	ResponseEntity<Void> saveOrUpdateCandidate(Candidate candidate);
 	
 	ResponseEntity<Void> deleteCandidates(List<Long> candidateIds);
-
-	DataTablesOutput<Candidate> getCandidates(DataTablesInput input);
 
 }

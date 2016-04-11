@@ -6,8 +6,10 @@
 <link rel="stylesheet" ng-href="app/assets/libs/css/bootstrap.min.css">
 <link rel="stylesheet" ng-href="app/assets/libs/css/font-awesome.min.css">
 <link rel="stylesheet" ng-href="app/assets/styles/style.css">
+<link rel="stylesheet" ng-href="app/assets/libs/css/jquery.dataTables.min.css">
 	<!-- Libraries -->
-        <script src="app/assets/libs/js/jquery-2.2.3.min.js"></script>
+<script src="app/assets/libs/js/jquery-2.2.3.min.js"></script>
+<script src="app/assets/libs/js/jquery.dataTables.min.js"></script>
 <script src="app/assets/libs/js/angular.min.js"></script>
 <script src="app/assets/libs/js/angular-ui-router.js"></script>
 <script src="app/assets/libs/js/ui-bootstrap-tpls-1.3.1.min.js"></script>
