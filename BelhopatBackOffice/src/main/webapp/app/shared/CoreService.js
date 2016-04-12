@@ -1,13 +1,16 @@
 (function (angular) {
-    var Core_Service = function (Core_HttpRequest, $state, $http, $q) {
+    var Core_Service = function (Core_HttpRequest, $state, $http, $q,$cookieStore) {
         var service = this;
 
         service.login = function (data) {
             var deferred = $q.defer();
-            Core_HttpRequest.get("logincreds")
+            var user={};
+            user.username=data.username;
+            user.password=data.password;
+            Core_HttpRequest.post("api/login",user)
                     .then(function (response) {
                         if (response.status == 200) {
-                               deferred.resolve(service.isAuthenticated(data,response.data))
+                               deferred.resolve(response.data);
  
                         }
                     }, function (response) {
@@ -36,9 +39,28 @@
         }
         return false;
         };
+        service.SetCredentials = function (username, password) {
+            var authdata = Base64.encode(username + ':' + password);
+  
+            $rootScope.globals = {
+                currentUser: {
+                    username: username,
+                    authdata: authdata
+                }
+            };
+  
+            $http.defaults.headers.common['Authorization'] = 'Basic ' + authdata; // jshint ignore:line
+            $cookieStore.put('globals', $rootScope.globals);
+        };
+  
+        service.ClearCredentials = function () {
+            $rootScope.globals = {};
+            $cookieStore.remove('globals');
+            $http.defaults.headers.common.Authorization = 'Basic ';
+        };
     };
     
-    Core_Service.$inject = ['Core_HttpRequest', '$state', '$http', '$q'];
+    Core_Service.$inject = ['Core_HttpRequest', '$state', '$http', '$q','$cookieStore'];
     angular.module('app.common')
             .service('Core_Service', Core_Service);
 })(angular);

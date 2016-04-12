@@ -3,7 +3,8 @@
             .factory('Core_HttpRequest', function($http, urlConfig) {
                 var service = this;                
                 var getUrl = function(path) {
-                    return urlConfig.api_endpoint + path + ".json";
+                    //return urlConfig.api_endpoint + path + ".json";
+                	return urlConfig.root_path + path;
                 };
                 service.get = function(path) {
                     return $http.get(getUrl(path));

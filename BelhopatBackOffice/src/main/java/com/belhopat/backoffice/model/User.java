@@ -6,7 +6,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "Employee")
+@Table(name = "User")
 public class User {
 
 	@Id
@@ -15,7 +15,7 @@ public class User {
 
 	private String username;
 
-	private String address;
+	private String password;
 
 	private String email;
 
@@ -26,7 +26,7 @@ public class User {
 	public User(long id, String username, String address, String email) {
 		this.id = id;
 		this.username = username;
-		this.address = address;
+		this.password = address;
 		this.email = email;
 	}
 
@@ -46,12 +46,14 @@ public class User {
 		this.username = username;
 	}
 
-	public String getAddress() {
-		return address;
+
+
+	public String getPassword() {
+		return password;
 	}
 
-	public void setAddress(String address) {
-		this.address = address;
+	public void setPassword(String password) {
+		this.password = password;
 	}
 
 	public String getEmail() {
@@ -86,7 +88,7 @@ public class User {
 
 	@Override
 	public String toString() {
-		return "User [id=" + id + ", username=" + username + ", address=" + address + ", email=" + email + "]";
+		return "User [id=" + id + ", username=" + username + ", address=" + password + ", email=" + email + "]";
 	}
 
 }

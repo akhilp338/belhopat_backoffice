@@ -26,8 +26,9 @@ public class HelloWorldRestController {
     
     //-------------------Retrieve All Users--------------------------------------------------------
      
-    @RequestMapping(value = "/user/", method = RequestMethod.GET)
+    @RequestMapping(value = "/user/test", method = RequestMethod.GET)
     public ResponseEntity<List<User>> listAllUsers() {
+    	System.out.println("aksfsadfsad");
         List<User> users = userService.findAllUsers();
         if(users.isEmpty()){
             return new ResponseEntity<List<User>>(HttpStatus.NO_CONTENT);//You many decide to return HttpStatus.NOT_FOUND
@@ -86,7 +87,7 @@ public class HelloWorldRestController {
         }
  
         currentUser.setUsername(user.getUsername());
-        currentUser.setAddress(user.getAddress());
+        currentUser.setPassword(user.getPassword());
         currentUser.setEmail(user.getEmail());
          
         userService.updateUser(currentUser);
