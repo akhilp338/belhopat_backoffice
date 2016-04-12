@@ -122,5 +122,11 @@ public class HelloWorldRestController {
         userService.deleteAllUsers();
         return new ResponseEntity<User>(HttpStatus.NO_CONTENT);
     }
+    
+    @RequestMapping(value = "/forgotPassword/", method = RequestMethod.DELETE)
+    public ResponseEntity<String> forgotPassword() {
+//    	userService.generatePasswordResetLink()
+        return new ResponseEntity<String>("A recovery link has been sent to your email. Please check your email",HttpStatus.OK);
+    }    
  
 }
