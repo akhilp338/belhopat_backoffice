@@ -16,7 +16,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.belhopat.backoffice.model.Candidate;
+import com.belhopat.backoffice.model.OfficialDetails;
 import com.belhopat.backoffice.service.CandidateService;
+import com.belhopat.backoffice.service.OfficialDetailsService;
 
 @Controller
 @RequestMapping("/api/candidate")
@@ -24,6 +26,9 @@ public class CandidateController {
 
 	@Autowired
 	CandidateService candidateService;
+	
+	@Autowired
+	OfficialDetailsService officialDetailsService;
 	
 	@ResponseBody
 	@RequestMapping(value = "/getCandidates", method = RequestMethod.POST)
@@ -47,6 +52,12 @@ public class CandidateController {
 	@RequestMapping(value = "/deleteCandidates", method = RequestMethod.POST)
 	public ResponseEntity<Void> deleteCandiadtes(@RequestBody List<Long> candidateIds) {
 		return candidateService.deleteCandidates(candidateIds);
+	}
+	
+	@ResponseBody
+	@RequestMapping(value = "/getOfficialDetails", method = RequestMethod.GET)
+	public DataTablesOutput<OfficialDetails> getOfficialDetails( @Valid DataTablesInput input ) {
+		return officialDetailsService.getOfficialDetails(input);
 	}
 
 }
