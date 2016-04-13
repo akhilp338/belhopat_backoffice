@@ -17,7 +17,6 @@ body {
 }
 
 .page-content-div {
-    color: blue;
     margin-top: 70px;
     width: 81.5%;
     float: right;
@@ -424,13 +423,14 @@ body {
 
 #candidatesList {
     border-collapse: separate;
-    width: 90%;
+    border: 1px solid #ddd;
 }
 /*Temp css ends here*/
 
 /*form input styles*/
 
-.form-input{
+.form-input,
+input[type="search"]{
     background: #ebecec;
     border: none;
     border-radius: 5px;
@@ -497,8 +497,9 @@ span.text-danger{
     display: block;
 }
 
-.form-horizontal{
-    padding: 30px 20px;
+.form-horizontal,
+#candidatesList_wrapper{
+    padding: 30px 20px 0 20px;
 }
 
 .span4{
@@ -529,3 +530,28 @@ span.sub-section {
     float: left;
     font-weight: bold;
 }
+
+#candidatesList tbody tr.odd {
+    background-color: #F1F1F1;
+}
+
+#candidatesList tbody tr td:not(:last-child),
+#candidatesList thead tr th:not(:last-child),
+#candidatesList tfoot tr th:not(:last-child){
+    border-right: 1px solid #DDD;
+}
+
+table.dataTable thead th, 
+table.dataTable tfoot th {
+    color:#666;
+    border-bottom: 1px solid #DDD !important;
+}
+
+span.user-list-head {
+    padding-left: 41%;
+    font-size: 20px;
+    font-weight: bold;
+    color: gray;
+    text-decoration: underline;
+}
+
