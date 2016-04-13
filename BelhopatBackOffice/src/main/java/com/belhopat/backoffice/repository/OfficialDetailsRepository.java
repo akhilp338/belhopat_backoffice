@@ -4,7 +4,7 @@ import org.springframework.data.jpa.datatables.repository.DataTablesRepository;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import com.belhopat.backoffice.model.OfficialDetails;
+import com.belhopat.backoffice.model.OfficialCards;
 
 @Repository
-public interface OfficialDetailsRepository extends JpaRepository<OfficialDetails, Long>, DataTablesRepository<OfficialDetails, Long> {}
+public interface OfficialDetailsRepository extends JpaRepository<OfficialCards, Long>, DataTablesRepository<OfficialCards, Long> {}
