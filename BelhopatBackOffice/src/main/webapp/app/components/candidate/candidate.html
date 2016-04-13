@@ -1,4 +1,4 @@
-<div class="form-horizontal" name="reg_form">
+<div ng-if="vm.isAddCandidateView" class="form-horizontal" name="reg_form">
 
     <ul class="nav nav-tabs">
         <li ng-repeat="step in steps" ng-class="{active: $index == getCurrentStepIndex()}">

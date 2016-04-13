@@ -15,6 +15,7 @@
         });
 
         vm.isCheckboxEnable = false;
+        vm.isAddCandidateView = false;
         $scope.steps = [
             'Step 1: Personal Information',
             'Step 2: Employment Details',
@@ -102,6 +103,10 @@
             }
         };
 
+        vm.addCandidate = function(){
+        	vm.isAddCandidateView = true;
+        }
+        
 //datatble start
         angular.element(document).ready(function () {
             angular.element('#candidatesList').DataTable({
@@ -135,10 +140,11 @@
                 }]
             });
         });
+        
         //datatble ends
         Core_Service.calculetSidebarHeight();
     };
-
+    
     Candidate_Ctrl.$inject = ["$scope", '$state', '$rootScope', 'Core_Service', 'urlConfig', 'Core_HttpRequest', 'validationService'];
     angular.module('coreModule')
             .controller('Candidate_Ctrl', Candidate_Ctrl);
