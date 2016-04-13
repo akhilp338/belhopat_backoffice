@@ -15,6 +15,7 @@
         });
 
         vm.isCheckboxEnable = false;
+        vm.isAddCandidateView = false;
         $scope.steps = [
             'Step 1: Personal Information',
             'Step 2: Employment Details',
@@ -102,14 +103,48 @@
             }
         };
 
+        vm.addCandidate = function(){
+        	vm.isAddCandidateView = true;
+        }
+        
 //datatble start
         angular.element(document).ready(function () {
-            angular.element('#candidatesList').DataTable({});
+            angular.element('#candidatesList').DataTable({
+            	'ajax': urlConfig.http+window.location.host+urlConfig.api_root_path+"/getOfficialDetails",
+                'serverSide': true,
+                "bDestroy": true,
+//                "order": [[ 1, "asc" ]],
+                "language": {
+                    zeroRecords: "No data to dispay"
+                },
+                 "processing": true,
+                 "sScrollX": '100%',
+                "aoColumns": [{
+                	title: "drivingLicenceNo",
+                    data: 'drivingLicenceNo',
+                }, {
+                	title: "PAN No",
+                    data: 'panno',
+                }, {
+                	title: "ESI No",
+                    data: 'esino',
+                }, {
+                	title: "PF No",
+                    data: 'pfno',
+                }, {
+                	title: "FOREX CARD NO",
+                    data: 'forexCardNo',
+                }, {
+                	title: "FOREX CARD AGENCY",
+                    data: 'forexCardAgency',
+                }]
+            });
         });
+        
         //datatble ends
         Core_Service.calculetSidebarHeight();
     };
-
+    
     Candidate_Ctrl.$inject = ["$scope", '$state', '$rootScope', 'Core_Service', 'urlConfig', 'Core_HttpRequest', 'validationService'];
     angular.module('coreModule')
             .controller('Candidate_Ctrl', Candidate_Ctrl);

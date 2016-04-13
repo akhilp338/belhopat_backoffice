@@ -22,6 +22,7 @@
 <script src="app/assets/libs/js/angular-translate.min.js"></script>
 <script src="app/assets/libs/js/angular-translate-loader-static-files.min.js"></script>
 <script src="app/assets/libs/js/angular-validation.min.js"></script>
+<script src="app/assets/libs/js/jquery.spring-friendly.min.js"></script>
 
 <!-- AngularJS custom codes -->
 

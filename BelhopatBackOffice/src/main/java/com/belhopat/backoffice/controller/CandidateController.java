@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.belhopat.backoffice.model.Candidate;
-import com.belhopat.backoffice.model.OfficialDetails;
+import com.belhopat.backoffice.model.OfficialCards;
 import com.belhopat.backoffice.service.CandidateService;
 import com.belhopat.backoffice.service.OfficialDetailsService;
 
@@ -56,7 +56,7 @@ public class CandidateController {
 	
 	@ResponseBody
 	@RequestMapping(value = "/getOfficialDetails", method = RequestMethod.GET)
-	public DataTablesOutput<OfficialDetails> getOfficialDetails( @Valid DataTablesInput input ) {
+	public DataTablesOutput<OfficialCards> getOfficialDetails( @Valid DataTablesInput input ) {
 		return officialDetailsService.getOfficialDetails(input);
 	}
 

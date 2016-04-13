@@ -4,11 +4,11 @@ import org.springframework.data.jpa.datatables.mapping.DataTablesInput;
 import org.springframework.data.jpa.datatables.mapping.DataTablesOutput;
 import org.springframework.stereotype.Service;
 
-import com.belhopat.backoffice.model.OfficialDetails;
+import com.belhopat.backoffice.model.OfficialCards;
 
 @Service
 public interface OfficialDetailsService {
 
-	DataTablesOutput<OfficialDetails> getOfficialDetails(DataTablesInput input);
+	DataTablesOutput<OfficialCards> getOfficialDetails(DataTablesInput input);
 
 }
