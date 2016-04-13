@@ -11,6 +11,6 @@
     <div class="form-group">
         <span class="alert" ng-if="vm.errorMessage != ''">{{vm.errorMessage}}</span>
     </div>
-    <a class="link" href="#">Lost your password?</a>
+    <a class="link" href="#" ng-click="vm.forgotPassword()">Lost your password?</a>
     <button type="button" class="log-btn" ng-click="vm.login(vm.loginCreds)">Log in</button>
     </div></div>
