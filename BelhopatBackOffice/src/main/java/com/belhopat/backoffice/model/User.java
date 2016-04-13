@@ -18,6 +18,8 @@ public class User {
 	private String address;
 
 	private String email;
+	
+	private String resetToken;
 
 	public User() {
 		id = 0;
@@ -40,6 +42,14 @@ public class User {
 
 	public String getUsername() {
 		return username;
+	}
+
+	public String getResetToken() {
+		return resetToken;
+	}
+	
+	public void setResetToken(String resetToken) {
+		this.resetToken = resetToken;
 	}
 
 	public void setUsername(String username) {

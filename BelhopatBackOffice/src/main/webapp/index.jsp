@@ -5,14 +5,20 @@
 <title>Belhopat Global Services Pvt Ltd</title>
 <link rel="stylesheet" ng-href="app/assets/libs/css/bootstrap.min.css">
 <link rel="stylesheet" ng-href="app/assets/libs/css/font-awesome.min.css">
+<link rel="stylesheet" ng-href="app/assets/libs/css/awesome-checkbox.css">
 <link rel="stylesheet" ng-href="app/assets/styles/style.css">
 <link rel="stylesheet" ng-href="app/assets/libs/css/jquery.dataTables.min.css">
 	<!-- Libraries -->
 <script src="app/assets/libs/js/jquery-2.2.3.min.js"></script>
 <script src="app/assets/libs/js/jquery.dataTables.min.js"></script>
 <script src="app/assets/libs/js/angular.min.js"></script>
-<script src="app/assets/libs/js/angular-ui-router.js"></script>
+<script src="app/assets/libs/js/underscore.js"></script>
 <script src="app/assets/libs/js/ui-bootstrap-tpls-1.3.1.min.js"></script>
+<script src="app/assets/libs/js/angular-animate.min.js"></script>
+<script src="app/assets/libs/js/angular-ui-router.js"></script>
+<script src="app/assets/libs/js/angular-translate.min.js"></script>
+<script src="app/assets/libs/js/angular-translate-loader-static-files.min.js"></script>
+<script src="app/assets/libs/js/angular-validation.min.js"></script>
 
 <!-- AngularJS custom codes -->
 
@@ -21,7 +27,10 @@
 <script src="app/shared/appConstants.js"></script>
 <script src="app/shared/HttpRequest.js"></script>
 <script src="app/shared/CoreService.js"></script>
+<script src="app/shared/Core_Modal.js"></script>
+<script src="app/shared/CommonModalService.js"></script>
 <script src="app/components/login/LoginCtrl.js"></script>
+<script src="app/components/login/Forgotpassword_Ctrl.js"></script>
 <script src="app/components/common/Header_Ctrl.js"></script>
 <script src="app/components/home/Home_Ctrl.js"></script>
 <script src="app/components/dashboard/Dash_Ctrl.js"></script>

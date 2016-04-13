@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.util.UriComponentsBuilder;
 
@@ -122,5 +123,10 @@ public class HelloWorldRestController {
         userService.deleteAllUsers();
         return new ResponseEntity<User>(HttpStatus.NO_CONTENT);
     }
- 
-}
+    
+    @RequestMapping(value = "/forgotPassword/", method = RequestMethod.POST)
+    public ResponseEntity<String> forgotPassword(@RequestParam String email) {
+//    	userService.generatePasswordResetLink()
+        return new ResponseEntity<String>("A recovery link has been sent to your email. Please check your email",HttpStatus.OK);
+    }    
+ }

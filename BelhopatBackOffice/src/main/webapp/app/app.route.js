@@ -20,6 +20,9 @@ $locationProvider.html5Mode(true);
                             templateUrl: 'app/components/common/sidebar.html',
                             controller: 'Home_Ctrl',
                             controllerAs: 'vm'
+                        },
+                        'footer': {
+                            templateUrl: 'app/components/common/footer.html'
                         }
                     }
                 })
