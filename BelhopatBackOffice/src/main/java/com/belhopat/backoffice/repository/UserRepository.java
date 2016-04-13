@@ -8,5 +8,7 @@ import com.belhopat.backoffice.model.User;
 @Repository
 public interface UserRepository extends JpaRepository< User, Long >  {
 
+	User findByEmail(String lastname);
+
 
 }
