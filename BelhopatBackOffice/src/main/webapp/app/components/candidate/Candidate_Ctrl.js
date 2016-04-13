@@ -104,7 +104,36 @@
 
 //datatble start
         angular.element(document).ready(function () {
-            angular.element('#candidatesList').DataTable({});
+            angular.element('#candidatesList').DataTable({
+            	'ajax': urlConfig.http+window.location.host+urlConfig.api_root_path+"/getOfficialDetails",
+                'serverSide': true,
+                "bDestroy": true,
+//                "order": [[ 1, "asc" ]],
+                "language": {
+                    zeroRecords: "No data to dispay"
+                },
+                 "processing": true,
+                 "sScrollX": '100%',
+                "aoColumns": [{
+                	title: "drivingLicenceNo",
+                    data: 'drivingLicenceNo',
+                }, {
+                	title: "PAN No",
+                    data: 'panno',
+                }, {
+                	title: "ESI No",
+                    data: 'esino',
+                }, {
+                	title: "PF No",
+                    data: 'pfno',
+                }, {
+                	title: "FOREX CARD NO",
+                    data: 'forexCardNo',
+                }, {
+                	title: "FOREX CARD AGENCY",
+                    data: 'forexCardAgency',
+                }]
+            });
         });
         //datatble ends
         Core_Service.calculetSidebarHeight();
