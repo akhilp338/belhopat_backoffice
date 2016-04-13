@@ -1,5 +1,5 @@
 (function (angular) {
-    var Core_Service = function (Core_HttpRequest, $state, $http, $q) {
+    var Core_Service = function (Core_HttpRequest, $state, $timeout, $q) {
         var service = this;
 
         service.login = function (data) {
@@ -7,8 +7,8 @@
             Core_HttpRequest.get("logincreds")
                     .then(function (response) {
                         if (response.status == 200) {
-                               deferred.resolve(service.isAuthenticated(data,response.data))
- 
+                            deferred.resolve(service.isAuthenticated(data, response.data))
+
                         }
                     }, function (response) {
                         response.data = false;
@@ -17,28 +17,38 @@
             return deferred.promise;
         };
 
-        service.isAuthenticated = function (item,data) {
-            var isUserNameOk,isPasswordOk;
-            for(var i=0; i<data.length; i++){
+        service.isAuthenticated = function (item, data) {
+            var isUserNameOk, isPasswordOk;
+            for (var i = 0; i < data.length; i++) {
                 isUserNameOk = false;
                 isPasswordOk = false;
-            for(var key in data[i]){
-                if(item[key] == data[i][key]){
-                    if(key == "username")
-                        isUserNameOk = true;
-                    else if(key == "password")
-                        isPasswordOk  = true;
+                for (var key in data[i]) {
+                    if (item[key] == data[i][key]) {
+                        if (key == "username")
+                            isUserNameOk = true;
+                        else if (key == "password")
+                            isPasswordOk = true;
+                    }
+                }
+                if (isUserNameOk && isPasswordOk) {
+                    return true;
                 }
             }
-            if(isUserNameOk && isPasswordOk){
-                return true;
-            }
-        }
-        return false;
+            return false;
+        };
+
+        service.calculetSidebarHeight = function () {
+            $timeout(function () {
+                var height = angular.element(".page-content-div").height();
+                if (height < 171) {
+                    height = 171;
+                }
+                angular.element("#sidebar-wrapper").height(height);
+            }, 200);
         };
     };
-    
-    Core_Service.$inject = ['Core_HttpRequest', '$state', '$http', '$q'];
+
+    Core_Service.$inject = ['Core_HttpRequest', '$state', '$timeout', '$q'];
     angular.module('app.common')
             .service('Core_Service', Core_Service);
 })(angular);

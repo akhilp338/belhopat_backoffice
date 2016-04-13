@@ -90,19 +90,21 @@
         vm.checkAddress = function () {
             if (vm.registration.permenant) {
                 for (var key in vm.registration.permenant) {
-                  if(vm.registration.permenant[key] != ""){
-                     vm.isCheckboxEnable = true;
-                     return;
-                  }
+                    if (vm.registration.permenant[key] != "") {
+                        vm.isCheckboxEnable = true;
+                        return;
+                    }
                 }
-               vm.isCheckboxEnable = false; 
+                vm.isCheckboxEnable = false;
             }
-    };
+        };
+
 //datatble start
-    angular.element(document).ready(function () {
-        angular.element('#candidatesList').DataTable({});
-    });
-    //datatble ends
+        angular.element(document).ready(function () {
+            angular.element('#candidatesList').DataTable({});
+        });
+        //datatble ends
+        Core_Service.calculetSidebarHeight();
     };
 
     Candidate_Ctrl.$inject = ["$scope", '$state', '$rootScope', 'Core_Service', 'urlConfig', 'Core_HttpRequest', 'validationService'];
