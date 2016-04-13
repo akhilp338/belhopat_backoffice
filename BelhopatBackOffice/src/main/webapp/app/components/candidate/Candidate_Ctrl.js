@@ -34,6 +34,7 @@
             {
                 $scope.selection = $scope.steps[index];
             }
+            Core_Service.calculetSidebarHeight();
         };
 
         $scope.hasNextStep = function () {
@@ -58,6 +59,7 @@
                 var nextStep = stepIndex + 1;
                 $scope.selection = $scope.steps[nextStep];
             }
+            Core_Service.calculetSidebarHeight();
         };
 
         $scope.decrementStep = function () {
@@ -67,6 +69,7 @@
                 var previousStep = stepIndex - 1;
                 $scope.selection = $scope.steps[previousStep];
             }
+            Core_Service.calculetSidebarHeight();
         };
 
         $rootScope.active = 'candidate';
