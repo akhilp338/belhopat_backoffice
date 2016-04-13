@@ -5,18 +5,28 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicLong;
 
+import javax.mail.MessagingException;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.belhopat.backoffice.model.User;
 import com.belhopat.backoffice.repository.UserRepository;
+import com.belhopat.backoffice.util.RandomPasswordGenerator;
 
 @Component
 @Transactional
 public class UserServiceImpl implements UserService{
+
 	@Autowired
 	UserRepository userRepo;
+	
+	@Autowired
+	MailService mailService;
+	
+	@Autowired
+	RandomPasswordGenerator randomPasswordGenerator;
 	
 	private static final AtomicLong counter = new AtomicLong();
 	
@@ -84,6 +94,21 @@ public class UserServiceImpl implements UserService{
 		users.add(new User(counter.incrementAndGet(),"Tomy", "ALBAMA", "tomy@abc.com"));
 		users.add(new User(counter.incrementAndGet(),"Kelly", "NEBRASKA", "kelly@abc.com"));
 		return users;
+	}
+
+	@Override
+	public boolean generatePasswordResetLink( String userEmail ) throws MessagingException {
+		User user = userRepo.findByEmail( userEmail );
+		if ( user != null ){
+			
+			String password = randomPasswordGenerator.nextSessionId();
+			String emailBody = "Your new password is: " + password ;
+			mailService.sendPasswordResetMail( userEmail, emailBody );
+			user.setPassword( password );
+			userRepo.saveAndFlush( user );
+			return true;
+		}
+		return false;
 	}
 
 }
