@@ -19,7 +19,7 @@ body {
 .page-content-div {
     margin-top: 70px;
     width: 81.5%;
-    float: right;
+    float: left;
 }
 
 .login-page .page-content-div {
@@ -249,7 +249,7 @@ body {
     position: relative;
     float: left;
     margin-top: 70px;
-    width: 18%!important;
+    width: 100%!important;
     min-height: 358px;
 }
 
@@ -745,4 +745,17 @@ span.user-list-head {
     font-size: 19px!important;
     text-align: left!important;
     margin-top: 0;
+}
+
+.add-button{
+    margin-left: 1.7%!important;
+}
+
+.page-side-bar {
+    float: left;
+    width: 18%;
+}
+
+.add-candidate {
+    width: 100%;
 }

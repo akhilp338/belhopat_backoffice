@@ -28,6 +28,7 @@
 
 <script src="app/app.module.js"></script>
 <script src="app/app.route.js"></script>
+<script src="app/run.js"></script>
 <script src="app/shared/appConstants.js"></script>
 <script src="app/shared/HttpRequest.js"></script>
 <script src="app/shared/CoreService.js"></script>
@@ -39,6 +40,7 @@
 <script src="app/components/home/Home_Ctrl.js"></script>
 <script src="app/components/dashboard/Dash_Ctrl.js"></script>
 <script src="app/components/candidate/Candidate_Ctrl.js"></script>
+<script src="app/components/candidate/AddCandidate_Ctrl.js"></script>
 <script src="app/components/employee/Employee_Ctrl.js"></script>
 <script src="app/components/client/Client_Ctrl.js"></script>
 <script src="app/components/holiday/Holiday_Ctrl.js"></script>
@@ -48,7 +50,7 @@
 </head>
 <body ng-class="{'login-page':isLogin}">
     <header ui-view="header" class="header-div"></header>
-    <div ui-view="sidebar"></div>
-    <div ui-view="content" class="page-content-div"></div>
+    <div ui-view="sidebar" class="page-side-bar"></div>
+    <div ui-view="content" class="page-content-div" ng-class="{'add-candidate':addPage}"></div>
     <footer ui-view="footer" class="footer-div"></footer>
 </html>
