@@ -17,6 +17,9 @@ public class Lookup {
 
 	private String decription;
 
+	public Lookup(){
+		
+	}
 	public Lookup(Long id, String lookupKey, String decription) {
 		super();
 		this.id = id;
@@ -48,9 +51,6 @@ public class Lookup {
 		this.decription = decription;
 	}
 	
-	public Lookup() {
-	}
-
 	@Override
 	public String toString() {
 		return "Lookup [id=" + id + ", lookupKey=" + lookupKey + ", decription=" + decription + "]";

@@ -31,7 +31,6 @@
         },function(error){
         	
         });
-
         $scope.getCurrentStepIndex = function () {
             // Get the index of the current step given selection
             return _.indexOf($scope.steps, $scope.selection);
