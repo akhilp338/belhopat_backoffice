@@ -67,7 +67,7 @@ public class CandidateController {
 	}
 	
 	@ResponseBody
-	@RequestMapping(value = "/getDropDownData", method = RequestMethod.GET)
+	@RequestMapping(value = "/getDropDownData", method = RequestMethod.POST)
 	public ResponseEntity<Map<String, List<LookupDetail>>> getDropDownData() {
 		return baseService.getCandidateDropDownData();
 	}

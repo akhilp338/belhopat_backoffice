@@ -46,8 +46,21 @@
                 angular.element("#sidebar-wrapper").height(height);
             }, 200);
         };
+        
+        service.getAllLookupValues = function(url){
+        	var deferred = $q.defer();
+            Core_HttpRequest.postHttp(url)
+                    .then(function (response) {
+                        console.log(response)
+                    }, function (response) {
+                    	
+                    });
+            return deferred.promise;
+        }
     };
 
+
+    
     Core_Service.$inject = ['Core_HttpRequest', '$state', '$timeout', '$q'];
     angular.module('app.common')
             .service('Core_Service', Core_Service);

@@ -5,7 +5,7 @@
         	"http":"http://",
             "api_endpoint": "/BelhopatBackOffice/app/assets/data/",
             "root_path":"/BelhopatBackOffice/",
-            "api_root_path":"/BelhopatBackOffice/api/candidate"
+            "api_root_path":"/BelhopatBackOffice/api/"
         })
         .constant('candidate_table', {
             "config": {

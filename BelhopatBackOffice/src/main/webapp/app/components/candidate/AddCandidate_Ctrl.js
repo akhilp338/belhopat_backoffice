@@ -22,10 +22,14 @@
             'Step 4: Family Details'
         ];
         $scope.selection = $scope.steps[0];
-        $scope.bloodGroups = ['A+','B+','A-'];
-        $scope.urlForLookups = urlConfig.http+window.location.host+urlConfig.api_root_path+"/getOfficialDetails";
-        $http.get(url).success( function(response) {
-           $scope.lookups = response;
+        $scope.bloodGroups = ['A+','B+','A-'];//temp
+        vm.urlForLookups = "candidate/getDropDownData";
+        Core_Service.getAllLookupValues(vm.urlForLookups)
+        .then( function(response) {
+           console.log(response)
+           vm.lookups = response.data;
+        },function(error){
+        	
         });
 
         $scope.getCurrentStepIndex = function () {
