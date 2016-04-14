@@ -22,7 +22,7 @@
             'Step 4: Family Details'
         ];
         $scope.selection = $scope.steps[0];
-        vm.urlForLookups = "candidate/getDropDownData";
+        vm.urlForLookups = "api/candidate/getDropDownData";
         Core_Service.getAllLookupValues(vm.urlForLookups)
         .then( function(response) {
            console.log(response)
@@ -119,7 +119,7 @@
             });
         };
        
-        Core_Service.calculetSidebarHeight();
+        Core_Service.calculateSidebarHeight();
     };
     
     AddCandidate_Ctrl.$inject = ["$scope", '$state', '$rootScope', 'Core_Service', 'urlConfig', 'Core_HttpRequest', 'validationService'];
