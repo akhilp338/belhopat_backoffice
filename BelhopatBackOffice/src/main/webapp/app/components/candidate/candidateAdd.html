@@ -1,361 +1,501 @@
 <div class="form-horizontal" name="reg_form">
 
-    <ul class="nav nav-tabs">
-        <li ng-repeat="step in steps" ng-class="{active: $index == getCurrentStepIndex()}">
-            <a href="javascript:void(0)" ng-click="goToStep($index)">{{step}}</a>
-        </li>
-    </ul>
-    <div ng-switch on="selection">
+	<ul class="nav nav-tabs">
+		<li ng-repeat="step in steps"
+			ng-class="{active: $index == getCurrentStepIndex()}"><a
+			href="javascript:void(0)" ng-click="goToStep($index)">{{step}}</a></li>
+	</ul>
+	<div ng-switch on="selection">
 
-        <!-- First Step -->
-        <div ng-switch-when="Step 1: Personal Information">
-            <form name="step_0" id="form_0" novalidate>
-                <div class="row">
-                    <span class="sub-section width-100">Basic Information</span>
-                    <div class="span4">
-                        <div class="control-group width-30 pull-left">
-                            <label class="control-label" for="firstName">First Name</label>
-                            <div class="controls">
-                                <input type="text" name="firstName" id="firstName" ng-model="vm.registration.firstName" class="form-input width-100" placeholder="First Name" validation="required:alt=Required field"/>
-                            </div>
-                        </div>
-                        <div class="control-group width-30 pull-left margin-left-5">
-                            <label class="control-label" for="middleName">Middle Name</label>
-                            <div class="controls">
-                                <input type="text" name="middleName" id="middleName" ng-model="vm.registration.middleName" class="form-input width-100" placeholder="Middle Name" />
-                            </div>
-                        </div>
-                        <div class="control-group width-30 pull-left margin-left-5">
-                            <label class="control-label" for="lastName">Last Name</label>
-                            <div class="controls">
-                                <input type="text" name="lastName" id="lastName" ng-model="vm.registration.lastName" class="form-input width-100" placeholder="Last Name" validation="required:alt=Required field"/>
-                            </div>
-                        </div>
-                        <div class="control-group width-30 pull-left">
-                            <label class="control-label" for="dob">Date of Birth</label>
-                            <div class="controls">
-                                <input type="text" name="dob" id="dob" ng-model="vm.registration.dob" class="form-input width-100" placeholder="Date of Birth" validation="required:alt=Required field"/>
-                            </div>
-                        </div>
+		<!-- First Step -->
+		<div ng-switch-when="Step 1: Personal Information">
+			<form name="step_0" id="form_0" novalidate>
+				<div class="row">
+					<span class="sub-section width-100">Basic Information</span>
+					<div class="span4">
+						<div class="control-group width-30 pull-left">
+							<label class="control-label" for="firstName">First Name</label>
+							<div class="controls">
+								<input type="text" name="firstName" id="firstName"
+									ng-model="vm.registration.firstName"
+									class="form-input width-100" placeholder="First Name"
+									validation="required:alt=Required field" />
+							</div>
+						</div>
+						<div class="control-group width-30 pull-left margin-left-5">
+							<label class="control-label" for="middleName">Middle Name</label>
+							<div class="controls">
+								<input type="text" name="middleName" id="middleName"
+									ng-model="vm.registration.middleName"
+									class="form-input width-100" placeholder="Middle Name" />
+							</div>
+						</div>
+						<div class="control-group width-30 pull-left margin-left-5">
+							<label class="control-label" for="lastName">Last Name</label>
+							<div class="controls">
+								<input type="text" name="lastName" id="lastName"
+									ng-model="vm.registration.lastName"
+									class="form-input width-100" placeholder="Last Name"
+									validation="required:alt=Required field" />
+							</div>
+						</div>
+						<div class="control-group width-30 pull-left">
+							<label class="control-label" for="dob">Date of Birth</label>
+							<div class="controls">
+								<input type="text" name="dob" id="dob"
+									ng-model="vm.registration.dob" class="form-input width-100"
+									placeholder="Date of Birth"
+									validation="required:alt=Required field" />
+							</div>
+						</div>
 
-                        <div class="control-group width-30 pull-left margin-left-5">
-                            <label class="control-label" for="gender">Gender</label>
-                            <div class="controls">
-                                <input type="text" name="gender" id="gender" ng-model="vm.registration.gender" class="form-input width-100" placeholder="Gender" validation="required:alt=Required field"/>
-                            </div>
-                        </div>
-                        <div class="control-group width-30 pull-left margin-left-5">
-                            <label class="control-label" for="dob">Blood Group</label>
-                            <div class="controls">
-                                <input type="text" name="bg" id="dob" ng-model="vm.registration.bg" class="form-input width-100" placeholder="Blood Group" validation="required:alt=Required field"/>
-                            </div>
-                        </div>
-                        <div class="control-group width-30 pull-left">
-                            <label class="control-label" for="coo">Country Of Origin</label>
-                            <div class="controls">
-                                <input type="text" name="coo" id="dob" ng-model="vm.registration.coo" class="form-input width-100" placeholder="Country Of Origin" validation="required:alt=Required field"/>
-                            </div>
-                        </div>
-                    </div>
+						<div class="control-group width-30 pull-left margin-left-5">
+							<label class="control-label" for="gender">Gender</label>
+							<div class="controls">
+								<input type="text" name="gender" id="gender"
+									ng-model="vm.registration.gender" class="form-input width-100"
+									placeholder="Gender" validation="required:alt=Required field" />
+							</div>
+						</div>
+						<div class="control-group width-30 pull-left margin-left-5">
+							<label class="control-label" for="dob">Blood Group</label>
+							<div class="controls">
+<!-- 								<p>selected item is : {{vm.registration.bloodGroup}}</p> -->
+								<select ng-model="vm.registration.bloodGroup"
+									class="form-input width-100">
+									<option ng-repeat="item in bloodGroups" value="{{item}}">{{item}}</option>
+								</select>
+							</div>
+						</div>
+						<div class="control-group width-30 pull-left">
+							<label class="control-label" for="coo">Country Of Origin</label>
+							<div class="controls">
+								<input type="text" name="coo" id="dob"
+									ng-model="vm.registration.coo" class="form-input width-100"
+									placeholder="Country Of Origin"
+									validation="required:alt=Required field" />
+							</div>
+						</div>
+					</div>
 
-                </div>
-                <div class="row">
-                    <span class="sub-section width-100">Contact Information</span>
-                    <div class="span4">
-                        <div class="control-group width-30 pull-left">
-                            <label class="control-label" for="personal_contact">Personal Contact No</label>
-                            <div class="controls">
-                                <input type="text" name="personal_contact" id="personal_contact" ng-model="vm.registration.personal_contact" class="form-input width-100" placeholder="Personal Contact No" validation="required:alt=Required field"/>
-                            </div>
-                        </div>
-                        <div class="control-group width-30 pull-left margin-left-5">
-                            <label class="control-label" for="email">Personal Email Id</label>
-                            <div class="controls">
-                                <input type="text" name="email" id="email" ng-model="vm.registration.email" class="form-input width-100" placeholder="Personal Email Id" validation="email:alt=email id not valid|required:alt=Required field"/>
-                            </div>
-                        </div>
-                        <div class="control-group width-30 pull-left margin-left-5">
-                            <label class="control-label" for="ofc_email">Official Email Id</label>
-                            <div class="controls">
-                                <input type="text" name="ofc_email" id="ofc_email" ng-model="vm.registration.ofc_email" class="form-input width-100" placeholder="Official Email Id" validation="email:alt=email id not valid|required:alt=Required field"/>
-                            </div>
-                        </div>
-                        <div class="control-group width-30 pull-left">
-                            <label class="control-label" for="ofc_contact">Official Contact</label>
-                            <div class="controls">
-                                <input type="text" name="ofc_contact" id="ofc_contact" ng-model="vm.registration.ofc_contact" class="form-input width-100" placeholder="Country Of Origin" validation="required:alt=Required field"/>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+				</div>
+				<div class="row">
+					<span class="sub-section width-100">Contact Information</span>
+					<div class="span4">
+						<div class="control-group width-30 pull-left">
+							<label class="control-label" for="personal_contact">Personal
+								Contact No</label>
+							<div class="controls">
+								<input type="text" name="personal_contact" id="personal_contact"
+									ng-model="vm.registration.personal_contact"
+									class="form-input width-100" placeholder="Personal Contact No"
+									validation="required:alt=Required field" />
+							</div>
+						</div>
+						<div class="control-group width-30 pull-left margin-left-5">
+							<label class="control-label" for="email">Personal Email
+								Id</label>
+							<div class="controls">
+								<input type="text" name="email" id="email"
+									ng-model="vm.registration.email" class="form-input width-100"
+									placeholder="Personal Email Id"
+									validation="email:alt=email id not valid|required:alt=Required field" />
+							</div>
+						</div>
+						<div class="control-group width-30 pull-left margin-left-5">
+							<label class="control-label" for="ofc_email">Official
+								Email Id</label>
+							<div class="controls">
+								<input type="text" name="ofc_email" id="ofc_email"
+									ng-model="vm.registration.ofc_email"
+									class="form-input width-100" placeholder="Official Email Id"
+									validation="email:alt=email id not valid|required:alt=Required field" />
+							</div>
+						</div>
+						<div class="control-group width-30 pull-left">
+							<label class="control-label" for="ofc_contact">Official
+								Contact</label>
+							<div class="controls">
+								<input type="text" name="ofc_contact" id="ofc_contact"
+									ng-model="vm.registration.ofc_contact"
+									class="form-input width-100" placeholder="Country Of Origin"
+									validation="required:alt=Required field" />
+							</div>
+						</div>
+					</div>
+				</div>
 
-                <div class="row">
-                    <span class="sub-section width-100">Permenant Address</span>
-                    <div class="span4">
-                        <div class="control-group width-30 pull-left">
-                            <label class="control-label" for="address_line1">Address Line 1</label>
-                            <div class="controls">
-                                <input type="text" name="address_line1" id="address_line1" ng-model="vm.registration.permenant.address_line1" class="form-input width-100" placeholder="Address Line 1" validation="required:alt=Required field" ng-change="vm.checkAddress()"/>
-                            </div>
-                        </div>
-                        <div class="control-group width-30 pull-left margin-left-5">
-                            <label class="control-label" for="address_line2">Address Line 2</label>
-                            <div class="controls">
-                                <input type="text" name="address_line2" id="address_line1" ng-model="vm.registration.permenant.address_line2" class="form-input width-100" placeholder="Address Line 2" ng-change="vm.checkAddress()"/>
-                            </div>
-                        </div>
-                        <div class="control-group width-30 pull-left margin-left-5">
-                            <label class="control-label" for="city">City</label>
-                            <div class="controls">
-                                <input type="text" name="city" id="city" ng-model="vm.registration.permenant.city" class="form-input width-100" placeholder="City" validation="required:alt=Required field" ng-change="vm.checkAddress()"/>
-                            </div>
-                        </div>
-                        <div class="control-group width-30 pull-left">
-                            <label class="control-label" for="state">State</label>
-                            <div class="controls">
-                                <input type="text" name="state" id="state" ng-model="vm.registration.permenant.state" class="form-input width-100" placeholder="State" validation="required:alt=Required field" ng-change="vm.checkAddress()"/>
-                            </div>
-                        </div>
-                        <div class="control-group width-30 pull-left margin-left-5">
-                            <label class="control-label" for="country">Country</label>
-                            <div class="controls">
-                                <input type="text" name="country" id="country" ng-model="vm.registration.permenant.country" class="form-input width-100" placeholder="Country" validation="required:alt=Required field" ng-change="vm.checkAddress()"/>
-                            </div>
-                        </div>
-                        <div class="control-group width-30 pull-left margin-left-5">
-                            <label class="control-label" for="zip_code">ZIP Code</label>
-                            <div class="controls">
-                                <input type="text" name="zip_code" id="zip_code" ng-model="vm.registration.permenant.zip_code" class="form-input width-100" placeholder="ZIP Code" validation="required:alt=Required field" ng-change="vm.checkAddress()"/>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+				<div class="row">
+					<span class="sub-section width-100">Permenant Address</span>
+					<div class="span4">
+						<div class="control-group width-30 pull-left">
+							<label class="control-label" for="address_line1">Address
+								Line 1</label>
+							<div class="controls">
+								<input type="text" name="address_line1" id="address_line1"
+									ng-model="vm.registration.permenant.address_line1"
+									class="form-input width-100" placeholder="Address Line 1"
+									validation="required:alt=Required field"
+									ng-change="vm.checkAddress()" />
+							</div>
+						</div>
+						<div class="control-group width-30 pull-left margin-left-5">
+							<label class="control-label" for="address_line2">Address
+								Line 2</label>
+							<div class="controls">
+								<input type="text" name="address_line2" id="address_line1"
+									ng-model="vm.registration.permenant.address_line2"
+									class="form-input width-100" placeholder="Address Line 2"
+									ng-change="vm.checkAddress()" />
+							</div>
+						</div>
+						<div class="control-group width-30 pull-left margin-left-5">
+							<label class="control-label" for="city">City</label>
+							<div class="controls">
+								<input type="text" name="city" id="city"
+									ng-model="vm.registration.permenant.city"
+									class="form-input width-100" placeholder="City"
+									validation="required:alt=Required field"
+									ng-change="vm.checkAddress()" />
+							</div>
+						</div>
+						<div class="control-group width-30 pull-left">
+							<label class="control-label" for="state">State</label>
+							<div class="controls">
+								<input type="text" name="state" id="state"
+									ng-model="vm.registration.permenant.state"
+									class="form-input width-100" placeholder="State"
+									validation="required:alt=Required field"
+									ng-change="vm.checkAddress()" />
+							</div>
+						</div>
+						<div class="control-group width-30 pull-left margin-left-5">
+							<label class="control-label" for="country">Country</label>
+							<div class="controls">
+								<input type="text" name="country" id="country"
+									ng-model="vm.registration.permenant.country"
+									class="form-input width-100" placeholder="Country"
+									validation="required:alt=Required field"
+									ng-change="vm.checkAddress()" />
+							</div>
+						</div>
+						<div class="control-group width-30 pull-left margin-left-5">
+							<label class="control-label" for="zip_code">ZIP Code</label>
+							<div class="controls">
+								<input type="text" name="zip_code" id="zip_code"
+									ng-model="vm.registration.permenant.zip_code"
+									class="form-input width-100" placeholder="ZIP Code"
+									validation="required:alt=Required field"
+									ng-change="vm.checkAddress()" />
+							</div>
+						</div>
+					</div>
+				</div>
 
-                <div class="row">
-                    <span class="sub-section width-100">Current Address</span>
-                    <div class="checkbox">
-                        <input type="checkbox" id="checkbox1" ng-model="vm.isChecked" class="styled" ng-disabled="!vm.isCheckboxEnable" ng-change="vm.copyAddress()">
-                        <label for="checkbox1">
-                            Same as permenant address
-                        </label>
-                    </div>
+				<div class="row">
+					<span class="sub-section width-100">Current Address</span>
+					<div class="checkbox">
+						<input type="checkbox" id="checkbox1" ng-model="vm.isChecked"
+							class="styled" ng-disabled="!vm.isCheckboxEnable"
+							ng-change="vm.copyAddress()"> <label for="checkbox1">
+							Same as permenant address </label>
+					</div>
 
-                    <div class="span4">
-                        <div class="control-group width-30 pull-left">
-                            <label class="control-label" for="address_line1">Address Line 1</label>
-                            <div class="controls">
-                                <input type="text" name="address_line1" id="address_line1" ng-model="vm.registration.current.address_line1" class="form-input width-100" placeholder="Address Line 1" validation="required:alt=Required field"/>
-                            </div>
-                        </div>
-                        <div class="control-group width-30 pull-left margin-left-5">
-                            <label class="control-label" for="address_line2">Address Line 2</label>
-                            <div class="controls">
-                                <input type="text" name="address_line2" id="address_line1" ng-model="vm.registration.current.address_line2" class="form-input width-100" placeholder="Address Line 2" />
-                            </div>
-                        </div>
-                        <div class="control-group width-30 pull-left margin-left-5">
-                            <label class="control-label" for="city">City</label>
-                            <div class="controls">
-                                <input type="text" name="city" id="city" ng-model="vm.registration.current.city" class="form-input width-100" placeholder="City" validation="required:alt=Required field"/>
-                            </div>
-                        </div>
-                        <div class="control-group width-30 pull-left">
-                            <label class="control-label" for="state">State</label>
-                            <div class="controls">
-                                <input type="text" name="state" id="state" ng-model="vm.registration.current.state" class="form-input width-100" placeholder="State" validation="required:alt=Required field"/>
-                            </div>
-                        </div>
-                        <div class="control-group width-30 pull-left margin-left-5">
-                            <label class="control-label" for="country">Country</label>
-                            <div class="controls">
-                                <input type="text" name="country" id="country" ng-model="vm.registration.current.country" class="form-input width-100" placeholder="Country" validation="required:alt=Required field"/>
-                            </div>
-                        </div>
-                        <div class="control-group width-30 pull-left margin-left-5">
-                            <label class="control-label" for="zip_code">ZIP Code</label>
-                            <div class="controls">
-                                <input type="text" name="zip_code" id="zip_code" ng-model="vm.registration.current.zip_code" class="form-input width-100" placeholder="ZIP Code" validation="required:alt=Required field"/>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </form>
-        </div>
+					<div class="span4">
+						<div class="control-group width-30 pull-left">
+							<label class="control-label" for="address_line1">Address
+								Line 1</label>
+							<div class="controls">
+								<input type="text" name="address_line1" id="address_line1"
+									ng-model="vm.registration.current.address_line1"
+									class="form-input width-100" placeholder="Address Line 1"
+									validation="required:alt=Required field" />
+							</div>
+						</div>
+						<div class="control-group width-30 pull-left margin-left-5">
+							<label class="control-label" for="address_line2">Address
+								Line 2</label>
+							<div class="controls">
+								<input type="text" name="address_line2" id="address_line1"
+									ng-model="vm.registration.current.address_line2"
+									class="form-input width-100" placeholder="Address Line 2" />
+							</div>
+						</div>
+						<div class="control-group width-30 pull-left margin-left-5">
+							<label class="control-label" for="city">City</label>
+							<div class="controls">
+								<input type="text" name="city" id="city"
+									ng-model="vm.registration.current.city"
+									class="form-input width-100" placeholder="City"
+									validation="required:alt=Required field" />
+							</div>
+						</div>
+						<div class="control-group width-30 pull-left">
+							<label class="control-label" for="state">State</label>
+							<div class="controls">
+								<input type="text" name="state" id="state"
+									ng-model="vm.registration.current.state"
+									class="form-input width-100" placeholder="State"
+									validation="required:alt=Required field" />
+							</div>
+						</div>
+						<div class="control-group width-30 pull-left margin-left-5">
+							<label class="control-label" for="country">Country</label>
+							<div class="controls">
+								<input type="text" name="country" id="country"
+									ng-model="vm.registration.current.country"
+									class="form-input width-100" placeholder="Country"
+									validation="required:alt=Required field" />
+							</div>
+						</div>
+						<div class="control-group width-30 pull-left margin-left-5">
+							<label class="control-label" for="zip_code">ZIP Code</label>
+							<div class="controls">
+								<input type="text" name="zip_code" id="zip_code"
+									ng-model="vm.registration.current.zip_code"
+									class="form-input width-100" placeholder="ZIP Code"
+									validation="required:alt=Required field" />
+							</div>
+						</div>
+					</div>
+				</div>
+			</form>
+		</div>
 
-        <!-- Second Step -->
-        <div ng-switch-when="Step 2: Employment Details">
-            <form name="step_1" id="form_1" novalidate>
-                <div class="row">
-                    <span class="sub-section width-100">Basic Information</span>
-                    <div class="span4">
-                        <div class="control-group width-30 pull-left">
-                            <label class="control-label" for="firstName">First Name</label>
-                            <div class="controls">
-                                <input type="text" name="firstName" id="firstName" ng-model="vm.registration.firstName" class="form-input width-100" placeholder="First Name" validation="required:alt=Required field"/>
-                            </div>
-                        </div>
-                        <div class="control-group width-30 pull-left margin-left-5">
-                            <label class="control-label" for="middleName">Middle Name</label>
-                            <div class="controls">
-                                <input type="text" name="middleName" id="middleName" ng-model="vm.registration.middleName" class="form-input width-100" placeholder="Middle Name" />
-                            </div>
-                        </div>
-                        <div class="control-group width-30 pull-left margin-left-5">
-                            <label class="control-label" for="lastName">Last Name</label>
-                            <div class="controls">
-                                <input type="text" name="lastName" id="lastName" ng-model="vm.registration.lastName" class="form-input width-100" placeholder="Last Name" validation="required:alt=Required field"/>
-                            </div>
-                        </div>
-                        <div class="control-group width-30 pull-left">
-                            <label class="control-label" for="dob">Date of Birth</label>
-                            <div class="controls">
-                                <input type="text" name="dob" id="dob" ng-model="vm.registration.dob" class="form-input width-100" placeholder="Date of Birth" validation="required:alt=Required field"/>
-                            </div>
-                        </div>
+		<!-- Second Step -->
+		<div ng-switch-when="Step 2: Employment Details">
+			<form name="step_1" id="form_1" novalidate>
+				<div class="row">
+					<span class="sub-section width-100">Basic Information</span>
+					<div class="span4">
+						<div class="control-group width-30 pull-left">
+							<label class="control-label" for="firstName">First Name</label>
+							<div class="controls">
+								<input type="text" name="firstName" id="firstName"
+									ng-model="vm.registration.firstName"
+									class="form-input width-100" placeholder="First Name"
+									validation="required:alt=Required field" />
+							</div>
+						</div>
+						<div class="control-group width-30 pull-left margin-left-5">
+							<label class="control-label" for="middleName">Middle Name</label>
+							<div class="controls">
+								<input type="text" name="middleName" id="middleName"
+									ng-model="vm.registration.middleName"
+									class="form-input width-100" placeholder="Middle Name" />
+							</div>
+						</div>
+						<div class="control-group width-30 pull-left margin-left-5">
+							<label class="control-label" for="lastName">Last Name</label>
+							<div class="controls">
+								<input type="text" name="lastName" id="lastName"
+									ng-model="vm.registration.lastName"
+									class="form-input width-100" placeholder="Last Name"
+									validation="required:alt=Required field" />
+							</div>
+						</div>
+						<div class="control-group width-30 pull-left">
+							<label class="control-label" for="dob">Date of Birth</label>
+							<div class="controls">
+								<input type="text" name="dob" id="dob"
+									ng-model="vm.registration.dob" class="form-input width-100"
+									placeholder="Date of Birth"
+									validation="required:alt=Required field" />
+							</div>
+						</div>
 
-                        <div class="control-group width-30 pull-left margin-left-5">
-                            <label class="control-label" for="gender">Gender</label>
-                            <div class="controls">
-                                <input type="text" name="gender" id="gender" ng-model="vm.registration.gender" class="form-input width-100" placeholder="Gender" validation="required:alt=Required field"/>
-                            </div>
-                        </div>
-                        <div class="control-group width-30 pull-left margin-left-5">
-                            <label class="control-label" for="dob">Blood Group</label>
-                            <div class="controls">
-                                <input type="text" name="bg" id="dob" ng-model="vm.registration.bg" class="form-input width-100" placeholder="Blood Group" validation="required:alt=Required field"/>
-                            </div>
-                        </div>
-                        <div class="control-group width-30 pull-left">
-                            <label class="control-label" for="coo">Country Of Origin</label>
-                            <div class="controls">
-                                <input type="text" name="coo" id="dob" ng-model="vm.registration.coo" class="form-input width-100" placeholder="Country Of Origin" validation="required:alt=Required field"/>
-                            </div>
-                        </div>
-                    </div>
+						<div class="control-group width-30 pull-left margin-left-5">
+							<label class="control-label" for="gender">Gender</label>
+							<div class="controls">
+								<input type="text" name="gender" id="gender"
+									ng-model="vm.registration.gender" class="form-input width-100"
+									placeholder="Gender" validation="required:alt=Required field" />
+							</div>
+						</div>
+						<div class="control-group width-30 pull-left margin-left-5">
+							<label class="control-label" for="dob">Blood Group</label>
+							<div class="controls">
+								<input type="text" name="bg" id="dob"
+									ng-model="vm.registration.bg" class="form-input width-100"
+									placeholder="Blood Group"
+									validation="required:alt=Required field" />
+							</div>
+						</div>
+						<div class="control-group width-30 pull-left">
+							<label class="control-label" for="coo">Country Of Origin</label>
+							<div class="controls">
+								<input type="text" name="coo" id="dob"
+									ng-model="vm.registration.coo" class="form-input width-100"
+									placeholder="Country Of Origin"
+									validation="required:alt=Required field" />
+							</div>
+						</div>
+					</div>
 
-                </div>
-            </form>
-        </div>
+				</div>
+			</form>
+		</div>
 
-        <!-- Third Step -->
-        <div ng-switch-when="Step 3: Official Information">
-           <form name="step_2" id="form_2" novalidate>
-            <div class="row">
-                    <span class="sub-section width-100">Basic Information</span>
-                    <div class="span4">
-                        <div class="control-group width-30 pull-left">
-                            <label class="control-label" for="firstName">First Name</label>
-                            <div class="controls">
-                                <input type="text" name="firstName" id="firstName" ng-model="vm.registration.firstName" class="form-input width-100" placeholder="First Name" validation="required:alt=Required field"/>
-                            </div>
-                        </div>
-                        <div class="control-group width-30 pull-left margin-left-5">
-                            <label class="control-label" for="middleName">Middle Name</label>
-                            <div class="controls">
-                                <input type="text" name="middleName" id="middleName" ng-model="vm.registration.middleName" class="form-input width-100" placeholder="Middle Name" />
-                            </div>
-                        </div>
-                        <div class="control-group width-30 pull-left margin-left-5">
-                            <label class="control-label" for="lastName">Last Name</label>
-                            <div class="controls">
-                                <input type="text" name="lastName" id="lastName" ng-model="vm.registration.lastName" class="form-input width-100" placeholder="Last Name" validation="required:alt=Required field"/>
-                            </div>
-                        </div>
-                        <div class="control-group width-30 pull-left">
-                            <label class="control-label" for="dob">Date of Birth</label>
-                            <div class="controls">
-                                <input type="text" name="dob" id="dob" ng-model="vm.registration.dob" class="form-input width-100" placeholder="Date of Birth" validation="required:alt=Required field"/>
-                            </div>
-                        </div>
+		<!-- Third Step -->
+		<div ng-switch-when="Step 3: Official Information">
+			<form name="step_2" id="form_2" novalidate>
+				<div class="row">
+					<span class="sub-section width-100">Basic Information</span>
+					<div class="span4">
+						<div class="control-group width-30 pull-left">
+							<label class="control-label" for="firstName">First Name</label>
+							<div class="controls">
+								<input type="text" name="firstName" id="firstName"
+									ng-model="vm.registration.firstName"
+									class="form-input width-100" placeholder="First Name"
+									validation="required:alt=Required field" />
+							</div>
+						</div>
+						<div class="control-group width-30 pull-left margin-left-5">
+							<label class="control-label" for="middleName">Middle Name</label>
+							<div class="controls">
+								<input type="text" name="middleName" id="middleName"
+									ng-model="vm.registration.middleName"
+									class="form-input width-100" placeholder="Middle Name" />
+							</div>
+						</div>
+						<div class="control-group width-30 pull-left margin-left-5">
+							<label class="control-label" for="lastName">Last Name</label>
+							<div class="controls">
+								<input type="text" name="lastName" id="lastName"
+									ng-model="vm.registration.lastName"
+									class="form-input width-100" placeholder="Last Name"
+									validation="required:alt=Required field" />
+							</div>
+						</div>
+						<div class="control-group width-30 pull-left">
+							<label class="control-label" for="dob">Date of Birth</label>
+							<div class="controls">
+								<input type="text" name="dob" id="dob"
+									ng-model="vm.registration.dob" class="form-input width-100"
+									placeholder="Date of Birth"
+									validation="required:alt=Required field" />
+							</div>
+						</div>
 
-                        <div class="control-group width-30 pull-left margin-left-5">
-                            <label class="control-label" for="gender">Gender</label>
-                            <div class="controls">
-                                <input type="text" name="gender" id="gender" ng-model="vm.registration.gender" class="form-input width-100" placeholder="Gender" validation="required:alt=Required field"/>
-                            </div>
-                        </div>
-                        <div class="control-group width-30 pull-left margin-left-5">
-                            <label class="control-label" for="dob">Blood Group</label>
-                            <div class="controls">
-                                <input type="text" name="bg" id="dob" ng-model="vm.registration.bg" class="form-input width-100" placeholder="Blood Group" validation="required:alt=Required field"/>
-                            </div>
-                        </div>
-                        <div class="control-group width-30 pull-left">
-                            <label class="control-label" for="coo">Country Of Origin</label>
-                            <div class="controls">
-                                <input type="text" name="coo" id="dob" ng-model="vm.registration.coo" class="form-input width-100" placeholder="Country Of Origin" validation="required:alt=Required field"/>
-                            </div>
-                        </div>
-                    </div>
+						<div class="control-group width-30 pull-left margin-left-5">
+							<label class="control-label" for="gender">Gender</label>
+							<div class="controls">
+								<input type="text" name="gender" id="gender"
+									ng-model="vm.registration.gender" class="form-input width-100"
+									placeholder="Gender" validation="required:alt=Required field" />
+							</div>
+						</div>
+						<div class="control-group width-30 pull-left margin-left-5">
+							<label class="control-label" for="dob">Blood Group</label>
+							<div class="controls">
+								<input type="text" name="bg" id="dob"
+									ng-model="vm.registration.bg" class="form-input width-100"
+									placeholder="Blood Group"
+									validation="required:alt=Required field" />
+							</div>
+						</div>
+						<div class="control-group width-30 pull-left">
+							<label class="control-label" for="coo">Country Of Origin</label>
+							<div class="controls">
+								<input type="text" name="coo" id="dob"
+									ng-model="vm.registration.coo" class="form-input width-100"
+									placeholder="Country Of Origin"
+									validation="required:alt=Required field" />
+							</div>
+						</div>
+					</div>
 
-                </div>
-            </form>
-        </div>
+				</div>
+			</form>
+		</div>
 
-        <!-- Fourth Step -->
-        <div ng-switch-when="Step 4: Family Details">
-            <form name="step_3" id="form_3" novalidate>
-            <div class="row">
-                    <span class="sub-section width-100">Basic Information</span>
-                    <div class="span4">
-                        <div class="control-group width-30 pull-left">
-                            <label class="control-label" for="firstName">First Name</label>
-                            <div class="controls">
-                                <input type="text" name="firstName" id="firstName" ng-model="vm.registration.firstName" class="form-input width-100" placeholder="First Name" validation="required:alt=Required field"/>
-                            </div>
-                        </div>
-                        <div class="control-group width-30 pull-left margin-left-5">
-                            <label class="control-label" for="middleName">Middle Name</label>
-                            <div class="controls">
-                                <input type="text" name="middleName" id="middleName" ng-model="vm.registration.middleName" class="form-input width-100" placeholder="Middle Name" />
-                            </div>
-                        </div>
-                        <div class="control-group width-30 pull-left margin-left-5">
-                            <label class="control-label" for="lastName">Last Name</label>
-                            <div class="controls">
-                                <input type="text" name="lastName" id="lastName" ng-model="vm.registration.lastName" class="form-input width-100" placeholder="Last Name" validation="required:alt=Required field"/>
-                            </div>
-                        </div>
-                        <div class="control-group width-30 pull-left">
-                            <label class="control-label" for="dob">Date of Birth</label>
-                            <div class="controls">
-                                <input type="text" name="dob" id="dob" ng-model="vm.registration.dob" class="form-input width-100" placeholder="Date of Birth" validation="required:alt=Required field"/>
-                            </div>
-                        </div>
+		<!-- Fourth Step -->
+		<div ng-switch-when="Step 4: Family Details">
+			<form name="step_3" id="form_3" novalidate>
+				<div class="row">
+					<span class="sub-section width-100">Basic Information</span>
+					<div class="span4">
+						<div class="control-group width-30 pull-left">
+							<label class="control-label" for="firstName">First Name</label>
+							<div class="controls">
+								<input type="text" name="firstName" id="firstName"
+									ng-model="vm.registration.firstName"
+									class="form-input width-100" placeholder="First Name"
+									validation="required:alt=Required field" />
+							</div>
+						</div>
+						<div class="control-group width-30 pull-left margin-left-5">
+							<label class="control-label" for="middleName">Middle Name</label>
+							<div class="controls">
+								<input type="text" name="middleName" id="middleName"
+									ng-model="vm.registration.middleName"
+									class="form-input width-100" placeholder="Middle Name" />
+							</div>
+						</div>
+						<div class="control-group width-30 pull-left margin-left-5">
+							<label class="control-label" for="lastName">Last Name</label>
+							<div class="controls">
+								<input type="text" name="lastName" id="lastName"
+									ng-model="vm.registration.lastName"
+									class="form-input width-100" placeholder="Last Name"
+									validation="required:alt=Required field" />
+							</div>
+						</div>
+						<div class="control-group width-30 pull-left">
+							<label class="control-label" for="dob">Date of Birth</label>
+							<div class="controls">
+								<input type="text" name="dob" id="dob"
+									ng-model="vm.registration.dob" class="form-input width-100"
+									placeholder="Date of Birth"
+									validation="required:alt=Required field" />
+							</div>
+						</div>
 
-                        <div class="control-group width-30 pull-left margin-left-5">
-                            <label class="control-label" for="gender">Gender</label>
-                            <div class="controls">
-                                <input type="text" name="gender" id="gender" ng-model="vm.registration.gender" class="form-input width-100" placeholder="Gender" validation="required:alt=Required field"/>
-                            </div>
-                        </div>
-                        <div class="control-group width-30 pull-left margin-left-5">
-                            <label class="control-label" for="dob">Blood Group</label>
-                            <div class="controls">
-                                <input type="text" name="bg" id="dob" ng-model="vm.registration.bg" class="form-input width-100" placeholder="Blood Group" validation="required:alt=Required field"/>
-                            </div>
-                        </div>
-                        <div class="control-group width-30 pull-left">
-                            <label class="control-label" for="coo">Country Of Origin</label>
-                            <div class="controls">
-                                <input type="text" name="coo" id="dob" ng-model="vm.registration.coo" class="form-input width-100" placeholder="Country Of Origin" validation="required:alt=Required field"/>
-                            </div>
-                        </div>
-                    </div>
+						<div class="control-group width-30 pull-left margin-left-5">
+							<label class="control-label" for="gender">Gender</label>
+							<div class="controls">
+								<input type="text" name="gender" id="gender"
+									ng-model="vm.registration.gender" class="form-input width-100"
+									placeholder="Gender" validation="required:alt=Required field" />
+							</div>
+						</div>
+						<div class="control-group width-30 pull-left margin-left-5">
+							<label class="control-label" for="dob">Blood Group</label>
+							<div class="controls">
+								<input type="text" name="bg" id="dob"
+									ng-model="vm.registration.bg" class="form-input width-100"
+									placeholder="Blood Group"
+									validation="required:alt=Required field" />
+							</div>
+						</div>
+						<div class="control-group width-30 pull-left">
+							<label class="control-label" for="coo">Country Of Origin</label>
+							<div class="controls">
+								<input type="text" name="coo" id="dob"
+									ng-model="vm.registration.coo" class="form-input width-100"
+									placeholder="Country Of Origin"
+									validation="required:alt=Required field" />
+							</div>
+						</div>
+					</div>
 
-                </div>
-            </form>
-        </div>
-    </div>
-    <div class="clearfix"></div>
-    <ul class="pager pull-left">
-        <li class="" ng-class="{disabled: !hasPreviousStep()}">
-            <a href="javascript:void(0);" ng-click="decrementStep()">&larr; Previous Step</a>
-        </li>
-        <li class="" ng-class="{disabled: !hasNextStep()}">
-            <a href="javascript:void(0);" ng-click="incrementStep()">Next Step &rarr;</a>
-        </li>
-    </ul>
-    <div class="pull-right"><button style="margin:20px 0;" class="logout-button">Confirm and Register</button></div>
-    <div class="clearfix"></div>
+				</div>
+			</form>
+		</div>
+	</div>
+	<div class="clearfix"></div>
+	<ul class="pager pull-left">
+		<li class="" ng-class="{disabled: !hasPreviousStep()}"><a
+			href="javascript:void(0);" ng-click="decrementStep()">&larr;
+				Previous Step</a></li>
+		<li class="" ng-class="{disabled: !hasNextStep()}"><a
+			href="javascript:void(0);" ng-click="incrementStep()">Next Step
+				&rarr;</a></li>
+	</ul>
+	<div class="pull-right">
+		<button style="margin: 20px 0;" class="logout-button">Confirm
+			and Register</button>
+	</div>
+	<div class="clearfix"></div>
 </div>
