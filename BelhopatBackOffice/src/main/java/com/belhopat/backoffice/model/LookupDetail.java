@@ -22,17 +22,17 @@ public class LookupDetail {
 
 	private String code;
 
-	private String decription;
+	private String description;
 
 	public LookupDetail(){
 		
 	}
-	public LookupDetail(Long id, Lookup lookup, String code, String decription) {
+	public LookupDetail(Long id, Lookup lookup, String code, String description) {
 		super();
 		this.id = id;
 		this.lookup = lookup;
 		this.code = code;
-		this.decription = decription;
+		this.description = description;
 	}
 
 	public Long getId() {
@@ -59,20 +59,17 @@ public class LookupDetail {
 		this.code = code;
 	}
 
-	public String getDecription() {
-		return decription;
+	public String getDescription() {
+		return description;
 	}
 
-	public void setDecription(String decription) {
-		this.decription = decription;
+	public void setDescription(String description) {
+		this.description = description;
 	}
 	
-	public LookupDetail() {
-	}
-
 	@Override
 	public String toString() {
-		return "Lookup [id=" + id + ", lookup=" + lookup + ", code=" + code + ", decription=" + decription + "]";
+		return "Lookup [id=" + id + ", lookup=" + lookup + ", code=" + code + ", description=" + description + "]";
 	}
 
 }
