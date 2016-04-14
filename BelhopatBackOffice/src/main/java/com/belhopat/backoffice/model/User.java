@@ -1,25 +1,48 @@
 package com.belhopat.backoffice.model;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "Employee")
+@Table(name = "User")
 public class User {
 
 	@Id
 	@GeneratedValue
 	private Long id;
 
+	@Column ( unique = true )
 	private String username;
 
-	private String address;
+	private String password;
 
 	private String email;
 	
-	private String password;
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	@ManyToOne
+	private LookupDetail designation;
+
+	
+
+	public LookupDetail getDesignation() {
+		return designation;
+	}
+
+	public void setDesignation(LookupDetail designation) {
+		this.designation = designation;
+	}
 
 	public User() {
 	}
@@ -31,17 +54,10 @@ public class User {
 	public User(Long id, String username, String address, String email) {
 		this.id = id;
 		this.username = username;
-		this.address = address;
+		this.password = address;
 		this.email = email;
 	}
 
-	public long getId() {
-		return id;
-	}
-
-	public void setId(long id) {
-		this.id = id;
-	}
 
 	public String getUsername() {
 		return username;
@@ -51,13 +67,7 @@ public class User {
 		this.username = username;
 	}
 
-	public String getAddress() {
-		return address;
-	}
 
-	public void setAddress(String address) {
-		this.address = address;
-	}
 
 	public String getPassword() {
 		return password;
@@ -99,7 +109,7 @@ public class User {
 
 	@Override
 	public String toString() {
-		return "User [id=" + id + ", username=" + username + ", address=" + address + ", email=" + email + "]";
+		return "User [id=" + id + ", username=" + username + ", password=" + password + ", email=" + email + "]";
 	}
 
 }

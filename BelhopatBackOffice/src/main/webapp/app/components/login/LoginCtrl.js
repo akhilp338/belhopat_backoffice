@@ -7,19 +7,22 @@
         vm.errorMessage = "";
         vm.login = function (data) {
             if (vm.loginCreds.username && vm.loginCreds.password) {
-                Core_Service.login(data).then(function (res) {
-                    if (res) {
-                        $state.go("coreuser.dashboard");
-                        vm.errorMessage = "";
-                    } else {
-                        vm.errorMessage = "Invalid Credentials";
-                    }
-                }, function (error) {
-                    vm.errorMessage = "Invalid Credentials";
-                });
-            } else {
-                vm.errorMessage = "Both fields are required";
-            }
+           Core_Service.login(data).then(function (res){
+               if(res){
+            	   Core_Service.SetCredentials(data.username,data.password);
+                   $state.go("coreuser.dashboard");
+                   vm.errorMessage = "";
+               }
+               else{
+                   vm.errorMessage = "Invalid Credentials";
+               }
+           },function (error){
+               vm.errorMessage = "Invalid Credentials";
+           }); 
+       }
+       else{
+          vm.errorMessage = "Both fields are required"; 
+       }
         };
 
         vm.forgotPassword = function (size) {           
@@ -30,5 +33,6 @@
     };
     Login_Ctrl.$inject = ["$scope", '$state', '$rootScope', 'Core_Service', 'Core_ModalService', 'SweetAlert'];
     angular.module('coreModule')
-            .controller('Login_Ctrl', Login_Ctrl);
-})();
+            .controller('Login_Ctrl', Login_Ctrl)
+            
+    })();

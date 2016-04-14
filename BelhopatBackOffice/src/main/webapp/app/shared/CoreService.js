@@ -1,14 +1,17 @@
 (function (angular) {
-    var Core_Service = function (Core_HttpRequest, $state, $timeout, $q) {
+    var Core_Service = function ($rootScope,Core_HttpRequest,Base64, $state,$cookieStore,$sessionStorage, $http, $q, $timeout) {
         var service = this;
 
         service.login = function (data) {
             var deferred = $q.defer();
-            Core_HttpRequest.get("logincreds")
+            var user={};
+            user.username=data.username;
+            user.password=data.password;
+            Core_HttpRequest.post("api/login",user)
                     .then(function (response) {
                         if (response.status == 200) {
-                            deferred.resolve(service.isAuthenticated(data, response.data))
-
+                               deferred.resolve(response.data);
+ 
                         }
                     }, function (response) {
                         response.data = false;
@@ -37,18 +40,63 @@
             return false;
         };
 
-        service.calculetSidebarHeight = function () {
+        service.calculetSidebarHeight = function (time) {
+            time = time ? time : 200;
             $timeout(function () {
                 var height = angular.element(".page-content-div").height();
                 if (height < 171) {
                     height = 171;
                 }
                 angular.element("#sidebar-wrapper").height(height);
-            }, 200);
+            }, time);
         };
-    };
 
-    Core_Service.$inject = ['Core_HttpRequest', '$state', '$timeout', '$q'];
+        service.sendPassword = function (data) {
+           var url = "user/forgotPassword"
+           Core_HttpRequest.postHttp(url,data)
+        };
+        service.SetCredentials = function (username, password) {
+            var authdata = Base64.encode(username + ':' + password);
+  
+            $rootScope.globals = {
+                currentUser: {
+                    username: username,
+                    authdata: authdata
+                }
+            };
+            $sessionStorage.auth =username;
+            $http.defaults.headers.common['Authorization'] = 'Basic ' + authdata; // jshint ignore:line
+            $cookieStore.put('globals', $rootScope.globals);
+        };
+  
+        service.ClearCredentials = function () {
+        	var deferred = $q.defer();
+            $rootScope.globals = {};
+            Core_HttpRequest.post("api/logout")
+            .then(function (response) {
+                if (response.status == 200) {
+                       deferred.resolve(response.data);
+                }
+            }, function (response) {
+                response.data = false;
+                deferred.reject(response.data);
+            });
+            $cookieStore.remove('globals');
+            $http.defaults.headers.common.Authorization = 'Basic ';
+        };
+        
+        service.getAllLookupValues = function(url){
+        	var deferred = $q.defer();
+            Core_HttpRequest.postHttp(url)
+                    .then(function (response) {
+                        deferred.resolve(response)
+                    }, function (error) {
+                    	deferred.reject(error)
+                    });
+            return deferred.promise;
+        }
+    };
+    Core_Service.$inject = ['$rootScope','Core_HttpRequest','Base64', '$state', '$cookieStore','$sessionStorage','$http', '$q', '$timeout'];
     angular.module('app.common')
             .service('Core_Service', Core_Service);
 })(angular);

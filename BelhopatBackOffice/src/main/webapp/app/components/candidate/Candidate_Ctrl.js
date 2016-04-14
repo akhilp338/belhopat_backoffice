@@ -13,7 +13,7 @@
             preValidateFormElements: false,
             displayOnlyLastErrorMsg: true
         });
-
+        Core_Service.calculetSidebarHeight();
         vm.isCheckboxEnable = false;
         $scope.steps = [
             'Step 1: Personal Information',
@@ -101,32 +101,35 @@
                 vm.isCheckboxEnable = false;
             }
         };
-        vm.addCandidate = function(){
+        vm.addCandidate = function () {
             $state.go("coreuser.candidate.add");
         };
-//datatble start
+
+        vm.getSelectedCandidate = function(event){
+            console.log(event);
+        };
+        
         angular.element(document).ready(function () {
-            angular.element('#candidatesList').DataTable({
-            	'ajax': urlConfig.http+window.location.host+urlConfig.api_root_path+"/getOfficialDetails",
+            var oTable = angular.element('#candidatesList').DataTable({
+            	'ajax': urlConfig.http+window.location.host+urlConfig.api_root_path+"candidate/getOfficialDetails",
                 'serverSide': true,
                 "bDestroy": true,
-//                "order": [[ 1, "asc" ]],
                 "language": {
                     zeroRecords: "No data to dispay"
                 },
-                 "processing": true,
-                 "sScrollX": '100%',
+                "processing": true,
+                "sScrollX": '100%',
                 "aoColumns": [{
-                	title: "drivingLicenceNo",
+                	title: "DRIVING LICENCE NO",
                     data: 'drivingLicenceNo',
                 }, {
-                	title: "PAN No",
+                	title: "PAN NO",
                     data: 'panno',
                 }, {
-                	title: "ESI No",
+                	title: "ESI NO",
                     data: 'esino',
                 }, {
-                	title: "PF No",
+                	title: "PF NO",
                     data: 'pfno',
                 }, {
                 	title: "FOREX CARD NO",
@@ -134,11 +137,20 @@
                 }, {
                 	title: "FOREX CARD AGENCY",
                     data: 'forexCardAgency',
+                },{
+                    data: 'id',
+                    "bSortable": false,
+                    "render": function(data) {
+                        return "<button class='datatable_view' type='button' value='" + data + "' ng-click='vm.getSelectedCandidate($event)'>view</button>"
+                    }
                 }]
             });
+            $('#candidatesList').on('click','.datatable_view',function(){            	
+            	var data = oTable.row($(this).parents('tr')).data();
+            	console.log(data);
+            	console.log(vm)
+            	})
         });
-        
-        //datatble ends
         Core_Service.calculetSidebarHeight();
     };
     
@@ -146,5 +158,3 @@
     angular.module('coreModule')
             .controller('Candidate_Ctrl', Candidate_Ctrl);
 })();
-
-
