@@ -13,6 +13,6 @@ public interface CandidateRepository extends JpaRepository<Candidate, Long>, Dat
 
 	Candidate findById(Long candidateId);
 
-	void deleteById(List<Long> candidateIds);
+	List<Candidate> findByIdIn(List<Long> candidateIds);
 
 }

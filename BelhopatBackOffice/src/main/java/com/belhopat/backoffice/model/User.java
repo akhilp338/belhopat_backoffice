@@ -11,7 +11,7 @@ public class User {
 
 	@Id
 	@GeneratedValue
-	private long id;
+	private Long id;
 
 	private String username;
 
@@ -22,10 +22,13 @@ public class User {
 	private String password;
 
 	public User() {
-		id = 0;
+	}
+	
+	public User(Long id) {
+		this.id = id;
 	}
 
-	public User(long id, String username, String address, String email) {
+	public User(Long id, String username, String address, String email) {
 		this.id = id;
 		this.username = username;
 		this.address = address;

@@ -100,6 +100,26 @@ public class BaseEntity implements Cloneable {
 		this.deleted = deleted;
 	}
 
+	public void setBaseAttributes(User user) {
+		this.createdBy = user;
+		this.createdDate = new Date();
+		this.updatedBy = user;
+		this.updatedDate = new Date();
+	}
+
+	public void setUpdateAttributes(User user) {
+		this.updatedBy = user;
+		this.updatedDate = new Date();
+	}
+
+	public void setDeleteAttributes(User user) {
+		this.updatedBy = user;
+		this.updatedDate = new Date();
+		this.deleted = true;
+		this.deletedBy = user;
+		this.deletedDate = new Date();
+	}
+
 	@Override
 	public String toString() {
 		return "BaseEntity [id=" + id + ", createdDate=" + createdDate + ", updatedDate=" + updatedDate
