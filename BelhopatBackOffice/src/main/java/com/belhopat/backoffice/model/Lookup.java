@@ -50,8 +50,7 @@ public class Lookup {
 	public void setDecription(String decription) {
 		this.decription = decription;
 	}
-	
-	
+
 	@Override
 	public String toString() {
 		return "Lookup [id=" + id + ", lookupKey=" + lookupKey + ", decription=" + decription + "]";

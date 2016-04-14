@@ -52,8 +52,8 @@
         };
 
         service.sendPassword = function (data) {
-           var url = "user/forgotPassword/"
-           Core_HttpRequest.postHttp(url,data)
+           var url = "user/forgotPassword"
+           Core_HttpRequest.post(url,data)
         };
         service.SetCredentials = function (username, password) {
             var authdata = Base64.encode(username + ':' + password);
@@ -87,7 +87,7 @@
         
         service.getAllLookupValues = function(url){
         	var deferred = $q.defer();
-            Core_HttpRequest.postHttp(url)
+            Core_HttpRequest.post(url)
                     .then(function (response) {
                         deferred.resolve(response)
                     }, function (error) {
