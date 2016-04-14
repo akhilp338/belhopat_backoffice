@@ -3,6 +3,7 @@ package com.belhopat.backoffice.model;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -19,7 +20,27 @@ public class User {
 
 	private String email;
 	
-	private String password;
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	@ManyToOne
+	private LookupDetail designation;
+
+	
+
+	public LookupDetail getDesignation() {
+		return designation;
+	}
+
+	public void setDesignation(LookupDetail designation) {
+		this.designation = designation;
+	}
 
 	public User() {
 	}
@@ -35,13 +56,6 @@ public class User {
 		this.email = email;
 	}
 
-	public long getId() {
-		return id;
-	}
-
-	public void setId(long id) {
-		this.id = id;
-	}
 
 	public String getUsername() {
 		return username;
@@ -52,14 +66,6 @@ public class User {
 	}
 
 
-
-	public String getPassword() {
-		return password;
-	}
-
-	public void setPassword(String password) {
-		this.password = password;
-	}
 
 	public String getPassword() {
 		return password;
@@ -101,7 +107,7 @@ public class User {
 
 	@Override
 	public String toString() {
-		return "User [id=" + id + ", username=" + username + ", address=" + password + ", email=" + email + "]";
+		return "User [id=" + id + ", username=" + username + ", password=" + password + ", email=" + email + "]";
 	}
 
 }

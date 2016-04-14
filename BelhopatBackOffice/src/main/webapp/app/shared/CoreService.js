@@ -1,5 +1,5 @@
 (function (angular) {
-    var Core_Service = function ($rootScope,Core_HttpRequest,Base64, $state,$cookieStore, $http, $q) {
+    var Core_Service = function ($rootScope,Core_HttpRequest,Base64, $state,$cookieStore,$sessionStorage, $http, $q, $timeout) {
         var service = this;
 
         service.login = function (data) {
@@ -58,18 +58,27 @@
                     authdata: authdata
                 }
             };
-  
+            $sessionStorage.auth =username;
             $http.defaults.headers.common['Authorization'] = 'Basic ' + authdata; // jshint ignore:line
             $cookieStore.put('globals', $rootScope.globals);
         };
   
         service.ClearCredentials = function () {
             $rootScope.globals = {};
+            Core_HttpRequest.post("api/logout")
+            .then(function (response) {
+                if (response.status == 200) {
+                       deferred.resolve(response.data);
+                }
+            }, function (response) {
+                response.data = false;
+                deferred.reject(response.data);
+            });
             $cookieStore.remove('globals');
             $http.defaults.headers.common.Authorization = 'Basic ';
         };
     };
-    Core_Service.$inject = ['$rootScope','Core_HttpRequest','Base64', '$state', '$cookieStore','$http', '$q'];
+    Core_Service.$inject = ['$rootScope','Core_HttpRequest','Base64', '$state', '$cookieStore','$sessionStorage','$http', '$q', 	'$timeout'];
     angular.module('app.common')
             .service('Core_Service', Core_Service);
 })(angular);

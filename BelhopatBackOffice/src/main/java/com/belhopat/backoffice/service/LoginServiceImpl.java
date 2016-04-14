@@ -18,12 +18,16 @@ public class LoginServiceImpl implements LoginService{
 	
 	@Override
 	public ResponseEntity<User> authenticateUser(User user) {
-		User userEntity= userRepo.findByUserNameAndPwd(user.getUsername(),user.getPassword());
-		  if(userEntity==null){
+		  if(user==null){
 			  System.out.println("asd");
 	            return new ResponseEntity<User>(HttpStatus.FORBIDDEN);
 	        }
-	       return new ResponseEntity<User>(userEntity, HttpStatus.OK);
+	       return new ResponseEntity<User>(user, HttpStatus.OK);
+	}
+	@Override
+	public User getUserByUserNameAndPwd(User user){
+		return userRepo.findByUserNameAndPwd(user.getUsername(),user.getPassword());
+		
 	}
 
 }
