@@ -1,4 +1,4 @@
-package com.belhopat.backoffice.service;
+package com.belhopat.backoffice.service.impl;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -13,6 +13,8 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.belhopat.backoffice.model.User;
 import com.belhopat.backoffice.repository.UserRepository;
+import com.belhopat.backoffice.service.MailService;
+import com.belhopat.backoffice.service.UserService;
 import com.belhopat.backoffice.util.RandomPasswordGenerator;
 
 @Component

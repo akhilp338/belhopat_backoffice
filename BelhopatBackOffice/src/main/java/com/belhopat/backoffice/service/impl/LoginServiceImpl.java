@@ -1,4 +1,4 @@
-package com.belhopat.backoffice.service;
+package com.belhopat.backoffice.service.impl;
 
 import java.util.List;
 
@@ -9,6 +9,7 @@ import org.springframework.stereotype.Component;
 
 import com.belhopat.backoffice.model.User;
 import com.belhopat.backoffice.repository.UserRepository;
+import com.belhopat.backoffice.service.LoginService;
 
 @Component
 public class LoginServiceImpl implements LoginService{

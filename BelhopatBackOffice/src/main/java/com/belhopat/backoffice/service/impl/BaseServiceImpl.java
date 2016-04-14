@@ -1,4 +1,4 @@
-package com.belhopat.backoffice.service;
+package com.belhopat.backoffice.service.impl;
 
 import java.util.HashMap;
 import java.util.List;
@@ -11,6 +11,7 @@ import org.springframework.stereotype.Component;
 
 import com.belhopat.backoffice.model.LookupDetail;
 import com.belhopat.backoffice.repository.LookupDetailRepository;
+import com.belhopat.backoffice.service.BaseService;
 import com.belhopat.backoffice.util.Constants;
 
 @Component

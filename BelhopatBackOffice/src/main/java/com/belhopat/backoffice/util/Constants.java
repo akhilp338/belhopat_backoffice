@@ -12,4 +12,7 @@ public class Constants {
 	/* password reset msg constants */
 	public static final String PASS_RESET_SUCC_MSG = "New password has been sent to your registered email.";
 	public static final String PASS_RESET_FAIL_MSG = "User account does not exist. Please contact administrator.";
+	
+	/* mail constants */
+	public static final String PASS_RESET_MAIL_SUB = "Password Reset Mail";
 }
