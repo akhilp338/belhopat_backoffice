@@ -22,6 +22,15 @@
             'Step 4: Family Details'
         ];
         $scope.selection = $scope.steps[0];
+        $scope.bloodGroups = ['A+','B+','A-'];//temp
+        vm.urlForLookups = "candidate/getDropDownData";
+        Core_Service.getAllLookupValues(vm.urlForLookups)
+        .then( function(response) {
+           console.log(response)
+           vm.lookups = response.data;
+        },function(error){
+        	
+        });
 
         $scope.getCurrentStepIndex = function () {
             // Get the index of the current step given selection

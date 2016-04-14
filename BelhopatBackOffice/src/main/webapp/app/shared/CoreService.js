@@ -37,20 +37,36 @@
             return false;
         };
 
-        service.calculetSidebarHeight = function () {
+        service.calculetSidebarHeight = function (time) {
+            time = time ? time : 200;
             $timeout(function () {
                 var height = angular.element(".page-content-div").height();
                 if (height < 171) {
                     height = 171;
                 }
                 angular.element("#sidebar-wrapper").height(height);
-            }, 200);
+            }, time);
         };
-        service.sendPassword = function (email) {
-           
+
+        service.sendPassword = function (data) {
+           var url = "user/forgotPassword/"
+           Core_HttpRequest.postHttp(url,data)
         };
+        
+        service.getAllLookupValues = function(url){
+        	var deferred = $q.defer();
+            Core_HttpRequest.postHttp(url)
+                    .then(function (response) {
+                        console.log(response)
+                    }, function (response) {
+                    	
+                    });
+            return deferred.promise;
+        }
     };
 
+
+    
     Core_Service.$inject = ['Core_HttpRequest', '$state', '$timeout', '$q'];
     angular.module('app.common')
             .service('Core_Service', Core_Service);

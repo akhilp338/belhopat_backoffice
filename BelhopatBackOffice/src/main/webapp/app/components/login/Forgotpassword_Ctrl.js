@@ -1,5 +1,5 @@
 (function () {
-    var Forgotpassword_Ctrl = function ($scope, $uibModalInstance, validationService) {
+    var Forgotpassword_Ctrl = function ($scope, $uibModalInstance, validationService, Core_Service) {
         var vm = this,
                 vs = new validationService({
                     controllerAs: vm
@@ -12,15 +12,17 @@
             displayOnlyLastErrorMsg: true
         });
         vm.submit = function () {
-            if (vs.checkFormValidity($scope)) {
-                $uibModalInstance.close();
+            if (vs.checkFormValidity($scope)) { 
+                var data = {"email":vm.forgot.email}
+               Core_Service.sendPassword(data)
+               // $uibModalInstance.close();
             }
         };
         vm.cancel = function () {
             $uibModalInstance.dismiss('cancel');
         };
     };
-    Forgotpassword_Ctrl.$inject = ["$scope", '$uibModalInstance', 'validationService'];
+    Forgotpassword_Ctrl.$inject = ["$scope", '$uibModalInstance', 'validationService', 'Core_Service'];
     angular.module('coreModule')
             .controller('Forgotpassword_Ctrl', Forgotpassword_Ctrl);
 })();
