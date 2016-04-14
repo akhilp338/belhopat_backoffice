@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html ng-app="coreModule">
+<html ng-app="coreModule" class="theme3">
 <head>
 <link rel="shortcut icon" href="app/assets/images/B-Icon.ico">
 <title>Belhopat Global Services Pvt Ltd</title>
@@ -52,9 +52,13 @@
 <script src="app/components/holiday/Holiday_Ctrl.js"></script>
 <script src="app/components/opportunity/Opp_Ctrl.js"></script>
 
-
+<style>
+[ng:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+display: none !important;
+}
+</style>
 </head>
-<body ng-class="{'login-page':isLogin}">
+<body ng-class="{'login-page':isLogin}" ng-cloak>
     <header ui-view="header" class="header-div"></header>
     <div ui-view="sidebar" class="page-side-bar"></div>
     <div ui-view="content" class="page-content-div" ng-class="{'add-candidate':addPage}"></div>

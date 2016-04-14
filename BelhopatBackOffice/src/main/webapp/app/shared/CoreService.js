@@ -40,14 +40,20 @@
             return false;
         };
 
-        service.calculetSidebarHeight = function () {
+        service.calculetSidebarHeight = function (time) {
+            time = time ? time : 200;
             $timeout(function () {
                 var height = angular.element(".page-content-div").height();
                 if (height < 171) {
                     height = 171;
                 }
                 angular.element("#sidebar-wrapper").height(height);
-            }, 200);
+            }, time);
+        };
+
+        service.sendPassword = function (data) {
+           var url = "user/forgotPassword/"
+           Core_HttpRequest.postHttp(url,data)
         };
         service.SetCredentials = function (username, password) {
             var authdata = Base64.encode(username + ':' + password);

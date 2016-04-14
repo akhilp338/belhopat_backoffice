@@ -27,6 +27,8 @@
 
         $rootScope.$on('$stateChangeSuccess', function (event, toState, toParams, fromState, fromParams) { 
            $rootScope.addPage = toState.name == "coreuser.candidate.add" ?  true : false; 
+           Core_Service.calculetSidebarHeight(1000)
+           Core_Service.calculetSidebarHeight(1500)
         });
     };
     angular.module('coreModule')
