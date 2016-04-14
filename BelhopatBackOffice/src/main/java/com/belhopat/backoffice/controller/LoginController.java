@@ -26,7 +26,6 @@ public class LoginController {
 	
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
 	public ResponseEntity<User> authentication(@RequestBody User user,HttpServletRequest request) throws ServletException {
-	    	System.out.println(user.getPassword()+user.getUsername());
 	    	User sessionUser=loginService.getUserByUserNameAndPwd(user);
 //	    	request.login(user.getUsername(), user.getPassword());
 	    	request.getSession().setAttribute("sessionUser", sessionUser);
@@ -36,7 +35,6 @@ public class LoginController {
 	
 	@RequestMapping(value = "/logout", method = RequestMethod.POST)
 	public void logout(HttpServletRequest request) throws ServletException {
-		System.out.println(SessionManager.getCurrentUser());
 	    	request.getSession().invalidate();
 	    	request.logout();
 	    }

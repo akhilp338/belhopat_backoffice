@@ -64,6 +64,7 @@
         };
   
         service.ClearCredentials = function () {
+        	var deferred = $q.defer();
             $rootScope.globals = {};
             Core_HttpRequest.post("api/logout")
             .then(function (response) {
