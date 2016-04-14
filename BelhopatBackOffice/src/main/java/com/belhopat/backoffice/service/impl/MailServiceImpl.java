@@ -58,4 +58,15 @@ public class MailServiceImpl implements MailService {
 		sendMail(mailObject);
 
 	}
+
+	@Override
+	public void sendCandidateRegMail( String userEmail, String emailBody ) throws MessagingException {
+
+		String emailHtmlBody = "<html>"+"<head></head>" + "<body>" + "<div><p><strong>"+ "Belhopat Admin" + "</strong></p><p></p></div>" + "<div> "+ emailBody+ " </div>" + "</body></html>";
+		MailMessageObject mailObject = new MailMessageObject( userEmail, MAIL_FROM, 
+				 Constants.CAND_REG_SUCC_MAIL_SUB, emailHtmlBody, mailSender );
+		sendMail(mailObject);
+
+	}
+
 }
