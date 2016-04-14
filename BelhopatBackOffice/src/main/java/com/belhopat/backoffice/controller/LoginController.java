@@ -16,6 +16,8 @@ import com.belhopat.backoffice.model.User;
 import com.belhopat.backoffice.service.LoginService;
 import com.belhopat.backoffice.service.UserService;
 import com.belhopat.backoffice.session.SessionManager;
+import com.belhopat.backoffice.util.Constants;
+import com.belhopat.backoffice.util.ResponseObject;
 
 @RestController
 @RequestMapping("/api")
@@ -43,12 +45,12 @@ public class LoginController {
 	    }
 	
     @RequestMapping(value = "/forgotPassword", method = RequestMethod.POST)
-    public ResponseEntity<String> forgotPassword( @RequestBody User user ) throws MessagingException {
+    public ResponseEntity<ResponseObject> forgotPassword( @RequestBody User user ) throws MessagingException {
     	boolean userStatus = userService.generatePasswordResetLink( user.getEmail() );
     	if(userStatus)
-    		return new ResponseEntity<String>("New password has been sent to your registered email.",HttpStatus.OK);
+    		return new ResponseEntity<ResponseObject>(new ResponseObject(userStatus, Constants.PASS_RESET_SUCC_MSG),HttpStatus.OK);
     	else
-    		return new ResponseEntity<String>("User account does not exist. Please contact administrator.",HttpStatus.OK);
+    		return new ResponseEntity<ResponseObject>(new ResponseObject(userStatus, Constants.PASS_RESET_FAIL_MSG),HttpStatus.OK);
     }
 	 
 }
