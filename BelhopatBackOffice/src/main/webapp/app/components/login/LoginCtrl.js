@@ -1,5 +1,5 @@
 (function () {
-    var Login_Ctrl = function ($scope, $state, $rootScope, Core_Service, Core_ModalService) {
+    var Login_Ctrl = function ($scope, $state, $rootScope, Core_Service, Core_ModalService, SweetAlert) {
 
         var vm = this;
         vm.loginCreds = {};
@@ -21,13 +21,14 @@
                 vm.errorMessage = "Both fields are required";
             }
         };
-        
-        vm.forgotPassword = function (size) {
+
+        vm.forgotPassword = function (size) {           
+            //SweetAlert.swal("Here's a message");
             Core_ModalService.openForgotModal();
-        };       
+        };
 
     };
-    Login_Ctrl.$inject = ["$scope", '$state', '$rootScope', 'Core_Service', 'Core_ModalService'];
+    Login_Ctrl.$inject = ["$scope", '$state', '$rootScope', 'Core_Service', 'Core_ModalService', 'SweetAlert'];
     angular.module('coreModule')
             .controller('Login_Ctrl', Login_Ctrl);
 })();
