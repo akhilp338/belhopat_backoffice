@@ -8,7 +8,7 @@ import javax.persistence.Table;
 @Entity
 @Table
 public class OfficialCards {
-
+	
 	@Id
 	@GeneratedValue
 	private Long id;
@@ -16,6 +16,10 @@ public class OfficialCards {
 	private String drivingLicenceNo;
 
 	private String PANNo;
+
+	public OfficialCards() {
+		super();
+	}
 
 	private String ESINo;
 

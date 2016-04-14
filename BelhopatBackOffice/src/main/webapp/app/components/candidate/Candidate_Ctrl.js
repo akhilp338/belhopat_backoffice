@@ -107,10 +107,9 @@
 //datatble start
         angular.element(document).ready(function () {
             angular.element('#candidatesList').DataTable({
-            	'ajax': urlConfig.http+window.location.host+urlConfig.api_root_path+"/getOfficialDetails",
+            	'ajax': urlConfig.http+window.location.host+urlConfig.api_root_path+"candidate/getOfficialDetails",
                 'serverSide': true,
                 "bDestroy": true,
-//                "order": [[ 1, "asc" ]],
                 "language": {
                     zeroRecords: "No data to dispay"
                 },

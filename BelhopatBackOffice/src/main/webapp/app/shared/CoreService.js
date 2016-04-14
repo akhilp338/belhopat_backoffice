@@ -77,8 +77,19 @@
             $cookieStore.remove('globals');
             $http.defaults.headers.common.Authorization = 'Basic ';
         };
+        
+        service.getAllLookupValues = function(url){
+        	var deferred = $q.defer();
+            Core_HttpRequest.postHttp(url)
+                    .then(function (response) {
+                        console.log(response)
+                    }, function (response) {
+                    	
+                    });
+            return deferred.promise;
+        }
     };
-    Core_Service.$inject = ['$rootScope','Core_HttpRequest','Base64', '$state', '$cookieStore','$sessionStorage','$http', '$q', 	'$timeout'];
+    Core_Service.$inject = ['$rootScope','Core_HttpRequest','Base64', '$state', '$cookieStore','$sessionStorage','$http', '$q', '$timeout'];
     angular.module('app.common')
             .service('Core_Service', Core_Service);
 })(angular);
