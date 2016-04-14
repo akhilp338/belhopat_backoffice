@@ -220,6 +220,11 @@ body {
     color: white;
 }
 
+.sweet-alert button.confirm {
+    border-radius: 0;
+    background-color: #009688!important;
+}
+
 .logout-button:hover{
     text-decoration: none;
     box-shadow: 0 3px 10px rgba(0,0,0,0.23),0 3px 10px rgba(0,0,0,0.16);
@@ -755,8 +760,11 @@ button#logout {
 
 .sweet-alert h2{
     font-size: 19px!important;
-    text-align: left!important;
     margin-top: 0;
+}
+
+.sweet-alert {
+    border-radius: 0;
 }
 
 .add-button{
