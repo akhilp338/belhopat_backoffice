@@ -11,19 +11,24 @@ public class User {
 
 	@Id
 	@GeneratedValue
-	private long id;
+	private Long id;
 
 	private String username;
 
 	private String password;
 
 	private String email;
+	
+	private String password;
 
 	public User() {
-		id = 0;
+	}
+	
+	public User(Long id) {
+		this.id = id;
 	}
 
-	public User(long id, String username, String address, String email) {
+	public User(Long id, String username, String address, String email) {
 		this.id = id;
 		this.username = username;
 		this.password = address;
@@ -47,6 +52,14 @@ public class User {
 	}
 
 
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
 
 	public String getPassword() {
 		return password;

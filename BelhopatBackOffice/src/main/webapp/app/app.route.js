@@ -20,6 +20,9 @@ $locationProvider.html5Mode(true);
                             templateUrl: 'app/components/common/sidebar.html',
                             controller: 'Home_Ctrl',
                             controllerAs: 'vm'
+                        },
+                        'footer': {
+                            templateUrl: 'app/components/common/footer.html'
                         }
                     }
                 })
@@ -47,6 +50,18 @@ $locationProvider.html5Mode(true);
                 'content@': {
                     templateUrl: 'app/components/candidate/candidate.html',
                     controller: 'Candidate_Ctrl',
+                    controllerAs: 'vm'
+                }
+            }
+        }).state('coreuser.candidate.add', {
+            url: '/add',
+            views: {
+                'sidebar@':{
+                    templateUrl: 'app/components/common/defaultTemplate.html' 
+                },
+                'content@': {
+                    templateUrl: 'app/components/candidate/candidateAdd.html',
+                    controller: 'AddCandidate_Ctrl',
                     controllerAs: 'vm'
                 }
             }

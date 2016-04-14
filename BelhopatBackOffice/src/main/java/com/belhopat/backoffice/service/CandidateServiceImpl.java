@@ -10,6 +10,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
 
 import com.belhopat.backoffice.model.Candidate;
+import com.belhopat.backoffice.model.User;
 import com.belhopat.backoffice.repository.CandidateRepository;
 
 @Component
@@ -41,7 +42,19 @@ public class CandidateServiceImpl implements CandidateService{
 
 	@Override
 	public ResponseEntity<Void> deleteCandidates(List<Long> candidateIds) {
-		candidateRepository.deleteById(candidateIds);
+		List<Candidate> candidates = candidateRepository.findByIdIn(candidateIds);
+		for (Candidate candidate : candidates) {
+			candidate.setDeleteAttributes(new User(1L));
+		}
+		candidateRepository.save(candidates);
+		return new ResponseEntity<Void>(HttpStatus.OK);
+	}
+
+	@Override
+	public ResponseEntity<Void> deleteCandidate(Long candidateId) {
+		Candidate candidate = candidateRepository.findById(candidateId);
+		candidate.setDeleteAttributes(new User(1L));
+		candidateRepository.save(candidate);
 		return new ResponseEntity<Void>(HttpStatus.OK);
 	}
 

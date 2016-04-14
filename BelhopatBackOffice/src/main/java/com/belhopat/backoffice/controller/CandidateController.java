@@ -1,6 +1,7 @@
 package com.belhopat.backoffice.controller;
 
 import java.util.List;
+import java.util.Map;
 
 import javax.validation.Valid;
 
@@ -16,7 +17,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.belhopat.backoffice.model.Candidate;
+import com.belhopat.backoffice.model.LookupDetail;
+import com.belhopat.backoffice.model.OfficialCards;
+import com.belhopat.backoffice.service.BaseService;
 import com.belhopat.backoffice.service.CandidateService;
+import com.belhopat.backoffice.service.OfficialDetailsService;
 
 @Controller
 @RequestMapping("/api/candidate")
@@ -24,6 +29,12 @@ public class CandidateController {
 
 	@Autowired
 	CandidateService candidateService;
+	
+	@Autowired
+	BaseService baseService;
+	
+	@Autowired
+	OfficialDetailsService officialDetailsService;
 	
 	@ResponseBody
 	@RequestMapping(value = "/getCandidates", method = RequestMethod.POST)
@@ -47,6 +58,24 @@ public class CandidateController {
 	@RequestMapping(value = "/deleteCandidates", method = RequestMethod.POST)
 	public ResponseEntity<Void> deleteCandiadtes(@RequestBody List<Long> candidateIds) {
 		return candidateService.deleteCandidates(candidateIds);
+	}
+	
+	@ResponseBody
+	@RequestMapping(value = "/deleteCandidate", method = RequestMethod.POST)
+	public ResponseEntity<Void> deleteCandiadte(@RequestParam Long candidateId) {
+		return candidateService.deleteCandidate(candidateId);
+	}
+	
+	@ResponseBody
+	@RequestMapping(value = "/getDropDownData", method = RequestMethod.GET)
+	public ResponseEntity<Map<String, List<LookupDetail>>> getDropDownData() {
+		return baseService.getCandidateDropDownData();
+	}
+	
+	@ResponseBody
+	@RequestMapping(value = "/getOfficialDetails", method = RequestMethod.GET)
+	public DataTablesOutput<OfficialCards> getOfficialDetails( @Valid DataTablesInput input ) {
+		return officialDetailsService.getOfficialDetails(input);
 	}
 
 }

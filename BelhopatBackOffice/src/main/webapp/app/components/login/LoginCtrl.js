@@ -1,10 +1,11 @@
-(function() {
-    var Login_Ctrl = function($scope, $state, $rootScope, Core_Service){
+(function () {
+    var Login_Ctrl = function ($scope, $state, $rootScope, Core_Service, Core_ModalService, SweetAlert) {
+
         var vm = this;
         vm.loginCreds = {};
         $rootScope.isLogin = true;
         vm.errorMessage = "";
-        vm.login = function(data){
+        vm.login = function (data) {
             if (vm.loginCreds.username && vm.loginCreds.password) {
            Core_Service.login(data).then(function (res){
                if(res){
@@ -23,9 +24,14 @@
           vm.errorMessage = "Both fields are required"; 
        }
         };
+
+        vm.forgotPassword = function (size) {           
+            //SweetAlert.swal("Here's a message");
+            Core_ModalService.openForgotModal();
+        };
+
     };
-    
-    Login_Ctrl.$inject = ["$scope", '$state', '$rootScope', 'Core_Service'];
+    Login_Ctrl.$inject = ["$scope", '$state', '$rootScope', 'Core_Service', 'Core_ModalService', 'SweetAlert'];
     angular.module('coreModule')
             .controller('Login_Ctrl', Login_Ctrl)
             

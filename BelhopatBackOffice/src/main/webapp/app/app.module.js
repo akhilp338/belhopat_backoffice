@@ -23,4 +23,21 @@
                   }
               });
           }]);
+    window.app = angular.module('coreModule', [
+        'ui.router',
+        'ngAnimate',
+        'ui.bootstrap',
+        'app.constants',
+        'app.common',
+        'pascalprecht.translate',
+        'ghiscoding.validation',
+        'oitozero.ngSweetAlert'
+    ]);
+    window.app.config(['$locationProvider', function ($locationProvider) {
+            $locationProvider.html5Mode({
+                enabled: true,
+                requireBase: false
+            });
+        }]);
+
 })();

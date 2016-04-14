@@ -6,6 +6,9 @@
         	Core_Service.ClearCredentials();
         	$state.go('login');
         }
+		vm.getTheme = function(){
+			angular.element("html").attr("class",vm.checkedValue);
+		};
         vm.getUserName = $rootScope.globals.currentUser.username;
     };
     Header_Ctrl.$inject = ["$scope", '$state', '$rootScope', 'Core_Service'];

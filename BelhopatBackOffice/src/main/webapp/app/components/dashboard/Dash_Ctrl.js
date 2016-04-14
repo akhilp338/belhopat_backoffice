@@ -2,6 +2,7 @@
     var Dash_Ctrl = function ($scope, $state, $rootScope, Core_Service) {
         var vm = this;
         $rootScope.active = 'dashboard';
+        Core_Service.calculetSidebarHeight();
          };
 
     Dash_Ctrl.$inject = ["$scope", '$state', '$rootScope', 'Core_Service'];

@@ -4,8 +4,6 @@ import java.util.Date;
 import java.util.List;
 
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
@@ -13,11 +11,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table
-public class Candidate {
-
-	@Id
-	@GeneratedValue
-	private Long id;
+public class Candidate extends BaseEntity {
 
 	private String firstName;
 
@@ -29,9 +23,16 @@ public class Candidate {
 
 	private String gender;
 
+	@ManyToOne
+	private LookupDetail bloodGroup;
+
 	private String personalEmail;
 
 	private String personalContactNo;
+
+	private String officialEmail;
+
+	private String officialContactNo;
 
 	private String familyContact1;
 
@@ -39,12 +40,10 @@ public class Candidate {
 
 	private String familyEmail;
 
-	@OneToMany
-	private List<FamilyMember> familyMembers;
-
 	private String onsiteContactNo;
 
-	private String bloodGroup;
+	@OneToMany
+	private List<FamilyMember> familyMembers;
 
 	@OneToOne
 	private Address currentAddress;
@@ -79,7 +78,7 @@ public class Candidate {
 	private Passport passport;
 
 	@OneToOne
-	private OfficialDetails officialDetails;
+	private OfficialCards officialDetails;
 
 	private Date doj;
 
@@ -90,23 +89,18 @@ public class Candidate {
 	private LookupDetail designation;
 
 	@ManyToOne
+	private LookupDetail purpose;
+
+	@ManyToOne
 	private LookupDetail employmentStatus;
+
+	@ManyToOne
+	private LookupDetail registrationStatus;
 
 	private String SourcedBy;
 
-	private String purpose;
-
 	public Candidate(Long id) {
-		super();
-		this.id = id;
-	}
-
-	public Long getId() {
-		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
+		super(id);
 	}
 
 	public String getFirstName() {
@@ -149,6 +143,14 @@ public class Candidate {
 		this.gender = gender;
 	}
 
+	public LookupDetail getBloodGroup() {
+		return bloodGroup;
+	}
+
+	public void setBloodGroup(LookupDetail bloodGroup) {
+		this.bloodGroup = bloodGroup;
+	}
+
 	public String getPersonalEmail() {
 		return personalEmail;
 	}
@@ -163,6 +165,22 @@ public class Candidate {
 
 	public void setPersonalContactNo(String personalContactNo) {
 		this.personalContactNo = personalContactNo;
+	}
+
+	public String getOfficialEmail() {
+		return officialEmail;
+	}
+
+	public void setOfficialEmail(String officialEmail) {
+		this.officialEmail = officialEmail;
+	}
+
+	public String getOfficialContactNo() {
+		return officialContactNo;
+	}
+
+	public void setOfficialContactNo(String officialContactNo) {
+		this.officialContactNo = officialContactNo;
 	}
 
 	public String getFamilyContact1() {
@@ -189,14 +207,6 @@ public class Candidate {
 		this.familyEmail = familyEmail;
 	}
 
-	public List<FamilyMember> getFamilyMembers() {
-		return familyMembers;
-	}
-
-	public void setFamilyMembers(List<FamilyMember> familyMembers) {
-		this.familyMembers = familyMembers;
-	}
-
 	public String getOnsiteContactNo() {
 		return onsiteContactNo;
 	}
@@ -205,12 +215,12 @@ public class Candidate {
 		this.onsiteContactNo = onsiteContactNo;
 	}
 
-	public String getBloodGroup() {
-		return bloodGroup;
+	public List<FamilyMember> getFamilyMembers() {
+		return familyMembers;
 	}
 
-	public void setBloodGroup(String bloodGroup) {
-		this.bloodGroup = bloodGroup;
+	public void setFamilyMembers(List<FamilyMember> familyMembers) {
+		this.familyMembers = familyMembers;
 	}
 
 	public Address getCurrentAddress() {
@@ -309,11 +319,11 @@ public class Candidate {
 		this.passport = passport;
 	}
 
-	public OfficialDetails getOfficialDetails() {
+	public OfficialCards getOfficialDetails() {
 		return officialDetails;
 	}
 
-	public void setOfficialDetails(OfficialDetails officialDetails) {
+	public void setOfficialDetails(OfficialCards officialDetails) {
 		this.officialDetails = officialDetails;
 	}
 
@@ -341,6 +351,14 @@ public class Candidate {
 		this.designation = designation;
 	}
 
+	public LookupDetail getPurpose() {
+		return purpose;
+	}
+
+	public void setPurpose(LookupDetail purpose) {
+		this.purpose = purpose;
+	}
+
 	public LookupDetail getEmploymentStatus() {
 		return employmentStatus;
 	}
@@ -349,36 +367,20 @@ public class Candidate {
 		this.employmentStatus = employmentStatus;
 	}
 
+	public LookupDetail getRegistrationStatus() {
+		return registrationStatus;
+	}
+
+	public void setRegistrationStatus(LookupDetail registrationStatus) {
+		this.registrationStatus = registrationStatus;
+	}
+
 	public String getSourcedBy() {
 		return SourcedBy;
 	}
 
 	public void setSourcedBy(String sourcedBy) {
 		SourcedBy = sourcedBy;
-	}
-
-	public String getPurpose() {
-		return purpose;
-	}
-
-	public void setPurpose(String purpose) {
-		this.purpose = purpose;
-	}
-
-	@Override
-	public String toString() {
-		return "Candidate [id=" + id + ", firstName=" + firstName + ", middleName=" + middleName + ", lastName="
-				+ lastName + ", dob=" + dob + ", gender=" + gender + ", personalEmail=" + personalEmail
-				+ ", personalContactNo=" + personalContactNo + ", familyContact1=" + familyContact1
-				+ ", familyContact2=" + familyContact2 + ", familyEmail=" + familyEmail + ", familyMembers="
-				+ familyMembers + ", onsiteContactNo=" + onsiteContactNo + ", bloodGroup=" + bloodGroup
-				+ ", currentAddress=" + currentAddress + ", permanentAddress=" + permanentAddress + ", onsiteAddress="
-				+ onsiteAddress + ", skillSet=" + skillSet + ", priorExperienceYear=" + priorExperienceYear
-				+ ", priorExperienceMonth=" + priorExperienceMonth + ", countryOfOrigin=" + countryOfOrigin
-				+ ", countryToVisit=" + countryToVisit + ", client=" + client + ", partner=" + partner
-				+ ", bankAccount=" + bankAccount + ", passport=" + passport + ", officialDetails=" + officialDetails
-				+ ", doj=" + doj + ", division=" + division + ", designation=" + designation + ", employmentStatus="
-				+ employmentStatus + ", SourcedBy=" + SourcedBy + ", purpose=" + purpose + "]";
 	}
 
 }
