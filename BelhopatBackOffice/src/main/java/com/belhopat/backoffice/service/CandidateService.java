@@ -21,4 +21,6 @@ public interface CandidateService {
 	
 	ResponseEntity<Void> deleteCandidates(List<Long> candidateIds);
 
+	ResponseEntity<Void> deleteCandidate(Long candidateId);
+
 }

@@ -23,14 +23,15 @@ public class Candidate extends BaseEntity {
 
 	private String gender;
 
-	private String bloodGroup;
-	
+	@ManyToOne
+	private LookupDetail bloodGroup;
+
 	private String personalEmail;
 
 	private String personalContactNo;
-	
+
 	private String officialEmail;
-	
+
 	private String officialContactNo;
 
 	private String familyContact1;
@@ -95,7 +96,7 @@ public class Candidate extends BaseEntity {
 
 	@ManyToOne
 	private LookupDetail registrationStatus;
-	
+
 	private String SourcedBy;
 
 	public Candidate(Long id) {
@@ -142,11 +143,11 @@ public class Candidate extends BaseEntity {
 		this.gender = gender;
 	}
 
-	public String getBloodGroup() {
+	public LookupDetail getBloodGroup() {
 		return bloodGroup;
 	}
 
-	public void setBloodGroup(String bloodGroup) {
+	public void setBloodGroup(LookupDetail bloodGroup) {
 		this.bloodGroup = bloodGroup;
 	}
 
