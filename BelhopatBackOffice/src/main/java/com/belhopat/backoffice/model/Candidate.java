@@ -13,6 +13,8 @@ import javax.persistence.Table;
 @Table
 public class Candidate extends BaseEntity {
 
+	private String candidateId;
+
 	private String firstName;
 
 	private String middleName;
@@ -99,8 +101,12 @@ public class Candidate extends BaseEntity {
 
 	private String SourcedBy;
 
-	public Candidate(Long id) {
-		super(id);
+	public String getCandidateId() {
+		return candidateId;
+	}
+
+	public void setCandidateId(String candidateId) {
+		this.candidateId = candidateId;
 	}
 
 	public String getFirstName() {
