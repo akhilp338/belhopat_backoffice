@@ -44,16 +44,16 @@
             time = time ? time : 200;
             $timeout(function () {
                 var height = angular.element(".page-content-div").height();
-                if (height < 171) {
-                    height = 171;
+                if (height < 500) {
+                    height = 500;
                 }
                 angular.element("#sidebar-wrapper").height(height);
             }, time);
         };
 
         service.sendPassword = function (data) {
-           var url = "user/forgotPassword"
-           Core_HttpRequest.post(url,data)
+           var url = "api/forgotPassword"
+           Core_HttpRequest.post(url,data);
         };
         service.SetCredentials = function (username, password) {
             var authdata = Base64.encode(username + ':' + password);

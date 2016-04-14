@@ -19,7 +19,7 @@ body {
 .page-content-div {
     margin-top: 70px;
     width: 81.5%;
-    float: left;
+    float: right;
 }
 
 .login-page .page-content-div {
@@ -250,7 +250,7 @@ body {
     float: left;
     margin-top: 70px;
     width: 100%!important;
-    min-height: 358px;
+    min-height: 500px;
 }
 
 #wrapper.toggled #sidebar-wrapper {
@@ -553,11 +553,11 @@ span.user-list-head {
 }
 
 .footer-div-content {
-    min-height: 171px;
+    min-height: 62px;
     position: relative;
     float: left;
     width: 100%;
-    background: rgb(0, 93, 84);
+    background: rgb(3, 62, 56);
 }
 
 .nav-tabs>li>a {
@@ -754,13 +754,15 @@ span.user-list-head {
 .page-side-bar {
     float: left;
     width: 18%;
+    position: fixed;
 }
 
 .add-candidate {
     width: 100%;
 }
 
-.modal-content{
+.modal-content,
+.modal-footer{
     border: 0;
     border-radius: 0;
 }
@@ -830,8 +832,7 @@ thead th:not(:last-child){
     height: 100px;
     position: relative;
     float: left;
-    text-align: left;
-    margin-bottom: 20px;
+    text-align: center;
     padding: 50px;
 }
 
@@ -844,7 +845,6 @@ thead th:not(:last-child){
     margin: 0 1px;
     color: #fff;
     text-decoration: none;
-    float: left;
     margin-left: 10px;
 }
 
@@ -859,4 +859,8 @@ thead th:not(:last-child){
 .share-links a:hover, .share-links a:focus {
     text-decoration: none;
     box-shadow: 0 3px 10px rgba(0,0,0,0.23),0 3px 10px rgba(0,0,0,0.16);
+}
+
+.sub-content {
+    min-height: 500px;
 }
