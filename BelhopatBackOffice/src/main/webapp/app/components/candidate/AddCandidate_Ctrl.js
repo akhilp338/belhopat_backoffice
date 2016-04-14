@@ -108,6 +108,11 @@
         vm.addCandidate = function(){
             $state.go("coreuser.candidate.add");
         };
+        
+        vm.candidateRegister = function(){
+        	alert('dfhjsk');
+        	console.log(vm.registration);
+        };
        
         //datatble ends
         Core_Service.calculetSidebarHeight();
