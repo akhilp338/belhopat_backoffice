@@ -22,7 +22,6 @@
             'Step 4: Family Details'
         ];
         $scope.selection = $scope.steps[0];
-        $scope.bloodGroups = ['A+','B+','A-'];//temp
         vm.urlForLookups = "candidate/getDropDownData";
         Core_Service.getAllLookupValues(vm.urlForLookups)
         .then( function(response) {
@@ -108,9 +107,19 @@
         vm.addCandidate = function(){
             $state.go("coreuser.candidate.add");
         };
+        
+        vm.candidateRegister = function(){
+        	console.log(vm.registration);
+        	vm.urlForRegister = "candidate/saveOrUpdateCandidate";
+            Core_Service.candidateRegister(vm.urlForRegister,vm.registration)
+            .then( function(response) {
+               console.log(response)
+            },function(error){
+            	
+            });
+        };
        
-        //datatble ends
-        Core_Service.calculateSidebarHeight();
+        Core_Service.calculetSidebarHeight();
     };
     
     AddCandidate_Ctrl.$inject = ["$scope", '$state', '$rootScope', 'Core_Service', 'urlConfig', 'Core_HttpRequest', 'validationService'];
