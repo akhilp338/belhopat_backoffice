@@ -19,7 +19,7 @@ body {
 .page-content-div {
     margin-top: 70px;
     width: 81.5%;
-    float: left;
+    float: right;
 }
 
 .login-page .page-content-div {
@@ -220,6 +220,11 @@ body {
     color: white;
 }
 
+.logout-button:hover{
+    text-decoration: none;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.23),0 3px 10px rgba(0,0,0,0.16);
+}
+
 .inner-header-header {
     background-image: url("../images/BelHoPat-Logo.png");
     background-repeat: no-repeat;
@@ -250,7 +255,7 @@ body {
     float: left;
     margin-top: 70px;
     width: 100%!important;
-    min-height: 358px;
+    min-height: 500px;
 }
 
 #wrapper.toggled #sidebar-wrapper {
@@ -491,7 +496,7 @@ span.text-danger{
 
 .form-horizontal,
 #candidatesList_wrapper{
-    padding: 30px 20px 0 20px;
+    padding: 0 20px 0 20px;
 }
 
 .span4{
@@ -553,11 +558,11 @@ span.user-list-head {
 }
 
 .footer-div-content {
-    min-height: 171px;
+    min-height: 62px;
     position: relative;
     float: left;
     width: 100%;
-    background: rgb(8, 8, 8);
+    background: rgb(3, 62, 56);
 }
 
 .nav-tabs>li>a {
@@ -590,6 +595,13 @@ span.user-list-head {
 
 .theme2 .logout-button{
     background-color: #546E7A;
+}
+
+button#logout {
+    font-size: 20px;
+    width: 52px;
+    padding: 0;
+    margin-top: 12px;
 }
 
 .theme2 footer.footer-div-content {
@@ -748,19 +760,23 @@ span.user-list-head {
 }
 
 .add-button{
-    margin-left: 1.7%!important;
+   margin-left: 3%!important;
+    font-size: 20px;
+    padding: 0;
 }
 
 .page-side-bar {
     float: left;
     width: 18%;
+    position: fixed;
 }
 
 .add-candidate {
     width: 100%;
 }
 
-.modal-content{
+.modal-content,
+.modal-footer{
     border: 0;
     border-radius: 0;
 }
@@ -773,4 +789,141 @@ span.user-list-head {
 .modal-dialog{
     width: 30%;
     margin: 100px auto;
+}
+
+input[type=text], textarea {
+  -webkit-transition: all 0.30s ease-in-out;
+  -moz-transition: all 0.30s ease-in-out;
+  -ms-transition: all 0.30s ease-in-out;
+  -o-transition: all 0.30s ease-in-out;
+  outline: none;
+  padding: 3px 0px 3px 3px;
+  margin: 5px 1px 3px 0px;
+  border: 1px solid #DDDDDD;
+}
+ 
+input[type=text]:focus, textarea:focus {
+  box-shadow: 0 0 5px rgba(81, 203, 238, 1);
+  padding: 3px 0px 3px 3px;
+  margin: 5px 1px 3px 0px;
+  border: 1px solid rgba(81, 203, 238, 1);
+}
+
+input.ng-touched.ng-invalid {
+    border: 1px solid red;
+}
+
+input.ng-touched.ng-valid{
+    border: 1px solid green;
+}
+
+.dataTables_scrollHeadInner,
+.dataTables_scrollHeadInner table,
+.dataTables_scrollBody table{
+    width:100%!important;
+}
+
+.table-btn{
+    margin: 0;
+    padding: 2px 12px;
+    float: left;
+    width: 100%;
+}
+
+thead th {
+    padding-left: 10px!important;    
+}
+thead th:not(:last-child){
+  border-right: 1px solid #DDDDDD;  
+}
+
+.copyright.text-center {
+    color: white;
+}
+
+.share-links {
+    text-align: center;
+    height: 100px;
+    position: relative;
+    float: left;
+    text-align: center;
+    padding: 50px;
+}
+
+.share-links .twitter {
+    background-color: #55acee;
+}
+
+.share-links a {
+    padding: 8px 15px;
+    margin: 0 1px;
+    color: #fff;
+    text-decoration: none;
+    margin-left: 10px;
+}
+
+.share-links .facebook {
+    background-color: #405499;
+}
+
+.share-links .google {
+    background-color: #d74838;
+}
+
+.share-links a:hover, .share-links a:focus {
+    text-decoration: none;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.23),0 3px 10px rgba(0,0,0,0.16);
+}
+
+.sub-content {
+    min-height: 500px;
+}
+.action-buttons .actions{
+   cursor: pointer;
+    width: 30px;
+    height: 30px;
+    margin-left: 10px;
+}
+
+.action-buttons .actions:hover{
+   font-size: 24px; 
+}
+
+.action-buttons{
+    color: #009688;
+    float: left;
+    width: 100%;
+    text-align: center;
+}
+
+.button-column{
+    text-align: center;
+}
+
+input[type="search"] {
+    background-image: url("../images/search.png");
+    background-position: 4%center;
+    background-repeat: no-repeat;
+    background-size: 24px;
+    border-radius: 27px;
+    border: 1px solid #8FD8D1;
+    background-color: white!important;
+    padding-left: 40px;
+    height: 36px;
+}
+
+div#candidatesList_length {
+    margin-top: 10px;
+}
+
+div#candidatesList_length select {
+    width: 70px;
+    height: 25px;
+    border: 1px solid #8FD8D1;
+    border-radius: 10px;
+}
+
+div#candidatesList_length {
+    color: #009688;
+    margin-top: 10px;
 }

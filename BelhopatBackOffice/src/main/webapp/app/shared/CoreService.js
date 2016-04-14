@@ -40,20 +40,20 @@
             return false;
         };
 
-        service.calculetSidebarHeight = function (time) {
+        service.calculateSidebarHeight = function (time) {
             time = time ? time : 200;
             $timeout(function () {
                 var height = angular.element(".page-content-div").height();
-                if (height < 171) {
-                    height = 171;
+                if (height < 500) {
+                    height = 500;
                 }
                 angular.element("#sidebar-wrapper").height(height);
             }, time);
         };
 
         service.sendPassword = function (data) {
-           var url = "/forgotPassword"
-           Core_HttpRequest.postHttp(url,data)
+           var url = "api/forgotPassword"
+           Core_HttpRequest.post(url,data);
         };
         service.SetCredentials = function (username, password) {
             var authdata = Base64.encode(username + ':' + password);
@@ -87,7 +87,19 @@
         
         service.getAllLookupValues = function(url){
         	var deferred = $q.defer();
-            Core_HttpRequest.postHttp(url)
+            Core_HttpRequest.post(url)
+                    .then(function (response) {
+                        deferred.resolve(response)
+                    }, function (error) {
+                    	deferred.reject(error)
+                    });
+            return deferred.promise;
+        }
+        
+        service.candidateRegister = function(url,postData){
+        	var deferred = $q.defer();
+        	console.log(postData);
+            Core_HttpRequest.post(url,postData)
                     .then(function (response) {
                         deferred.resolve(response)
                     }, function (error) {
