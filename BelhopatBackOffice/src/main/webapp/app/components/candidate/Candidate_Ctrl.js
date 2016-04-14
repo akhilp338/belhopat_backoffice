@@ -104,9 +104,13 @@
         vm.addCandidate = function(){
             $state.go("coreuser.candidate.add");
         };
-//datatble start
+
+        vm.getSelectedCandidate = function(event){
+            console.log(event);
+        };
+        
         angular.element(document).ready(function () {
-            angular.element('#candidatesList').DataTable({
+            var oTable = angular.element('#candidatesList').DataTable({
             	'ajax': urlConfig.http+window.location.host+urlConfig.api_root_path+"candidate/getOfficialDetails",
                 'serverSide': true,
                 "bDestroy": true,
@@ -116,16 +120,16 @@
                  "processing": true,
                  "sScrollX": '100%',
                 "aoColumns": [{
-                	title: "drivingLicenceNo",
+                	title: "DRIVING LICENCE NO",
                     data: 'drivingLicenceNo',
                 }, {
-                	title: "PAN No",
+                	title: "PAN NO",
                     data: 'panno',
                 }, {
-                	title: "ESI No",
+                	title: "ESI NO",
                     data: 'esino',
                 }, {
-                	title: "PF No",
+                	title: "PF NO",
                     data: 'pfno',
                 }, {
                 	title: "FOREX CARD NO",
@@ -133,11 +137,20 @@
                 }, {
                 	title: "FOREX CARD AGENCY",
                     data: 'forexCardAgency',
+                },{
+                    data: 'id',
+                    "bSortable": false,
+                    "render": function(data) {
+                        return "<button class='datatable_view' type='button' value='" + data + "' ng-click='vm.getSelectedCandidate($event)'>view</button>"
+                    }
                 }]
             });
+            $('#candidatesList').on('click','.datatable_view',function(){            	
+            	var data = oTable.row($(this).parents('tr')).data();
+            	console.log(data);
+            	console.log(vm)
+            	})
         });
-        
-        //datatble ends
         Core_Service.calculetSidebarHeight();
     };
     

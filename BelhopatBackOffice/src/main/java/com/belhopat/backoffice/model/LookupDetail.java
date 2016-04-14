@@ -6,6 +6,8 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table
 public class LookupDetail {
@@ -15,12 +17,16 @@ public class LookupDetail {
 	private Long id;
 
 	@ManyToOne
+	@JsonIgnore
 	private Lookup lookup;
 
 	private String code;
 
 	private String decription;
 
+	public LookupDetail(){
+		
+	}
 	public LookupDetail(Long id, Lookup lookup, String code, String decription) {
 		super();
 		this.id = id;

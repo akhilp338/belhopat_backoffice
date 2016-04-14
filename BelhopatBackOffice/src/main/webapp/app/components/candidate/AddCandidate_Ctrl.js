@@ -28,10 +28,11 @@
         .then( function(response) {
            console.log(response)
            vm.lookups = response.data;
+           console.log(vm.lookups)
         },function(error){
         	
         });
-
+        console.log(vm)
         $scope.getCurrentStepIndex = function () {
             // Get the index of the current step given selection
             return _.indexOf($scope.steps, $scope.selection);

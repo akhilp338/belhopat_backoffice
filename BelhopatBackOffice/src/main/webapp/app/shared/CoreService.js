@@ -51,9 +51,9 @@
         	var deferred = $q.defer();
             Core_HttpRequest.postHttp(url)
                     .then(function (response) {
-                        console.log(response)
-                    }, function (response) {
-                    	
+                        deferred.resolve(response)
+                    }, function (error) {
+                    	deferred.reject(error)
                     });
             return deferred.promise;
         }
