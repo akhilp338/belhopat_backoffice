@@ -26,6 +26,7 @@ public class UserApiController {
     		return new ResponseEntity<String>("New password has been sent to your registered email.",HttpStatus.OK);
     	else
     		return new ResponseEntity<String>("User account does not exist. Please contact administrator",HttpStatus.OK);
-    } 
+    }
+    
 
 }
