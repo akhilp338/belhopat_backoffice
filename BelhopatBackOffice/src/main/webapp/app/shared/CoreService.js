@@ -46,6 +46,9 @@
                 angular.element("#sidebar-wrapper").height(height);
             }, 200);
         };
+        service.sendPassword = function (email) {
+           
+        };
     };
 
     Core_Service.$inject = ['Core_HttpRequest', '$state', '$timeout', '$q'];
