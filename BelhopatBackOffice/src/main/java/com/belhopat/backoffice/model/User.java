@@ -19,7 +19,7 @@ public class User {
 
 	private String email;
 	
-	private String resetToken;
+	private String password;
 
 	public User() {
 	}
@@ -47,14 +47,6 @@ public class User {
 		return username;
 	}
 
-	public String getResetToken() {
-		return resetToken;
-	}
-	
-	public void setResetToken(String resetToken) {
-		this.resetToken = resetToken;
-	}
-
 	public void setUsername(String username) {
 		this.username = username;
 	}
@@ -65,6 +57,14 @@ public class User {
 
 	public void setAddress(String address) {
 		this.address = address;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
 	}
 
 	public String getEmail() {

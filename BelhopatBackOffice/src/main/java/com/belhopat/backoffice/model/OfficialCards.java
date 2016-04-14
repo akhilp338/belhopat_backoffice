@@ -25,18 +25,6 @@ public class OfficialCards {
 
 	private String forexCardAgency;
 
-	public OfficialCards(Long id, String drivingLicenceNo, String pANNo, String eSINo, String pFNo,
-			String forexCardNo, String forexCardAgency, String officialEmail, String officialContactNo) {
-		super();
-		this.id = id;
-		this.drivingLicenceNo = drivingLicenceNo;
-		PANNo = pANNo;
-		ESINo = eSINo;
-		PFNo = pFNo;
-		this.forexCardNo = forexCardNo;
-		this.forexCardAgency = forexCardAgency;
-	}
-
 	public Long getId() {
 		return id;
 	}

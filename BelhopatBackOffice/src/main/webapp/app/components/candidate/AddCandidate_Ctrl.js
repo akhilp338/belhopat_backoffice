@@ -1,5 +1,5 @@
 (function () {
-    var Candidate_Ctrl = function ($scope, $state, $rootScope, Core_Service, urlConfig, Core_HttpRequest, validationService) {
+    var AddCandidate_Ctrl = function ($scope, $state, $rootScope, Core_Service, urlConfig, Core_HttpRequest, validationService) {
         var vm = this,
                 vs = new validationService({
                     controllerAs: vm
@@ -73,10 +73,6 @@
         };
 
         $rootScope.active = 'candidate';
-        vm.toggler = function () {
-            $('#pro_expander').toggle();
-        };
-
         vm.copyAddress = function () {
             console.log(vm.registration.permenant)
             if (vm.registration.permenant) {
@@ -104,47 +100,16 @@
         vm.addCandidate = function(){
             $state.go("coreuser.candidate.add");
         };
-//datatble start
-        angular.element(document).ready(function () {
-            angular.element('#candidatesList').DataTable({
-            	'ajax': urlConfig.http+window.location.host+urlConfig.api_root_path+"/getOfficialDetails",
-                'serverSide': true,
-                "bDestroy": true,
-//                "order": [[ 1, "asc" ]],
-                "language": {
-                    zeroRecords: "No data to dispay"
-                },
-                 "processing": true,
-                 "sScrollX": '100%',
-                "aoColumns": [{
-                	title: "drivingLicenceNo",
-                    data: 'drivingLicenceNo',
-                }, {
-                	title: "PAN No",
-                    data: 'panno',
-                }, {
-                	title: "ESI No",
-                    data: 'esino',
-                }, {
-                	title: "PF No",
-                    data: 'pfno',
-                }, {
-                	title: "FOREX CARD NO",
-                    data: 'forexCardNo',
-                }, {
-                	title: "FOREX CARD AGENCY",
-                    data: 'forexCardAgency',
-                }]
-            });
-        });
-        
+       
         //datatble ends
         Core_Service.calculetSidebarHeight();
     };
     
-    Candidate_Ctrl.$inject = ["$scope", '$state', '$rootScope', 'Core_Service', 'urlConfig', 'Core_HttpRequest', 'validationService'];
+    AddCandidate_Ctrl.$inject = ["$scope", '$state', '$rootScope', 'Core_Service', 'urlConfig', 'Core_HttpRequest', 'validationService'];
     angular.module('coreModule')
-            .controller('Candidate_Ctrl', Candidate_Ctrl);
+            .controller('AddCandidate_Ctrl', AddCandidate_Ctrl);
 })();
+
+
 
 

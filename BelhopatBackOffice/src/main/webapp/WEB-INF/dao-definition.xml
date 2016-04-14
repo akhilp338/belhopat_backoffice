@@ -54,6 +54,4 @@
     
     <bean id="persistenceExceptionTranslationPostProcessor" class="org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor" />
 	
-	<util:properties id="jdbcConfiguration" location="classpath:jdbc.properties" />
-	
 </beans>

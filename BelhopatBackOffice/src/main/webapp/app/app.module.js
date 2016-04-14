@@ -9,7 +9,8 @@
         'app.constants',
         'app.common',
         'pascalprecht.translate',
-        'ghiscoding.validation'
+        'ghiscoding.validation',
+        'oitozero.ngSweetAlert'
     ]);
     window.app.config(['$locationProvider', function ($locationProvider) {
             $locationProvider.html5Mode({
