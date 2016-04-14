@@ -113,7 +113,6 @@
             	'ajax': urlConfig.http+window.location.host+urlConfig.api_root_path+"/getOfficialDetails",
                 'serverSide': true,
                 "bDestroy": true,
-//                "order": [[ 1, "asc" ]],
                 "language": {
                     zeroRecords: "No data to dispay"
                 },

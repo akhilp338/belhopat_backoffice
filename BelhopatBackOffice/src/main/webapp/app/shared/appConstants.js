@@ -8,6 +8,8 @@
             "api_root_path":"/BelhopatBackOffice/api/candidate"
         })
         .constant('candidate_table', {
-            "config": {}
+            "config": {
+            	"bSortable":true
+            }
         });;
 })();
