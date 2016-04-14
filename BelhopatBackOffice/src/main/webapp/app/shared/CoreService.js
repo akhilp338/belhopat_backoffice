@@ -99,7 +99,7 @@
         service.candidateRegister = function(url,postData){
         	var deferred = $q.defer();
         	console.log(postData);
-            Core_HttpRequest.postHttp(url,postData)
+            Core_HttpRequest.post(url,postData)
                     .then(function (response) {
                         deferred.resolve(response)
                     }, function (error) {
