@@ -1,13 +1,15 @@
 (function () {
     var Header_Ctrl = function ($scope, $state, $rootScope, Core_Service) {
         var vm = this;
-        vm.username = "arun";
-        vm.getTheme = function(){
-            angular.element("html").attr("class",vm.checkedValue);
-        };
+        vm.username = "arun"
         vm.logout = function(){
-           $state.go("login"); 
-        };
+        	Core_Service.ClearCredentials();
+        	$state.go('login');
+        }
+		vm.getTheme = function(){
+			angular.element("html").attr("class",vm.checkedValue);
+		};
+        vm.getUserName = $rootScope.globals.currentUser.username;
     };
     Header_Ctrl.$inject = ["$scope", '$state', '$rootScope', 'Core_Service'];
     angular.module('coreModule')

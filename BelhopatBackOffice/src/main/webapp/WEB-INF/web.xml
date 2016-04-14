@@ -29,5 +29,10 @@
     <param-name>javax.faces.INTERPRET_EMPTY_STRING_SUBMITTED_VALUES_AS_NULL</param-name>
     <param-value>true</param-value>
   </context-param>
+  
+  <error-page>
+    <error-code>404</error-code>
+    <location>/</location>
+</error-page>
    
 </web-app>

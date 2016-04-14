@@ -13,7 +13,7 @@
             preValidateFormElements: false,
             displayOnlyLastErrorMsg: true
         });
-
+        Core_Service.calculetSidebarHeight();
         vm.isCheckboxEnable = false;
         $scope.steps = [
             'Step 1: Personal Information',
@@ -101,7 +101,7 @@
                 vm.isCheckboxEnable = false;
             }
         };
-        vm.addCandidate = function(){
+        vm.addCandidate = function () {
             $state.go("coreuser.candidate.add");
         };
 
@@ -117,8 +117,8 @@
                 "language": {
                     zeroRecords: "No data to dispay"
                 },
-                 "processing": true,
-                 "sScrollX": '100%',
+                "processing": true,
+                "sScrollX": '100%',
                 "aoColumns": [{
                 	title: "DRIVING LICENCE NO",
                     data: 'drivingLicenceNo',
@@ -158,5 +158,3 @@
     angular.module('coreModule')
             .controller('Candidate_Ctrl', Candidate_Ctrl);
 })();
-
-

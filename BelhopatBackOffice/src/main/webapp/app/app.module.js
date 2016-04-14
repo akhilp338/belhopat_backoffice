@@ -10,7 +10,9 @@
         'app.common',
         'pascalprecht.translate',
         'ghiscoding.validation',
-        'oitozero.ngSweetAlert'
+        'oitozero.ngSweetAlert',
+        'ngCookies',
+        'ngStorage'
     ]);
     window.app.config(['$locationProvider', function ($locationProvider) {
             $locationProvider.html5Mode({

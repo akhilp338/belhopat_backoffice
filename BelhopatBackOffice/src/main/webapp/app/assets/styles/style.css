@@ -447,7 +447,7 @@ p.label-error, .label-error, .text-danger, .hasError, span.required {
 
 .btn-formsubmit,
 .btn-formsubmit:hover{
-    background-color: #8DC63F;
+    background-color: #009688;
     color: white;
 }
 
@@ -758,4 +758,19 @@ span.user-list-head {
 
 .add-candidate {
     width: 100%;
+}
+
+.modal-content{
+    border: 0;
+    border-radius: 0;
+}
+
+.modal-header {
+    background-color: #009688;
+    color: white;
+}
+
+.modal-dialog{
+    width: 30%;
+    margin: 100px auto;
 }
