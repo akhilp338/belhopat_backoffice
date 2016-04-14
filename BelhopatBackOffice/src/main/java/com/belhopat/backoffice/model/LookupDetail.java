@@ -67,9 +67,6 @@ public class LookupDetail {
 		this.decription = decription;
 	}
 	
-	public LookupDetail() {
-	}
-
 	@Override
 	public String toString() {
 		return "Lookup [id=" + id + ", lookup=" + lookup + ", code=" + code + ", decription=" + decription + "]";

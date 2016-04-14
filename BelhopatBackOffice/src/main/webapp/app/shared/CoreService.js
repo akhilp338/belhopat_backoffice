@@ -40,7 +40,7 @@
             return false;
         };
 
-        service.calculetSidebarHeight = function (time) {
+        service.calculateSidebarHeight = function (time) {
             time = time ? time : 200;
             $timeout(function () {
                 var height = angular.element(".page-content-div").height();

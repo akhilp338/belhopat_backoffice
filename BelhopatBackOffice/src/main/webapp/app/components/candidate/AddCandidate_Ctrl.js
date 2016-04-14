@@ -44,7 +44,7 @@
             {
                 $scope.selection = $scope.steps[index];
             }
-            Core_Service.calculetSidebarHeight();
+            Core_Service.calculateSidebarHeight();
         };
 
         $scope.hasNextStep = function () {
@@ -69,7 +69,7 @@
                 var nextStep = stepIndex + 1;
                 $scope.selection = $scope.steps[nextStep];
             }
-            Core_Service.calculetSidebarHeight();
+            Core_Service.calculateSidebarHeight();
         };
 
         $scope.decrementStep = function () {
@@ -79,7 +79,7 @@
                 var previousStep = stepIndex - 1;
                 $scope.selection = $scope.steps[previousStep];
             }
-            Core_Service.calculetSidebarHeight();
+            Core_Service.calculateSidebarHeight();
         };
 
         $rootScope.active = 'candidate';
@@ -112,7 +112,7 @@
         };
        
         //datatble ends
-        Core_Service.calculetSidebarHeight();
+        Core_Service.calculateSidebarHeight();
     };
     
     AddCandidate_Ctrl.$inject = ["$scope", '$state', '$rootScope', 'Core_Service', 'urlConfig', 'Core_HttpRequest', 'validationService'];
