@@ -1,5 +1,5 @@
 (function (angular) {
-    var Core_Service = function (Core_HttpRequest, $state, $http, $q,$cookieStore) {
+    var Core_Service = function ($rootScope,Core_HttpRequest,Base64, $state,$cookieStore, $http, $q) {
         var service = this;
 
         service.login = function (data) {
@@ -60,7 +60,7 @@
         };
     };
     
-    Core_Service.$inject = ['Core_HttpRequest', '$state', '$http', '$q','$cookieStore'];
+    Core_Service.$inject = ['$rootScope','Core_HttpRequest','Base64', '$state', '$cookieStore','$http', '$q'];
     angular.module('app.common')
             .service('Core_Service', Core_Service);
 })(angular);

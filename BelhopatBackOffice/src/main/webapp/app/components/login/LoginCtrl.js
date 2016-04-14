@@ -8,6 +8,7 @@
             if (vm.loginCreds.username && vm.loginCreds.password) {
            Core_Service.login(data).then(function (res){
                if(res){
+            	   Core_Service.SetCredentials(data.username,data.password);
                    $state.go("coreuser.dashboard");
                    vm.errorMessage = "";
                }
@@ -26,5 +27,6 @@
     
     Login_Ctrl.$inject = ["$scope", '$state', '$rootScope', 'Core_Service'];
     angular.module('coreModule')
-            .controller('Login_Ctrl', Login_Ctrl);
+            .controller('Login_Ctrl', Login_Ctrl)
+            
     })();

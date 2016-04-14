@@ -18,6 +18,7 @@
 
 <script src="app/app.module.js"></script>
 <script src="app/app.route.js"></script>
+<script src="app/shared/encode-util.js"></script>
 <script src="app/shared/appConstants.js"></script>
 <script src="app/shared/HttpRequest.js"></script>
 <script src="app/shared/CoreService.js"></script>
