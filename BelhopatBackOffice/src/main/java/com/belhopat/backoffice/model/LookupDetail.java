@@ -60,6 +60,9 @@ public class LookupDetail {
 	public void setDecription(String decription) {
 		this.decription = decription;
 	}
+	
+	public LookupDetail() {
+	}
 
 	@Override
 	public String toString() {
