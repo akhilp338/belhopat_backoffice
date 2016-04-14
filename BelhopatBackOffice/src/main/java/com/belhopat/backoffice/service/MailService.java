@@ -11,4 +11,6 @@ public interface MailService {
     void sendPasswordResetMail( String userEmail, String emailBody )
         throws MessagingException;
 
+	void sendCandidateRegMail(String userEmail, String emailBody) throws MessagingException;
+
 }

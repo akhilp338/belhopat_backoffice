@@ -15,4 +15,5 @@ public class Constants {
 	
 	/* mail constants */
 	public static final String PASS_RESET_MAIL_SUB = "Password Reset Mail";
+	public static final String CAND_REG_SUCC_MAIL_SUB = "Welcome to Belhopat Global Services";
 }
