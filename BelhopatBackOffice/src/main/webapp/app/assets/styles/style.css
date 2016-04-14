@@ -220,6 +220,11 @@ body {
     color: white;
 }
 
+.logout-button:hover{
+    text-decoration: none;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.23),0 3px 10px rgba(0,0,0,0.16);
+}
+
 .inner-header-header {
     background-image: url("../images/BelHoPat-Logo.png");
     background-repeat: no-repeat;
@@ -491,7 +496,7 @@ span.text-danger{
 
 .form-horizontal,
 #candidatesList_wrapper{
-    padding: 30px 20px 0 20px;
+    padding: 0 20px 0 20px;
 }
 
 .span4{
@@ -748,7 +753,9 @@ span.user-list-head {
 }
 
 .add-button{
-    margin-left: 1.7%!important;
+   margin-left: 3%!important;
+    font-size: 20px;
+    padding: 0;
 }
 
 .page-side-bar {
@@ -863,4 +870,53 @@ thead th:not(:last-child){
 
 .sub-content {
     min-height: 500px;
+}
+.action-buttons .actions{
+   cursor: pointer;
+    width: 30px;
+    height: 30px;
+    margin-left: 10px;
+}
+
+.action-buttons .actions:hover{
+   font-size: 24px; 
+}
+
+.action-buttons{
+    color: #009688;
+    float: left;
+    width: 100%;
+    text-align: center;
+}
+
+.button-column{
+    text-align: center;
+}
+
+input[type="search"] {
+    background-image: url("../images/search.png");
+    background-position: 4%center;
+    background-repeat: no-repeat;
+    background-size: 24px;
+    border-radius: 27px;
+    border: 1px solid #8FD8D1;
+    background-color: white!important;
+    padding-left: 40px;
+    height: 36px;
+}
+
+div#candidatesList_length {
+    margin-top: 10px;
+}
+
+div#candidatesList_length select {
+    width: 70px;
+    height: 25px;
+    border: 1px solid #8FD8D1;
+    border-radius: 10px;
+}
+
+div#candidatesList_length {
+    color: #009688;
+    margin-top: 10px;
 }

@@ -120,7 +120,11 @@
                 "processing": true,
                 "sScrollX": '100%',
                 "fnDrawCallback": function (settings, ajax) {
-                  Core_Service.calculateSidebarHeight();
+                    Core_Service.calculateSidebarHeight();
+                },
+                'language': {
+                    'search': '',
+                    'searchPlaceholder': 'Search'
                 },
                 "aoColumns": [{
                         title: "DRIVING LICENCE NO",
@@ -142,13 +146,18 @@
                         data: 'forexCardAgency',
                     }, {
                         data: 'id',
-                        "bSortable": false,
-                        "render": function (data) {
-                            return "<button class='datatable_view  logout-button table-btn' type='button' value='" + data + "' ng-click='vm.getSelectedCandidate($event)'>view</button>"
+                        bSortable: false,
+                        sClass: "button-column",
+                        render: function (data) {
+                            return '<div class="action-buttons">' +
+                                    '<span  value="' + data + '" class="actions action-view fa-stack fa-lg pull-left" title="View"><i class="fa fa-eye" aria-hidden="true"></i></span>' +
+                                    '<span class="actions action-edit fa-stack fa-lg pull-left" title="Edit"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></i></span>' +
+                                    '<span class="actions action-delete fa-stack fa-lg pull-left" title="Delete"><i class="fa fa-user-times" aria-hidden="true"></i></span>' +
+                                    '</div>'
                         }
                     }]
             });
-            $('#candidatesList').on('click', '.datatable_view', function () {
+            $('#candidatesList').on('click', '.action-view', function () {
                 var data = oTable.row($(this).parents('tr')).data();
                 console.log(data);
                 console.log(vm)
