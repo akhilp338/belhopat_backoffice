@@ -36,6 +36,7 @@ public class CandidateServiceImpl implements CandidateService{
 
 	@Override
 	public ResponseEntity<Void> saveOrUpdateCandidate(Candidate candidate) {
+		candidate.setBaseAttributes(new User(1L));
 		candidateRepository.save(candidate);
 		return new ResponseEntity<Void>(HttpStatus.OK);
 	}
