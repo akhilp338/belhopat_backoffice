@@ -52,7 +52,7 @@
         };
 
         service.sendPassword = function (data) {
-           var url = "user/forgotPassword"
+           var url = "/forgotPassword"
            Core_HttpRequest.postHttp(url,data)
         };
         service.SetCredentials = function (username, password) {

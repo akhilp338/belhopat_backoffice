@@ -1,7 +1,6 @@
 package com.belhopat.backoffice.controller;
 
-import java.util.List;
-
+import javax.mail.MessagingException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 
@@ -15,6 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.belhopat.backoffice.model.User;
 import com.belhopat.backoffice.service.LoginService;
+import com.belhopat.backoffice.service.UserService;
 import com.belhopat.backoffice.session.SessionManager;
 
 @RestController
@@ -23,6 +23,9 @@ public class LoginController {
 
 	@Autowired
 	LoginService loginService;
+	
+	@Autowired
+	UserService userService;
 	
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
 	public ResponseEntity<User> authentication(@RequestBody User user,HttpServletRequest request) throws ServletException {
@@ -38,5 +41,14 @@ public class LoginController {
 	    	request.getSession().invalidate();
 	    	request.logout();
 	    }
+	
+    @RequestMapping(value = "/forgotPassword", method = RequestMethod.POST)
+    public ResponseEntity<String> forgotPassword( @RequestBody User user ) throws MessagingException {
+    	boolean userStatus = userService.generatePasswordResetLink( user.getEmail() );
+    	if(userStatus)
+    		return new ResponseEntity<String>("New password has been sent to your registered email.",HttpStatus.OK);
+    	else
+    		return new ResponseEntity<String>("User account does not exist. Please contact administrator.",HttpStatus.OK);
+    }
 	 
 }
