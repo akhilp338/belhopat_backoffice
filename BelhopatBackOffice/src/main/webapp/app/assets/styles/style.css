@@ -597,6 +597,13 @@ span.user-list-head {
     background-color: #546E7A;
 }
 
+button#logout {
+    font-size: 20px;
+    width: 52px;
+    padding: 0;
+    margin-top: 12px;
+}
+
 .theme2 footer.footer-div-content {
     background-color: #263238; 
 }
