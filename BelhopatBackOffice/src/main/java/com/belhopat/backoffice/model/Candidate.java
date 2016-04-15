@@ -3,6 +3,7 @@ package com.belhopat.backoffice.model;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
@@ -50,13 +51,13 @@ public class Candidate extends BaseEntity {
 	@JsonIgnore
 	private List<FamilyMember> familyMembers;
 
-	@OneToOne
+	@OneToOne(cascade = CascadeType.ALL)
 	private Address currentAddress;
 
-	@OneToOne
+	@OneToOne(cascade = CascadeType.ALL)
 	private Address permanentAddress;
 
-	@OneToOne
+	@OneToOne(cascade = CascadeType.ALL)
 	private Address onsiteAddress;
 
 	@OneToMany
@@ -77,13 +78,13 @@ public class Candidate extends BaseEntity {
 
 	private String partner;
 
-	@OneToOne
+	@OneToOne(cascade = CascadeType.ALL)
 	private BankAccount bankAccount;
 
-	@OneToOne
+	@OneToOne(cascade = CascadeType.ALL)
 	private Passport passport;
 
-	@OneToOne
+	@OneToOne(cascade = CascadeType.ALL)
 	private OfficialCards officialDetails;
 
 	private Date doj;

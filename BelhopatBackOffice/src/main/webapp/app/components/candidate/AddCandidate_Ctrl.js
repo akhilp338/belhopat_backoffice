@@ -118,6 +118,31 @@
             	
             });
         };
+        //To Do(move these methods to base controller)
+        vm.getStatesByCountry = function(){
+        	var countryId = vm.registration.currentAddress.city.state.country.id,
+        	data = {"id":countryId};
+        	vm.apiUrl = "api/getStatesByCountry";
+        	vm.states = vm.defaultApiByIdAndUrl(data,vm.apiUrl)
+        	console.log(vm.states);
+        }
+        vm.getCitiesByStates = function(){
+        	var stateId = vm.registration.currentAddress.city.state.id,
+        	data = {"id":stateId};
+        	vm.apiUrl = "api/getCitiesByState";
+        	vm.cities = vm.defaultApiByIdAndUrl(data,vm.apiUrl)
+        	console.log(vm.cities);
+        }
+        
+        vm.defaultApiByIdAndUrl = function(data,url){
+            Core_Service.defaultApiByIdAndUrlImpl(url,data)
+            .then( function(response) {
+            	vm.states =  response.data;
+            	console.log(vm.states);
+            },function(error){
+            	console.log('theng...')
+            });
+        }
         
         Core_Service.calculateSidebarHeight();
     };
