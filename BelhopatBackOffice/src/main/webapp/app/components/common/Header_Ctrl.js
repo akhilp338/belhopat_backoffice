@@ -9,7 +9,7 @@
 		vm.getTheme = function(){
 			angular.element("html").attr("class",vm.checkedValue);
 		};
-        vm.getUserName = $rootScope.globals.currentUser.username;
+        vm.getUserName = localStorage["userName"];
     };
     Header_Ctrl.$inject = ["$scope", '$state', '$rootScope', 'Core_Service'];
     angular.module('coreModule')
