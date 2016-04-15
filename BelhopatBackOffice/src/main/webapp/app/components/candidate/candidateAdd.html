@@ -86,7 +86,7 @@
 								Contact No</label>
 							<div class="controls">
 								<input type="text" name="personal_contact" id="personal_contact"
-									ng-model="vm.registration.personal_contact"
+									ng-model="vm.registration.personalContactNo"
 									class="form-input width-100" placeholder="Personal Contact No"
 									validation="required:alt=Required field" />
 							</div>
@@ -96,7 +96,7 @@
 								Id</label>
 							<div class="controls">
 								<input type="text" name="email" id="email"
-									ng-model="vm.registration.email" class="form-input width-100"
+									ng-model="vm.registration.personalEmail" class="form-input width-100"
 									placeholder="Personal Email Id"
 									validation="email:alt=email id not valid|required:alt=Required field" />
 							</div>
@@ -106,7 +106,7 @@
 								Email Id</label>
 							<div class="controls">
 								<input type="text" name="ofc_email" id="ofc_email"
-									ng-model="vm.registration.ofc_email"
+									ng-model="vm.registration.officialEmail"
 									class="form-input width-100" placeholder="Official Email Id"
 									validation="email:alt=email id not valid|required:alt=Required field" />
 							</div>
@@ -116,7 +116,7 @@
 								Contact</label>
 							<div class="controls">
 								<input type="text" name="ofc_contact" id="ofc_contact"
-									ng-model="vm.registration.ofc_contact"
+									ng-model="vm.registration.officialContactNo"
 									class="form-input width-100" placeholder="Country Of Origin"
 									validation="required:alt=Required field" />
 							</div>
@@ -125,14 +125,14 @@
 				</div>
 
 				<div class="row">
-					<span class="sub-section width-100">Permenant Address</span>
+					<span class="sub-section width-100">permanent Address</span>
 					<div class="span4">
 						<div class="control-group width-30 pull-left">
 							<label class="control-label" for="address_line1">Address
 								Line 1</label>
 							<div class="controls">
 								<input type="text" name="address_line1" id="address_line1"
-									ng-model="vm.registration.permenant.address_line1"
+									ng-model="vm.registration.permanentAddress.address1"
 									class="form-input width-100" placeholder="Address Line 1"
 									validation="required:alt=Required field"
 									ng-change="vm.checkAddress()" />
@@ -143,7 +143,7 @@
 								Line 2</label>
 							<div class="controls">
 								<input type="text" name="address_line2" id="address_line1"
-									ng-model="vm.registration.permenant.address_line2"
+									ng-model="vm.registration.permanentAddress.address2"
 									class="form-input width-100" placeholder="Address Line 2"
 									ng-change="vm.checkAddress()" />
 							</div>
@@ -152,7 +152,7 @@
 							<label class="control-label" for="city">City</label>
 							<div class="controls">
 								<input type="text" name="city" id="city"
-									ng-model="vm.registration.permenant.city"
+									ng-model="vm.registration.permanentAddress.city.id"
 									class="form-input width-100" placeholder="City"
 									validation="required:alt=Required field"
 									ng-change="vm.checkAddress()" />
@@ -162,7 +162,7 @@
 							<label class="control-label" for="state">State</label>
 							<div class="controls">
 								<input type="text" name="state" id="state"
-									ng-model="vm.registration.permenant.state"
+									ng-model="vm.registration.permanentAddress.city.state.id"
 									class="form-input width-100" placeholder="State"
 									validation="required:alt=Required field"
 									ng-change="vm.checkAddress()" />
@@ -172,7 +172,7 @@
 							<label class="control-label" for="country">Country</label>
 							<div class="controls">
 								<input type="text" name="country" id="country"
-									ng-model="vm.registration.permenant.country"
+									ng-model="vm.registration.permanentAddress.city.state.country.id"
 									class="form-input width-100" placeholder="Country"
 									validation="required:alt=Required field"
 									ng-change="vm.checkAddress()" />
@@ -182,7 +182,7 @@
 							<label class="control-label" for="zip_code">ZIP Code</label>
 							<div class="controls">
 								<input type="text" name="zip_code" id="zip_code"
-									ng-model="vm.registration.permenant.zip_code"
+									ng-model="vm.registration.permanentAddress.zipCode"
 									class="form-input width-100" placeholder="ZIP Code"
 									validation="required:alt=Required field"
 									ng-change="vm.checkAddress()" />
@@ -197,7 +197,7 @@
 						<input type="checkbox" id="checkbox1" ng-model="vm.isChecked"
 							class="styled" ng-disabled="!vm.isCheckboxEnable"
 							ng-change="vm.copyAddress()"> <label for="checkbox1">
-							Same as permenant address </label>
+							Same as permanent address </label>
 					</div>
 
 					<div class="span4">
@@ -206,7 +206,7 @@
 								Line 1</label>
 							<div class="controls">
 								<input type="text" name="address_line1" id="address_line1"
-									ng-model="vm.registration.current.address_line1"
+									ng-model="vm.registration.currentAddress.address1"
 									class="form-input width-100" placeholder="Address Line 1"
 									validation="required:alt=Required field" />
 							</div>
@@ -216,7 +216,7 @@
 								Line 2</label>
 							<div class="controls">
 								<input type="text" name="address_line2" id="address_line1"
-									ng-model="vm.registration.current.address_line2"
+									ng-model="vm.registration.currentAddress.address2"
 									class="form-input width-100" placeholder="Address Line 2" />
 							</div>
 						</div>
@@ -224,7 +224,7 @@
 							<label class="control-label" for="city">City</label>
 							<div class="controls">
 								<input type="text" name="city" id="city"
-									ng-model="vm.registration.current.city"
+									ng-model="vm.registration.currentAddress.city.id"
 									class="form-input width-100" placeholder="City"
 									validation="required:alt=Required field" />
 							</div>
@@ -233,7 +233,7 @@
 							<label class="control-label" for="state">State</label>
 							<div class="controls">
 								<input type="text" name="state" id="state"
-									ng-model="vm.registration.current.state"
+									ng-model="vm.registration.currentAddress.city.state.id"
 									class="form-input width-100" placeholder="State"
 									validation="required:alt=Required field" />
 							</div>
@@ -242,7 +242,7 @@
 							<label class="control-label" for="country">Country</label>
 							<div class="controls">
 								<input type="text" name="country" id="country"
-									ng-model="vm.registration.current.country"
+									ng-model="vm.registration.currentAddress.city.state.country.id"
 									class="form-input width-100" placeholder="Country"
 									validation="required:alt=Required field" />
 							</div>
@@ -251,7 +251,7 @@
 							<label class="control-label" for="zip_code">ZIP Code</label>
 							<div class="controls">
 								<input type="text" name="zip_code" id="zip_code"
-									ng-model="vm.registration.current.zip_code"
+									ng-model="vm.registration.currentAddress.zipCode"
 									class="form-input width-100" placeholder="ZIP Code"
 									validation="required:alt=Required field" />
 							</div>
@@ -287,7 +287,7 @@
 						<div class="control-group width-30 pull-left margin-left-5">
 							<label class="control-label" for="division">Division</label>
 							<div class="controls">
-								<select ng-model="vm.registration.division"
+								<select ng-model="vm.registration.division.id"
 									class="form-input width-100">
 									<option ng-repeat="division in vm.lookups.DIV" value="{{division.id}}">{{division.description}}</option>
 								</select>
@@ -296,7 +296,7 @@
 						<div class="control-group width-30 pull-left">
 							<label class="control-label" for="designation">Designation</label>
 							<div class="controls">
-								<select ng-model="vm.registration.designation"
+								<select ng-model="vm.registration.designation.id"
 									class="form-input width-100">
 									<option ng-repeat="designation in vm.lookups.DESIG" value="{{designation.id}}">{{designation.description}}</option>
 								</select>
@@ -306,7 +306,7 @@
 						<div class="control-group width-30 pull-left margin-left-5">
 							<label class="control-label" for="gender">Employment Status</label>
 							<div class="controls">
-								<select ng-model="vm.registration.empStatus"
+								<select ng-model="vm.registration.employmentStatus.id"
 									class="form-input width-100">
 									<option ng-repeat="empStatus in vm.lookups.ESTATS" value="{{empStatus.id}}">{{empStatus.description}}</option>
 								</select>
@@ -315,7 +315,7 @@
 						<div class="control-group width-30 pull-left margin-left-5">
 							<label class="control-label" for="purpose">Purpose</label>
 							<div class="controls">
-								<select ng-model="vm.registration.purpose"
+								<select ng-model="vm.registration.purpose.id"
 									class="form-input width-100">
 									<option ng-repeat="purpose in vm.lookups.PURPO" value="{{purpose.id}}">{{purpose.description}}</option>
 								</select>
