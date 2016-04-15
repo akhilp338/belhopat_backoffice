@@ -103,7 +103,7 @@ public class Candidate extends BaseEntity {
 	@ManyToOne
 	private LookupDetail registrationStatus;
 
-	private String SourcedBy;
+	private String sourcedBy;
 
 	public String getCandidateId() {
 		return candidateId;
@@ -386,11 +386,11 @@ public class Candidate extends BaseEntity {
 	}
 
 	public String getSourcedBy() {
-		return SourcedBy;
+		return sourcedBy;
 	}
 
 	public void setSourcedBy(String sourcedBy) {
-		SourcedBy = sourcedBy;
+		sourcedBy = sourcedBy;
 	}
 
 }
