@@ -44,6 +44,24 @@ $locationProvider.html5Mode(true);
                     controllerAs: 'vm'
                 }
             }
+        }).state('coreuser.success', {
+            url: urlConfig.root_path+'loginSuccess',
+            views: {
+                'content@': {
+                    templateUrl: 'app/components/dashboard/dashboard.html',
+                    controller: 'Dash_Ctrl',
+                    controllerAs: 'vm'
+                }
+            }
+        }).state('login.error', {
+            url: urlConfig.root_path+'loginerror',
+            views: {
+                'content@': {
+                    templateUrl: 'app/components/login/login.html',
+                    controller: 'Login_Ctrl',
+                    controllerAs: 'vm'
+                }
+            }
         }).state('coreuser.candidate', {
             url: urlConfig.root_path+'candidate',
             views: {

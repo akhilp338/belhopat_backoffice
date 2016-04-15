@@ -99,6 +99,7 @@
             var deferred = $q.defer();
             Core_HttpRequest.post(url)
                     .then(function (response) {
+                    	console.log(response);
                         deferred.resolve(response)
                     }, function (error) {
                         deferred.reject(error)
@@ -121,6 +122,15 @@
         service.sweetAlert = function(congrats,message,type){
             swal(congrats, message, type)
         };
+        
+        service.getUserName = function(){
+            Core_HttpRequest.post('api/getUserName')
+                    .then(function (response) {
+                        return response;
+                    }, function (error) {
+                        return error;
+                    });
+        }
     };
     Core_Service.$inject = ['$rootScope', 'Core_HttpRequest', 'Base64', '$state', '$cookieStore', '$sessionStorage', '$http', '$q', '$timeout'];
     angular.module('app.common')
