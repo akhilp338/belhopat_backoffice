@@ -768,7 +768,7 @@ button#logout {
 }
 
 .add-button{
-   margin-left: 3%!important;
+    margin-left: 3%!important;
     font-size: 20px;
     padding: 0;
 }
@@ -799,22 +799,36 @@ button#logout {
     margin: 100px auto;
 }
 
-input[type=text], textarea {
-  -webkit-transition: all 0.30s ease-in-out;
-  -moz-transition: all 0.30s ease-in-out;
-  -ms-transition: all 0.30s ease-in-out;
-  -o-transition: all 0.30s ease-in-out;
-  outline: none;
-  padding: 3px 0px 3px 3px;
-  margin: 5px 1px 3px 0px;
-  border: 1px solid #DDDDDD;
+.view-modal .modal-dialog{
+    width: 50%;
+    margin: 100px auto;
 }
- 
+
+.edit-modal .modal-dialog{
+    width: 70%;
+    margin: 100px auto;
+}
+
+.view-modal .modal-footer{
+    text-align: center;
+}
+
+input[type=text], textarea {
+    -webkit-transition: all 0.30s ease-in-out;
+    -moz-transition: all 0.30s ease-in-out;
+    -ms-transition: all 0.30s ease-in-out;
+    -o-transition: all 0.30s ease-in-out;
+    outline: none;
+    padding: 3px 0px 3px 3px;
+    margin: 5px 1px 3px 0px;
+    border: 1px solid #DDDDDD;
+}
+
 input[type=text]:focus, textarea:focus {
-  box-shadow: 0 0 5px rgba(81, 203, 238, 1);
-  padding: 3px 0px 3px 3px;
-  margin: 5px 1px 3px 0px;
-  border: 1px solid rgba(81, 203, 238, 1);
+    box-shadow: 0 0 5px rgba(81, 203, 238, 1);
+    padding: 3px 0px 3px 3px;
+    margin: 5px 1px 3px 0px;
+    border: 1px solid rgba(81, 203, 238, 1);
 }
 
 input.ng-touched.ng-invalid {
@@ -842,7 +856,7 @@ thead th {
     padding-left: 10px!important;    
 }
 thead th:not(:last-child){
-  border-right: 1px solid #DDDDDD;  
+    border-right: 1px solid #DDDDDD;  
 }
 
 .copyright.text-center {
@@ -887,14 +901,14 @@ thead th:not(:last-child){
     min-height: 500px;
 }
 .action-buttons .actions{
-   cursor: pointer;
+    cursor: pointer;
     width: 30px;
     height: 30px;
     margin-left: 10px;
 }
 
 .action-buttons .actions:hover{
-   font-size: 24px; 
+    font-size: 24px; 
 }
 
 .action-buttons{
@@ -935,3 +949,37 @@ div#candidatesList_length {
     color: #009688;
     margin-top: 10px;
 }
+
+.cat-row span {
+    float: left;
+}
+
+.cat-row {
+    border: 1px solid #067373;
+    position: relative;
+    float: left;
+    display: block;
+    width: 100%;
+    border-bottom: none;
+    padding: 0 10px;
+}
+
+span.cat-value{
+    border-left: none;
+    width: 70%;
+    padding: 5px;
+}
+span.catagory {
+    width: 30%;
+    padding: 5px;
+    border-right: 1px solid #067373;
+}
+
+.cat-row:last-child {
+    border-bottom: 1px solid #067373;
+}
+
+.view-modal .btn-formsubmit {
+    margin-top: 20px;
+}
+

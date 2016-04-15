@@ -2,9 +2,9 @@
     'use strict';
     var Core_Routes = function ($stateProvider, $locationProvider, $urlRouterProvider,urlConfig) {
 $locationProvider.html5Mode(true);
-        $urlRouterProvider.otherwise(function () {
-            window.location = urlConfig.root_path;
-        });
+//        $urlRouterProvider.otherwise(function () {
+//            window.location = urlConfig.root_path;
+//        });
 
         $stateProvider
                 .state('coreuser', {
@@ -35,6 +35,15 @@ $locationProvider.html5Mode(true);
                             controllerAs: 'vm'
                         }
                     }
+                }).state('login.success', {
+                    url: urlConfig.root_path+"loginSuccess",
+                    views: {
+                        'content@': {
+                            templateUrl: 'app/components/dashboard/dashboard.html',
+                            controller: 'Dash_Ctrl',
+                            controllerAs: 'vm'
+                        }
+                    }
                 }).state('coreuser.dashboard', {
             url: urlConfig.root_path+'dashboard',
             views: {
@@ -55,6 +64,18 @@ $locationProvider.html5Mode(true);
             }
         }).state('coreuser.candidate.add', {
             url: '/add',
+            views: {
+                'sidebar@':{
+                    templateUrl: 'app/components/common/defaultTemplate.html' 
+                },
+                'content@': {
+                    templateUrl: 'app/components/candidate/candidateAdd.html',
+                    controller: 'AddCandidate_Ctrl',
+                    controllerAs: 'vm'
+                }
+            }
+        }).state('coreuser.candidate.edit', {
+            url: '/edit/:id',
             views: {
                 'sidebar@':{
                     templateUrl: 'app/components/common/defaultTemplate.html' 
