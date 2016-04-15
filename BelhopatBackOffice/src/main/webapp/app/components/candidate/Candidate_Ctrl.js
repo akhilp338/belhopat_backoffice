@@ -116,6 +116,7 @@
         vm.deleteCandidate = function (data) {
             Core_ModalService.opendeleteCandidateModal(data);
         };
+        
         angular.element(document).ready(function () {
             var oTable = angular.element('#candidatesList').DataTable({
                 'ajax': urlConfig.http + window.location.host + urlConfig.api_root_path + "candidate/getOfficialDetails",
@@ -175,10 +176,20 @@
             $('#candidatesList').on('click', '.action-delete', function () {
                 var data = oTable.row($(this).parents('tr')).data();
                 var table = angular.element('#candidatesList').dataTable();
-                vm.deleteCandidate(oTable);
+//                vm.deleteCandidate(this.value);
+                vm.candidateDelete(this.value);
             });
 
         });
+        vm.candidateDelete = function(id){
+        	vm.deleteUrl = "api/candidate/deleteCandidate";
+            Core_Service.candidateDeleteImpl(vm.deleteUrl,id)
+            .then( function(response) {
+               console.log(response)
+            },function(error){
+            	
+            });
+        }
         Core_Service.calculateSidebarHeight();
     };
 

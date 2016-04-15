@@ -119,16 +119,6 @@
             });
         };
         
-        vm.candidateDelete = function(id){
-        	vm.deleteUrl = "api/candidate/deleteCandidate";
-            Core_Service.candidateDeleteImpl(vm.deleteUrl,id)
-            .then( function(response) {
-               console.log(response)
-            },function(error){
-            	
-            });
-        }
-       
         Core_Service.calculateSidebarHeight();
     };
     
