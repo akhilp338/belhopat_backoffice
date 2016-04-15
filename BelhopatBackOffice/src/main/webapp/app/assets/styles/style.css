@@ -685,8 +685,8 @@ button#logout {
     background-color: #E0F2F1;
 }
 
-.theme3 table thead tr,
-.theme3 table tfoot tr{
+.theme3 table.dataTable thead tr,
+.theme3 table.dataTable tfoot tr{
     background-color: rgb(0, 150, 136);  
 }
 
@@ -866,10 +866,10 @@ input.ng-touched.ng-valid{
     width: 100%;
 }
 
-thead th {
+.dataTable thead th {
     padding-left: 10px!important;    
 }
-thead th:not(:last-child){
+.dataTable thead th:not(:last-child){
     border-right: 1px solid #DDDDDD;  
 }
 
