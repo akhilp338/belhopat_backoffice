@@ -12,11 +12,16 @@ import org.springframework.stereotype.Component;
 import com.belhopat.backoffice.model.Candidate;
 import com.belhopat.backoffice.model.User;
 import com.belhopat.backoffice.repository.CandidateRepository;
+import com.belhopat.backoffice.service.BaseService;
 import com.belhopat.backoffice.service.CandidateService;
 import com.belhopat.backoffice.session.SessionManager;
+import com.belhopat.backoffice.util.sequence.SequenceGenerator;
 
 @Component
 public class CandidateServiceImpl implements CandidateService{
+	
+	@Autowired
+	BaseService baseService;
 	
 	@Autowired
 	CandidateRepository candidateRepository;
@@ -39,6 +44,8 @@ public class CandidateServiceImpl implements CandidateService{
 	@Override
 	public ResponseEntity<Void> saveOrUpdateCandidate(Candidate candidate) {
 		candidate.setBaseAttributes(new User(1L));
+		if( candidate.getId() == null ){ candidate.setCandidateId ( SequenceGenerator.generateCandidateId(
+				baseService.getSequenceIncrement( Candidate.class ) ) ); }
 		candidateRepository.save(candidate);
 		return new ResponseEntity<Void>(HttpStatus.OK);
 	}
