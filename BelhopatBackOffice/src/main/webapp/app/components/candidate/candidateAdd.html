@@ -60,7 +60,7 @@
 						<div class="control-group width-30 pull-left margin-left-5">
 							<label class="control-label" for="dob">Blood Group</label>
 							<div class="controls">
-								<select ng-model="vm.registration.bloodGroup"
+								<select ng-model="vm.registration.bloodGroup.id"
 									class="form-input width-100">
 									<option ng-repeat="bloodGroup in vm.lookups.BG" value="{{bloodGroup.id}}">{{bloodGroup.code}}</option>
 								</select>
@@ -69,7 +69,7 @@
 						<div class="control-group width-30 pull-left">
 							<label class="control-label" for="coo">Country Of Origin</label>
 							<div class="controls">
-								<select ng-model="vm.registration.countryOfOrigin"
+								<select ng-model="vm.registration.countryOfOrigin.id"
 									class="form-input width-100">
 									<option ng-repeat="bloodGroup in vm.lookups.BG" value="{{bloodGroup.id}}">{{bloodGroup.code}}</option>
 								</select>

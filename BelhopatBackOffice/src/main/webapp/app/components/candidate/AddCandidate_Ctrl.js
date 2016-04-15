@@ -111,7 +111,7 @@
         vm.candidateRegister = function(){
         	console.log(vm.registration);
         	vm.registerUrl = "api/candidate/saveOrUpdateCandidate";
-            Core_Service.candidateRegisterImpl(vm.urlForRegister,vm.registration)
+            Core_Service.candidateRegisterImpl(vm.registerUrl,vm.registration)
             .then( function(response) {
                console.log(response)
             },function(error){
