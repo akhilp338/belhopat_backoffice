@@ -119,40 +119,44 @@
         
         angular.element(document).ready(function () {
             var oTable = angular.element('#candidatesList').DataTable({
-                'ajax': urlConfig.http + window.location.host + urlConfig.api_root_path + "candidate/getOfficialDetails",
-                'serverSide': true,
-                "bDestroy": true,
-                "language": {
-                    zeroRecords: "No data to dispay"
-                },
-                "processing": true,
-                "sScrollX": '100%',                
-                "fnDrawCallback": function (settings, ajax) {
+                ajax: urlConfig.http + window.location.host + urlConfig.api_root_path + "candidate/getCandidates",
+                serverSide: true,
+                bDestroy: true,
+                processing: true,
+                sScrollX: '100%',                
+                fnDrawCallback: function (settings, ajax) {
                     Core_Service.calculateSidebarHeight();
                 },
-                'language': {
-                    'search': '',
-                    'searchPlaceholder': 'Search'
+                language: {
+                	zeroRecords: "No data to dispay",
+                    searchPlaceholder: 'Search',
+                    search: ''
                 },
-                "aoColumns": [{
-                        title: "DRIVING LICENCE NO",
-                        data: 'drivingLicenceNo',
+                aoColumns: [{
+                        title: "Candidate ID",
+                        data: 'candidateId',
                     }, {
-                        title: "PAN NO",
-                        data: 'panno',
+                        title: "Name",
+                        data: 'firstName',
                     }, {
-                        title: "ESI NO",
-                        data: 'esino',
+                        title: "Email",
+                        data: 'officialEmail',
                     }, {
-                        title: "PF NO",
-                        data: 'pfno',
+                        title: "Contact No:",
+                        data: 'officialContactNo',
                     }, {
-                        title: "FOREX CARD NO",
-                        data: 'forexCardNo',
+                        title: "Country To Visit",
+                        data: 'countryToVisit.description',
                     }, {
-                        title: "FOREX CARD AGENCY",
-                        data: 'forexCardAgency',
+                        title: "Division",
+                        data: 'division',
                     }, {
+                        title: "Designation",
+                        data: 'designation',
+                    }, {
+                        title: "Employment Status",
+                        data: 'employmentStatus',
+                    },{
                         data: 'id',
                         bSortable: false,
                         sClass: "button-column",
