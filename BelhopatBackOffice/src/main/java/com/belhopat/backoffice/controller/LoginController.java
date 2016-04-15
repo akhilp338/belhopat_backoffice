@@ -55,7 +55,7 @@ public class LoginController {
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 		System.out.println("asdasd");
 		if (auth != null) {
-			System.out.println("error");
+			System.out.println("success");
 			model.addObject("user", auth.getName());
 		}
 		model.setViewName("/index");
