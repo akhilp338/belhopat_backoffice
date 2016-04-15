@@ -159,9 +159,12 @@
                         sClass: "button-column",
                         render: function (data) {
                             return '<div class="action-buttons">' +
-                                    '<span  value="' + data + '" class="actions action-view fa-stack fa-lg pull-left" title="View"><i class="fa fa-eye" aria-hidden="true"></i></span>' +
-                                    '<span value="' + data + '" class="actions action-edit fa-stack fa-lg pull-left" title="Edit"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></i></span>' +
-                                    '<span value="' + data + '" class="actions action-delete fa-stack fa-lg pull-left" title="Delete"><i class="fa fa-user-times" aria-hidden="true"></i></span>' +
+                                    '<span  value="' + data + '" class="actions action-view fa-stack fa-lg pull-left" title="View">'+
+                                    '<i class="fa fa-eye" aria-hidden="true"></i></span>' +
+                                    '<span value="' + data + '" class="actions action-edit fa-stack fa-lg pull-left" title="Edit">'+
+                                    '<i class="fa fa-pencil-square-o" aria-hidden="true"></i></i></span>' +
+                                    '<span value="' + data + '" class="actions action-delete fa-stack fa-lg pull-left" title="Delete">'+
+                                    '<i class="fa fa-user-times" aria-hidden="true"></i></span>' +
                                     '</div>'
                         }
                     }]
@@ -204,6 +207,31 @@
             	
             });
         }
+        //To Do(move these methods to base controller)
+        vm.getStatesByCountry = function(){
+        	var countryId = vm.registration.permanentAddress.city.state.country.id,
+        	data = {"id":countryId};
+        	alert(countryId);
+        	vm.apiUrl = "api/candidate/deleteCandidate";
+        	vm.defaultApiByIdAndUrl(data,vm.apiUrl)
+        }
+        vm.getCitiesByStates = function(){
+        	var stateId = vm.registration.permanentAddress.city.state.id,
+        	data = {"id":stateId};
+        	alert(stateId);
+        	vm.apiUrl = "api/candidate/deleteCandidate";
+        	vm.defaultApiByIdAndUrl(data,vm.apiUrl)
+        }
+        
+        vm.defaultApiByIdAndUrl = function(url,data){
+            Core_Service.defaultApiByIdAndUrlImpl(url,data)
+            .then( function(response) {
+               console.log(response)
+            },function(error){
+            	
+            });
+        }
+        
         Core_Service.calculateSidebarHeight();
     };
 

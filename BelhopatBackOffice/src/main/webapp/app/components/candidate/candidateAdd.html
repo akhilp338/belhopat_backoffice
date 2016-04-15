@@ -119,7 +119,7 @@
 							<div class="controls">
 								<input type="text" name="ofc_contact" id="ofc_contact"
 									ng-model="vm.registration.officialContactNo"
-									class="form-input width-100" placeholder="Country Of Origin"
+									class="form-input width-100" placeholder="Official Contact"
 									validation="required:alt=Required field" />
 							</div>
 						</div>
@@ -155,7 +155,7 @@
 							<div class="controls">
 								<select
 									ng-model="vm.registration.permanentAddress.city.state.country.id"
-									class="form-input width-100" ng-change="vm.checkAddress()">
+									class="form-input width-100" ng-change="vm.getStatesByCountry()">
 									<option ng-repeat="bloodGroup in vm.lookups.BG"
 										value="{{bloodGroup.id}}">{{bloodGroup.code}}</option>
 								</select>
@@ -166,7 +166,7 @@
 							<div class="controls">
 								<select
 									ng-model="vm.registration.permanentAddress.city.state.id"
-									class="form-input width-100" ng-change="vm.checkAddress()">
+									class="form-input width-100" ng-change="vm.getCitiesByStates()">
 									<option ng-repeat="bloodGroup in vm.lookups.BG"
 										value="{{bloodGroup.id}}">{{bloodGroup.code}}</option>
 								</select>
@@ -229,7 +229,7 @@
 							<div class="controls">
 								<select
 									ng-model="vm.registration.currentAddress.city.state.country.id"
-									class="form-input width-100" ng-change="vm.checkAddress()">
+									class="form-input width-100" ng-change="vm.getStatesByCountry()">
 									<option ng-repeat="bloodGroup in vm.lookups.BG"
 										value="{{bloodGroup.id}}">{{bloodGroup.code}}</option>
 								</select>
@@ -240,7 +240,7 @@
 							<div class="controls">
 								<select
 									ng-model="vm.registration.currentAddress.city.state.id"
-									class="form-input width-100" ng-change="vm.checkAddress()">
+									class="form-input width-100" ng-change="vm.getCitiesByStates()">
 									<option ng-repeat="bloodGroup in vm.lookups.BG"
 										value="{{bloodGroup.id}}">{{bloodGroup.code}}</option>
 								</select>
@@ -393,7 +393,7 @@
 							<div class="controls">
 								<select
 									ng-model="vm.registration.onsiteAddress.city.state.country.id"
-									class="form-input width-100" ng-change="vm.checkAddress()">
+									class="form-input width-100" ng-change="vm.getStatesByCountry()">
 									<option ng-repeat="bloodGroup in vm.lookups.BG"
 										value="{{bloodGroup.id}}">{{bloodGroup.code}}</option>
 								</select>
