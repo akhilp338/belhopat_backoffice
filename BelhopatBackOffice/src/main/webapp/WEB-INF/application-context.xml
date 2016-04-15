@@ -39,7 +39,7 @@
 
 
 	<import resource="dao-definition.xml" />
-	<!-- <import resource="spring-security.xml" /> -->
+ <import resource="spring-security.xml" /> 
 	
 	<bean id="taskExecutor"
 		class="org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor">
