@@ -139,9 +139,6 @@
                         title: "Name",
                         data: 'firstName',
                     }, {
-                        title: "Email",
-                        data: 'officialEmail',
-                    }, {
                         title: "Contact No:",
                         data: 'officialContactNo',
                     }, {
@@ -149,13 +146,13 @@
                         data: 'countryToVisit.description',
                     }, {
                         title: "Division",
-                        data: 'division',
+                        data: 'division.description',
                     }, {
                         title: "Designation",
-                        data: 'designation',
+                        data: 'designation.code',
                     }, {
                         title: "Employment Status",
-                        data: 'employmentStatus',
+                        data: 'employmentStatus.description',
                     },{
                         data: 'id',
                         bSortable: false,
