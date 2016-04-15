@@ -40,6 +40,7 @@
 <script src="app/shared/CoreService.js"></script>
 <script src="app/shared/Core_Modal.js"></script>
 <script src="app/shared/CommonModalService.js"></script>
+<script src="app/components/common/directives.js"></script>
 <script src="app/components/login/LoginCtrl.js"></script>
 <script src="app/components/login/Forgotpassword_Ctrl.js"></script>
 <script src="app/components/common/Header_Ctrl.js"></script>
@@ -48,6 +49,7 @@
 <script src="app/components/candidate/Candidate_Ctrl.js"></script>
 <script src="app/components/candidate/AddCandidate_Ctrl.js"></script>
 <script src="app/components/candidate/ViewCandidate_Ctrl.js"></script>
+<script src="app/components/candidate/DeleteCandidate_Ctrl.js"></script>
 <script src="app/components/employee/Employee_Ctrl.js"></script>
 <script src="app/components/client/Client_Ctrl.js"></script>
 <script src="app/components/holiday/Holiday_Ctrl.js"></script>

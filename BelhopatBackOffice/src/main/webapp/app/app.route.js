@@ -65,6 +65,18 @@ $locationProvider.html5Mode(true);
                     controllerAs: 'vm'
                 }
             }
+        }).state('coreuser.candidate.edit', {
+            url: '/edit/:id',
+            views: {
+                'sidebar@':{
+                    templateUrl: 'app/components/common/defaultTemplate.html' 
+                },
+                'content@': {
+                    templateUrl: 'app/components/candidate/candidateAdd.html',
+                    controller: 'AddCandidate_Ctrl',
+                    controllerAs: 'vm'
+                }
+            }
         }).state('coreuser.employee', {
             url: urlConfig.root_path+'employee',
             views: {

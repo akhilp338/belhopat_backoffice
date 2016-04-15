@@ -1,6 +1,6 @@
 (function () {
-    var AddCandidate_Ctrl = function ($scope, $state, $rootScope, Core_Service, urlConfig, Core_HttpRequest, validationService) {
-        var vm = this,
+    var AddCandidate_Ctrl = function ($scope, $state, $rootScope, Core_Service, $timeout, Core_HttpRequest, validationService) {
+        var vm = this;
                 vs = new validationService({
                     controllerAs: vm
                 });
@@ -14,7 +14,16 @@
             displayOnlyLastErrorMsg: true
         });
 
-        vm.isCheckboxEnable = false;
+          vm.isCheckboxEnable = false;
+          vm.urlForLookups = "api/candidate/getDropDownData";
+       Core_Service.getAllLookupValues(vm.urlForLookups)
+        .then( function(response) {
+           console.log(response)
+           vm.lookups = response.data;
+        },function(error){
+        	
+        });
+        
         $scope.steps = [
             'Step 1: Personal Information',
             'Step 2: Employment Details',
@@ -22,16 +31,7 @@
             'Step 4: Family Details'
         ];
         $scope.selection = $scope.steps[0];
-        vm.urlForLookups = "api/candidate/getDropDownData";
-        Core_Service.getAllLookupValues(vm.urlForLookups)
-        .then( function(response) {
-           console.log(response)
-           vm.lookups = response.data;
-        },function(error){
-        	
-        });
         $scope.getCurrentStepIndex = function () {
-            // Get the index of the current step given selection
             return _.indexOf($scope.steps, $scope.selection);
         };
 
@@ -60,7 +60,7 @@
 
         $scope.incrementStep = function () {
             var stepIndex = $scope.getCurrentStepIndex();
-            vs.checkFormValidity($scope)
+            //vs.checkFormValidity($scope)
             if ($scope.hasNextStep())
             {
                 var nextStep = stepIndex + 1;
@@ -78,7 +78,7 @@
             }
             Core_Service.calculateSidebarHeight();
         };
-
+       
         $rootScope.active = 'candidate';
         vm.copyAddress = function () {
             console.log(vm.registration.permenant)
@@ -122,7 +122,7 @@
         Core_Service.calculateSidebarHeight();
     };
     
-    AddCandidate_Ctrl.$inject = ["$scope", '$state', '$rootScope', 'Core_Service', 'urlConfig', 'Core_HttpRequest', 'validationService'];
+    AddCandidate_Ctrl.$inject = ["$scope", '$state', '$rootScope', 'Core_Service', '$timeout', 'Core_HttpRequest', 'validationService'];
     angular.module('coreModule')
             .controller('AddCandidate_Ctrl', AddCandidate_Ctrl);
 })();

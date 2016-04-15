@@ -26,7 +26,7 @@
         });
 
         $rootScope.$on('$stateChangeSuccess', function (event, toState, toParams, fromState, fromParams) { 
-           $rootScope.addPage = toState.name == "coreuser.candidate.add" ?  true : false; 
+           $rootScope.addPage = (toState.name == "coreuser.candidate.add" || toState.name == "coreuser.candidate.edit") ?  true : false; 
            Core_Service.calculateSidebarHeight(1000)
            Core_Service.calculateSidebarHeight(1500)
         });
