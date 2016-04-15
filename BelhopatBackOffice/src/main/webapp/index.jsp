@@ -64,8 +64,8 @@ display: none !important;
 </head>
 
 <body ng-class="{'login-page':isLogin}" ng-cloak>
-<div class="error" ng-if="${error}">${error}</div>
-<div class="success" ng-if="${user}">${user}</div>
+    ${error}
+    ${user}
 
     <header ui-view="header" class="header-div"></header>
     <div ui-view="sidebar" class="page-side-bar"></div>
