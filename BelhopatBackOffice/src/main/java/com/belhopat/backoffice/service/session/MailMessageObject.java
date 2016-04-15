@@ -2,7 +2,6 @@ package com.belhopat.backoffice.service.session;
 
 import javax.activation.DataSource;
 import javax.mail.MessagingException;
-import javax.mail.Multipart;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 

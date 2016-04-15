@@ -25,15 +25,6 @@ public class Passport {
 	@ManyToOne
 	private Country country;
 
-	public Passport(Long id, String passportNo, Date issueDate, Date expiryDate, Country country) {
-		super();
-		this.id = id;
-		this.passportNo = passportNo;
-		this.issueDate = issueDate;
-		this.expiryDate = expiryDate;
-		this.country = country;
-	}
-
 	public Long getId() {
 		return id;
 	}
