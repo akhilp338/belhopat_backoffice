@@ -23,10 +23,6 @@
         });
 
         $rootScope.$on('$stateChangeStart', function (event, toState, toParams, fromState, fromParams) {
-            var isLogin = toState.name === "login";
-            if (isLogin) {
-                return;
-            }
         });
 
         $rootScope.$on('$stateChangeSuccess', function (event, toState, toParams, fromState, fromParams) {
