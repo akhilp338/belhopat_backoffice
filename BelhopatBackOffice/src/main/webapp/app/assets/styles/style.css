@@ -799,6 +799,15 @@ button#logout {
     margin: 100px auto;
 }
 
+.view-modal .modal-dialog{
+    width: 50%;
+    margin: 100px auto;
+}
+
+.view-modal .modal-footer{
+    text-align: center;
+}
+
 input[type=text], textarea {
   -webkit-transition: all 0.30s ease-in-out;
   -moz-transition: all 0.30s ease-in-out;

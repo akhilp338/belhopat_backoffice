@@ -11,7 +11,9 @@
                     keyboard: false,
                     backdrop: 'static',
                     resolve:{
-                        
+                        candidateDetails: function (){
+                           return data;
+                        }
                     }
                 });
             },

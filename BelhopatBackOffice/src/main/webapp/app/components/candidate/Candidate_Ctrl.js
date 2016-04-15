@@ -1,5 +1,5 @@
 (function () {
-    var Candidate_Ctrl = function ($scope, $state, $rootScope, Core_Service, urlConfig, Core_HttpRequest, validationService) {
+    var Candidate_Ctrl = function ($scope, $state, $rootScope, Core_Service, urlConfig, Core_ModalService, validationService) {
         var vm = this,
                 vs = new validationService({
                     controllerAs: vm
@@ -109,6 +109,10 @@
             console.log(event);
         };
 
+        vm.viewCandidate = function (data) {
+            Core_ModalService.openViewCandidateModal(data);
+        };
+        
         angular.element(document).ready(function () {
             var oTable = angular.element('#candidatesList').DataTable({
                 'ajax': urlConfig.http + window.location.host + urlConfig.api_root_path + "candidate/getOfficialDetails",
@@ -159,6 +163,7 @@
             });
             $('#candidatesList').on('click', '.action-view', function () {
                 var data = oTable.row($(this).parents('tr')).data();
+                vm.viewCandidate(data);
                 console.log(data);
                 console.log(vm)
             });
@@ -166,7 +171,7 @@
         Core_Service.calculateSidebarHeight();
     };
 
-    Candidate_Ctrl.$inject = ["$scope", '$state', '$rootScope', 'Core_Service', 'urlConfig', 'Core_HttpRequest', 'validationService'];
+    Candidate_Ctrl.$inject = ["$scope", '$state', '$rootScope', 'Core_Service', 'urlConfig', 'Core_ModalService', 'validationService'];
     angular.module('coreModule')
             .controller('Candidate_Ctrl', Candidate_Ctrl);
 })();

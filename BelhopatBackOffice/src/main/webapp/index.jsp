@@ -47,6 +47,7 @@
 <script src="app/components/dashboard/Dash_Ctrl.js"></script>
 <script src="app/components/candidate/Candidate_Ctrl.js"></script>
 <script src="app/components/candidate/AddCandidate_Ctrl.js"></script>
+<script src="app/components/candidate/ViewCandidate_Ctrl.js"></script>
 <script src="app/components/employee/Employee_Ctrl.js"></script>
 <script src="app/components/client/Client_Ctrl.js"></script>
 <script src="app/components/holiday/Holiday_Ctrl.js"></script>
