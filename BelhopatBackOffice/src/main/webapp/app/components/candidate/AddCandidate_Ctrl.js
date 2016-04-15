@@ -122,18 +122,22 @@
         vm.getStatesByCountry = function(countryId){
         	var data = {"id":countryId};
         	vm.apiUrl = "api/getStatesByCountry";
-        	vm.defaultApiByIdAndUrl(data,vm.apiUrl)
+        	vm.defaultApiByIdAndUrl(data,vm.apiUrl,true)
         }
         vm.getCitiesByStates = function(){
         	var data = {"id":stateId};
         	vm.apiUrl = "api/getCitiesByState";
-        	vm.defaultApiByIdAndUrl(data,vm.apiUrl)
+        	vm.defaultApiByIdAndUrl(data,vm.apiUrl,false)
         }
         
         vm.defaultApiByIdAndUrl = function(data,url){
-            Core_Service.defaultApiByIdAndUrlImpl(url,data)
+            Core_Service.defaultApiByIdAndUrlImpl(url,data,isCountry)
             .then( function(response) {
-            	vm.states =  response.data;
+            	if(isCountry){
+            		vm.states =  response.data;
+            	}else{
+            		vm.cities = response.data;
+            	}
             },function(error){
             	console.log('theng...')
             });
