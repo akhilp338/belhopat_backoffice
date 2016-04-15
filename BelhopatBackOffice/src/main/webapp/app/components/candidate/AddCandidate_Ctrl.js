@@ -110,14 +110,24 @@
         
         vm.candidateRegister = function(){
         	console.log(vm.registration);
-        	vm.urlForRegister = "api/candidate/saveOrUpdateCandidate";
-            Core_Service.candidateRegister(vm.urlForRegister,vm.registration)
+        	vm.registerUrl = "api/candidate/saveOrUpdateCandidate";
+            Core_Service.candidateRegisterImpl(vm.urlForRegister,vm.registration)
             .then( function(response) {
                console.log(response)
             },function(error){
             	
             });
         };
+        
+        vm.candidateDelete = function(id){
+        	vm.deleteUrl = "api/candidate/deleteCandidate";
+            Core_Service.candidateDeleteImpl(vm.deleteUrl,id)
+            .then( function(response) {
+               console.log(response)
+            },function(error){
+            	
+            });
+        }
        
         Core_Service.calculateSidebarHeight();
     };

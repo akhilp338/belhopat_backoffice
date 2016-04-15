@@ -106,10 +106,22 @@
             return deferred.promise;
         }
         
-        service.candidateRegister = function(url,postData){
+        service.candidateRegisterImpl = function(url,postData){
         	var deferred = $q.defer();
         	console.log(postData);
             Core_HttpRequest.post(url,postData)
+                    .then(function (response) {
+                        deferred.resolve(response)
+                    }, function (error) {
+                        deferred.reject(error)
+                    });
+            return deferred.promise;
+        };
+        
+        service.candidateDeleteImpl = function(url,id){
+        	var deferred = $q.defer();
+        	console.log(id);
+            Core_HttpRequest.post(url,id)
                     .then(function (response) {
                         deferred.resolve(response)
                     }, function (error) {
