@@ -19,13 +19,6 @@ public class Skill {
 	
 	private String skillName;
 
-	public Skill(Long id, LookupDetail type, String skillName) {
-		super();
-		this.id = id;
-		this.type = type;
-		this.skillName = skillName;
-	}
-
 	public Long getId() {
 		return id;
 	}

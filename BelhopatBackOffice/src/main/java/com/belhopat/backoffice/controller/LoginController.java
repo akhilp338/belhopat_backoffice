@@ -26,16 +26,16 @@ import com.belhopat.backoffice.util.ResponseObject;
 @RequestMapping("/*")
 public class LoginController {
 
+	@Autowired
+	LoginService loginService;
+
+	@Autowired
+	UserService userService;
+	
 	@RequestMapping(method = RequestMethod.GET)
 	public String getIndexPage() {
 		return "index";
 	}
-
-	@Autowired
-	LoginService loginService;
-	
-	@Autowired
-	UserService userService;
 
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
 	public ModelAndView loginPage(@RequestParam(value = "error", required = false) String error,
@@ -62,18 +62,26 @@ public class LoginController {
 		return model;
 	}
 
-	@RequestMapping(value = "/logout", method = RequestMethod.POST)
+	@RequestMapping(value = "/api/logout", method = RequestMethod.POST)
 	public void logout(HttpServletRequest request) throws ServletException {
 		request.getSession().invalidate();
 		request.logout();
 	}
-	@RequestMapping(value = "/forgotPassword", method = RequestMethod.POST)
-    public ResponseEntity<ResponseObject> forgotPassword( @RequestBody User user ) throws MessagingException {
-    	boolean userStatus = userService.generatePasswordResetLink( user.getEmail() );
-    	if(userStatus)
-    		return new ResponseEntity<ResponseObject>(new ResponseObject(userStatus, Constants.PASS_RESET_SUCC_MSG),HttpStatus.OK);
-    	else
-    		return new ResponseEntity<ResponseObject>(new ResponseObject(userStatus, Constants.PASS_RESET_FAIL_MSG),HttpStatus.OK);
-    }
+
+	@RequestMapping(value = "api/getUserName", method = RequestMethod.POST)
+	public String getUserName(HttpServletRequest request) {
+		return SecurityContextHolder.getContext().getAuthentication().getName().toString();
+	}
+
+	@RequestMapping(value = "/api/forgotPassword", method = RequestMethod.POST)
+	public ResponseEntity<ResponseObject> forgotPassword(@RequestBody User user) throws MessagingException {
+		boolean userStatus = userService.generatePasswordResetLink(user.getEmail());
+		if (userStatus)
+			return new ResponseEntity<ResponseObject>(new ResponseObject(userStatus, Constants.PASS_RESET_SUCC_MSG),
+					HttpStatus.OK);
+		else
+			return new ResponseEntity<ResponseObject>(new ResponseObject(userStatus, Constants.PASS_RESET_FAIL_MSG),
+					HttpStatus.OK);
+	}
 
 }

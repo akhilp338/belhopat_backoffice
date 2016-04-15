@@ -19,13 +19,6 @@ public class FamilyMember {
 	@ManyToOne
 	private LookupDetail relation;
 
-	public FamilyMember(Long id, String name, LookupDetail relation) {
-		super();
-		this.id = id;
-		this.name = name;
-		this.relation = relation;
-	}
-
 	public Long getId() {
 		return id;
 	}

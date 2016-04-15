@@ -6,11 +6,16 @@ import java.util.Map;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
-import com.belhopat.backoffice.model.LookupDetail;
+import com.belhopat.backoffice.model.City;
+import com.belhopat.backoffice.model.State;
 
 @Service
 public interface BaseService {
 
-	ResponseEntity<Map<String, List<LookupDetail>>> getCandidateDropDownData();
+	ResponseEntity<Map<String, List<?>>> getCandidateDropDownData();
+
+	ResponseEntity<List<State>> getStatesByCountry(Long countryId);
+
+	ResponseEntity<List<City>> getCitiesByState(Long stateId);
 
 }

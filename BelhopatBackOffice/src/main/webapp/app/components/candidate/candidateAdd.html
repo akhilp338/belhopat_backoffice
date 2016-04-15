@@ -60,18 +60,20 @@
                         <div class="control-group width-30 pull-left margin-left-5">
                             <label class="control-label" for="dob">Blood Group</label>
                             <div class="controls">
-                                <select ng-model="vm.registration.bloodGroup"
+                                <select ng-model="vm.registration.bloodGroup.id"
                                         class="form-input width-100">
-                                    <option ng-repeat="bloodGroup in vm.lookups.BG" value="{{bloodGroup.id}}">{{bloodGroup.code}}</option>
+                                    <option ng-repeat="bloodGroup in vm.lookups.BG"
+                                            value="{{bloodGroup.id}}">{{bloodGroup.code}}</option>
                                 </select>
                             </div>
                         </div>
                         <div class="control-group width-30 pull-left">
                             <label class="control-label" for="coo">Country Of Origin</label>
                             <div class="controls">
-                                <select ng-model="vm.registration.countryOfOrigin"
+                                <select ng-model="vm.registration.countryOfOrigin.id"
                                         class="form-input width-100">
-                                    <option ng-repeat="bloodGroup in vm.lookups.BG" value="{{bloodGroup.id}}">{{bloodGroup.code}}</option>
+                                    <option ng-repeat="bloodGroup in vm.lookups.BG"
+                                            value="{{bloodGroup.id}}">{{bloodGroup.code}}</option>
                                 </select>
                             </div>
                         </div>
@@ -96,8 +98,8 @@
                                 Id</label>
                             <div class="controls">
                                 <input type="text" name="email" id="email"
-                                       ng-model="vm.registration.personalEmail" class="form-input width-100"
-                                       placeholder="Personal Email Id"
+                                       ng-model="vm.registration.personalEmail"
+                                       class="form-input width-100" placeholder="Personal Email Id"
                                        validation="email:alt=email id not valid|required:alt=Required field" />
                             </div>
                         </div>
@@ -117,7 +119,7 @@
                             <div class="controls">
                                 <input type="text" name="ofc_contact" id="ofc_contact"
                                        ng-model="vm.registration.officialContactNo"
-                                       class="form-input width-100" placeholder="Country Of Origin"
+                                       class="form-input width-100" placeholder="Official Contact"
                                        validation="required:alt=Required field" />
                             </div>
                         </div>
@@ -149,33 +151,35 @@
                             </div>
                         </div>
                         <div class="control-group width-30 pull-left margin-left-5">
-                            <label class="control-label" for="city">City</label>
+                            <label class="control-label" for="country">Country</label>
                             <div class="controls">
-                                <input type="text" name="city" id="city"
-                                       ng-model="vm.registration.permanentAddress.city.id"
-                                       class="form-input width-100" placeholder="City"
-                                       validation="required:alt=Required field"
-                                       ng-change="vm.checkAddress()" />
+                                <select
+                                    ng-model="vm.registration.permanentAddress.city.state.country.id"
+                                    class="form-input width-100" ng-change="vm.getStatesByCountry()">
+                                    <option ng-repeat="bloodGroup in vm.lookups.BG"
+                                            value="{{bloodGroup.id}}">{{bloodGroup.code}}</option>
+                                </select>
                             </div>
                         </div>
                         <div class="control-group width-30 pull-left">
                             <label class="control-label" for="state">State</label>
                             <div class="controls">
-                                <input type="text" name="state" id="state"
-                                       ng-model="vm.registration.permanentAddress.city.state.id"
-                                       class="form-input width-100" placeholder="State"
-                                       validation="required:alt=Required field"
-                                       ng-change="vm.checkAddress()" />
+                                <select
+                                    ng-model="vm.registration.permanentAddress.city.state.id"
+                                    class="form-input width-100" ng-change="vm.getCitiesByStates()">
+                                    <option ng-repeat="bloodGroup in vm.lookups.BG"
+                                            value="{{bloodGroup.id}}">{{bloodGroup.code}}</option>
+                                </select>
                             </div>
                         </div>
                         <div class="control-group width-30 pull-left margin-left-5">
-                            <label class="control-label" for="country">Country</label>
+                            <label class="control-label" for="city">City</label>
                             <div class="controls">
-                                <input type="text" name="country" id="country"
-                                       ng-model="vm.registration.permanentAddress.city.state.country.id"
-                                       class="form-input width-100" placeholder="Country"
-                                       validation="required:alt=Required field"
-                                       ng-change="vm.checkAddress()" />
+                                <select ng-model="vm.registration.permanentAddress.city.id"
+                                        class="form-input width-100" ng-change="vm.checkAddress()">
+                                    <option ng-repeat="bloodGroup in vm.lookups.BG"
+                                            value="{{bloodGroup.id}}">{{bloodGroup.code}}</option>
+                                </select>
                             </div>
                         </div>
                         <div class="control-group width-30 pull-left margin-left-5">
@@ -199,7 +203,6 @@
                                ng-change="vm.copyAddress()"> <label for="checkbox1">
                             Same as permanent address </label>
                     </div>
-
                     <div class="span4">
                         <div class="control-group width-30 pull-left">
                             <label class="control-label" for="address_line1">Address
@@ -327,21 +330,21 @@
                                 <select class="skills" size="5" id="skillList" multiple ng-multiple="true" ng-model="vm.subSelectedSkillList" ng-options="skill.skill for skill in vm.mainSkillList"></select>
                             </div>
                         </div>
-                        
-                         <div class="control-group group-select width-30 pull-left margin-left-5">
-                             <div class="add-remove-controls">
-                                 <button type="button" ng-click="vm.addSkills()" title="Add Skills" id="addSkills" class="logout-button">>></button>
-                                 <button type="button" ng-click="vm.removeSkills()" title="Remove Skills" id="removeSkills" class="logout-button"><<</button>
+
+                        <div class="control-group group-select width-30 pull-left margin-left-5">
+                            <div class="add-remove-controls">
+                                <button type="button" ng-click="vm.addSkills()" title="Add Skills" id="addSkills" class="logout-button">>></button>
+                                <button type="button" ng-click="vm.removeSkills()" title="Remove Skills" id="removeSkills" class="logout-button"><<</button>
                             </div>
                         </div>
-                        
-                         <div class="control-group group-select width-30 margin-left-5 pull-left">
+
+                        <div class="control-group group-select width-30 margin-left-5 pull-left">
                             <label class="control-label" for="selectedSkillSet">Selected Skill Sets</label>
                             <div class="controls">
                                 <select  class="skills" size="5" id="skillsSelected" multiple ng-multiple="true" ng-model="vm.deSelectedSkills" ng-options="skill.skill for skill in vm.mainSelectedSkillList"></select>
                             </div>
                         </div>
-                        
+
                         <div class="control-group width-30 pull-left">
                             <label class="control-label" for="client">Client</label>
                             <div class="controls">

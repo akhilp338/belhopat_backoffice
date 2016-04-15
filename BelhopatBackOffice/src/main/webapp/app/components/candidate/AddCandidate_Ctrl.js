@@ -122,14 +122,15 @@
             $state.go("coreuser.candidate.add");
         };
 
-        vm.candidateRegister = function () {            
-            vm.registerUrl = "api/candidate/saveOrUpdateCandidate";
-            Core_Service.candidateRegisterImpl(vm.urlForRegister, vm.registration)
-                    .then(function (response) {
-                        console.log(response)
-                    }, function (error) {
-
-                    });
+        vm.candidateRegister = function(){
+        	console.log(vm.registration);
+        	vm.registerUrl = "api/candidate/saveOrUpdateCandidate";
+            Core_Service.candidateRegisterImpl(vm.registerUrl,vm.registration)
+            .then( function(response) {
+               console.log(response)
+            },function(error){
+            	
+            });
         };
 
         vm.getIndexesToRemove = function (array, data) {

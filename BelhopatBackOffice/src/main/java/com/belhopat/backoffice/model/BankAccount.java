@@ -27,18 +27,6 @@ public class BankAccount {
 	@OneToOne
 	private Address bankAddress;
 
-	public BankAccount(Long id, String accountNo, String iFSCCode, String accountHolderName, String bankName,
-			String branch, Address bankAddress) {
-		super();
-		this.id = id;
-		this.accountNo = accountNo;
-		IFSCCode = iFSCCode;
-		this.accountHolderName = accountHolderName;
-		this.bankName = bankName;
-		this.branch = branch;
-		this.bankAddress = bankAddress;
-	}
-
 	public Long getId() {
 		return id;
 	}

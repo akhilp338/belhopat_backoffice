@@ -12,7 +12,9 @@
         'ghiscoding.validation',
         'oitozero.ngSweetAlert',
         'ngCookies',
-        'ngStorage'
+        'ngStorage',
+        'ngAria',
+        'ngMaterial'
     ]);
     window.app.config(['$locationProvider', function ($locationProvider) {
             $locationProvider.html5Mode({

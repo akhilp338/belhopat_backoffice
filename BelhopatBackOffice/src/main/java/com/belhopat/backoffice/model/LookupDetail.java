@@ -24,17 +24,6 @@ public class LookupDetail {
 
 	private String description;
 
-	public LookupDetail(){
-		
-	}
-	public LookupDetail(Long id, Lookup lookup, String code, String description) {
-		super();
-		this.id = id;
-		this.lookup = lookup;
-		this.code = code;
-		this.description = description;
-	}
-
 	public Long getId() {
 		return id;
 	}
