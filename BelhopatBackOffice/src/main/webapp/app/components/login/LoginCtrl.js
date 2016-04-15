@@ -25,9 +25,17 @@
        }
         };
 
-        vm.forgotPassword = function (size) {           
-            //SweetAlert.swal("Here's a message");
-            Core_ModalService.openForgotModal();
+        vm.forgotPassword = function (size) {          
+            Core_ModalService.openForgotModal().result.then(function(res){
+                if(res.data.success){
+                  Core_Service.sweetAlert("Done!",res.data.data,"success");  
+                }
+                else{
+                   Core_Service.sweetAlert("Oops!",res.data.data,"error"); 
+                }
+            },function(error){
+               Core_Service.sweetAlert("Oops!",res.data.data,"error");  
+            });
         };
 
     };

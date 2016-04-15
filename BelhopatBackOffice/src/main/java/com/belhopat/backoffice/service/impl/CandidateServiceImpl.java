@@ -1,4 +1,4 @@
-package com.belhopat.backoffice.service;
+package com.belhopat.backoffice.service.impl;
 
 import java.util.List;
 
@@ -12,6 +12,7 @@ import org.springframework.stereotype.Component;
 import com.belhopat.backoffice.model.Candidate;
 import com.belhopat.backoffice.model.User;
 import com.belhopat.backoffice.repository.CandidateRepository;
+import com.belhopat.backoffice.service.CandidateService;
 
 @Component
 public class CandidateServiceImpl implements CandidateService{
@@ -36,6 +37,7 @@ public class CandidateServiceImpl implements CandidateService{
 
 	@Override
 	public ResponseEntity<Void> saveOrUpdateCandidate(Candidate candidate) {
+		candidate.setBaseAttributes(new User(1L));
 		candidateRepository.save(candidate);
 		return new ResponseEntity<Void>(HttpStatus.OK);
 	}

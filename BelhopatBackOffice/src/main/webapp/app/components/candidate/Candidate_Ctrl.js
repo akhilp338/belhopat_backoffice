@@ -1,5 +1,5 @@
 (function () {
-    var Candidate_Ctrl = function ($scope, $state, $rootScope, Core_Service, urlConfig, Core_HttpRequest, validationService) {
+    var Candidate_Ctrl = function ($scope, $state, $rootScope, Core_Service, urlConfig, Core_ModalService, validationService) {
         var vm = this,
                 vs = new validationService({
                     controllerAs: vm
@@ -13,7 +13,7 @@
             preValidateFormElements: false,
             displayOnlyLastErrorMsg: true
         });
-        Core_Service.calculetSidebarHeight();
+        Core_Service.calculateSidebarHeight();
         vm.isCheckboxEnable = false;
         $scope.steps = [
             'Step 1: Personal Information',
@@ -34,7 +34,7 @@
             {
                 $scope.selection = $scope.steps[index];
             }
-            Core_Service.calculetSidebarHeight();
+            Core_Service.calculateSidebarHeight();
         };
 
         $scope.hasNextStep = function () {
@@ -59,7 +59,7 @@
                 var nextStep = stepIndex + 1;
                 $scope.selection = $scope.steps[nextStep];
             }
-            Core_Service.calculetSidebarHeight();
+            Core_Service.calculateSidebarHeight();
         };
 
         $scope.decrementStep = function () {
@@ -69,7 +69,7 @@
                 var previousStep = stepIndex - 1;
                 $scope.selection = $scope.steps[previousStep];
             }
-            Core_Service.calculetSidebarHeight();
+            Core_Service.calculateSidebarHeight();
         };
 
         $rootScope.active = 'candidate';
@@ -104,9 +104,17 @@
         vm.addCandidate = function () {
             $state.go("coreuser.candidate.add");
         };
-//datatble start
+
+        vm.getSelectedCandidate = function (event) {
+            console.log(event);
+        };
+
+        vm.viewCandidate = function (data) {
+            Core_ModalService.openViewCandidateModal(data);
+        };
+        
         angular.element(document).ready(function () {
-            angular.element('#candidatesList').DataTable({
+            var oTable = angular.element('#candidatesList').DataTable({
                 'ajax': urlConfig.http + window.location.host + urlConfig.api_root_path + "candidate/getOfficialDetails",
                 'serverSide': true,
                 "bDestroy": true,
@@ -115,17 +123,24 @@
                 },
                 "processing": true,
                 "sScrollX": '100%',
+                "fnDrawCallback": function (settings, ajax) {
+                    Core_Service.calculateSidebarHeight();
+                },
+                'language': {
+                    'search': '',
+                    'searchPlaceholder': 'Search'
+                },
                 "aoColumns": [{
-                        title: "drivingLicenceNo",
+                        title: "DRIVING LICENCE NO",
                         data: 'drivingLicenceNo',
                     }, {
-                        title: "PAN No",
+                        title: "PAN NO",
                         data: 'panno',
                     }, {
-                        title: "ESI No",
+                        title: "ESI NO",
                         data: 'esino',
                     }, {
-                        title: "PF No",
+                        title: "PF NO",
                         data: 'pfno',
                     }, {
                         title: "FOREX CARD NO",
@@ -133,17 +148,30 @@
                     }, {
                         title: "FOREX CARD AGENCY",
                         data: 'forexCardAgency',
+                    }, {
+                        data: 'id',
+                        bSortable: false,
+                        sClass: "button-column",
+                        render: function (data) {
+                            return '<div class="action-buttons">' +
+                                    '<span  value="' + data + '" class="actions action-view fa-stack fa-lg pull-left" title="View"><i class="fa fa-eye" aria-hidden="true"></i></span>' +
+                                    '<span class="actions action-edit fa-stack fa-lg pull-left" title="Edit"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></i></span>' +
+                                    '<span class="actions action-delete fa-stack fa-lg pull-left" title="Delete"><i class="fa fa-user-times" aria-hidden="true"></i></span>' +
+                                    '</div>'
+                        }
                     }]
             });
+            $('#candidatesList').on('click', '.action-view', function () {
+                var data = oTable.row($(this).parents('tr')).data();
+                vm.viewCandidate(data);
+                console.log(data);
+                console.log(vm)
+            });
         });
-
-        //datatble ends
-        Core_Service.calculetSidebarHeight();
+        Core_Service.calculateSidebarHeight();
     };
 
-    Candidate_Ctrl.$inject = ["$scope", '$state', '$rootScope', 'Core_Service', 'urlConfig', 'Core_HttpRequest', 'validationService'];
+    Candidate_Ctrl.$inject = ["$scope", '$state', '$rootScope', 'Core_Service', 'urlConfig', 'Core_ModalService', 'validationService'];
     angular.module('coreModule')
             .controller('Candidate_Ctrl', Candidate_Ctrl);
 })();
-
-

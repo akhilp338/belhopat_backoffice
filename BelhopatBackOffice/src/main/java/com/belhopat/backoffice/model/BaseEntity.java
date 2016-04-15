@@ -31,11 +31,6 @@ public class BaseEntity implements Cloneable {
 
 	private boolean deleted;
 
-	public BaseEntity(Long id) {
-		super();
-		this.id = id;
-	}
-
 	public Long getId() {
 		return id;
 	}

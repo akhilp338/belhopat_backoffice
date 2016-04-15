@@ -13,7 +13,7 @@
         vm.menuClick = function (e) {
             angular.element('.sidebar-nav li').removeClass("active");
             angular.element(e.currentTarget).addClass("active");
-            Core_Service.calculetSidebarHeight();            
+            Core_Service.calculateSidebarHeight();            
         };
     };
 
