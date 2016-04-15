@@ -175,8 +175,6 @@
             });
             $('#candidatesList').on('click', '.action-delete', function () {
                 var data = oTable.row($(this).parents('tr')).data();
-//                var table = angular.element('#candidatesList').dataTable();
-//                vm.deleteCandidate(this.value);
                 var data = {"id":data.id};
                 vm.candidateDelete(data);
             });
