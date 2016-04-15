@@ -17,10 +17,6 @@ public class OfficialCards {
 
 	private String PANNo;
 
-	public OfficialCards() {
-		super();
-	}
-
 	private String ESINo;
 
 	private String PFNo;

@@ -25,17 +25,6 @@ public class Address {
 
 	private Long zipCode;
 
-	public Address(Long id, String address1, String address2, String street, City city, State state, Country country,
-			Long zipCode) {
-		super();
-		this.id = id;
-		this.address1 = address1;
-		this.address2 = address2;
-		this.street = street;
-		this.city = city;
-		this.zipCode = zipCode;
-	}
-
 	public Long getId() {
 		return id;
 	}

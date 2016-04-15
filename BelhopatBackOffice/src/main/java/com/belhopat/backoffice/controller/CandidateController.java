@@ -37,7 +37,7 @@ public class CandidateController {
 	OfficialDetailsService officialDetailsService;
 	
 	@ResponseBody
-	@RequestMapping(value = "/getCandidates", method = RequestMethod.POST)
+	@RequestMapping(value = "/getCandidates", method = RequestMethod.GET)
 	public DataTablesOutput<Candidate> getCandidates( @Valid DataTablesInput input ) {
 		return candidateService.getCandidates(input);
 	}

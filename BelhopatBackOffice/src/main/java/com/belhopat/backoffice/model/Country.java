@@ -17,13 +17,6 @@ public class Country {
 	
 	private String description;
 	
-	public Country(Long id, String code, String description) {
-		super();
-		this.id = id;
-		this.code = code;
-		this.description = description;
-	}
-
 	public Long getId() {
 		return id;
 	}

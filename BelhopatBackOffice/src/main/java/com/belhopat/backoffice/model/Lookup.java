@@ -17,16 +17,6 @@ public class Lookup {
 
 	private String decription;
 
-	public Lookup(){
-		
-	}
-	public Lookup(Long id, String lookupKey, String decription) {
-		super();
-		this.id = id;
-		this.lookupKey = lookupKey;
-		this.decription = decription;
-	}
-
 	public Long getId() {
 		return id;
 	}
