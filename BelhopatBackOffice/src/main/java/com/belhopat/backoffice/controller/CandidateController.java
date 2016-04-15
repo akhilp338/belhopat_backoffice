@@ -13,7 +13,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.belhopat.backoffice.model.Candidate;
@@ -45,8 +44,8 @@ public class CandidateController {
 	
 	@ResponseBody
 	@RequestMapping(value = "/getCandidate", method = RequestMethod.POST)
-	public ResponseEntity<Candidate> getCandidate(@RequestParam Long candidateId) {
-		return candidateService.getCandidate(candidateId);
+	public ResponseEntity<Candidate> getCandidate(@RequestBody User user) {
+		return candidateService.getCandidate(user.getId());
 	}
 
 	@ResponseBody

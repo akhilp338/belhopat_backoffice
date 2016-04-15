@@ -166,20 +166,34 @@
                     }]
             });
             $('#candidatesList').on('click', '.action-view', function () {
-                var data = oTable.row($(this).parents('tr')).data();
-                vm.viewCandidate(data);
+                var rowData = oTable.row($(this).parents('tr')).data();
+                var responseData = vm.getCandidate(rowData.id);
+                vm.viewCandidate(responseData);
             });
             $('#candidatesList').on('click', '.action-edit', function () {
-                var data = oTable.row($(this).parents('tr')).data();
+                var rowData = oTable.row($(this).parents('tr')).data();
                 $state.go('coreuser.candidate.edit', {id: data.id, reload: 0}, {reload: true})
+                var responseData = vm.getCandidate(rowData.id);
+                vm.viewCandidate(responseData);
             });
             $('#candidatesList').on('click', '.action-delete', function () {
-                var data = oTable.row($(this).parents('tr')).data();
-                var data = {"id":data.id};
+                var rowData = oTable.row($(this).parents('tr')).data();
+                var data = {"id":rowData.id};
                 vm.candidateDelete(data);
             });
 
         });
+        
+        vm.getCandidate = function(id){
+        	vm.getCandidateUrl = "api/candidate/getCandidate";
+            Core_Service.getCandidateImpl(vm.getCandidateUrl,id)
+            .then( function(response) {
+               console.log(response)
+            },function(error){
+            	
+            });
+        }
+        
         vm.candidateDelete = function(id){
         	vm.deleteUrl = "api/candidate/deleteCandidate";
             Core_Service.candidateDeleteImpl(vm.deleteUrl,id)
