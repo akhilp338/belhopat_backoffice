@@ -24,4 +24,9 @@ public class Constants {
 	public static final String MMMM_DD_YYYY = "MMMM dd, yyyy";
 	public static final String MMMM_DD_YYYY_HH_MM = "MMMM dd, yyyy HH:mm";
 
+	/* map keys */
+	public static final String COUNTRY = "COUNTRY";
+	public static final String CITY = "CITY";
+	public static final String STATE = "STATE";
+
 }
