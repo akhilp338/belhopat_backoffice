@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.belhopat.backoffice.model.Candidate;
 import com.belhopat.backoffice.model.LookupDetail;
 import com.belhopat.backoffice.model.OfficialCards;
+import com.belhopat.backoffice.model.User;
 import com.belhopat.backoffice.service.BaseService;
 import com.belhopat.backoffice.service.CandidateService;
 import com.belhopat.backoffice.service.OfficialDetailsService;
@@ -62,8 +63,8 @@ public class CandidateController {
 	
 	@ResponseBody
 	@RequestMapping(value = "/deleteCandidate", method = RequestMethod.POST)
-	public ResponseEntity<Void> deleteCandiadte(@RequestParam Long candidateId) {
-		return candidateService.deleteCandidate(candidateId);
+	public ResponseEntity<Void> deleteCandiadte(@RequestBody User user) {
+		return candidateService.deleteCandidate(user.getId());
 	}
 	
 	@ResponseBody

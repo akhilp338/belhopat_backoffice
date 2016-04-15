@@ -118,10 +118,9 @@
             return deferred.promise;
         };
         
-        service.candidateDeleteImpl = function(url,id){
+        service.candidateDeleteImpl = function(url,data){
         	var deferred = $q.defer();
-        	console.log(id);
-            Core_HttpRequest.post(url,id)
+            Core_HttpRequest.post(url,data)
                     .then(function (response) {
                         deferred.resolve(response)
                     }, function (error) {

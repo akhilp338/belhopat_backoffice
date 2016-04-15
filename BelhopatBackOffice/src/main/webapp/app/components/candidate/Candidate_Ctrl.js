@@ -159,8 +159,8 @@
                         render: function (data) {
                             return '<div class="action-buttons">' +
                                     '<span  value="' + data + '" class="actions action-view fa-stack fa-lg pull-left" title="View"><i class="fa fa-eye" aria-hidden="true"></i></span>' +
-                                    '<span class="actions action-edit fa-stack fa-lg pull-left" title="Edit"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></i></span>' +
-                                    '<span class="actions action-delete fa-stack fa-lg pull-left" title="Delete"><i class="fa fa-user-times" aria-hidden="true"></i></span>' +
+                                    '<span value="' + data + '" class="actions action-edit fa-stack fa-lg pull-left" title="Edit"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></i></span>' +
+                                    '<span value="' + data + '" class="actions action-delete fa-stack fa-lg pull-left" title="Delete"><i class="fa fa-user-times" aria-hidden="true"></i></span>' +
                                     '</div>'
                         }
                     }]
@@ -175,9 +175,10 @@
             });
             $('#candidatesList').on('click', '.action-delete', function () {
                 var data = oTable.row($(this).parents('tr')).data();
-                var table = angular.element('#candidatesList').dataTable();
+//                var table = angular.element('#candidatesList').dataTable();
 //                vm.deleteCandidate(this.value);
-                vm.candidateDelete(this.value);
+                var data = {"id":data.id};
+                vm.candidateDelete(data);
             });
 
         });
