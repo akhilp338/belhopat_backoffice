@@ -23,13 +23,13 @@ public class BaseController {
 	BaseService baseService;
 
 	@ResponseBody
-	@RequestMapping(value = "/getStatesByCountry", method = RequestMethod.GET)
+	@RequestMapping(value = "/getStatesByCountry", method = RequestMethod.POST)
 	public ResponseEntity<List<State>> getStatesByCountry(@RequestBody RequestObject requestObject) {
 		return baseService.getStatesByCountry(requestObject.getId());
 	}
 
 	@ResponseBody
-	@RequestMapping(value = "/getCitiesByState", method = RequestMethod.GET)
+	@RequestMapping(value = "/getCitiesByState", method = RequestMethod.POST)
 	public ResponseEntity<List<City>> getCitiesByState(@RequestBody RequestObject requestObject) {
 		return baseService.getCitiesByState(requestObject.getId());
 	}
