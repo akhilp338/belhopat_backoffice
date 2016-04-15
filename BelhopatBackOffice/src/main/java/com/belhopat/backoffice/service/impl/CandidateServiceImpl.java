@@ -2,9 +2,15 @@ package com.belhopat.backoffice.service.impl;
 
 import java.util.List;
 
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Predicate;
+import javax.persistence.criteria.Root;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.datatables.mapping.DataTablesInput;
 import org.springframework.data.jpa.datatables.mapping.DataTablesOutput;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
@@ -27,8 +33,18 @@ public class CandidateServiceImpl implements CandidateService{
 	CandidateRepository candidateRepository;
 	
 	@Override
-	public DataTablesOutput<Candidate> getCandidates(DataTablesInput input) {
-		DataTablesOutput<Candidate> dataTablesOutput = candidateRepository.findAll(input);
+	public DataTablesOutput < Candidate > getCandidates( DataTablesInput input ) {
+		
+		Specification< Candidate > specification = new Specification< Candidate >() {
+            @Override
+            public Predicate toPredicate( Root< Candidate > root,
+                CriteriaQuery< ? > criteriaQuery, CriteriaBuilder criteriaBuilder ) {
+                Predicate isNotDeleted =
+                    criteriaBuilder.equal( root.get( "deleted" ), false );
+                return criteriaBuilder.and(isNotDeleted );
+            }
+        };
+		DataTablesOutput < Candidate > dataTablesOutput = candidateRepository.findAll ( input, specification );
 		return dataTablesOutput;
 	}
 
