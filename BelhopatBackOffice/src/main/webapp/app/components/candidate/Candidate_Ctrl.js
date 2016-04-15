@@ -112,62 +112,98 @@
         vm.viewCandidate = function (data) {
             Core_ModalService.openViewCandidateModal(data);
         };
+
+        vm.deleteCandidate = function (data) {
+            Core_ModalService.opendeleteCandidateModal(data);
+        };
         
         angular.element(document).ready(function () {
             var oTable = angular.element('#candidatesList').DataTable({
-                'ajax': urlConfig.http + window.location.host + urlConfig.api_root_path + "candidate/getOfficialDetails",
-                'serverSide': true,
-                "bDestroy": true,
-                "language": {
-                    zeroRecords: "No data to dispay"
-                },
-                "processing": true,
-                "sScrollX": '100%',
-                "fnDrawCallback": function (settings, ajax) {
+                ajax: urlConfig.http + window.location.host + urlConfig.api_root_path + "candidate/getCandidates",
+                serverSide: true,
+                bDestroy: true,
+                processing: true,
+                sScrollX: '100%',                
+                fnDrawCallback: function (settings, ajax) {
                     Core_Service.calculateSidebarHeight();
                 },
-                'language': {
-                    'search': '',
-                    'searchPlaceholder': 'Search'
+                language: {
+                	zeroRecords: "No data to dispay",
+                    searchPlaceholder: 'Search',
+                    search: ''
                 },
-                "aoColumns": [{
-                        title: "DRIVING LICENCE NO",
-                        data: 'drivingLicenceNo',
+                aoColumns: [{
+                        title: "Candidate ID",
+                        data: 'candidateId',
                     }, {
-                        title: "PAN NO",
-                        data: 'panno',
+                        title: "Name",
+                        data: 'firstName',
                     }, {
-                        title: "ESI NO",
-                        data: 'esino',
+                        title: "Contact No:",
+                        data: 'officialContactNo',
                     }, {
-                        title: "PF NO",
-                        data: 'pfno',
+                        title: "Country To Visit",
+                        data: 'countryToVisit.description',
                     }, {
-                        title: "FOREX CARD NO",
-                        data: 'forexCardNo',
+                        title: "Division",
+                        data: 'division.description',
                     }, {
-                        title: "FOREX CARD AGENCY",
-                        data: 'forexCardAgency',
+                        title: "Designation",
+                        data: 'designation.code',
                     }, {
+                        title: "Employment Status",
+                        data: 'employmentStatus.description',
+                    },{
                         data: 'id',
                         bSortable: false,
                         sClass: "button-column",
                         render: function (data) {
                             return '<div class="action-buttons">' +
                                     '<span  value="' + data + '" class="actions action-view fa-stack fa-lg pull-left" title="View"><i class="fa fa-eye" aria-hidden="true"></i></span>' +
-                                    '<span class="actions action-edit fa-stack fa-lg pull-left" title="Edit"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></i></span>' +
-                                    '<span class="actions action-delete fa-stack fa-lg pull-left" title="Delete"><i class="fa fa-user-times" aria-hidden="true"></i></span>' +
+                                    '<span value="' + data + '" class="actions action-edit fa-stack fa-lg pull-left" title="Edit"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></i></span>' +
+                                    '<span value="' + data + '" class="actions action-delete fa-stack fa-lg pull-left" title="Delete"><i class="fa fa-user-times" aria-hidden="true"></i></span>' +
                                     '</div>'
                         }
                     }]
             });
             $('#candidatesList').on('click', '.action-view', function () {
-                var data = oTable.row($(this).parents('tr')).data();
-                vm.viewCandidate(data);
-                console.log(data);
-                console.log(vm)
+                var rowData = oTable.row($(this).parents('tr')).data();
+                var responseData = vm.getCandidate(rowData.id);
+                vm.viewCandidate(responseData);
             });
+            $('#candidatesList').on('click', '.action-edit', function () {
+                var rowData = oTable.row($(this).parents('tr')).data();
+                $state.go('coreuser.candidate.edit', {id: data.id, reload: 0}, {reload: true})
+                var responseData = vm.getCandidate(rowData.id);
+                vm.viewCandidate(responseData);
+            });
+            $('#candidatesList').on('click', '.action-delete', function () {
+                var rowData = oTable.row($(this).parents('tr')).data();
+                var data = {"id":rowData.id};
+                vm.candidateDelete(data);
+            });
+
         });
+        
+        vm.getCandidate = function(id){
+        	vm.getCandidateUrl = "api/candidate/getCandidate";
+            Core_Service.getCandidateImpl(vm.getCandidateUrl,id)
+            .then( function(response) {
+               console.log(response)
+            },function(error){
+            	
+            });
+        }
+        
+        vm.candidateDelete = function(id){
+        	vm.deleteUrl = "api/candidate/deleteCandidate";
+            Core_Service.candidateDeleteImpl(vm.deleteUrl,id)
+            .then( function(response) {
+               console.log(response)
+            },function(error){
+            	
+            });
+        }
         Core_Service.calculateSidebarHeight();
     };
 

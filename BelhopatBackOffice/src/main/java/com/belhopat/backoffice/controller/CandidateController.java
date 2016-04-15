@@ -13,12 +13,12 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.belhopat.backoffice.model.Candidate;
 import com.belhopat.backoffice.model.LookupDetail;
 import com.belhopat.backoffice.model.OfficialCards;
+import com.belhopat.backoffice.model.User;
 import com.belhopat.backoffice.service.BaseService;
 import com.belhopat.backoffice.service.CandidateService;
 import com.belhopat.backoffice.service.OfficialDetailsService;
@@ -37,15 +37,15 @@ public class CandidateController {
 	OfficialDetailsService officialDetailsService;
 	
 	@ResponseBody
-	@RequestMapping(value = "/getCandidates", method = RequestMethod.POST)
+	@RequestMapping(value = "/getCandidates", method = RequestMethod.GET)
 	public DataTablesOutput<Candidate> getCandidates( @Valid DataTablesInput input ) {
 		return candidateService.getCandidates(input);
 	}
 	
 	@ResponseBody
 	@RequestMapping(value = "/getCandidate", method = RequestMethod.POST)
-	public ResponseEntity<Candidate> getCandidate(@RequestParam Long candidateId) {
-		return candidateService.getCandidate(candidateId);
+	public ResponseEntity<Candidate> getCandidate(@RequestBody User user) {
+		return candidateService.getCandidate(user.getId());
 	}
 
 	@ResponseBody
@@ -62,8 +62,8 @@ public class CandidateController {
 	
 	@ResponseBody
 	@RequestMapping(value = "/deleteCandidate", method = RequestMethod.POST)
-	public ResponseEntity<Void> deleteCandiadte(@RequestParam Long candidateId) {
-		return candidateService.deleteCandidate(candidateId);
+	public ResponseEntity<Void> deleteCandiadte(@RequestBody User user) {
+		return candidateService.deleteCandidate(user.getId());
 	}
 	
 	@ResponseBody

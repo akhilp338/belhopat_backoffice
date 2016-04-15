@@ -21,14 +21,6 @@ public class State {
 	@ManyToOne
 	private Country country;
 
-	public State(Long id, String code, String description, Country country) {
-		super();
-		this.id = id;
-		this.code = code;
-		this.description = description;
-		this.country = country;
-	}
-
 	public Long getId() {
 		return id;
 	}

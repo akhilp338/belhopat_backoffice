@@ -21,14 +21,6 @@ public class City {
 	@ManyToOne
 	private State state;
 
-	public City(Long id, String code, String description, State state) {
-		super();
-		this.id = id;
-		this.code = code;
-		this.description = description;
-		this.state = state;
-	}
-
 	public Long getId() {
 		return id;
 	}
