@@ -54,6 +54,7 @@
 <script src="app/components/client/Client_Ctrl.js"></script>
 <script src="app/components/holiday/Holiday_Ctrl.js"></script>
 <script src="app/components/opportunity/Opp_Ctrl.js"></script>
+<script src="app/components/candidate/ViewCandidate_Ctrl.js"></script>
 
 <style>
 [ng:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
@@ -61,7 +62,11 @@ display: none !important;
 }
 </style>
 </head>
+
 <body ng-class="{'login-page':isLogin}" ng-cloak>
+<div class="error" ng-if="${error}">${error}</div>
+<div class="success" ng-if="${user}">${user}</div>
+
     <header ui-view="header" class="header-div"></header>
     <div ui-view="sidebar" class="page-side-bar"></div>
     <div ui-view="content" class="page-content-div" ng-class="{'add-candidate':addPage}"></div>
