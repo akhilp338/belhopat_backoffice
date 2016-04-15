@@ -112,6 +112,10 @@
         vm.viewCandidate = function (data) {
             Core_ModalService.openViewCandidateModal(data);
         };
+
+        vm.deleteCandidate = function (data) {
+            Core_ModalService.opendeleteCandidateModal(data);
+        };
         
         angular.element(document).ready(function () {
             var oTable = angular.element('#candidatesList').DataTable({
@@ -122,7 +126,7 @@
                     zeroRecords: "No data to dispay"
                 },
                 "processing": true,
-                "sScrollX": '100%',
+                "sScrollX": '100%',                
                 "fnDrawCallback": function (settings, ajax) {
                     Core_Service.calculateSidebarHeight();
                 },
@@ -155,8 +159,8 @@
                         render: function (data) {
                             return '<div class="action-buttons">' +
                                     '<span  value="' + data + '" class="actions action-view fa-stack fa-lg pull-left" title="View"><i class="fa fa-eye" aria-hidden="true"></i></span>' +
-                                    '<span class="actions action-edit fa-stack fa-lg pull-left" title="Edit"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></i></span>' +
-                                    '<span class="actions action-delete fa-stack fa-lg pull-left" title="Delete"><i class="fa fa-user-times" aria-hidden="true"></i></span>' +
+                                    '<span value="' + data + '" class="actions action-edit fa-stack fa-lg pull-left" title="Edit"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></i></span>' +
+                                    '<span value="' + data + '" class="actions action-delete fa-stack fa-lg pull-left" title="Delete"><i class="fa fa-user-times" aria-hidden="true"></i></span>' +
                                     '</div>'
                         }
                     }]
@@ -164,10 +168,27 @@
             $('#candidatesList').on('click', '.action-view', function () {
                 var data = oTable.row($(this).parents('tr')).data();
                 vm.viewCandidate(data);
-                console.log(data);
-                console.log(vm)
             });
+            $('#candidatesList').on('click', '.action-edit', function () {
+                var data = oTable.row($(this).parents('tr')).data();
+                $state.go('coreuser.candidate.edit', {id: data.id, reload: 0}, {reload: true})
+            });
+            $('#candidatesList').on('click', '.action-delete', function () {
+                var data = oTable.row($(this).parents('tr')).data();
+                var data = {"id":data.id};
+                vm.candidateDelete(data);
+            });
+
         });
+        vm.candidateDelete = function(id){
+        	vm.deleteUrl = "api/candidate/deleteCandidate";
+            Core_Service.candidateDeleteImpl(vm.deleteUrl,id)
+            .then( function(response) {
+               console.log(response)
+            },function(error){
+            	
+            });
+        }
         Core_Service.calculateSidebarHeight();
     };
 
