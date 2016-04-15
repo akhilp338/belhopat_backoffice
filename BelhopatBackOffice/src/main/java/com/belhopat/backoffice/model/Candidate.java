@@ -9,6 +9,8 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table
 public class Candidate extends BaseEntity {
@@ -45,6 +47,7 @@ public class Candidate extends BaseEntity {
 	private String onsiteContactNo;
 
 	@OneToMany
+	@JsonIgnore
 	private List<FamilyMember> familyMembers;
 
 	@OneToOne
@@ -57,6 +60,7 @@ public class Candidate extends BaseEntity {
 	private Address onsiteAddress;
 
 	@OneToMany
+	@JsonIgnore
 	private List<Skill> skillSet;
 
 	private Integer priorExperienceYear;
