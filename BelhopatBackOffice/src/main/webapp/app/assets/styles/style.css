@@ -809,6 +809,11 @@ button#logout {
     margin: 100px auto;
 }
 
+#errorUser,
+#successUser{
+   display: none; 
+}
+
 .view-modal .modal-footer{
     text-align: center;
 }

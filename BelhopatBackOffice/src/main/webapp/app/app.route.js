@@ -35,15 +35,6 @@ $locationProvider.html5Mode(true);
                             controllerAs: 'vm'
                         }
                     }
-                }).state('login.success', {
-                    url: urlConfig.root_path+"loginSuccess",
-                    views: {
-                        'content@': {
-                            templateUrl: 'app/components/dashboard/dashboard.html',
-                            controller: 'Dash_Ctrl',
-                            controllerAs: 'vm'
-                        }
-                    }
                 }).state('coreuser.dashboard', {
             url: urlConfig.root_path+'dashboard',
             views: {
