@@ -13,6 +13,7 @@ import com.belhopat.backoffice.model.Candidate;
 import com.belhopat.backoffice.model.User;
 import com.belhopat.backoffice.repository.CandidateRepository;
 import com.belhopat.backoffice.service.CandidateService;
+import com.belhopat.backoffice.session.SessionManager;
 
 @Component
 public class CandidateServiceImpl implements CandidateService{
@@ -54,10 +55,14 @@ public class CandidateServiceImpl implements CandidateService{
 
 	@Override
 	public ResponseEntity<Void> deleteCandidate(Long candidateId) {
-		Candidate candidate = candidateRepository.findById(candidateId);
-		candidate.setDeleteAttributes(new User(1L));
-		candidateRepository.save(candidate);
-		return new ResponseEntity<Void>(HttpStatus.OK);
+		if(candidateId!=null){
+			Candidate candidate = candidateRepository.findById(candidateId);
+			User loggedUser = SessionManager.getCurrentUserAsEntity();
+			candidate.setDeleteAttributes(loggedUser);
+			candidateRepository.save(candidate);
+			return new ResponseEntity<Void>(HttpStatus.OK);
+		}
+		return new ResponseEntity<Void>(HttpStatus.NO_CONTENT);
 	}
 
 	}

@@ -129,6 +129,17 @@
             return deferred.promise;
         };
         
+        service.getCandidateImpl = function(url,data){
+        	var deferred = $q.defer();
+            Core_HttpRequest.post(url,data)
+                    .then(function (response) {
+                        deferred.resolve(response)
+                    }, function (error) {
+                        deferred.reject(error)
+                    });
+            return deferred.promise;
+        };
+        
         service.sweetAlert = function(congrats,message,type){
             swal(congrats, message, type)
         };
