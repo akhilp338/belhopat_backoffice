@@ -9,10 +9,13 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
 
+import com.belhopat.backoffice.model.Candidate;
+import com.belhopat.backoffice.model.CandidateSequence;
 import com.belhopat.backoffice.model.City;
 import com.belhopat.backoffice.model.Country;
 import com.belhopat.backoffice.model.LookupDetail;
 import com.belhopat.backoffice.model.State;
+import com.belhopat.backoffice.repository.CandidateSequenceRepository;
 import com.belhopat.backoffice.repository.CityRepository;
 import com.belhopat.backoffice.repository.CountryRepository;
 import com.belhopat.backoffice.repository.LookupDetailRepository;
@@ -34,6 +37,9 @@ public class BaseServiceImpl implements BaseService {
 
 	@Autowired
 	CityRepository cityRepository;
+	
+	@Autowired
+	CandidateSequenceRepository candidateSequenceRepository;
 
 	@Override
 	public ResponseEntity<Map<String, List<?>>> getCandidateDropDownData() {
@@ -63,5 +69,16 @@ public class BaseServiceImpl implements BaseService {
 	public ResponseEntity<List<City>> getCitiesByState(Long stateId) {
 		List<City> states = cityRepository.findByState(stateId);
 		return new ResponseEntity<List<City>>(states, HttpStatus.OK);
+	}
+
+	@Override
+	public <T> Long getSequenceIncrement( Class<T> clazz ) {
+        Long increment = null;
+        if ( clazz.equals( Candidate.class ) ){
+            CandidateSequence candidateSequence = candidateSequenceRepository
+                .save( new CandidateSequence() );
+            increment = candidateSequence.getId();
+        }
+        return increment;
 	}
 }

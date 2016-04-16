@@ -17,13 +17,16 @@ public class SessionUser extends User {
         super( username, password, authorities );
     }
 
-    public SessionUser( Long userId, String accountId, Long instanceId, String instanceCode,
+    public SessionUser( Long userId,
         String role,
         String username,
         String password,
-        Collection< ? extends GrantedAuthority > authorities, boolean tcAccept ) {
+        String email,
+        Collection< ? extends GrantedAuthority > authorities ) {
         super( username, password, authorities );
         this.userId = userId;
+        this.email = email;
+        		
     }
 
     private Long userId;
@@ -36,11 +39,6 @@ public class SessionUser extends User {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-
-	public boolean getTcAccept() {
-        return true;
-    }
-
 
     public Long getUserId() {
         return userId;

@@ -12,10 +12,12 @@ import com.belhopat.backoffice.model.State;
 @Service
 public interface BaseService {
 
-	ResponseEntity<Map<String, List<?>>> getCandidateDropDownData();
+	ResponseEntity < Map < String, List < ? > > > getCandidateDropDownData();
 
-	ResponseEntity<List<State>> getStatesByCountry(Long countryId);
+	ResponseEntity < List < State > > getStatesByCountry ( Long countryId );
 
-	ResponseEntity<List<City>> getCitiesByState(Long stateId);
+	ResponseEntity < List < City > > getCitiesByState( Long stateId );
+
+	< T > Long getSequenceIncrement ( Class < T > clazz );
 
 }

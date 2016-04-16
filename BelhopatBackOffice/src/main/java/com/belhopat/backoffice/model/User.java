@@ -62,10 +62,10 @@ public class User {
 		this.id = id;
 	}
 
-	public User(Long id, String username, String address, String email) {
+	public User(Long id, String username, String password, String email) {
 		this.id = id;
 		this.username = username;
-		this.password = address;
+		this.password = password;
 		this.email = email;
 	}
 

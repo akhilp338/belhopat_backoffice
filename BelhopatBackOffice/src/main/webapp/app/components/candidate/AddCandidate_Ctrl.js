@@ -164,25 +164,28 @@
             vm.confirmedSelectionItems = selected;
         };
         //To Do(move these methods to base controller)
-        vm.getStatesByCountry = function () {
-            var countryId = vm.registration.currentAddress.city.state.country.id,
-                    data = {"id": countryId};
-            vm.apiUrl = "api/getStatesByCountry";
-            vm.states = vm.defaultApiByIdAndUrl(data, vm.apiUrl);
-        }
-        vm.getCitiesByStates = function () {
-            var stateId = vm.registration.currentAddress.city.state.id,
-                    data = {"id": stateId};
-            vm.apiUrl = "api/getCitiesByState";
-            vm.cities = vm.defaultApiByIdAndUrl(data, vm.apiUrl)
-        }
 
-        vm.defaultApiByIdAndUrl = function (data, url) {
-            Core_Service.defaultApiByIdAndUrlImpl(url, data)
-                    .then(function (response) {
-                        vm.states = response.data;
-                    }, function (error) {
-                    });
+        vm.getStatesByCountry = function(countryId){
+        	var data = {"id":countryId};
+        	vm.apiUrl = "api/getStatesByCountry";
+        	vm.defaultApiByIdAndUrl(data,vm.apiUrl,true)
+        }
+        vm.getCitiesByStates = function(){
+        	var data = {"id":stateId};
+        	vm.apiUrl = "api/getCitiesByState";
+        	vm.defaultApiByIdAndUrl(data,vm.apiUrl,false)
+        }
+        
+        vm.defaultApiByIdAndUrl = function(data,url){
+            Core_Service.defaultApiByIdAndUrlImpl(url,data,isCountry)
+            .then( function(response) {
+            	if(isCountry){
+            		vm.states =  response.data;
+            	}else{
+            		vm.cities = response.data;
+            	}
+            },function(error){
+            });
         }
 
         Core_Service.calculateSidebarHeight();

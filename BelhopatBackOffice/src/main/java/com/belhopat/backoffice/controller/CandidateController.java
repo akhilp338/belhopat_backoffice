@@ -17,7 +17,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.belhopat.backoffice.dto.RequestObject;
 import com.belhopat.backoffice.model.Candidate;
-import com.belhopat.backoffice.model.LookupDetail;
 import com.belhopat.backoffice.service.BaseService;
 import com.belhopat.backoffice.service.CandidateService;
 
@@ -45,25 +44,25 @@ public class CandidateController {
 
 	@ResponseBody
 	@RequestMapping(value = "/saveOrUpdateCandidate", method = RequestMethod.POST)
-	public ResponseEntity<Void> saveOrUpdateCandiadte(@RequestBody Candidate candidate) {
+	public ResponseEntity<Void> saveOrUpdateCandidate(@RequestBody Candidate candidate) {
 		return candidateService.saveOrUpdateCandidate(candidate);
 	}
 
 	@ResponseBody
 	@RequestMapping(value = "/deleteCandidates", method = RequestMethod.POST)
-	public ResponseEntity<Void> deleteCandiadtes(@RequestBody List<Long> candidateIds) {
+	public ResponseEntity<Void> deleteCandidates(@RequestBody List<Long> candidateIds) {
 		return candidateService.deleteCandidates(candidateIds);
 	}
 
 	@ResponseBody
 	@RequestMapping(value = "/deleteCandidate", method = RequestMethod.POST)
-	public ResponseEntity<Void> deleteCandiadte(@RequestBody RequestObject requestObject) {
+	public ResponseEntity<Void> deleteCandidate(@RequestBody RequestObject requestObject) {
 		return candidateService.deleteCandidate(requestObject.getId());
 	}
 
 	@ResponseBody
 	@RequestMapping(value = "/getDropDownData", method = RequestMethod.POST)
-	public ResponseEntity<Map<String, List<?>>> getDropDownData() {
+	public ResponseEntity < Map < String, List < ? > > > getDropDownData() {
 		return baseService.getCandidateDropDownData();
 	}
 
