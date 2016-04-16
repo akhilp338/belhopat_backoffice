@@ -6,46 +6,44 @@
                 href="javascript:void(0)" ng-click="goToStep($index)">{{step}}</a></li>
     </ul>
     <div ng-switch on="selection">
-
-        <!-- First Step -->
-        <div ng-switch-when="Step 1: Personal Information">
-            <form name="step_0" id="form_0" novalidate>
-                <div class="row">
-                    <span class="sub-section width-100">Basic Information</span>
-                    <div class="span4">
-                        <div class="control-group width-30 pull-left">
-                            <label class="control-label" for="firstName">First Name</label>
-                            <div class="controls">
-                                <input type="text" name="firstName" id="firstName"
-                                       ng-model="vm.registration.firstName"
-                                       class="form-input width-100" placeholder="First Name"
-                                       validation="required:alt=Required field" />
-                            </div>
-                        </div>
-                        <div class="control-group width-30 pull-left margin-left-5">
-                            <label class="control-label" for="middleName">Middle Name</label>
-                            <div class="controls">
-                                <input type="text" name="middleName" id="middleName"
-                                       ng-model="vm.registration.middleName"
-                                       class="form-input width-100" placeholder="Middle Name" />
-                            </div>
-                        </div>
-                        <div class="control-group width-30 pull-left margin-left-5">
-                            <label class="control-label" for="lastName">Last Name</label>
-                            <div class="controls">
-                                <input type="text" name="lastName" id="lastName"
-                                       ng-model="vm.registration.lastName"
-                                       class="form-input width-100" placeholder="Last Name"
-                                       validation="required:alt=Required field" />
-                            </div>
-                        </div>
-                        <div class="control-group width-30 pull-left">
-                            <label class="control-label" for="dob">Date of Birth</label>
-                            <div class="controls">
-                                <md-datepicker name = "dob" ng-model="vm.registration.dob" md-placeholder="Enter date"></md-datepicker>
-                            </div>
-                        </div>
-
+		<!-- First Step -->
+		<div ng-switch-when="Step 1: Personal Information">
+			<form name="step_0" id="form_0" novalidate>
+				<div class="row">
+					<span class="sub-section width-100">Basic Information</span>
+					<div class="span4">
+						<div class="control-group width-30 pull-left">
+							<label class="control-label" for="firstName">First Name</label>
+							<div class="controls">
+								<input type="text" name="firstName" id="firstName"
+									ng-model="vm.registration.firstName"
+									class="form-input width-100" placeholder="First Name"
+									validation="required:alt=Required field" />
+							</div>
+						</div>
+						<div class="control-group width-30 pull-left margin-left-5">
+							<label class="control-label" for="middleName">Middle Name</label>
+							<div class="controls">
+								<input type="text" name="middleName" id="middleName"
+									ng-model="vm.registration.middleName"
+									class="form-input width-100" placeholder="Middle Name" />
+							</div>
+						</div>
+						<div class="control-group width-30 pull-left margin-left-5">
+							<label class="control-label" for="lastName">Last Name</label>
+							<div class="controls">
+								<input type="text" name="lastName" id="lastName"
+									ng-model="vm.registration.lastName"
+									class="form-input width-100" placeholder="Last Name"
+									validation="required:alt=Required field" />
+							</div>
+						</div>
+						<div class="control-group width-30 pull-left">
+							<label class="control-label" for="dob">Date of Birth</label>
+							<div class="controls">
+								<md-datepicker name = "dob" ng-model="vm.registration.dob" md-placeholder="Enter date"></md-datepicker>
+							</div>
+						</div>
                         <div class="control-group width-30 pull-left margin-left-5">
                             <label class="control-label" for="gender">Gender</label>
                             <div class="controls">
@@ -122,76 +120,75 @@
                         </div>
                     </div>
                 </div>
-
-                <div class="row">
-                    <span class="sub-section width-100">permanent Address</span>
-                    <div class="span4">
-                        <div class="control-group width-30 pull-left">
-                            <label class="control-label" for="address_line1">Address
-                                Line 1</label>
-                            <div class="controls">
-                                <input type="text" name="address_line1" id="address_line1"
-                                       ng-model="vm.registration.permanentAddress.address1"
-                                       class="form-input width-100" placeholder="Address Line 1"
-                                       validation="required:alt=Required field"
-                                       ng-change="vm.checkAddress()" />
-                            </div>
-                        </div>
-                        <div class="control-group width-30 pull-left margin-left-5">
-                            <label class="control-label" for="address_line2">Address
-                                Line 2</label>
-                            <div class="controls">
-                                <input type="text" name="address_line2" id="address_line1"
-                                       ng-model="vm.registration.permanentAddress.address2"
-                                       class="form-input width-100" placeholder="Address Line 2"
-                                       ng-change="vm.checkAddress()" />
-                            </div>
-                        </div>
-                        <div class="control-group width-30 pull-left margin-left-5">
-                            <label class="control-label" for="country">Country</label>
-                            <div class="controls">
-                                <select
-                                    ng-model="vm.registration.permanentAddress.city.state.country.id"
-                                    class="form-input width-100"
-                                    ng-change="vm.getStatesByCountry(vm.registration.permanentAddress.city.state.country.id)">
-                                    <option ng-repeat="country in vm.lookups.COUNTRY"
-                                            value="{{country.id}}">{{country.description}}</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="control-group width-30 pull-left">
-                            <label class="control-label" for="state">State</label>
-                            <div class="controls">
-                                <select
-                                    ng-model="vm.registration.permanentAddress.city.state.id"
-                                    class="form-input width-100" ng-change="vm.getCitiesByStates(vm.registration.permanentAddress.city.state.id)">
-                                    <option ng-repeat="state in vm.states" value="{{state.id}}">{{state.description}}</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="control-group width-30 pull-left margin-left-5">
-                            <label class="control-label" for="city">City</label>
-                            <div class="controls">
-                                <select ng-model="vm.registration.permanentAddress.city.id"
-                                        class="form-input width-100" ng-change="vm.checkAddress()">
-                                    <option ng-repeat="city in vm.cities"
-                                            value="{{city.id}}">{{city.description}}</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="control-group width-30 pull-left margin-left-5">
-                            <label class="control-label" for="zip_code">ZIP Code</label>
-                            <div class="controls">
-                                <input type="text" name="zip_code" id="zip_code"
-                                       ng-model="vm.registration.permanentAddress.zipCode"
-                                       class="form-input width-100" placeholder="ZIP Code"
-                                       validation="required:alt=Required field"
-                                       ng-change="vm.checkAddress()" />
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
+				<div class="row">
+					<span class="sub-section width-100">permanent Address</span>
+					<div class="span4">
+						<div class="control-group width-30 pull-left">
+							<label class="control-label" for="address_line1">Address
+								Line 1</label>
+							<div class="controls">
+								<input type="text" name="address_line1" id="address_line1"
+									ng-model="vm.registration.permanentAddress.address1"
+									class="form-input width-100" placeholder="Address Line 1"
+									validation="required:alt=Required field"
+									ng-change="vm.checkAddress()" />
+							</div>
+						</div>
+						<div class="control-group width-30 pull-left margin-left-5">
+							<label class="control-label" for="address_line2">Address
+								Line 2</label>
+							<div class="controls">
+								<input type="text" name="address_line2" id="address_line1"
+									ng-model="vm.registration.permanentAddress.address2"
+									class="form-input width-100" placeholder="Address Line 2"
+									ng-change="vm.checkAddress()" />
+							</div>
+						</div>
+						<div class="control-group width-30 pull-left margin-left-5">
+							<label class="control-label" for="country">Country</label>
+							<div class="controls">
+								<select
+									ng-model="vm.registration.permanentAddress.city.state.country.id"
+									class="form-input width-100"
+									ng-change="vm.getStatesByCountryPerm(vm.registration.permanentAddress.city.state.country.id)">
+									<option ng-repeat="country in vm.lookups.COUNTRY"
+										value="{{country.id}}">{{country.description}}</option>
+								</select>
+							</div>
+						</div>
+						<div class="control-group width-30 pull-left">
+							<label class="control-label" for="state">State</label>
+							<div class="controls">
+								<select
+									ng-model="vm.registration.permanentAddress.city.state.id"
+									class="form-input width-100" 
+									ng-change="vm.getCitiesByStatesPerm(vm.registration.permanentAddress.city.state.id)">
+									<option ng-repeat="states in vm.statesPerm" value="{{states.id}}">{{states.description}}</option>
+								</select>
+							</div>
+						</div>
+						<div class="control-group width-30 pull-left margin-left-5">
+							<label class="control-label" for="city">City</label>
+							<div class="controls">
+								<select ng-model="vm.registration.permanentAddress.city.id"
+									class="form-input width-100">
+									<option ng-repeat="city in vm.citiesPerm"
+										value="{{city.id}}">{{city.description}}</option>
+								</select>
+							</div>
+						</div>
+						<div class="control-group width-30 pull-left margin-left-5">
+							<label class="control-label" for="zip_code">ZIP Code</label>
+							<div class="controls">
+								<input type="text" name="zip_code" id="zip_code"
+									ng-model="vm.registration.permanentAddress.zipCode"
+									class="form-input width-100" placeholder="ZIP Code"
+									validation="required:alt=Required field"
+									ng-change="vm.checkAddress()" />
+							</div>
+						</div>
+					</div>
+				</div>
                 <div class="row">
                     <span class="sub-section width-100">Current Address</span>
                     <div class="checkbox">
@@ -200,161 +197,161 @@
                                ng-change="vm.copyAddress()"> <label for="checkbox1">
                             Same as permanent address </label>
                     </div>
+					<div class="span4">
+						<div class="control-group width-30 pull-left">
+							<label class="control-label" for="address_line1">Address
+								Line 1</label>
+							<div class="controls">
+								<input type="text" name="address_line1" id="address_line1"
+									ng-model="vm.registration.currentAddress.address1"
+									class="form-input width-100" placeholder="Address Line 1"
+									validation="required:alt=Required field" />
+							</div>
+						</div>
+						<div class="control-group width-30 pull-left margin-left-5">
+							<label class="control-label" for="address_line2">Address
+								Line 2</label>
+							<div class="controls">
+								<input type="text" name="address_line2" id="address_line1"
+									ng-model="vm.registration.currentAddress.address2"
+									class="form-input width-100" placeholder="Address Line 2" />
+							</div>
+						</div>
+						<div class="control-group width-30 pull-left margin-left-5">
+							<label class="control-label" for="country">Country</label>
+							<div class="controls">
+								<select
+									ng-model="vm.registration.currentAddress.city.state.country.id"
+									class="form-input width-100"
+									ng-change="vm.getStatesByCountryCurnt(vm.registration.currentAddress.city.state.country.id)">
+									<option ng-repeat="country in vm.lookups.COUNTRY"
+										value="{{country.id}}">{{country.description}}</option>
+								</select>
+							</div>
+						</div>
+						<div class="control-group width-30 pull-left">
+							<label class="control-label" for="state">State</label>
+							<div class="controls">
+								<select ng-model="vm.registration.currentAddress.city.state.id"
+									class="form-input width-100" 
+									ng-change="vm.getCitiesByStatesCurnt(vm.registration.currentAddress.city.state.id)">
+									<option ng-repeat="states in vm.statesCurnt" value="{{states.id}}">{{states.description}}</option>
+								</select>
+							</div>
+						</div>
+						<div class="control-group width-30 pull-left margin-left-5">
+							<label class="control-label" for="city">City</label>
+							<div class="controls">
+								<select ng-model="vm.registration.currentAddress.city.id"
+									class="form-input width-100" ng-change="vm.checkAddress()">
+									<option ng-repeat="city in vm.citiesCurnt"
+										value="{{city.id}}">{{city.description}}</option>
+								</select>
+							</div>
+						</div>
+						<div class="control-group width-30 pull-left margin-left-5">
+							<label class="control-label" for="zip_code">ZIP Code</label>
+							<div class="controls">
+								<input type="text" name="zip_code" id="zip_code"
+									ng-model="vm.registration.currentAddress.zipCode"
+									class="form-input width-100" placeholder="ZIP Code"
+									validation="required:alt=Required field" />
+							</div>
+						</div>
+					</div>
+				</div>
+			</form>
+		</div>
 
-                    <div class="span4">
-                        <div class="control-group width-30 pull-left">
-                            <label class="control-label" for="address_line1">Address
-                                Line 1</label>
-                            <div class="controls">
-                                <input type="text" name="address_line1" id="address_line1"
-                                       ng-model="vm.registration.currentAddress.address1"
-                                       class="form-input width-100" placeholder="Address Line 1"
-                                       validation="required:alt=Required field" />
-                            </div>
-                        </div>
-                        <div class="control-group width-30 pull-left margin-left-5">
-                            <label class="control-label" for="address_line2">Address
-                                Line 2</label>
-                            <div class="controls">
-                                <input type="text" name="address_line2" id="address_line1"
-                                       ng-model="vm.registration.currentAddress.address2"
-                                       class="form-input width-100" placeholder="Address Line 2" />
-                            </div>
-                        </div>
-                        <div class="control-group width-30 pull-left margin-left-5">
-                            <label class="control-label" for="country">Country</label>
-                            <div class="controls">
-                                <select
-                                    ng-model="vm.registration.currentAddress.city.state.country.id"
-                                    class="form-input width-100"
-                                    ng-change="vm.getStatesByCountry(vm.registration.currentAddress.city.state.country.id)">
-                                    <option ng-repeat="country in vm.lookups.COUNTRY"
-                                            value="{{country.id}}">{{country.description}}</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="control-group width-30 pull-left">
-                            <label class="control-label" for="state">State</label>
-                            <div class="controls">
-                                <select ng-model="vm.registration.currentAddress.city.state.id"
-                                        class="form-input width-100" ng-change="vm.getCitiesByStates(vm.registration.currentAddress.city.state.id)">
-                                    <option ng-repeat="state in vm.states" value="{{state.id}}">{{state.description}}</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="control-group width-30 pull-left margin-left-5">
-                            <label class="control-label" for="city">City</label>
-                            <div class="controls">
-                                <select ng-model="vm.registration.currentAddress.city.id"
-                                        class="form-input width-100" ng-change="vm.checkAddress()">
-                                    <option ng-repeat="city in vm.cities"
-                                            value="{{city.id}}">{{city.description}}</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="control-group width-30 pull-left margin-left-5">
-                            <label class="control-label" for="zip_code">ZIP Code</label>
-                            <div class="controls">
-                                <input type="text" name="zip_code" id="zip_code"
-                                       ng-model="vm.registration.currentAddress.zipCode"
-                                       class="form-input width-100" placeholder="ZIP Code"
-                                       validation="required:alt=Required field" />
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </form>
-        </div>
+		<!-- Second Step -->
+		<div ng-switch-when="Step 2: Employment Details">
+			<form name="step_1" id="form_1" novalidate>
+				<div class="row">
+					<span class="sub-section width-100">Basic Information</span>
+					<div class="span4">
+						<div class="control-group width-30 pull-left">
+							<label class="control-label" for="experience">Experience</label>
+							<div class="controls">
+								<input type="text" name="experience" id="experience"
+									ng-model="vm.registration.experience"
+									class="form-input width-100" placeholder="Experience"
+									validation="required:alt=Required field" />
+							</div>
+						</div>
+						<div class="control-group width-30 pull-left margin-left-5">
+							<label class="control-label" for="doj">Date of Joining</label>
+							<div class="controls">
+								<md-datepicker name = "doj" ng-model="vm.registration.doj" md-placeholder="Enter date"></md-datepicker>
+							</div>
+						</div>
+						<div class="control-group width-30 pull-left margin-left-5">
+							<label class="control-label" for="division">Division</label>
+							<div class="controls">
+								<select ng-model="vm.registration.division.id"
+									class="form-input width-100">
+									<option ng-repeat="division in vm.lookups.DIV"
+										value="{{division.id}}">{{division.description}}</option>
+								</select>
+							</div>
+						</div>
+						<div class="control-group width-30 pull-left">
+							<label class="control-label" for="designation">Designation</label>
+							<div class="controls">
+								<select ng-model="vm.registration.designation.id"
+									class="form-input width-100">
+									<option ng-repeat="designation in vm.lookups.DESIG"
+										value="{{designation.id}}">{{designation.description}}</option>
+								</select>
+							</div>
+						</div>
 
-        <!-- Second Step -->
-        <div ng-switch-when="Step 2: Employment Details">
-            <form name="step_1" id="form_1" novalidate>
-                <div class="row">
-                    <span class="sub-section width-100">Basic Information</span>
-                    <div class="span4">
-                        <div class="control-group width-30 pull-left">
-                            <label class="control-label" for="experience">Experience</label>
-                            <div class="controls">
-                                <input type="text" name="experience" id="experience"
-                                       ng-model="vm.registration.experience"
-                                       class="form-input width-100" placeholder="Experience"
-                                       validation="required:alt=Required field" />
-                            </div>
-                        </div>
-                        <div class="control-group width-30 pull-left margin-left-5">
-                            <label class="control-label" for="doj">Date of Joining</label>
-                            <div class="controls">
-                                <md-datepicker name = "doj" ng-model="vm.registration.doj" md-placeholder="Enter date"></md-datepicker>
-                            </div>
-                        </div>
-                        <div class="control-group width-30 pull-left margin-left-5">
-                            <label class="control-label" for="division">Division</label>
-                            <div class="controls">
-                                <select ng-model="vm.registration.division.id"
-                                        class="form-input width-100">
-                                    <option ng-repeat="division in vm.lookups.DIV"
-                                            value="{{division.id}}">{{division.description}}</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="control-group width-30 pull-left">
-                            <label class="control-label" for="designation">Designation</label>
-                            <div class="controls">
-                                <select ng-model="vm.registration.designation.id"
-                                        class="form-input width-100">
-                                    <option ng-repeat="designation in vm.lookups.DESIG"
-                                            value="{{designation.id}}">{{designation.description}}</option>
-                                </select>
-                            </div>
-                        </div>
-
-                        <div class="control-group width-30 pull-left margin-left-5">
-                            <label class="control-label" for="gender">Employment
-                                Status</label>
-                            <div class="controls">
-                                <select ng-model="vm.registration.employmentStatus.id"
-                                        class="form-input width-100">
-                                    <option ng-repeat="empStatus in vm.lookups.ESTATS"
-                                            value="{{empStatus.id}}">{{empStatus.description}}</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="control-group width-30 pull-left margin-left-5">
-                            <label class="control-label" for="purpose">Purpose</label>
-                            <div class="controls">
-                                <select ng-model="vm.registration.purpose.id"
-                                        class="form-input width-100">
-                                    <option ng-repeat="purpose in vm.lookups.PURPO"
-                                            value="{{purpose.id}}">{{purpose.description}}</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="control-group width-30 pull-left">
-                            <label class="control-label" for="client">Client</label>
-                            <div class="controls">
-                                <input type="text" name="client" id="client"
-                                       ng-model="vm.registration.client" class="form-input width-100"
-                                       placeholder="Client" validation="required:alt=Required field" />
-                            </div>
-                        </div>
-                        <div class="control-group width-30 pull-left margin-left-5">
-                            <label class="control-label" for="partner">Partner</label>
-                            <div class="controls">
-                                <input type="text" name="partner" id="partner"
-                                       ng-model="vm.registration.partner" class="form-input width-100"
-                                       placeholder="Partner" validation="required:alt=Required field" />
-                            </div>
-                        </div>
-                        <div class="control-group width-30 pull-left margin-left-5">
-                            <label class="control-label" for="partner">Sourced By</label>
-                            <div class="controls">
-                                <input type="text" name="sourcedBy" id="sourcedBy"
-                                       ng-model="vm.registration.sourcedBy"
-                                       class="form-input width-100" placeholder="Sourced By"
-                                       validation="required:alt=Required field" />
-                            </div>
-                        </div>
-                        <div class="control-group group-select width-30 pull-left">
+						<div class="control-group width-30 pull-left margin-left-5">
+							<label class="control-label" for="gender">Employment
+								Status</label>
+							<div class="controls">
+								<select ng-model="vm.registration.employmentStatus.id"
+									class="form-input width-100">
+									<option ng-repeat="empStatus in vm.lookups.ESTATS"
+										value="{{empStatus.id}}">{{empStatus.description}}</option>
+								</select>
+							</div>
+						</div>
+						<div class="control-group width-30 pull-left margin-left-5">
+							<label class="control-label" for="purpose">Purpose</label>
+							<div class="controls">
+								<select ng-model="vm.registration.purpose.id"
+									class="form-input width-100">
+									<option ng-repeat="purpose in vm.lookups.PURPO"
+										value="{{purpose.id}}">{{purpose.description}}</option>
+								</select>
+							</div>
+						</div>
+						<div class="control-group width-30 pull-left">
+							<label class="control-label" for="client">Client</label>
+							<div class="controls">
+								<input type="text" name="client" id="client"
+									ng-model="vm.registration.client" class="form-input width-100"
+									placeholder="Client" validation="required:alt=Required field" />
+							</div>
+						</div>
+						<div class="control-group width-30 pull-left margin-left-5">
+							<label class="control-label" for="partner">Partner</label>
+							<div class="controls">
+								<input type="text" name="partner" id="partner"
+									ng-model="vm.registration.partner" class="form-input width-100"
+									placeholder="Partner" validation="required:alt=Required field" />
+							</div>
+						</div>
+						<div class="control-group width-30 pull-left margin-left-5">
+							<label class="control-label" for="partner">Sourced By</label>
+							<div class="controls">
+								<input type="text" name="sourcedBy" id="sourcedBy"
+									ng-model="vm.registration.sourcedBy"
+									class="form-input width-100" placeholder="Sourced By"
+									validation="required:alt=Required field" />
+							</div>
+						</div>
+                                            <div class="control-group group-select width-30 pull-left">
                             <label class="control-label" for="skillSetList">Skill Set List</label>
                             <div class="controls">
                                 <select class="skills" size="5" id="skillList" multiple ng-multiple="true" ng-model="vm.subSelectedSkillList" ng-options="skill.skill for skill in vm.mainSkillList"></select>
@@ -366,97 +363,107 @@
                                 <button type="button" ng-click="vm.removeSkills()" title="Remove Skills" id="removeSkills" class="logout-button"><<</button>
                             </div>
                         </div>
-
                         <div class="control-group group-select width-30 margin-left-5 pull-left">
                             <label class="control-label" for="selectedSkillSet">Selected Skill Sets</label>
                             <div class="controls">
                                 <select  class="skills" size="5" id="skillsSelected" multiple ng-multiple="true" ng-model="vm.deSelectedSkills" ng-options="skill.skill for skill in vm.mainSelectedSkillList"></select>
                             </div>
                         </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <span class="sub-section width-100">Onsite Address</span>
-                    <div class="span4">
-                        <div class="control-group width-30 pull-left">
-                            <label class="control-label" for="address_line1">Address
-                                Line 1</label>
-                            <div class="controls">
-                                <input type="text" name="address_line1" id="address_line1"
-                                       ng-model="vm.registration.onsiteAddress.address1"
-                                       class="form-input width-100" placeholder="Address Line 1"
-                                       validation="required:alt=Required field"
-                                       ng-change="vm.checkAddress()" />
-                            </div>
-                        </div>
-                        <div class="control-group width-30 pull-left margin-left-5">
-                            <label class="control-label" for="address_line2">Address
-                                Line 2</label>
-                            <div class="controls">
-                                <input type="text" name="address_line2" id="address_line1"
-                                       ng-model="vm.registration.onsiteAddress.address2"
-                                       class="form-input width-100" placeholder="Address Line 2"
-                                       ng-change="vm.checkAddress()" />
-                            </div>
-                        </div>
-                        <div class="control-group width-30 pull-left margin-left-5">
-                            <label class="control-label" for="country">Country</label>
-                            <div class="controls">
-                                <select
-                                    ng-model="vm.registration.onsiteAddress.city.state.country.id"
-                                    class="form-input width-100"
-                                    ng-change="vm.getStatesByCountry(vm.registration.onsiteAddress.city.state.country.id)">
-                                    <option ng-repeat="country in vm.lookups.COUNTRY"
-                                            value="{{country.id}}">{{country.description}}</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="control-group width-30 pull-left">
-                            <label class="control-label" for="state">State</label>
-                            <div class="controls">
-                                <select ng-model="vm.registration.onsiteAddress.city.state.id"
-                                        class="form-input width-100"
-                                        ng-change="vm.getCitiesByStates(vm.registration.onsiteAddress.city.state.id)">
-                                    <option ng-repeat="state in vm.states" value="{{state.id}}">{{state.description}}</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="control-group width-30 pull-left margin-left-5">
-                            <label class="control-label" for="city">City</label>
-                            <div class="controls">
-                                <select ng-model="vm.registration.onsiteAddress.city.id"
-                                        class="form-input width-100" ng-change="vm.checkAddress()">
-                                    <option ng-repeat="city in vm.cities"
-                                            value="{{city.id}}">{{city.description}}</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="control-group width-30 pull-left margin-left-5">
-                            <label class="control-label" for="zip_code">ZIP Code</label>
-                            <div class="controls">
-                                <input type="text" name="zip_code" id="zip_code"
-                                       ng-model="vm.registration.onsiteAddress.zipCode"
-                                       class="form-input width-100" placeholder="ZIP Code"
-                                       validation="required:alt=Required field"
-                                       ng-change="vm.checkAddress()" />
-                            </div>
-                        </div>
-                        <div class="control-group width-30 pull-left">
-                            <label class="control-label" for="countryToVisit">Country To Visit</label>
-                            <div class="controls">
-                                <select
-                                    ng-model="vm.registration.countryToVisit.id"
-                                    class="form-input width-100">
-                                    <option ng-repeat="country in vm.lookups.COUNTRY"
-                                            value="{{country.id}}">{{country.description}}</option>
-                                </select>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </form>
-        </div>
-
+						
+					</div>
+				</div>
+				<div class="row">
+					<span class="sub-section width-100">Onsite Address</span>
+					<div class="span4">
+						<div class="control-group width-30 pull-left">
+							<label class="control-label" for="address_line1">Address
+								Line 1</label>
+							<div class="controls">
+								<input type="text" name="address_line1" id="address_line1"
+									ng-model="vm.registration.onsiteAddress.address1"
+									class="form-input width-100" placeholder="Address Line 1"
+									validation="required:alt=Required field"
+									ng-change="vm.checkAddress()" />
+							</div>
+						</div>
+						<div class="control-group width-30 pull-left margin-left-5">
+							<label class="control-label" for="address_line2">Address
+								Line 2</label>
+							<div class="controls">
+								<input type="text" name="address_line2" id="address_line1"
+									ng-model="vm.registration.onsiteAddress.address2"
+									class="form-input width-100" placeholder="Address Line 2"
+									ng-change="vm.checkAddress()" />
+							</div>
+						</div>
+						<div class="control-group width-30 pull-left margin-left-5">
+							<label class="control-label" for="country">Country</label>
+							<div class="controls">
+								<select
+									ng-model="vm.registration.onsiteAddress.city.state.country.id"
+									class="form-input width-100"
+									ng-change="vm.getStatesByCountryOnsite(vm.registration.onsiteAddress.city.state.country.id)">
+									<option ng-repeat="country in vm.lookups.COUNTRY"
+										value="{{country.id}}">{{country.description}}</option>
+								</select>
+							</div>
+						</div>
+						<div class="control-group width-30 pull-left">
+							<label class="control-label" for="state">State</label>
+							<div class="controls">
+								<select ng-model="vm.registration.onsiteAddress.city.state.id"
+									class="form-input width-100"
+									ng-change="vm.getCitiesByStatesOnsite(vm.registration.onsiteAddress.city.state.id)">
+									<option ng-repeat="states in vm.statesOnsite" value="{{states.id}}">{{states.description}}</option>
+								</select>
+							</div>
+						</div>
+						<div class="control-group width-30 pull-left margin-left-5">
+							<label class="control-label" for="city">City</label>
+							<div class="controls">
+								<select ng-model="vm.registration.onsiteAddress.city.id"
+									class="form-input width-100">
+									<option ng-repeat="city in vm.citiesOnsite"
+										value="{{city.id}}">{{city.description}}</option>
+								</select>
+							</div>
+						</div>
+						<div class="control-group width-30 pull-left margin-left-5">
+							<label class="control-label" for="zip_code">ZIP Code</label>
+							<div class="controls">
+								<input type="text" name="zip_code" id="zip_code"
+									ng-model="vm.registration.onsiteAddress.zipCode"
+									class="form-input width-100" placeholder="ZIP Code"
+									validation="required:alt=Required field"
+									ng-change="vm.checkAddress()" />
+							</div>
+						</div>
+						<div class="control-group width-30 pull-left">
+							<label class="control-label" for="countryToVisit">Country To Visit</label>
+							<div class="controls">
+								<select
+									ng-model="vm.registration.countryToVisit.id"
+									class="form-input width-100">
+									<option ng-repeat="country in vm.lookups.COUNTRY"
+										value="{{country.id}}">{{country.description}}</option>
+								</select>
+							</div>
+						</div>
+                                            <div class="control-group width-30 pull-left margin-left-5">
+							<label class="control-label" for="partner">Onsite Mobile
+								No</label>
+							<div class="controls">
+								<input type="text" name="onsiteContactNo" id="onsiteContactNo"
+									ng-model="vm.registration.onsiteContactNo"
+									class="form-input width-100" placeholder="Onsite Mobile No"
+									validation="required:alt=Required field" />
+							</div>
+						</div>
+					</div>
+				</div>
+			</form>
+		</div>
+                        
         <!-- Third Step -->
         <div ng-switch-when="Step 3: Official Information">
             <form name="step_2" id="form_2" novalidate>
@@ -498,7 +505,122 @@
                                        validation="required:alt=Required field" />
                             </div>
                         </div>
-
+						<div class="control-group width-30 pull-left margin-left-5">
+							<label class="control-label" for="gender">Bank Branch</label>
+							<div class="controls">
+								<input type="text" name="branch" id="branch"
+									ng-model="vm.registration.bankAccount.branch"
+									class="form-input width-100" placeholder="Bank Branch"
+									validation="required:alt=Required field" />
+							</div>
+						</div>
+					</div>
+				</div>
+				
+				<div class="row">
+					<span class="sub-section width-100">Bank Address</span>
+					<div class="span4">
+						<div class="control-group width-30 pull-left">
+							<label class="control-label" for="address_line1">Address
+								Line 1</label>
+							<div class="controls">
+								<input type="text" name="address_line1" id="address_line1"
+									ng-model="vm.registration.bankAccount.bankAddress.address1"
+									class="form-input width-100" placeholder="Address Line 1"
+									validation="required:alt=Required field"
+									ng-change="vm.checkAddress()" />
+							</div>
+						</div>
+						<div class="control-group width-30 pull-left margin-left-5">
+							<label class="control-label" for="address_line2">Address
+								Line 2</label>
+							<div class="controls">
+								<input type="text" name="address_line2" id="address_line1"
+									ng-model="vm.registration.bankAccount.bankAddress.address2"
+									class="form-input width-100" placeholder="Address Line 2"
+									ng-change="vm.checkAddress()" />
+							</div>
+						</div>
+						<div class="control-group width-30 pull-left margin-left-5">
+							<label class="control-label" for="country">Country</label>
+							<div class="controls">
+								<select
+									ng-model="vm.registration.bankAccount.bankAddress.city.state.country.id"
+									class="form-input width-100"
+									ng-change="vm.getStatesByCountryBank(vm.registration.bankAccount.bankAddress.city.state.country.id)">
+									<option ng-repeat="country in vm.lookups.COUNTRY"
+										value="{{country.id}}">{{country.description}}</option>
+								</select>
+							</div>
+						</div>
+						<div class="control-group width-30 pull-left">
+							<label class="control-label" for="state">State</label>
+							<div class="controls">
+								<select ng-model="vm.registration.bankAccount.bankAddress.city.state.id"
+									class="form-input width-100"
+									ng-change="vm.getCitiesByStatesBank(vm.registration.bankAccount.bankAddress.city.state.id)">
+									<option ng-repeat="states in vm.statesBank" value="{{states.id}}">{{states.description}}</option>
+								</select>
+							</div>
+						</div>
+						<div class="control-group width-30 pull-left margin-left-5">
+							<label class="control-label" for="city">City</label>
+							<div class="controls">
+								<select ng-model="vm.registration.bankAccount.bankAddress.city.id"
+									class="form-input width-100" ng-change="vm.checkAddress()">
+									<option ng-repeat="city in vm.citiesBank"
+										value="{{city.id}}">{{city.description}}</option>
+								</select>
+							</div>
+						</div>
+						<div class="control-group width-30 pull-left margin-left-5">
+							<label class="control-label" for="zip_code">ZIP Code</label>
+							<div class="controls">
+								<input type="text" name="zip_code" id="zip_code"
+									ng-model="vm.registration.bankAccount.bankAddress.zipCode"
+									class="form-input width-100" placeholder="ZIP Code"
+									validation="required:alt=Required field"
+									ng-change="vm.checkAddress()" />
+							</div>
+						</div>
+					</div>
+				</div>
+				
+				<div class="row">
+					<span class="sub-section width-100">Passport Details</span>
+					<div class="span4">
+						<div class="control-group width-30 pull-left">
+							<label class="control-label" for="firstName">Passport No</label>
+							<div class="controls">
+								<input type="text" name="passportNo" id="passportNo"
+									ng-model="vm.registration.passport.passportNo"
+									class="form-input width-100" placeholder="Passport No"
+									validation="required:alt=Required field" />
+							</div>
+						</div>
+						<div class="control-group width-30 pull-left margin-left-5">
+							<label class="control-label" for="passCountry">Passport Country</label>
+							<div class="controls">
+								<select
+									ng-model="vm.registration.passport.country.id"
+									class="form-input width-100">
+									<option ng-repeat="country in vm.lookups.COUNTRY"
+										value="{{country.id}}">{{country.description}}</option>
+								</select>
+							</div>
+						</div>
+						<div class="control-group width-30 pull-left margin-left-5">
+							<label class="control-label" for="lastName">Passport Issue Date</label>
+							<div class="controls">
+                                                            <md-datepicker name="issueDate" ng-model="vm.registration.passport.issueDate" md-placeholder="Enter date"></md-datepicker>							
+							</div>
+						</div>
+						<div class="control-group width-30 pull-left">
+							<label class="control-label" for="expiryDate">Passport Expiry Date</label>
+							<div class="controls">
+                                                            <md-datepicker name="expiryDate" ng-model="vm.registration.passport.expiryDate" md-placeholder="Enter date"></md-datepicker>
+							</div>
+						</div>
                         <div class="control-group width-30 pull-left margin-left-5">
                             <label class="control-label" for="gender">Bank Branch</label>
                             <div class="controls">
