@@ -123,14 +123,17 @@
                 serverSide: true,
                 bDestroy: true,
                 processing: true,
+                responsive: true,
                 sScrollX: '100%',                
                 fnDrawCallback: function (settings, ajax) {
                     Core_Service.calculateSidebarHeight();
                 },
                 language: {
-                	zeroRecords: "No data to dispay",
+                	zeroRecords: 'No data to dispay',
                     searchPlaceholder: 'Search',
-                    search: ''
+                    search: '',
+                    infoEmpty: '',
+                    infoFiltered:''
                 },
                 aoColumns: [{
                         title: "Candidate ID",
@@ -139,7 +142,7 @@
                         title: "Name",
                         data: 'firstName',
                     }, {
-                        title: "Contact No:",
+                        title: "Contact No",
                         data: 'officialContactNo',
                     }, {
                         title: "Country To Visit",
