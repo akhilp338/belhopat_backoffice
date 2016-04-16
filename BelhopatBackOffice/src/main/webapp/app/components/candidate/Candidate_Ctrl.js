@@ -210,6 +210,7 @@
             Core_Service.candidateDeleteImpl(vm.deleteUrl,id)
             .then( function(response) {
                Core_Service.sweetAlert("Done!",response.data.data,"success");  
+               angular.element('#candidatesList').DataTable().draw();
             },function(error){
             	Core_Service.sweetAlert("Failed!",response.data.data,"failure");  
             });
