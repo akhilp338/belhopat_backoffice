@@ -44,7 +44,7 @@ public class CandidateController {
 
 	@ResponseBody
 	@RequestMapping(value = "/saveOrUpdateCandidate", method = RequestMethod.POST)
-	public ResponseEntity<Void> saveOrUpdateCandidate(@RequestBody Candidate candidate) {
+	public ResponseEntity<String> saveOrUpdateCandidate(@RequestBody Candidate candidate) {
 		return candidateService.saveOrUpdateCandidate(candidate);
 	}
 
@@ -56,7 +56,7 @@ public class CandidateController {
 
 	@ResponseBody
 	@RequestMapping(value = "/deleteCandidate", method = RequestMethod.POST)
-	public ResponseEntity<Void> deleteCandidate(@RequestBody RequestObject requestObject) {
+	public ResponseEntity<String> deleteCandidate(@RequestBody RequestObject requestObject) {
 		return candidateService.deleteCandidate(requestObject.getId());
 	}
 
