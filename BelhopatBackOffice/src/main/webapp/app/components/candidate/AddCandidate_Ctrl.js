@@ -119,32 +119,86 @@
             });
         };
         //To Do(move these methods to base controller)
-        //getStatesByCountryPermnt,getStatesByCountryCurnt,
-        //getCitiesByStatesPerm,getCitiesByStatesCurnt,
-        vm.getStatesByCountry = function(countryId){
+        vm.getStatesByCountryPerm = function(countryId){
         	var data = {"id":countryId};
         	vm.apiUrl = "api/getStatesByCountry";
-        	vm.defaultApiByIdAndUrl(data,vm.apiUrl,true)
-        }
-        vm.getCitiesByStates = function(stateId){
-        	var data = {"id":stateId};
-        	vm.apiUrl = "api/getCitiesByState";
-        	vm.defaultApiByIdAndUrl(data,vm.apiUrl,false)
-        }
-        
-        vm.defaultApiByIdAndUrl = function(data,url,isCountry){
-            Core_Service.defaultApiByIdAndUrlImpl(url,data)
+            Core_Service.defaultApiByIdAndUrlImpl(vm.apiUrl,data)
             .then( function(response) {
-            	if(isCountry){
-            		vm.states =  response.data;
-            	}else{
-            		vm.cities = response.data;
-            	}
+            	vm.statesPerm =  response.data;
             },function(error){
             	console.log('theng...')
             });
         }
-        
+        vm.getCitiesByStatesPerm = function(stateId){
+        	var data = {"id":stateId};
+        	vm.apiUrl = "api/getCitiesByState";
+            Core_Service.defaultApiByIdAndUrlImpl(vm.apiUrl,data)
+            .then( function(response) {
+            	vm.citiesPerm =  response.data;
+            },function(error){
+            	console.log('theng...')
+            });
+        }
+        vm.getStatesByCountryCurnt = function(countryId){
+        	var data = {"id":countryId};
+        	vm.apiUrl = "api/getStatesByCountry";
+            Core_Service.defaultApiByIdAndUrlImpl(vm.apiUrl,data)
+            .then( function(response) {
+            	vm.statesCurnt =  response.data;
+            },function(error){
+            	console.log('theng...')
+            });
+        }
+        vm.getCitiesByStatesCurnt = function(stateId){
+        	var data = {"id":stateId};
+        	vm.apiUrl = "api/getCitiesByState";
+            Core_Service.defaultApiByIdAndUrlImpl(vm.apiUrl,data)
+            .then( function(response) {
+            	vm.citiesCurnt =  response.data;
+            },function(error){
+            	console.log('theng...')
+            });
+        }        
+        vm.getStatesByCountryOnsite = function(countryId){
+        	var data = {"id":countryId};
+        	vm.apiUrl = "api/getStatesByCountry";
+            Core_Service.defaultApiByIdAndUrlImpl(vm.apiUrl,data)
+            .then( function(response) {
+            	vm.statesOnsite =  response.data;
+            },function(error){
+            	console.log('theng...')
+            });
+        }
+        vm.getCitiesByStatesOnsite = function(stateId){
+        	var data = {"id":stateId};
+        	vm.apiUrl = "api/getCitiesByState";
+            Core_Service.defaultApiByIdAndUrlImpl(vm.apiUrl,data)
+            .then( function(response) {
+            	vm.citiesOnsite =  response.data;
+            },function(error){
+            	console.log('theng...')
+            });
+        }      
+        vm.getStatesByCountryBank = function(countryId){
+        	var data = {"id":countryId};
+        	vm.apiUrl = "api/getStatesByCountry";
+            Core_Service.defaultApiByIdAndUrlImpl(vm.apiUrl,data)
+            .then( function(response) {
+            	vm.statesBank =  response.data;
+            },function(error){
+            	console.log('theng...')
+            });
+        }
+        vm.getCitiesByStatesBank = function(stateId){
+        	var data = {"id":stateId};
+        	vm.apiUrl = "api/getCitiesByState";
+            Core_Service.defaultApiByIdAndUrlImpl(vm.apiUrl,data)
+            .then( function(response) {
+            	vm.citiesBank =  response.data;
+            },function(error){
+            	console.log('theng...')
+            });
+        }
         Core_Service.calculateSidebarHeight();
     };
     
