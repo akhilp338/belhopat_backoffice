@@ -123,6 +123,9 @@
             $state.go("coreuser.candidate.add");
         };
 
+        vm.cancelRegisteration = function (){
+            $state.go("coreuser.candidate")
+        };
         vm.candidateRegister = function () {
             vm.registerUrl = "api/candidate/saveOrUpdateCandidate";
             Core_Service.candidateRegisterImpl(vm.registerUrl, vm.registration)
