@@ -123,14 +123,17 @@
                 serverSide: true,
                 bDestroy: true,
                 processing: true,
+                responsive: true,
                 sScrollX: '100%',                
                 fnDrawCallback: function (settings, ajax) {
                     Core_Service.calculateSidebarHeight();
                 },
                 language: {
-                	zeroRecords: "No data to dispay",
+                	zeroRecords: 'No data to dispay',
                     searchPlaceholder: 'Search',
-                    search: ''
+                    search: '',
+                    infoEmpty: '',
+                    infoFiltered:''
                 },
                 aoColumns: [{
                         title: "Candidate ID",
@@ -139,7 +142,7 @@
                         title: "Name",
                         data: 'firstName',
                     }, {
-                        title: "Contact No:",
+                        title: "Contact No",
                         data: 'officialContactNo',
                     }, {
                         title: "Country To Visit",
@@ -159,9 +162,12 @@
                         sClass: "button-column",
                         render: function (data) {
                             return '<div class="action-buttons">' +
-                                    '<span  value="' + data + '" class="actions action-view fa-stack fa-lg pull-left" title="View"><i class="fa fa-eye" aria-hidden="true"></i></span>' +
-                                    '<span value="' + data + '" class="actions action-edit fa-stack fa-lg pull-left" title="Edit"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></i></span>' +
-                                    '<span value="' + data + '" class="actions action-delete fa-stack fa-lg pull-left" title="Delete"><i class="fa fa-user-times" aria-hidden="true"></i></span>' +
+                                    '<span  value="' + data + '" class="actions action-view fa-stack fa-lg pull-left" title="View">'+
+                                    '<i class="fa fa-eye" aria-hidden="true"></i></span>' +
+                                    '<span value="' + data + '" class="actions action-edit fa-stack fa-lg pull-left" title="Edit">'+
+                                    '<i class="fa fa-pencil-square-o" aria-hidden="true"></i></i></span>' +
+                                    '<span value="' + data + '" class="actions action-delete fa-stack fa-lg pull-left" title="Delete">'+
+                                    '<i class="fa fa-user-times" aria-hidden="true"></i></span>' +
                                     '</div>'
                         }
                     }]
@@ -204,6 +210,7 @@
             	
             });
         }
+        
         Core_Service.calculateSidebarHeight();
     };
 

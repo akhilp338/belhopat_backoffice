@@ -8,6 +8,7 @@ public class Constants {
 	public static final String PURPOSE = "PURPO";
 	public static final String BLOOD_GROUP = "BG";
 	public static final String EMPLOYMENT_STATUS = "ESTATS";
+	public static final String FAMILY_MEMBER = "FAMMEM";
 
 	/* password reset msg constants */
 	public static final String PASS_RESET_SUCC_MSG = "New password has been sent to your registered email.";
@@ -23,5 +24,11 @@ public class Constants {
 	public static final String DD_MM_YYYY = "dd-MM-yyyy";
 	public static final String MMMM_DD_YYYY = "MMMM dd, yyyy";
 	public static final String MMMM_DD_YYYY_HH_MM = "MMMM dd, yyyy HH:mm";
+
+	/* map keys */
+	public static final String COUNTRY = "COUNTRY";
+	public static final String CITY = "CITY";
+	public static final String STATE = "STATE";
+	public static final String SKILL = "SKILL";
 
 }

@@ -17,10 +17,10 @@ public interface CandidateService {
 	
 	ResponseEntity<Candidate> getCandidate(Long candidateId);
 	
-	ResponseEntity<Void> saveOrUpdateCandidate(Candidate candidate);
+	ResponseEntity<String> saveOrUpdateCandidate(Candidate candidate);
 	
 	ResponseEntity<Void> deleteCandidates(List<Long> candidateIds);
 
-	ResponseEntity<Void> deleteCandidate(Long candidateId);
+	ResponseEntity<String> deleteCandidate(Long candidateId);
 
 }
