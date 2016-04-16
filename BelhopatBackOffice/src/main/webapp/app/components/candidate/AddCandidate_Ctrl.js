@@ -20,19 +20,16 @@
         vm.addSkills = function () {
             vm.mainSelectedSkillList = vm.mainSelectedSkillList.concat(vm.subSelectedSkillList);
             vm.removeFromMainListArray(vm.getIndexesToRemove(vm.mainSkillList, vm.subSelectedSkillList));
-            console.log(vm.confirmedSelectionItems);
         };
         vm.removeSkills = function () {
             vm.mainSkillList = vm.mainSkillList.concat(vm.deSelectedSkills);
             vm.removeFromSelectedListArray(vm.getIndexesToRemove(vm.mainSelectedSkillList, vm.deSelectedSkills));
-            console.log(vm.confirmedSelectionItems);
         };
 
         vm.isCheckboxEnable = false;
         vm.urlForLookups = "api/candidate/getDropDownData";
         Core_Service.getAllLookupValues(vm.urlForLookups)
                 .then(function (response) {
-                    console.log(response)
                     vm.lookups = response.data;
                 }, function (error) {
 
@@ -95,44 +92,45 @@
 
         $rootScope.active = 'candidate';
         vm.copyAddress = function () {
-            console.log(vm.registration.permenant)
-            if (vm.registration.permenant) {
-                vm.registration.current = {};
+            if (vm.registration.permanentAddress) {
+                vm.registration.currentAddress = {};
                 vm.isCheckboxEnable = true;
-                for (var key in vm.registration.permenant) {
-                    vm.registration.current[key] = vm.registration.permenant[key];
+                for (var key in vm.registration.permanentAddress) {
+                    vm.registration.currentAddress[key] = vm.registration.permanentAddress[key];
                 }
             } else {
                 vm.isCheckboxEnable = false;
             }
+             if (!vm.isChecked) {
+                 for(var key in vm.registration.currentAddress){
+                     vm.registration.currentAddress[key] = "";
+                 }
+            }
         };
 
-        vm.checkAddress = function () {
-            if (vm.registration.permenant) {
-                for (var key in vm.registration.permenant) {
-                    if (vm.registration.permenant[key] != "") {
-                        vm.isCheckboxEnable = true;
-                        return;
+        vm.checkAddress = function () {            
+                if (vm.registration.permanentAddress) {
+                    for (var key in vm.registration.permanentAddress) {
+                        if (vm.registration.permanentAddress[key] != "") {
+                            vm.isCheckboxEnable = true;
+                            return;
+                        }
                     }
-                }
-                vm.isCheckboxEnable = false;
-            }
+                    vm.isCheckboxEnable = false;
+                }           
         };
         vm.addCandidate = function () {
             $state.go("coreuser.candidate.add");
         };
 
-        vm.candidateRegister = function(){
-        	console.log(vm.registration);
-        	vm.registerUrl = "api/candidate/saveOrUpdateCandidate";
-            Core_Service.candidateRegisterImpl(vm.registerUrl,vm.registration)
-            .then( function(response) {
-               console.log(response)
-            },function(error){
-            	
-            });
-        };
+        vm.candidateRegister = function () {
+            vm.registerUrl = "api/candidate/saveOrUpdateCandidate";
+            Core_Service.candidateRegisterImpl(vm.registerUrl, vm.registration)
+                    .then(function (response) {
+                    }, function (error) {
 
+                    });
+        };
         vm.getIndexesToRemove = function (array, data) {
             var indexes = [];
             for (var i = 0; i < data.length; i++) {
@@ -148,9 +146,9 @@
         vm.removeFromSelectedListArray = function (indexes) {
             var selected = [];
             for (var i = indexes.length - 1; i >= 0; i--)
-                vm.mainSelectedSkillList.splice(indexes[i], 1);            
+                vm.mainSelectedSkillList.splice(indexes[i], 1);
             vm.deSelectedSkills = [];
-            for(var j = 0; j<vm.mainSelectedSkillList.length; j++){
+            for (var j = 0; j < vm.mainSelectedSkillList.length; j++) {
                 selected.push(vm.mainSelectedSkillList[j].id)
             }
             vm.confirmedSelectionItems = selected;
@@ -158,13 +156,35 @@
         vm.removeFromMainListArray = function (indexes) {
             var selected = [];
             for (var i = indexes.length - 1; i >= 0; i--)
-                vm.mainSkillList.splice(indexes[i], 1);            
+                vm.mainSkillList.splice(indexes[i], 1);
             vm.subSelectedSkillList = [];
-            for(var j = 0; j<vm.mainSelectedSkillList.length; j++){
+            for (var j = 0; j < vm.mainSelectedSkillList.length; j++) {
                 selected.push(vm.mainSelectedSkillList[j].id)
             }
             vm.confirmedSelectionItems = selected;
         };
+        //To Do(move these methods to base controller)
+        vm.getStatesByCountry = function () {
+            var countryId = vm.registration.currentAddress.city.state.country.id,
+                    data = {"id": countryId};
+            vm.apiUrl = "api/getStatesByCountry";
+            vm.states = vm.defaultApiByIdAndUrl(data, vm.apiUrl);
+        }
+        vm.getCitiesByStates = function () {
+            var stateId = vm.registration.currentAddress.city.state.id,
+                    data = {"id": stateId};
+            vm.apiUrl = "api/getCitiesByState";
+            vm.cities = vm.defaultApiByIdAndUrl(data, vm.apiUrl)
+        }
+
+        vm.defaultApiByIdAndUrl = function (data, url) {
+            Core_Service.defaultApiByIdAndUrlImpl(url, data)
+                    .then(function (response) {
+                        vm.states = response.data;
+                    }, function (error) {
+                    });
+        }
+
         Core_Service.calculateSidebarHeight();
     };
 

@@ -207,30 +207,6 @@
             	
             });
         }
-        //To Do(move these methods to base controller)
-        vm.getStatesByCountry = function(){
-        	var countryId = vm.registration.permanentAddress.city.state.country.id,
-        	data = {"id":countryId};
-        	alert(countryId);
-        	vm.apiUrl = "api/candidate/deleteCandidate";
-        	vm.defaultApiByIdAndUrl(data,vm.apiUrl)
-        }
-        vm.getCitiesByStates = function(){
-        	var stateId = vm.registration.permanentAddress.city.state.id,
-        	data = {"id":stateId};
-        	alert(stateId);
-        	vm.apiUrl = "api/candidate/deleteCandidate";
-        	vm.defaultApiByIdAndUrl(data,vm.apiUrl)
-        }
-        
-        vm.defaultApiByIdAndUrl = function(url,data){
-            Core_Service.defaultApiByIdAndUrlImpl(url,data)
-            .then( function(response) {
-               console.log(response)
-            },function(error){
-            	
-            });
-        }
         
         Core_Service.calculateSidebarHeight();
     };
