@@ -135,7 +135,11 @@
                     infoEmpty: '',
                     infoFiltered:''
                 },
-                aoColumns: [{
+                order: [[ 0, "desc" ]],
+                aoColumns: [ {
+                    	data: 'id',
+                    	visible : false
+                	},{
                         title: "Candidate ID",
                         data: 'candidateId',
                     }, {
