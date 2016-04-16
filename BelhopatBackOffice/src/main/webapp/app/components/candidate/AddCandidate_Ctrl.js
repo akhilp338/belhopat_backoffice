@@ -119,19 +119,21 @@
             });
         };
         //To Do(move these methods to base controller)
+        //getStatesByCountryPermnt,getStatesByCountryCurnt,
+        //getCitiesByStatesPerm,getCitiesByStatesCurnt,
         vm.getStatesByCountry = function(countryId){
         	var data = {"id":countryId};
         	vm.apiUrl = "api/getStatesByCountry";
         	vm.defaultApiByIdAndUrl(data,vm.apiUrl,true)
         }
-        vm.getCitiesByStates = function(){
+        vm.getCitiesByStates = function(stateId){
         	var data = {"id":stateId};
         	vm.apiUrl = "api/getCitiesByState";
         	vm.defaultApiByIdAndUrl(data,vm.apiUrl,false)
         }
         
-        vm.defaultApiByIdAndUrl = function(data,url){
-            Core_Service.defaultApiByIdAndUrlImpl(url,data,isCountry)
+        vm.defaultApiByIdAndUrl = function(data,url,isCountry){
+            Core_Service.defaultApiByIdAndUrlImpl(url,data)
             .then( function(response) {
             	if(isCountry){
             		vm.states =  response.data;

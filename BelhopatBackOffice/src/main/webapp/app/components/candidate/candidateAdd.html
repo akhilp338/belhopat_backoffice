@@ -42,10 +42,7 @@
 						<div class="control-group width-30 pull-left">
 							<label class="control-label" for="dob">Date of Birth</label>
 							<div class="controls">
-								<input type="text" name="dob" id="dob"
-									ng-model="vm.registration.dob" class="form-input width-100"
-									placeholder="Date of Birth"
-									validation="required:alt=Required field" />
+								<md-datepicker name = "dob" ng-model="vm.registration.dob" md-placeholder="Enter date"></md-datepicker>
 							</div>
 						</div>
 
@@ -168,7 +165,7 @@
 								<select
 									ng-model="vm.registration.permanentAddress.city.state.id"
 									class="form-input width-100" ng-change="vm.getCitiesByStates(vm.registration.permanentAddress.city.state.id)">
-									<option ng-repeat="state in vm.states" value="{{state.id}}">{{state.description}}</option>
+									<option ng-repeat="states in vm.states" value="{{states.id}}">{{states.code}}</option>
 								</select>
 							</div>
 						</div>
@@ -177,8 +174,8 @@
 							<div class="controls">
 								<select ng-model="vm.registration.permanentAddress.city.id"
 									class="form-input width-100" ng-change="vm.checkAddress()">
-									<option ng-repeat="city in vm.cities"
-										value="{{city.id}}">{{city.description}}</option>
+									<option ng-repeat="bloodGroup in vm.lookups.BG"
+										value="{{bloodGroup.id}}">{{bloodGroup.code}}</option>
 								</select>
 							</div>
 						</div>
@@ -241,7 +238,7 @@
 							<div class="controls">
 								<select ng-model="vm.registration.currentAddress.city.state.id"
 									class="form-input width-100" ng-change="vm.getCitiesByStates(vm.registration.currentAddress.city.state.id)">
-									<option ng-repeat="state in vm.states" value="{{state.id}}">{{state.description}}</option>
+									<option ng-repeat="states in vm.states" value="{{states.id}}">{{states.description}}</option>
 								</select>
 							</div>
 						</div>
@@ -250,8 +247,8 @@
 							<div class="controls">
 								<select ng-model="vm.registration.currentAddress.city.id"
 									class="form-input width-100" ng-change="vm.checkAddress()">
-									<option ng-repeat="city in vm.cities"
-										value="{{city.id}}">{{city.description}}</option>
+									<option ng-repeat="bloodGroup in vm.lookups.BG"
+										value="{{bloodGroup.id}}">{{bloodGroup.code}}</option>
 								</select>
 							</div>
 						</div>
@@ -287,9 +284,7 @@
 						<div class="control-group width-30 pull-left margin-left-5">
 							<label class="control-label" for="doj">Date of Joining</label>
 							<div class="controls">
-								<input type="text" name="doj" id="doj"
-									ng-model="vm.registration.doj" class="form-input width-100"
-									placeholder="Date of Joining" />
+								<md-datepicker name = "doj" ng-model="vm.registration.doj" md-placeholder="Enter date"></md-datepicker>
 							</div>
 						</div>
 						<div class="control-group width-30 pull-left margin-left-5">
@@ -359,16 +354,26 @@
 									validation="required:alt=Required field" />
 							</div>
 						</div>
-						<div class="control-group width-30 pull-left">
-							<label class="control-label" for="partner">Onsite Mobile
-								No</label>
-							<div class="controls">
-								<input type="text" name="onsiteContactNo" id="onsiteContactNo"
-									ng-model="vm.registration.onsiteContactNo"
-									class="form-input width-100" placeholder="Onsite Mobile No"
-									validation="required:alt=Required field" />
-							</div>
-						</div>
+                                            <div class="control-group group-select width-30 pull-left">
+                            <label class="control-label" for="skillSetList">Skill Set List</label>
+                            <div class="controls">
+                                <select class="skills" size="5" id="skillList" multiple ng-multiple="true" ng-model="vm.subSelectedSkillList" ng-options="skill.skill for skill in vm.mainSkillList"></select>
+                            </div>
+                        </div>
+                        <div class="control-group group-select width-30 pull-left margin-left-5">
+                            <div class="add-remove-controls">
+                                <button type="button" ng-click="vm.addSkills()" title="Add Skills" id="addSkills" class="logout-button">>></button>
+                                <button type="button" ng-click="vm.removeSkills()" title="Remove Skills" id="removeSkills" class="logout-button"><<</button>
+                            </div>
+                        </div>
+
+                        <div class="control-group group-select width-30 margin-left-5 pull-left">
+                            <label class="control-label" for="selectedSkillSet">Selected Skill Sets</label>
+                            <div class="controls">
+                                <select  class="skills" size="5" id="skillsSelected" multiple ng-multiple="true" ng-model="vm.deSelectedSkills" ng-options="skill.skill for skill in vm.mainSelectedSkillList"></select>
+                            </div>
+                        </div>
+						
 					</div>
 				</div>
 				<div class="row">
@@ -413,7 +418,7 @@
 								<select ng-model="vm.registration.onsiteAddress.city.state.id"
 									class="form-input width-100"
 									ng-change="vm.getCitiesByStates(vm.registration.onsiteAddress.city.state.id)">
-									<option ng-repeat="state in vm.states" value="{{state.id}}">{{state.description}}</option>
+									<option ng-repeat="states in vm.states" value="{{states.id}}">{{states.code}}</option>
 								</select>
 							</div>
 						</div>
@@ -422,8 +427,8 @@
 							<div class="controls">
 								<select ng-model="vm.registration.onsiteAddress.city.id"
 									class="form-input width-100" ng-change="vm.checkAddress()">
-									<option ng-repeat="city in vm.cities"
-										value="{{city.id}}">{{city.description}}</option>
+									<option ng-repeat="bloodGroup in vm.lookups.BG"
+										value="{{bloodGroup.id}}">{{bloodGroup.code}}</option>
 								</select>
 							</div>
 						</div>
@@ -446,6 +451,16 @@
 									<option ng-repeat="country in vm.lookups.COUNTRY"
 										value="{{country.id}}">{{country.description}}</option>
 								</select>
+							</div>
+						</div>
+                                            <div class="control-group width-30 pull-left margin-left-5">
+							<label class="control-label" for="partner">Onsite Mobile
+								No</label>
+							<div class="controls">
+								<input type="text" name="onsiteContactNo" id="onsiteContactNo"
+									ng-model="vm.registration.onsiteContactNo"
+									class="form-input width-100" placeholder="Onsite Mobile No"
+									validation="required:alt=Required field" />
 							</div>
 						</div>
 					</div>
@@ -549,7 +564,7 @@
 								<select ng-model="vm.registration.bankAccount.bankAddress.city.state.id"
 									class="form-input width-100"
 									ng-change="vm.getCitiesByStates(vm.registration.bankAccount.bankAddress.city.state.id)">
-									<option ng-repeat="state in vm.states" value="{{state.id}}">{{state.description}}</option>
+									<option ng-repeat="states in vm.states" value="{{states.id}}">{{states.code}}</option>
 								</select>
 							</div>
 						</div>
@@ -558,8 +573,8 @@
 							<div class="controls">
 								<select ng-model="vm.registration.bankAccount.bankAddress.city.id"
 									class="form-input width-100" ng-change="vm.checkAddress()">
-									<option ng-repeat="city in vm.cities"
-										value="{{city.id}}">{{city.description}}</option>
+									<option ng-repeat="bloodGroup in vm.lookups.BG"
+										value="{{bloodGroup.id}}">{{bloodGroup.code}}</option>
 								</select>
 							</div>
 						</div>
@@ -602,19 +617,13 @@
 						<div class="control-group width-30 pull-left margin-left-5">
 							<label class="control-label" for="lastName">Passport Issue Date</label>
 							<div class="controls">
-								<input type="text" name="issueDate" id="issueDate"
-									ng-model="vm.registration.passport.issueDate"
-									class="form-input width-100" placeholder="Passport Issue Date"
-									validation="required:alt=Required field" />
+                                                            <md-datepicker name="issueDate" ng-model="vm.registration.passport.issueDate" md-placeholder="Enter date"></md-datepicker>							
 							</div>
 						</div>
 						<div class="control-group width-30 pull-left">
 							<label class="control-label" for="expiryDate">Passport Expiry Date</label>
 							<div class="controls">
-								<input type="text" name="expiryDate" id="expiryDate"
-									ng-model="vm.registration.passport.expiryDate"
-									class="form-input width-100" placeholder="Passport Expiry Date"
-									validation="required:alt=Required field" />
+                                                            <md-datepicker name="expiryDate" ng-model="vm.registration.passport.expiryDate" md-placeholder="Enter date"></md-datepicker>
 							</div>
 						</div>
 
