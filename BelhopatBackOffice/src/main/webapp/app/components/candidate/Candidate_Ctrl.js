@@ -178,8 +178,8 @@
             });
             $('#candidatesList').on('click', '.action-view', function () {
                 var rowData = oTable.row($(this).parents('tr')).data();
-                var responseData = vm.getCandidate(rowData.id);
-                vm.viewCandidate(responseData);
+//                var responseData = vm.getCandidate(rowData.id);
+                vm.viewCandidate(rowData);
             });
             $('#candidatesList').on('click', '.action-edit', function () {
                 var rowData = oTable.row($(this).parents('tr')).data();
@@ -209,9 +209,9 @@
         	vm.deleteUrl = "api/candidate/deleteCandidate";
             Core_Service.candidateDeleteImpl(vm.deleteUrl,id)
             .then( function(response) {
-               console.log(response)
+               Core_Service.sweetAlert("Done!",response.data.data,"success");  
             },function(error){
-            	
+            	Core_Service.sweetAlert("Failed!",response.data.data,"failure");  
             });
         }
         
