@@ -391,7 +391,7 @@ public class Candidate extends BaseEntity {
 	}
 
 	public void setSourcedBy(String sourcedBy) {
-		sourcedBy = sourcedBy;
+		this.sourcedBy = sourcedBy;
 	}
 
 }

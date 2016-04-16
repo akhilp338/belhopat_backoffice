@@ -135,7 +135,11 @@
                     infoEmpty: '',
                     infoFiltered:''
                 },
-                aoColumns: [{
+                order: [[ 0, "desc" ]],
+                aoColumns: [ {
+                    	data: 'id',
+                    	visible : false
+                	},{
                         title: "Candidate ID",
                         data: 'candidateId',
                     }, {
@@ -179,9 +183,9 @@
             });
             $('#candidatesList').on('click', '.action-edit', function () {
                 var rowData = oTable.row($(this).parents('tr')).data();
-                $state.go('coreuser.candidate.edit', {id: data.id, reload: 0}, {reload: true})
-                var responseData = vm.getCandidate(rowData.id);
-                vm.viewCandidate(responseData);
+                $state.go('coreuser.candidate.edit', {id: rowData.id, reload: 0}, {reload: true})
+//                var responseData = vm.getCandidate(rowData.id);
+                vm.viewCandidate(rowData);
             });
             $('#candidatesList').on('click', '.action-delete', function () {
                 var rowData = oTable.row($(this).parents('tr')).data();
