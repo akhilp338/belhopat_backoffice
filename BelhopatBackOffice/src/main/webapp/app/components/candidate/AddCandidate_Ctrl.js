@@ -1,7 +1,7 @@
 (function () {
     var AddCandidate_Ctrl = function ($scope, $state, $rootScope, Core_Service, $stateParams, Core_HttpRequest, validationService) {
         var vm = this;
-        $stateParams.id ? vm.registration = JSON.parse(localStorage["candidateDetails"]) : vm.registration = {}
+        $stateParams.id ? vm.registration = $rootScope.candidateDetails : vm.registration = {}
         vs = new validationService({
             controllerAs: vm
         });
@@ -242,7 +242,7 @@
             	vm.citiesBank =  response.data;
             },function(error){
             });
-        }
+        };
         Core_Service.calculateSidebarHeight();
     };
 

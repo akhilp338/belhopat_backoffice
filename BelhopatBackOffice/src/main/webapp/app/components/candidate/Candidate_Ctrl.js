@@ -175,13 +175,11 @@
             });
             $('#candidatesList').on('click', '.action-view', function () {
                 var rowData = oTable.row($(this).parents('tr')).data();
-//                var responseData = vm.getCandidate(rowData.id);
                 vm.viewCandidate(rowData);
             });
             $('#candidatesList').on('click', '.action-edit', function () {
-                var rowData = oTable.row($(this).parents('tr')).data();
-                    localStorage["candidateDetails"] = JSON.stringify(rowData);
-                $state.go('coreuser.candidate.edit', {id: rowData.id, reload: 0}, {reload: true})
+                $rootScope.candidateDetails = oTable.row($(this).parents('tr')).data();
+                $state.go('coreuser.candidate.edit', {id: $rootScope.candidateDetails.id, reload: 0}, {reload: true});
             });
         });
         
