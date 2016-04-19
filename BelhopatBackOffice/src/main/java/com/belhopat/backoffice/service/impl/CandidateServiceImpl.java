@@ -21,6 +21,8 @@ import com.belhopat.backoffice.repository.CandidateRepository;
 import com.belhopat.backoffice.service.BaseService;
 import com.belhopat.backoffice.service.CandidateService;
 import com.belhopat.backoffice.session.SessionManager;
+import com.belhopat.backoffice.util.Constants;
+import com.belhopat.backoffice.util.ResponseObject;
 import com.belhopat.backoffice.util.sequence.SequenceGenerator;
 
 @Component
@@ -87,7 +89,7 @@ public class CandidateServiceImpl implements CandidateService {
 	}
 
 	@Override
-	public ResponseEntity<String> deleteCandidate(Long candidateId) {
+	public ResponseEntity<ResponseObject> deleteCandidate(Long candidateId) {
 		if (candidateId != null) {
 			Candidate candidate = candidateRepository.findById(candidateId);
 			User loggedInUser = SessionManager.getCurrentUserAsEntity();
@@ -96,10 +98,12 @@ public class CandidateServiceImpl implements CandidateService {
 			candidate = candidateRepository.save(candidate);
 			if(candidate!=null){
 				String candidateName = candidate.getFirstName() + " " + candidate.getLastName();
-				return new ResponseEntity<String>(candidateName,HttpStatus.OK);
+				return new ResponseEntity<ResponseObject>(new ResponseObject(true, candidateName+" successfully deleted"),
+						HttpStatus.OK);
 			}
 		}
-		return new ResponseEntity<String>(HttpStatus.NO_CONTENT);
+		return new ResponseEntity<ResponseObject>(new ResponseObject(true, "Oops..error while deleting!"),
+				HttpStatus.OK);
 	}
 
 }

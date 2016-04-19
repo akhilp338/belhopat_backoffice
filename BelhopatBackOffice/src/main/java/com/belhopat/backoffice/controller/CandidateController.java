@@ -8,6 +8,7 @@ import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.datatables.mapping.DataTablesInput;
 import org.springframework.data.jpa.datatables.mapping.DataTablesOutput;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -19,6 +20,8 @@ import com.belhopat.backoffice.dto.RequestObject;
 import com.belhopat.backoffice.model.Candidate;
 import com.belhopat.backoffice.service.BaseService;
 import com.belhopat.backoffice.service.CandidateService;
+import com.belhopat.backoffice.util.Constants;
+import com.belhopat.backoffice.util.ResponseObject;
 
 @Controller
 @RequestMapping("/api/candidate")
@@ -56,7 +59,7 @@ public class CandidateController {
 
 	@ResponseBody
 	@RequestMapping(value = "/deleteCandidate", method = RequestMethod.POST)
-	public ResponseEntity<String> deleteCandidate(@RequestBody RequestObject requestObject) {
+	public ResponseEntity<ResponseObject> deleteCandidate(@RequestBody RequestObject requestObject) {
 		return candidateService.deleteCandidate(requestObject.getId());
 	}
 

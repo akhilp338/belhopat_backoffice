@@ -892,6 +892,7 @@ input.ng-touched.ng-valid{
 
 .copyright.text-center {
     color: white;
+    margin-bottom: 30px;
 }
 
 .share-links {

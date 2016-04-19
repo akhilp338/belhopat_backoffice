@@ -8,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import com.belhopat.backoffice.model.Candidate;
+import com.belhopat.backoffice.util.ResponseObject;
 
 
 @Service
@@ -21,6 +22,6 @@ public interface CandidateService {
 	
 	ResponseEntity<Void> deleteCandidates(List<Long> candidateIds);
 
-	ResponseEntity<String> deleteCandidate(Long candidateId);
+	ResponseEntity<ResponseObject> deleteCandidate(Long candidateId);
 
 }

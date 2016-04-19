@@ -1,5 +1,6 @@
 package com.belhopat.backoffice.model;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -24,7 +25,7 @@ public class BankAccount {
 	
 	private String branch;
 	
-	@OneToOne
+	@OneToOne(cascade = CascadeType.ALL)
 	private Address bankAddress;
 
 	public Long getId() {

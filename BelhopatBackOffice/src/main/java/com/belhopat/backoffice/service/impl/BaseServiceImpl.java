@@ -63,7 +63,7 @@ public class BaseServiceImpl implements BaseService {
 		dropDownMap.put(Constants.PURPOSE, purposes);
 		dropDownMap.put(Constants.BLOOD_GROUP, bloodGroups);
 		dropDownMap.put(Constants.EMPLOYMENT_STATUS, employmentStatuses);
-		dropDownMap.put(Constants.EMPLOYMENT_STATUS, familyMembers);
+		dropDownMap.put(Constants.FAMILY_MEMBER, familyMembers);
 		dropDownMap.put(Constants.SKILL, skills);
 		dropDownMap.put(Constants.COUNTRY, countries);
 		return new ResponseEntity<Map<String, List<?>>>(dropDownMap, HttpStatus.OK);
