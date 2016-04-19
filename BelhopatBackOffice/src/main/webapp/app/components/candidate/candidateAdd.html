@@ -12,7 +12,7 @@
 				<div class="row">
 					<span class="sub-section width-100">Basic Information</span>
 					<div class="span4">
-						<div class="control-group width-30 pull-left">
+						<div class="control-group width-18 pull-left">
 							<label class="control-label" for="firstName">First Name</label>
 							<div class="controls">
 								<input type="text" name="firstName" id="firstName"
@@ -21,7 +21,7 @@
 									validation="required:alt=Required field" />
 							</div>
 						</div>
-						<div class="control-group width-30 pull-left margin-left-5">
+						<div class="control-group width-18 pull-left margin-left-2">
 							<label class="control-label" for="middleName">Middle Name</label>
 							<div class="controls">
 								<input type="text" name="middleName" id="middleName"
@@ -29,7 +29,7 @@
 									class="form-input width-100" placeholder="Middle Name" />
 							</div>
 						</div>
-						<div class="control-group width-30 pull-left margin-left-5">
+						<div class="control-group width-18 pull-left margin-left-2">
 							<label class="control-label" for="lastName">Last Name</label>
 							<div class="controls">
 								<input type="text" name="lastName" id="lastName"
@@ -38,13 +38,13 @@
 									validation="required:alt=Required field" />
 							</div>
 						</div>
-						<div class="control-group width-30 pull-left">
+						<div class="control-group width-18 pull-left margin-left-2">
 							<label class="control-label" for="dob">Date of Birth</label>
 							<div class="controls">
 								<md-datepicker name = "dob" ng-model="vm.registration.dob" md-placeholder="Enter date"></md-datepicker>
 							</div>
 						</div>
-                        <div class="control-group width-30 pull-left margin-left-5">
+                        <div class="control-group width-18 pull-left margin-left-2">
                             <label class="control-label" for="gender">Gender</label>
                             <div class="controls">
                                 <input type="text" name="gender" id="gender"
@@ -52,7 +52,7 @@
                                        placeholder="Gender" validation="required:alt=Required field" />
                             </div>
                         </div>
-                        <div class="control-group width-30 pull-left margin-left-5">
+                        <div class="control-group width-18 pull-left">
                             <label class="control-label" for="dob">Blood Group</label>
                             <div class="controls">
                                 <select ng-model="vm.registration.bloodGroup.id"
@@ -62,7 +62,7 @@
                                 </select>
                             </div>
                         </div>
-                        <div class="control-group width-30 pull-left">
+                        <div class="control-group width-18 pull-left margin-left-2">
                             <label class="control-label" for="coo">Country Of Origin</label>
                             <div class="controls">
                                 <select ng-model="vm.registration.countryOfOrigin.id"
@@ -78,7 +78,7 @@
                 <div class="row">
                     <span class="sub-section width-100">Contact Information</span>
                     <div class="span4">
-                        <div class="control-group width-30 pull-left">
+                        <div class="control-group width-18 pull-left">
                             <label class="control-label" for="personal_contact">Personal
                                 Contact No</label>
                             <div class="controls">
@@ -88,7 +88,7 @@
                                        validation="required:alt=Required field" />
                             </div>
                         </div>
-                        <div class="control-group width-30 pull-left margin-left-5">
+                        <div class="control-group width-18 pull-left margin-left-2">
                             <label class="control-label" for="email">Personal Email
                                 Id</label>
                             <div class="controls">
@@ -98,7 +98,7 @@
                                        validation="email:alt=email id not valid|required:alt=Required field" />
                             </div>
                         </div>
-                        <div class="control-group width-30 pull-left margin-left-5">
+                        <div class="control-group width-18 pull-left margin-left-2">
                             <label class="control-label" for="ofc_email">Official
                                 Email Id</label>
                             <div class="controls">
@@ -108,7 +108,7 @@
                                        validation="email:alt=email id not valid|required:alt=Required field" />
                             </div>
                         </div>
-                        <div class="control-group width-30 pull-left">
+                        <div class="control-group width-18 pull-left  margin-left-2">
                             <label class="control-label" for="ofc_contact">Official
                                 Contact</label>
                             <div class="controls">
@@ -123,7 +123,7 @@
 				<div class="row">
 					<span class="sub-section width-100">permanent Address</span>
 					<div class="span4">
-						<div class="control-group width-30 pull-left">
+						<div class="control-group width-18 pull-left">
 							<label class="control-label" for="address_line1">Address
 								Line 1</label>
 							<div class="controls">
@@ -134,7 +134,7 @@
 									ng-change="vm.checkAddress()" />
 							</div>
 						</div>
-						<div class="control-group width-30 pull-left margin-left-5">
+						<div class="control-group width-18 pull-left margin-left-2">
 							<label class="control-label" for="address_line2">Address
 								Line 2</label>
 							<div class="controls">
@@ -144,7 +144,7 @@
 									ng-change="vm.checkAddress()" />
 							</div>
 						</div>
-						<div class="control-group width-30 pull-left margin-left-5">
+						<div class="control-group width-18 pull-left margin-left-2">
 							<label class="control-label" for="country">Country</label>
 							<div class="controls">
 								<select
@@ -156,7 +156,7 @@
 								</select>
 							</div>
 						</div>
-						<div class="control-group width-30 pull-left">
+						<div class="control-group width-18 pull-left  margin-left-2">
 							<label class="control-label" for="state">State</label>
 							<div class="controls">
 								<select
@@ -167,7 +167,7 @@
 								</select>
 							</div>
 						</div>
-						<div class="control-group width-30 pull-left margin-left-5">
+						<div class="control-group width-18 pull-left margin-left-2">
 							<label class="control-label" for="city">City</label>
 							<div class="controls">
 								<select ng-model="vm.registration.permanentAddress.city.id"
@@ -177,7 +177,7 @@
 								</select>
 							</div>
 						</div>
-						<div class="control-group width-30 pull-left margin-left-5">
+						<div class="control-group width-18 pull-left">
 							<label class="control-label" for="zip_code">ZIP Code</label>
 							<div class="controls">
 								<input type="text" name="zip_code" id="zip_code"
@@ -198,7 +198,7 @@
                             Same as permanent address </label>
                     </div>
 					<div class="span4">
-						<div class="control-group width-30 pull-left">
+						<div class="control-group width-18 pull-left">
 							<label class="control-label" for="address_line1">Address
 								Line 1</label>
 							<div class="controls">
@@ -208,7 +208,7 @@
 									validation="required:alt=Required field" />
 							</div>
 						</div>
-						<div class="control-group width-30 pull-left margin-left-5">
+						<div class="control-group width-18 pull-left margin-left-2">
 							<label class="control-label" for="address_line2">Address
 								Line 2</label>
 							<div class="controls">
@@ -217,7 +217,7 @@
 									class="form-input width-100" placeholder="Address Line 2" />
 							</div>
 						</div>
-						<div class="control-group width-30 pull-left margin-left-5">
+						<div class="control-group width-18 pull-left margin-left-2">
 							<label class="control-label" for="country">Country</label>
 							<div class="controls">
 								<select
@@ -229,8 +229,8 @@
 								</select>
 							</div>
 						</div>
-						<div class="control-group width-30 pull-left">
-							<label class="control-label" for="state">State</label>
+						<div class="control-group width-18 pull-left margin-left-2">
+							<label class="control-label  margin-left-2" for="state">State</label>
 							<div class="controls">
 								<select ng-model="vm.registration.currentAddress.city.state.id"
 									class="form-input width-100" 
@@ -239,7 +239,7 @@
 								</select>
 							</div>
 						</div>
-						<div class="control-group width-30 pull-left margin-left-5">
+						<div class="control-group width-18 pull-left margin-left-2">
 							<label class="control-label" for="city">City</label>
 							<div class="controls">
 								<select ng-model="vm.registration.currentAddress.city.id"
@@ -249,7 +249,7 @@
 								</select>
 							</div>
 						</div>
-						<div class="control-group width-30 pull-left margin-left-5">
+						<div class="control-group width-18 pull-left">
 							<label class="control-label" for="zip_code">ZIP Code</label>
 							<div class="controls">
 								<input type="text" name="zip_code" id="zip_code"
@@ -269,7 +269,7 @@
 				<div class="row">
 					<span class="sub-section width-100">Basic Information</span>
 					<div class="span4">
-						<div class="control-group width-30 pull-left">
+						<div class="control-group width-18 pull-left">
 							<label class="control-label" for="experience">Experience</label>
 							<div class="controls">
 								<input type="text" name="experience" id="experience"
@@ -278,13 +278,13 @@
 									validation="required:alt=Required field" />
 							</div>
 						</div>
-						<div class="control-group width-30 pull-left margin-left-5">
+						<div class="control-group width-18 pull-left margin-left-2">
 							<label class="control-label" for="doj">Date of Joining</label>
 							<div class="controls">
 								<md-datepicker name = "doj" ng-model="vm.registration.doj" md-placeholder="Enter date"></md-datepicker>
 							</div>
 						</div>
-						<div class="control-group width-30 pull-left margin-left-5">
+						<div class="control-group width-18 pull-left margin-left-2">
 							<label class="control-label" for="division">Division</label>
 							<div class="controls">
 								<select ng-model="vm.registration.division.id"
@@ -294,7 +294,7 @@
 								</select>
 							</div>
 						</div>
-						<div class="control-group width-30 pull-left">
+						<div class="control-group width-18 pull-left margin-left-2">
 							<label class="control-label" for="designation">Designation</label>
 							<div class="controls">
 								<select ng-model="vm.registration.designation.id"
@@ -305,7 +305,7 @@
 							</div>
 						</div>
 
-						<div class="control-group width-30 pull-left margin-left-5">
+						<div class="control-group width-18 pull-left margin-left-2">
 							<label class="control-label" for="gender">Employment
 								Status</label>
 							<div class="controls">
@@ -316,7 +316,7 @@
 								</select>
 							</div>
 						</div>
-						<div class="control-group width-30 pull-left margin-left-5">
+						<div class="control-group width-18 pull-left">
 							<label class="control-label" for="purpose">Purpose</label>
 							<div class="controls">
 								<select ng-model="vm.registration.purpose.id"
@@ -326,7 +326,7 @@
 								</select>
 							</div>
 						</div>
-						<div class="control-group width-30 pull-left">
+						<div class="control-group width-18 pull-left margin-left-2">
 							<label class="control-label" for="client">Client</label>
 							<div class="controls">
 								<input type="text" name="client" id="client"
@@ -334,7 +334,7 @@
 									placeholder="Client" validation="required:alt=Required field" />
 							</div>
 						</div>
-						<div class="control-group width-30 pull-left margin-left-5">
+						<div class="control-group width-18 pull-left margin-left-2">
 							<label class="control-label" for="partner">Partner</label>
 							<div class="controls">
 								<input type="text" name="partner" id="partner"
@@ -342,7 +342,7 @@
 									placeholder="Partner" validation="required:alt=Required field" />
 							</div>
 						</div>
-						<div class="control-group width-30 pull-left margin-left-5">
+						<div class="control-group width-18 pull-left margin-left-2">
 							<label class="control-label" for="partner">Sourced By</label>
 							<div class="controls">
 								<input type="text" name="sourcedBy" id="sourcedBy"
@@ -351,19 +351,19 @@
 									validation="required:alt=Required field" />
 							</div>
 						</div>
-                                            <div class="control-group group-select width-30 pull-left">
+                                            <div class="control-group group-select width-38 pull-left">
                             <label class="control-label" for="skillSetList">Skill Set List</label>
                             <div class="controls">
                                 <select class="skills" size="5" id="skillList" multiple ng-multiple="true" ng-model="vm.subSelectedSkillList" ng-options="skill.skill for skill in vm.mainSkillList"></select>
                             </div>
                         </div>
-                        <div class="control-group group-select width-30 pull-left margin-left-5">
+                        <div class="control-group group-select width-18 pull-left margin-left-2">
                             <div class="add-remove-controls">
                                 <button type="button" ng-click="vm.addSkills()" title="Add Skills" id="addSkills" class="logout-button">>></button>
                                 <button type="button" ng-click="vm.removeSkills()" title="Remove Skills" id="removeSkills" class="logout-button"><<</button>
                             </div>
                         </div>
-                        <div class="control-group group-select width-30 margin-left-5 pull-left">
+                        <div class="control-group group-select width-38 margin-left-2 pull-left">
                             <label class="control-label" for="selectedSkillSet">Selected Skill Sets</label>
                             <div class="controls">
                                 <select  class="skills" size="5" id="skillsSelected" multiple ng-multiple="true" ng-model="vm.deSelectedSkills" ng-options="skill.skill for skill in vm.mainSelectedSkillList"></select>
@@ -375,7 +375,7 @@
 				<div class="row">
 					<span class="sub-section width-100">Onsite Address</span>
 					<div class="span4">
-						<div class="control-group width-30 pull-left">
+						<div class="control-group width-18 pull-left">
 							<label class="control-label" for="address_line1">Address
 								Line 1</label>
 							<div class="controls">
@@ -386,7 +386,7 @@
 									ng-change="vm.checkAddress()" />
 							</div>
 						</div>
-						<div class="control-group width-30 pull-left margin-left-5">
+						<div class="control-group width-18 pull-left margin-left-2">
 							<label class="control-label" for="address_line2">Address
 								Line 2</label>
 							<div class="controls">
@@ -396,7 +396,7 @@
 									ng-change="vm.checkAddress()" />
 							</div>
 						</div>
-						<div class="control-group width-30 pull-left margin-left-5">
+						<div class="control-group width-18 pull-left margin-left-2">
 							<label class="control-label" for="country">Country</label>
 							<div class="controls">
 								<select
@@ -408,7 +408,7 @@
 								</select>
 							</div>
 						</div>
-						<div class="control-group width-30 pull-left">
+						<div class="control-group width-18 pull-left">
 							<label class="control-label" for="state">State</label>
 							<div class="controls">
 								<select ng-model="vm.registration.onsiteAddress.city.state.id"
@@ -418,7 +418,7 @@
 								</select>
 							</div>
 						</div>
-						<div class="control-group width-30 pull-left margin-left-5">
+						<div class="control-group width-18 pull-left margin-left-2">
 							<label class="control-label" for="city">City</label>
 							<div class="controls">
 								<select ng-model="vm.registration.onsiteAddress.city.id"
@@ -428,7 +428,7 @@
 								</select>
 							</div>
 						</div>
-						<div class="control-group width-30 pull-left margin-left-5">
+						<div class="control-group width-18 pull-left">
 							<label class="control-label" for="zip_code">ZIP Code</label>
 							<div class="controls">
 								<input type="text" name="zip_code" id="zip_code"
@@ -438,7 +438,7 @@
 									ng-change="vm.checkAddress()" />
 							</div>
 						</div>
-						<div class="control-group width-30 pull-left">
+						<div class="control-group width-18 pull-left">
 							<label class="control-label" for="countryToVisit">Country To Visit</label>
 							<div class="controls">
 								<select
@@ -449,7 +449,7 @@
 								</select>
 							</div>
 						</div>
-                                            <div class="control-group width-30 pull-left margin-left-5">
+                                            <div class="control-group width-18 pull-left margin-left-2">
 							<label class="control-label" for="partner">Onsite Mobile
 								No</label>
 							<div class="controls">
@@ -470,7 +470,7 @@
                 <div class="row">
                     <span class="sub-section width-100">Accounts Information</span>
                     <div class="span4">
-                        <div class="control-group width-30 pull-left">
+                        <div class="control-group width-18 pull-left">
                             <label class="control-label" for="bankAccount">Bank Acc. No</label>
                             <div class="controls">
                                 <input type="text" name="bankAccount" id="bankAccount"
@@ -479,7 +479,7 @@
                                        validation="required:alt=Required field" />
                             </div>
                         </div>
-                        <div class="control-group width-30 pull-left margin-left-5">
+                        <div class="control-group width-18 pull-left margin-left-2">
                             <label class="control-label" for="ifscCode">IFSC Code</label>
                             <div class="controls">
                                 <input type="text" name="IFSCCode" id="IFSCCode"
@@ -487,7 +487,7 @@
                                        class="form-input width-100" placeholder="IFSC Code" />
                             </div>
                         </div>
-                        <div class="control-group width-30 pull-left margin-left-5">
+                        <div class="control-group width-18 pull-left margin-left-2">
                             <label class="control-label" for="lastName">Name as per bank</label>
                             <div class="controls">
                                 <input type="text" name="nameAsPerBank" id="nameAsPerBank"
@@ -496,7 +496,7 @@
                                        validation="required:alt=Required field" />
                             </div>
                         </div>
-                        <div class="control-group width-30 pull-left">
+                        <div class="control-group width-18 pull-left margin-left-2">
                             <label class="control-label" for="dob">Bank Name</label>
                             <div class="controls">
                                 <input type="text" name="bankName" id="bankName"
@@ -505,7 +505,7 @@
                                        validation="required:alt=Required field" />
                             </div>
                         </div>
-						<div class="control-group width-30 pull-left margin-left-5">
+						<div class="control-group width-18 pull-left margin-left-2">
 							<label class="control-label" for="gender">Bank Branch</label>
 							<div class="controls">
 								<input type="text" name="branch" id="branch"
@@ -520,7 +520,7 @@
 				<div class="row">
 					<span class="sub-section width-100">Bank Address</span>
 					<div class="span4">
-						<div class="control-group width-30 pull-left">
+						<div class="control-group width-18 pull-left">
 							<label class="control-label" for="address_line1">Address
 								Line 1</label>
 							<div class="controls">
@@ -531,7 +531,7 @@
 									ng-change="vm.checkAddress()" />
 							</div>
 						</div>
-						<div class="control-group width-30 pull-left margin-left-5">
+						<div class="control-group width-18 pull-left margin-left-2">
 							<label class="control-label" for="address_line2">Address
 								Line 2</label>
 							<div class="controls">
@@ -541,7 +541,7 @@
 									ng-change="vm.checkAddress()" />
 							</div>
 						</div>
-						<div class="control-group width-30 pull-left margin-left-5">
+						<div class="control-group width-18 pull-left margin-left-2">
 							<label class="control-label" for="country">Country</label>
 							<div class="controls">
 								<select
@@ -553,7 +553,7 @@
 								</select>
 							</div>
 						</div>
-						<div class="control-group width-30 pull-left">
+						<div class="control-group width-18 pull-left  margin-left-2">
 							<label class="control-label" for="state">State</label>
 							<div class="controls">
 								<select ng-model="vm.registration.bankAccount.bankAddress.city.state.id"
@@ -563,7 +563,7 @@
 								</select>
 							</div>
 						</div>
-						<div class="control-group width-30 pull-left margin-left-5">
+						<div class="control-group width-18 pull-left margin-left-2">
 							<label class="control-label" for="city">City</label>
 							<div class="controls">
 								<select ng-model="vm.registration.bankAccount.bankAddress.city.id"
@@ -573,7 +573,7 @@
 								</select>
 							</div>
 						</div>
-						<div class="control-group width-30 pull-left margin-left-5">
+						<div class="control-group width-18 pull-left">
 							<label class="control-label" for="zip_code">ZIP Code</label>
 							<div class="controls">
 								<input type="text" name="zip_code" id="zip_code"
@@ -589,7 +589,7 @@
 				<div class="row">
 					<span class="sub-section width-100">Passport Details</span>
 					<div class="span4">
-						<div class="control-group width-30 pull-left">
+						<div class="control-group width-18 pull-left">
 							<label class="control-label" for="firstName">Passport No</label>
 							<div class="controls">
 								<input type="text" name="passportNo" id="passportNo"
@@ -598,7 +598,7 @@
 									validation="required:alt=Required field" />
 							</div>
 						</div>
-						<div class="control-group width-30 pull-left margin-left-5">
+						<div class="control-group width-18 pull-left margin-left-2">
 							<label class="control-label" for="passCountry">Passport Country</label>
 							<div class="controls">
 								<select
@@ -609,141 +609,25 @@
 								</select>
 							</div>
 						</div>
-						<div class="control-group width-30 pull-left margin-left-5">
+						<div class="control-group width-18 pull-left margin-left-2">
 							<label class="control-label" for="lastName">Passport Issue Date</label>
 							<div class="controls">
                                                             <md-datepicker name="issueDate" ng-model="vm.registration.passport.issueDate" md-placeholder="Enter date"></md-datepicker>							
 							</div>
 						</div>
-						<div class="control-group width-30 pull-left">
+						<div class="control-group width-18 pull-left margin-left-2">
 							<label class="control-label" for="expiryDate">Passport Expiry Date</label>
 							<div class="controls">
                                                             <md-datepicker name="expiryDate" ng-model="vm.registration.passport.expiryDate" md-placeholder="Enter date"></md-datepicker>
 							</div>
 						</div>
-                        <div class="control-group width-30 pull-left margin-left-5">
-                            <label class="control-label" for="gender">Bank Branch</label>
-                            <div class="controls">
-                                <input type="text" name="branch" id="branch"
-                                       ng-model="vm.registration.bankAccount.branch"
-                                       class="form-input width-100" placeholder="Bank Branch"
-                                       validation="required:alt=Required field" />
-                            </div>
-                        </div>
                     </div>
                 </div>
 
-                <div class="row">
-                    <span class="sub-section width-100">Bank Address</span>
-                    <div class="span4">
-                        <div class="control-group width-30 pull-left">
-                            <label class="control-label" for="address_line1">Address
-                                Line 1</label>
-                            <div class="controls">
-                                <input type="text" name="address_line1" id="address_line1"
-                                       ng-model="vm.registration.bankAccount.bankAddress.address1"
-                                       class="form-input width-100" placeholder="Address Line 1"
-                                       validation="required:alt=Required field"
-                                       ng-change="vm.checkAddress()" />
-                            </div>
-                        </div>
-                        <div class="control-group width-30 pull-left margin-left-5">
-                            <label class="control-label" for="address_line2">Address
-                                Line 2</label>
-                            <div class="controls">
-                                <input type="text" name="address_line2" id="address_line1"
-                                       ng-model="vm.registration.bankAccount.bankAddress.address2"
-                                       class="form-input width-100" placeholder="Address Line 2"
-                                       ng-change="vm.checkAddress()" />
-                            </div>
-                        </div>
-                        <div class="control-group width-30 pull-left margin-left-5">
-                            <label class="control-label" for="country">Country</label>
-                            <div class="controls">
-                                <select
-                                    ng-model="vm.registration.bankAccount.bankAddress.city.state.country.id"
-                                    class="form-input width-100"
-                                    ng-change="vm.getStatesByCountry(vm.registration.bankAccount.bankAddress.city.state.country.id)">
-                                    <option ng-repeat="country in vm.lookups.COUNTRY"
-                                            value="{{country.id}}">{{country.description}}</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="control-group width-30 pull-left">
-                            <label class="control-label" for="state">State</label>
-                            <div class="controls">
-                                <select ng-model="vm.registration.bankAccount.bankAddress.city.state.id"
-                                        class="form-input width-100"
-                                        ng-change="vm.getCitiesByStates(vm.registration.bankAccount.bankAddress.city.state.id)">
-                                    <option ng-repeat="state in vm.states" value="{{state.id}}">{{state.description}}</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="control-group width-30 pull-left margin-left-5">
-                            <label class="control-label" for="city">City</label>
-                            <div class="controls">
-                                <select ng-model="vm.registration.bankAccount.bankAddress.city.id"
-                                        class="form-input width-100" ng-change="vm.checkAddress()">
-                                    <option ng-repeat="city in vm.cities"
-                                            value="{{city.id}}">{{city.description}}</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="control-group width-30 pull-left margin-left-5">
-                            <label class="control-label" for="zip_code">ZIP Code</label>
-                            <div class="controls">
-                                <input type="text" name="zip_code" id="zip_code"
-                                       ng-model="vm.registration.bankAccount.bankAddress.zipCode"
-                                       class="form-input width-100" placeholder="ZIP Code"
-                                       validation="required:alt=Required field"
-                                       ng-change="vm.checkAddress()" />
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="row">
-                    <span class="sub-section width-100">Passport Details</span>
-                    <div class="span4">
-                        <div class="control-group width-30 pull-left">
-                            <label class="control-label" for="firstName">Passport No</label>
-                            <div class="controls">
-                                <input type="text" name="passportNo" id="passportNo"
-                                       ng-model="vm.registration.passport.passportNo"
-                                       class="form-input width-100" placeholder="Passport No"
-                                       validation="required:alt=Required field" />
-                            </div>
-                        </div>
-                        <div class="control-group width-30 pull-left margin-left-5">
-                            <label class="control-label" for="passCountry">Passport Country</label>
-                            <div class="controls">
-                                <select
-                                    ng-model="vm.registration.passport.country.id"
-                                    class="form-input width-100">
-                                    <option ng-repeat="country in vm.lookups.COUNTRY"
-                                            value="{{country.id}}">{{country.description}}</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="control-group width-30 pull-left margin-left-5">
-                            <label class="control-label" for="lastName">Passport Issue Date</label>
-                            <div class="controls">
-                                <md-datepicker name="issueDate" ng-model="vm.registration.passport.issueDate" md-placeholder="Enter date"></md-datepicker>							
-                            </div>
-                        </div>
-                        <div class="control-group width-30 pull-left">
-                            <label class="control-label" for="expiryDate">Passport Expiry Date</label>
-                            <div class="controls">
-                                <md-datepicker name="expiryDate" ng-model="vm.registration.passport.expiryDate" md-placeholder="Enter date"></md-datepicker>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
                 <div class="row">
                     <span class="sub-section width-100">Official Cards and Passes Details</span>
                     <div class="span4">
-                        <div class="control-group width-30 pull-left">
+                        <div class="control-group width-18 pull-left">
                             <label class="control-label" for="firstName">PAN No</label>
                             <div class="controls">
                                 <input type="text" name="PANNo" id="PANNo"
@@ -752,7 +636,7 @@
                                        validation="required:alt=Required field" />
                             </div>
                         </div>
-                        <div class="control-group width-30 pull-left margin-left-5">
+                        <div class="control-group width-18 pull-left margin-left-2">
                             <label class="control-label" for="middleName">Driving
                                 License No</label>
                             <div class="controls">
@@ -761,7 +645,7 @@
                                        class="form-input width-100" placeholder="Driving License No" />
                             </div>
                         </div>
-                        <div class="control-group width-30 pull-left margin-left-5">
+                        <div class="control-group width-18 pull-left margin-left-2">
                             <label class="control-label" for="lastName">ESI No</label>
                             <div class="controls">
                                 <input type="text" name="ESINo" id="ESINo"
@@ -770,7 +654,7 @@
                                        validation="required:alt=Required field" />
                             </div>
                         </div>
-                        <div class="control-group width-30 pull-left">
+                        <div class="control-group width-18 pull-left margin-left-2">
                             <label class="control-label" for="dob">PF No</label>
                             <div class="controls">
                                 <input type="text" name="PFNo" id="PFNo"
@@ -780,7 +664,7 @@
                             </div>
                         </div>
 
-                        <div class="control-group width-30 pull-left margin-left-5">
+                        <div class="control-group width-18 pull-left margin-left-2">
                             <label class="control-label" for="gender">Official Email
                                 Id</label>
                             <div class="controls">
@@ -790,7 +674,7 @@
                                        validation="required:alt=Required field" />
                             </div>
                         </div>
-                        <div class="control-group width-30 pull-left margin-left-5">
+                        <div class="control-group width-18 pull-left">
                             <label class="control-label" for="dob">Forex Card No</label>
                             <div class="controls">
                                 <input type="text" name="forexCardNo" id="forexCardNo"
@@ -799,7 +683,7 @@
                                        validation="required:alt=Required field" />
                             </div>
                         </div>
-                        <div class="control-group width-30 pull-left">
+                        <div class="control-group width-18 pull-left margin-left-2">
                             <label class="control-label" for="coo">Forex Card -
                                 Bank/Agency</label>
                             <div class="controls">
@@ -821,7 +705,7 @@
                 <div class="row">
                     <span class="sub-section width-100">Basic Information</span>
                     <div class="span4">
-                        <div class="control-group width-30 pull-left">
+                        <div class="control-group width-18 pull-left">
                             <label class="control-label" for="firstName">Spouse's
                                 Name</label>
                             <div class="controls">
@@ -831,16 +715,15 @@
                                        validation="required:alt=Required field" />
                             </div>
                         </div>
-                        <div class="control-group width-30 pull-left margin-left-5">
+                        <div class="control-group width-18 pull-left margin-left-2">
                             <label class="control-label" for="middleName">Children</label>
                             <div class="controls">
-                                <input type="text" name="" children"" id=""
-                                       children""
+                                <input type="text" name="children" id="children"
                                        ng-model="vm.registration.familyMembers.name"
                                        class="form-input width-100" placeholder="Children" />
                             </div>
                         </div>
-                        <div class="control-group width-30 pull-left margin-left-5">
+                        <div class="control-group width-18 pull-left margin-left-2">
                             <label class="control-label" for="lastName">Father's Name</label>
                             <div class="controls">
                                 <input type="text" name="fathersName" id="fathersName"
@@ -849,7 +732,7 @@
                                        validation="required:alt=Required field" />
                             </div>
                         </div>
-                        <div class="control-group width-30 pull-left">
+                        <div class="control-group width-18 pull-left margin-left-2">
                             <label class="control-label" for="dob">Mother's Name</label>
                             <div class="controls">
                                 <input type="text" name="mothersName" id="mothersName"
@@ -859,31 +742,31 @@
                             </div>
                         </div>
 
-                        <div class="control-group width-30 pull-left margin-left-5">
+                        <div class="control-group width-18 pull-left margin-left-2">
                             <label class="control-label" for="gender">Family Contact
                                 1</label>
                             <div class="controls">
                                 <input type="text" name="familyContact1" id="familyContact1"
-                                       ng-model="vm.registration.familyMembers.name"
+                                       ng-model="vm.registration.familyMembers.familyContact1"
                                        class="form-input width-100" placeholder="Family Contact 1"
                                        validation="required:alt=Required field" />
                             </div>
                         </div>
-                        <div class="control-group width-30 pull-left margin-left-5">
-                            <label class="control-label" for="familyContact1">Family
+                        <div class="control-group width-18 pull-left">
+                            <label class="control-label" for="familyContact2">Family
                                 Contact 2</label>
                             <div class="controls">
-                                <input type="text" name="familyContact1" id="familyContact1"
-                                       ng-model="vm.registration.familyMembers.name"
+                                <input type="text" name="familyContact1" id="familyContact2"
+                                       ng-model="vm.registration.familyMembers.familyContact1"
                                        class="form-input width-100" placeholder="Family Contact 2"
                                        validation="required:alt=Required field" />
                             </div>
                         </div>
-                        <div class="control-group width-30 pull-left">
+                        <div class="control-group width-18 pull-left margin-left-2">
                             <label class="control-label" for="coo">Family Email</label>
                             <div class="controls">
                                 <input type="text" name="familyEmail" id="familyEmail"
-                                       ng-model="vm.registration.familyMembers.name"
+                                       ng-model="vm.registration.familyMembers.familyEmail"
                                        class="form-input width-100" placeholder="Family Email"
                                        validation="required:alt=Required field" />
                             </div>

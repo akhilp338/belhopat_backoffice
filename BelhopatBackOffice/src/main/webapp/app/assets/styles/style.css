@@ -220,6 +220,10 @@ body {
     color: white;
 }
 
+.add-remove-controls button{
+    margin: 4px!important;
+    padding: 4px 15px!important;
+}
 .sweet-alert button.confirm {
     border-radius: 0;
     background-color: #009688!important;
@@ -438,7 +442,7 @@ input[type="search"]{
     border-radius: 5px;
     color: #666 !important;
     font-size: 1em;
-    height: 40px;
+    height: 25px;
     line-height: 23px;
     margin: 5px 0 0 0;
     outline: none;
@@ -492,12 +496,24 @@ p.label-error, .label-error, .text-danger, .hasError, span.required {
     width: 30% !important;
 }
 
+.width-38{
+    width: 38% !important;
+}
+
+.width-18{
+    width: 18% !important;
+}
+
 .width-100{
     width: 100% !important;
 }
 
 .margin-left-5{
     margin-left: 5%!important;
+}
+
+.margin-left-2{
+    margin-left: 2%!important;
 }
 
 .margin-left-9{
@@ -517,10 +533,6 @@ span.text-danger{
     padding-left: 20px;
 }
 
-.control-group {
-    min-height: 95px;
-}
-
 .control-label{
     color: black;
     font-weight: normal;
@@ -537,9 +549,16 @@ span.sub-section {
     color: grey;
     font-size: 16px;
     padding-left: 20px;
-    margin-top: 20px;
     float: left;
     font-weight: bold;
+}
+
+.control-group{
+    font-size: 11px!important;
+    min-height: 70px;
+}
+.control-group input{
+    height: 25px!important;
 }
 
 #candidatesList tbody tr.odd {
@@ -833,8 +852,6 @@ input[type=text], textarea {
     -ms-transition: all 0.30s ease-in-out;
     -o-transition: all 0.30s ease-in-out;
     outline: none;
-    padding: 3px 0px 3px 3px;
-    margin: 5px 1px 3px 0px;
     border: 1px solid #DDDDDD;
 }
 
@@ -919,6 +936,7 @@ input.ng-touched.ng-valid{
     width: 30px;
     height: 30px;
     margin-left: 10px;
+    top: -6px;
 }
 
 .action-buttons .actions:hover{
@@ -1007,10 +1025,10 @@ span.catagory {
 }
 
 .group-select {
-    max-height: 112px;
+    max-height: 80px;
     position: relative;
     display: table-header-group;
-    margin-bottom: 25px;
+    margin-bottom: 15px;
 }
 
 .add-remove-controls {
@@ -1022,6 +1040,10 @@ span.catagory {
 
 .form-horizontal .pager a {
     color: #009688;
+}
+
+table.dataTable tbody th, table.dataTable tbody td {
+    padding: 0px 10px!important;
 }
 
 /*Overriding material themes and styles*/
@@ -1069,7 +1091,7 @@ md-datepicker {
     padding-right: 18px;
     margin-right: -18px;
     vertical-align: middle;
-    height: 40px!important;
+    height: 25px!important;
     position: relative;
     float: left;
     width: 100%;

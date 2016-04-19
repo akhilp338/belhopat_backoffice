@@ -29,7 +29,7 @@ public class CandidateController {
 
 	@Autowired
 	CandidateService candidateService;
-
+        
 	@ResponseBody
 	@RequestMapping(value = "/getCandidates", method = RequestMethod.GET)
 	public DataTablesOutput<Candidate> getCandidates(@Valid DataTablesInput input) {
