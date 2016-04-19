@@ -13,4 +13,6 @@ target
 *.gitignore
 *bin
 .idea/*
-
+/nb-configuration.xml
+/nbactions.xml
+/src/main/webapp/META-INF
