@@ -174,12 +174,11 @@
                     }]
             });
             $('#candidatesList').on('click', '.action-view', function () {
-                var rowData = oTable.row($(this).parents('tr')).data();
-                vm.viewCandidate(rowData);
+                vm.getCandidate(this.getAttribute('value'));
             });
             $('#candidatesList').on('click', '.action-edit', function () {
-                $rootScope.candidateDetails = oTable.row($(this).parents('tr')).data();
-                $state.go('coreuser.candidate.edit', {id: $rootScope.candidateDetails.id, reload: 0}, {reload: true});
+                $rootScope.id = this.getAttribute('value');
+                $state.go('coreuser.candidate.edit', {id: $rootScope.id, reload: 0}, {reload: true});
             });
 
         });
@@ -188,7 +187,7 @@
         	vm.getCandidateUrl = "api/candidate/getCandidate";
             Core_Service.getCandidateImpl(vm.getCandidateUrl,id)
             .then( function(response) {
-               console.log(response)
+               vm.viewCandidate(response.data);
             },function(error){
             	
             });

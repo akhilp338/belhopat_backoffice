@@ -84,12 +84,13 @@ public class BaseServiceImpl implements BaseService {
 	@Override
 	public List<Skill> getUnselectedSkillSet(List<Skill> selectedSkillSet){
 		List<Skill> skillSet = skillRepository.findAll();
-		List<Skill> unselectedSkillSet = skillSet;
-		for (Skill skill : selectedSkillSet) {
-			if(unselectedSkillSet.contains(skill))
-				unselectedSkillSet.remove(skill);
+		if(!selectedSkillSet.isEmpty()){
+			for (Skill skill : selectedSkillSet) {
+				if(skillSet.contains(skill))
+					skillSet.remove(skill);
+			}
 		}
-		return unselectedSkillSet;
+		return skillSet;
 	}
 
 

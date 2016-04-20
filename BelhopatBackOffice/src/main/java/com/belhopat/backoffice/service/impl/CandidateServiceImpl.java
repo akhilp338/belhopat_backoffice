@@ -52,12 +52,10 @@ public class CandidateServiceImpl implements CandidateService {
 	@Override
 	public ResponseEntity<Candidate> getCandidate(Long candidateId) {
 		Candidate candidate = candidateRepository.findById(candidateId);
-		if (candidate == null) {
-			List<Skill> selectedSkillSet = candidate.getSkillSet();
-			List<Skill> unselectedSkillSet = baseService.getUnselectedSkillSet(selectedSkillSet);
+		if (candidate != null) {
+			List<Skill> unselectedSkillSet = baseService.getUnselectedSkillSet(candidate.getSkillSet());
 			candidate.setUnselectedSkillSet(unselectedSkillSet);
 			return new ResponseEntity<Candidate>(candidate, HttpStatus.OK);
-
 		}
 		return new ResponseEntity<Candidate>(HttpStatus.NO_CONTENT);
 	}

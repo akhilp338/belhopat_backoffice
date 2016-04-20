@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
@@ -61,7 +62,7 @@ public class Candidate extends BaseEntity {
 	@OneToOne(cascade = CascadeType.ALL)
 	private Address onsiteAddress;
 
-	@OneToMany
+	@OneToMany(fetch=FetchType.EAGER)
 	@JsonIgnore
 	private List<Skill> skillSet;
 

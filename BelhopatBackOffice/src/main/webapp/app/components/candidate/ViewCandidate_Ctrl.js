@@ -6,7 +6,7 @@
         var array = [];
         
         for (var key in candidateDetails) {
-            console.log(typeof (candidateDetails[key]))
+//            console.log(typeof (candidateDetails[key]))
             if (candidateDetails[key] == undefined && candidateDetails[key] == null) {
                 vm.template += "<div class='cat-row'><span class = 'catagory'>" + fields[key] + " </span><span class='cat-value'>"
                         + '-' + "</span></div>";
