@@ -1079,3 +1079,20 @@ md-datepicker {
     border: 1px solid #DDDDDD;
 }
 /*Overriding material themes and styles*/
+
+
+#close {
+    float:right;
+    display:inline-block;
+    padding:2px 5px;
+    background:#ccc;
+}
+
+#close:hover {
+    float:right;
+    display:inline-block;
+    padding:2px 5px;
+    background:#ccc;
+    color:#fff;
+    cursor: pointer
+}
