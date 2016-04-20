@@ -1,12 +1,16 @@
 (function () {
     var AddCandidate_Ctrl = function ($scope, $state, $rootScope, Core_Service, $stateParams, Core_HttpRequest, validationService) {
         var vm = this;
+        $rootScope.showLoader = true;
         Core_Service.getCandidateImpl("api/candidate/getCandidate",$stateParams.id).then(function(res){
-            console.log(res)
+            vm.registration = res.data;
+            $rootScope.showLoader = false;
         },function(err){
-            
-        })
-        $stateParams.id ? vm.registration = $rootScope.candidateDetails : vm.registration = {}
+           vm.registration = {};
+           $rootScope.showLoader = false;
+        });
+        if(!$stateParams.id)
+            vm.registration = {}
         vs = new validationService({
             controllerAs: vm
         });
@@ -53,8 +57,7 @@
 
         // Go to a defined step index
         $scope.goToStep = function (index) {
-            if (!_.isUndefined($scope.steps[index]))
-            {
+            if (!_.isUndefined($scope.steps[index])) {
                 $scope.selection = $scope.steps[index];
             }
             Core_Service.calculateSidebarHeight();
@@ -75,8 +78,7 @@
         };
 
         $scope.incrementStep = function () {
-            var stepIndex = $scope.getCurrentStepIndex();
-            //vs.checkFormValidity($scope)
+            var stepIndex = $scope.getCurrentStepIndex();            
             if ($scope.hasNextStep())
             {
                 var nextStep = stepIndex + 1;
@@ -129,12 +131,14 @@
         };
 
         vm.candidateRegister = function () {
+            if(vs.checkFormValidity($scope["regForm"])){
             vm.registerUrl = "api/candidate/saveOrUpdateCandidate";
             Core_Service.candidateRegisterImpl(vm.registerUrl, vm.registration)
                     .then(function (response) {
                     }, function (error) {
 
                     });
+        }
         };
         vm.getIndexesToRemove = function (array, data) {
             var indexes = [];
@@ -249,6 +253,7 @@
             });
         };
         Core_Service.calculateSidebarHeight();
+        $rootScope.showLoader = false;
     };
 
     AddCandidate_Ctrl.$inject = ["$scope", '$state', '$rootScope', 'Core_Service', '$stateParams', 'Core_HttpRequest', 'validationService'];

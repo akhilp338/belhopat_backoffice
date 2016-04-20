@@ -1,5 +1,6 @@
 (function () {
     var Candidate_Ctrl = function ($scope, $state, $rootScope, Core_Service, urlConfig, Core_ModalService, validationService) {
+        $rootScope.showLoader = true;
         var vm = this,
                 vs = new validationService({
                     controllerAs: vm
@@ -165,6 +166,7 @@
                         bSortable: false,
                         sClass: "button-column",
                         render: function (data) {
+                            $rootScope.showLoader = false;
                             return '<div class="action-buttons">' +
                                     '<span  value="' + data + '" class="actions action-view fa-stack fa-lg pull-left" title="View">'+
                                     '<i class="fa fa-eye" aria-hidden="true"></i></span>' +
@@ -177,8 +179,9 @@
                 vm.getCandidate(this.getAttribute('value'));
             });
             $('#candidatesList').on('click', '.action-edit', function () {
+                $rootScope.showLoader = true;
                 $rootScope.id = this.getAttribute('value');
-                $state.go('coreuser.candidate.edit', {id: $rootScope.id, reload: 0}, {reload: true});
+                $state.go('coreuser.candidate.edit', {id: $rootScope.id});
             });
 
         });
@@ -191,7 +194,7 @@
             },function(error){
             	
             });
-        }
+        };
         
         vm.candidateDelete = function(id){
         	vm.deleteUrl = "api/candidate/deleteCandidate";
@@ -202,7 +205,7 @@
             },function(error){
             	Core_Service.sweetAlert("Failed!",response.data.data,"failure");  
             });
-        }
+        };
         
         Core_Service.calculateSidebarHeight();
     };
