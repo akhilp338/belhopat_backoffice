@@ -1,6 +1,7 @@
 (function () {
-    var AddCandidate_Ctrl = function ($scope, $state, $rootScope, Core_Service, $timeout, Core_HttpRequest, validationService) {
+    var AddCandidate_Ctrl = function ($scope, $state, $rootScope, Core_Service, $stateParams, Core_HttpRequest, validationService) {
         var vm = this;
+        $stateParams.id ? vm.registration = $rootScope.candidateDetails : vm.registration = {}
         vs = new validationService({
             controllerAs: vm
         });
@@ -9,7 +10,6 @@
         vm.subSelectedSkillList = [];
         vm.deSelectedSkills = [];
         vm.confirmedSelectionItems = [];
-        vm.registration = {};
         vs.setGlobalOptions({
             debounce: 1500,
             scope: $scope,
@@ -242,11 +242,11 @@
             	vm.citiesBank =  response.data;
             },function(error){
             });
-        }
+        };
         Core_Service.calculateSidebarHeight();
     };
 
-    AddCandidate_Ctrl.$inject = ["$scope", '$state', '$rootScope', 'Core_Service', '$timeout', 'Core_HttpRequest', 'validationService'];
+    AddCandidate_Ctrl.$inject = ["$scope", '$state', '$rootScope', 'Core_Service', '$stateParams', 'Core_HttpRequest', 'validationService'];
     angular.module('coreModule')
             .controller('AddCandidate_Ctrl', AddCandidate_Ctrl);
 })();
