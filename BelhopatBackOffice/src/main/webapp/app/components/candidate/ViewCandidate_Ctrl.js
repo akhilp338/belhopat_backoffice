@@ -6,26 +6,33 @@
         var array = [];
         
         for (var key in candidateDetails) {
-//            console.log(typeof (candidateDetails[key]))
-            if (candidateDetails[key] == undefined && candidateDetails[key] == null) {
+            if(key =='id'){
+            	continue;
+            }else if (candidateDetails[key] == undefined && candidateDetails[key] == null) {
                 vm.template += "<div class='cat-row'><span class = 'catagory'>" + fields[key] + " </span><span class='cat-value'>"
                         + '-' + "</span></div>";
             }
-//            	else if(key=='createdBy'||key=='updatedBy'||key=='deletedBy'){
-//                    vm.template += "<div class='cat-row'><span class = 'catagory'>"+key+" </span><span class='cat-value'>"
-//                    +candidateDetails[key].username+"</span></div>"; 
-//            	}
-            else if (key == 'dob' || key == 'doj') {
-                vm.template += "<div class='cat-row'><span class = 'catagory'>" + key + " </span><span class='cat-value'>"
+            else if (key == 'dob' || key == 'doj'||key=='createdDate'||key=='updatedDate') {
+                vm.template += "<div class='cat-row'><span class = 'catagory'>" + fields[key] + " </span><span class='cat-value'>"
                         + Core_Service.getFormattedDate(candidateDetails[key]) + "</span></div>";
-//            	}else if(key=='bloodGroup'||key=='countryOfOrigin'||key=='countryToVisit'||key=='division'
-//            			||key=='designation'||key=='purpose'||key=='employmentStatus'){
-//                    vm.template += "<div class='cat-row'><span class = 'catagory'>"+key+" </span><span class='cat-value'>"
-//                    +candidateDetails[key].description+"</span></div>"; 
-//            	}else if(key=='currentAddress'||key=='permanentAddress'||key=='onsiteAddress'){
-//                    vm.template += "<div class='cat-row'><span class = 'catagory'>"+key+" </span><span class='cat-value'>"
-//                    +candidateDetails[key].address1+','+candidateDetails[key].address2+"</span></div>"; 
-            } else {
+            }else if(typeof (candidateDetails[key])=='object'){
+            	if(key=='createdBy'||key=='updatedBy'||key=='deletedBy'){
+            		continue;
+            	}else{
+                	var thisobject = candidateDetails[key];
+                	for(var newKey in thisobject){
+                		if(newKey =='id'){
+                        	continue;
+                        }else if(fields[newKey]==undefined){
+                			continue;
+                		}
+                		vm.template += "<div class='cat-row'><span class = 'catagory'>" + fields[newKey] + " </span><span class='cat-value'>"
+                        + thisobject[newKey] + "</span></div>";
+                	}
+            	}
+            }else if(fields[key]==undefined){
+            	console.log(key);
+            }else {
                 vm.template += "<div class='cat-row'><span class = 'catagory'>" + fields[key] + " </span><span class='cat-value'>"
                         + candidateDetails[key] + "</span></div>";
             }

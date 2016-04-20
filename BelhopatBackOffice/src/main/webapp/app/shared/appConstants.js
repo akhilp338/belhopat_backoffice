@@ -50,7 +50,13 @@
                     "purpose":"Purpose", 
                     "employmentStatus":"Employment Status",
                     "registrationStatus":"Registration Status",
-                    "sourcedBy":"Sourced By"
+                    "sourcedBy":"Sourced By",
+                    "drivingLicenceNo":" Driving License No.",
+                    "forexCardNo":"Forex Card No.",
+                    "forexCardAgency":"Forex Card Agency",
+                    "panno":"PAN No.",
+                    "esino":"ESI No.",
+                    "pfno":"PF No."
                 }
             });
     ;
