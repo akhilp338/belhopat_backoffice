@@ -1,6 +1,11 @@
 (function () {
     var AddCandidate_Ctrl = function ($scope, $state, $rootScope, Core_Service, $stateParams, Core_HttpRequest, validationService) {
         var vm = this;
+        Core_Service.getCandidateImpl("api/candidate/getCandidate",$stateParams.id).then(function(res){
+            console.log(res)
+        },function(err){
+            
+        })
         $stateParams.id ? vm.registration = $rootScope.candidateDetails : vm.registration = {}
         vs = new validationService({
             controllerAs: vm

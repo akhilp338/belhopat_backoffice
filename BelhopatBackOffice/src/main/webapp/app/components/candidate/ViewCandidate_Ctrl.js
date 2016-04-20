@@ -1,16 +1,10 @@
 (function () {
-    var ViewCandidate_Ctrl = function ($scope, $uibModalInstance, CANDIDATE, $timeout, candidateDetails) {
+    var ViewCandidate_Ctrl = function ($scope, $uibModalInstance, CANDIDATE, Core_Service, candidateDetails) {
         var vm = this,
                 fields = CANDIDATE.fieldMapping;
         vm.template = "<div class = 'candidate-details-wrapper'>"
         var array = [];
-        vm.getFormattedDate = function (intDate) {
-            var date = new Date(intDate * 1000);
-            var datevalues = ('0' + date.getDate()).slice(-2) +
-                    '-' + ('0' + (date.getMonth() + 1)).slice(-2) +
-                    '-' + date.getFullYear();
-            return datevalues;
-        };
+        
         for (var key in candidateDetails) {
             console.log(typeof (candidateDetails[key]))
             if (candidateDetails[key] == undefined && candidateDetails[key] == null) {
@@ -23,7 +17,7 @@
 //            	}
             else if (key == 'dob' || key == 'doj') {
                 vm.template += "<div class='cat-row'><span class = 'catagory'>" + key + " </span><span class='cat-value'>"
-                        + vm.getFormattedDate(candidateDetails[key]) + "</span></div>";
+                        + Core_Service.getFormattedDate(candidateDetails[key]) + "</span></div>";
 //            	}else if(key=='bloodGroup'||key=='countryOfOrigin'||key=='countryToVisit'||key=='division'
 //            			||key=='designation'||key=='purpose'||key=='employmentStatus'){
 //                    vm.template += "<div class='cat-row'><span class = 'catagory'>"+key+" </span><span class='cat-value'>"
@@ -46,7 +40,7 @@
 
 
     };
-    ViewCandidate_Ctrl.$inject = ["$scope", '$uibModalInstance', 'CANDIDATE', '$timeout', 'candidateDetails'];
+    ViewCandidate_Ctrl.$inject = ["$scope", '$uibModalInstance', 'CANDIDATE', 'Core_Service', 'candidateDetails'];
     angular.module('coreModule')
             .controller('ViewCandidate_Ctrl', ViewCandidate_Ctrl);
 })();

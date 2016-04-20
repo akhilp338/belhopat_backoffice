@@ -163,7 +163,15 @@
                     }, function (error) {
                         return error;
                     });
-        }
+        };
+        
+        service.getFormattedDate = function (intDate) {
+            var date = new Date(intDate * 1000);
+            var datevalues = ('0' + date.getDate()).slice(-2) +
+                    '-' + ('0' + (date.getMonth() + 1)).slice(-2) +
+                    '-' + date.getFullYear();
+            return datevalues;
+        };
     };
     Core_Service.$inject = ['$rootScope', 'Core_HttpRequest', 'Base64', '$state', '$cookieStore', '$sessionStorage', '$http', '$q', '$timeout'];
     angular.module('app.common')
