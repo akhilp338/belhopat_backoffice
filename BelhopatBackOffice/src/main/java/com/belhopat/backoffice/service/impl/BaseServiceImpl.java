@@ -80,6 +80,18 @@ public class BaseServiceImpl implements BaseService {
 		List<City> states = cityRepository.findByState(stateId);
 		return new ResponseEntity<List<City>>(states, HttpStatus.OK);
 	}
+	
+	@Override
+	public List<Skill> getUnselectedSkillSet(List<Skill> selectedSkillSet){
+		List<Skill> skillSet = skillRepository.findAll();
+		List<Skill> unselectedSkillSet = skillSet;
+		for (Skill skill : selectedSkillSet) {
+			if(unselectedSkillSet.contains(skill))
+				unselectedSkillSet.remove(skill);
+		}
+		return unselectedSkillSet;
+	}
+
 
 	@Override
 	public <T> Long getSequenceIncrement(Class<T> clazz) {

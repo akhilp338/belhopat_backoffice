@@ -169,28 +169,17 @@
                                     '<span  value="' + data + '" class="actions action-view fa-stack fa-lg pull-left" title="View">'+
                                     '<i class="fa fa-eye" aria-hidden="true"></i></span>' +
                                     '<span value="' + data + '" class="actions action-edit fa-stack fa-lg pull-left" title="Edit">'+
-                                    '<i class="fa fa-pencil-square-o" aria-hidden="true"></i></i></span>' +
-                                    '<span value="' + data + '" class="actions action-delete fa-stack fa-lg pull-left" title="Delete">'+
-                                    '<i class="fa fa-user-times" aria-hidden="true"></i></span>' +
-                                    '</div>'
+                                    '<i class="fa fa-pencil-square-o" aria-hidden="true"></i></i></span></div>'
                         }
                     }]
             });
             $('#candidatesList').on('click', '.action-view', function () {
                 var rowData = oTable.row($(this).parents('tr')).data();
-//                var responseData = vm.getCandidate(rowData.id);
                 vm.viewCandidate(rowData);
             });
             $('#candidatesList').on('click', '.action-edit', function () {
-                var rowData = oTable.row($(this).parents('tr')).data();
-                $state.go('coreuser.candidate.edit', {id: rowData.id, reload: 0}, {reload: true})
-//                var responseData = vm.getCandidate(rowData.id);
-                vm.viewCandidate(rowData);
-            });
-            $('#candidatesList').on('click', '.action-delete', function () {
-                var rowData = oTable.row($(this).parents('tr')).data();
-                var data = {"id":rowData.id};
-                vm.candidateDelete(data);
+                $rootScope.candidateDetails = oTable.row($(this).parents('tr')).data();
+                $state.go('coreuser.candidate.edit', {id: $rootScope.candidateDetails.id, reload: 0}, {reload: true});
             });
 
         });
