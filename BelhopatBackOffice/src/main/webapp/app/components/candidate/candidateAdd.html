@@ -5,10 +5,11 @@
 			ng-class="{active: $index == getCurrentStepIndex()}"><a
 			href="javascript:void(0)" ng-click="goToStep($index)">{{step}}</a></li>
 	</ul>
+    <form name="regForm" id="form_0" novalidate>
 	<div ng-switch on="selection">
 		<!-- First Step -->
 		<div ng-switch-when="Step 1: Personal Information">
-			<form name="step_0" id="form_0" novalidate>
+			
 				<div class="row">
 					<span class="sub-section width-100">Basic Information</span>
 					<div class="span4">
@@ -261,12 +262,10 @@
 						</div>
 					</div>
 				</div>
-			</form>
 		</div>
 
 		<!-- Second Step -->
 		<div ng-switch-when="Step 2: Employment Details">
-			<form name="step_1" id="form_1" novalidate>
 				<div class="row">
 					<span class="sub-section width-100">Basic Information</span>
 					<div class="span4">
@@ -473,12 +472,10 @@
 						</div>
 					</div>
 				</div>
-			</form>
 		</div>
 
 		<!-- Third Step -->
 		<div ng-switch-when="Step 3: Official Information">
-			<form name="step_2" id="form_2" novalidate>
 				<div class="row">
 					<span class="sub-section width-100">Accounts Information</span>
 					<div class="span4">
@@ -719,12 +716,10 @@
 						</div>
 					</div>
 				</div>
-			</form>
 		</div>
 
 		<!-- Fourth Step -->
 		<div ng-switch-when="Step 4: Family Details">
-			<form name="step_3" id="form_3" novalidate>
 				<div class="row">
 					<span class="sub-section width-100">Basic Information</span>
 					<div class="span4">
@@ -741,9 +736,7 @@
 						<div class="control-group width-30 pull-left margin-left-5">
 							<label class="control-label" for="middleName">Children</label>
 							<div class="controls">
-								<input type="text" name="" children"" id=""
-									children""
-                                       ng-model="vm.registration.familyMembers.name"
+								<input type="text" name="" id="children"                                     ng-model="vm.registration.familyMembers.name"
 									class="form-input width-100" placeholder="Children" />
 							</div>
 						</div>
@@ -797,10 +790,10 @@
 						</div>
 					</div>
 
-				</div>
-			</form>
+				</div>			
 		</div>
 	</div>
+    </form>
 	<div class="clearfix"></div>
 	<ul class="pager pull-left">
 		<li class="" ng-class="{disabled: !hasPreviousStep()}"><a
@@ -810,7 +803,7 @@
 			href="javascript:void(0);" ng-click="incrementStep()">Next Step
 				&rarr;</a></li>
 	</ul>
-	<div class="pull-right">
+	<div ng-if="!hasNextStep()" class="pull-right">
 		<button style="margin: 20px 0;" class="logout-button"
 			ng-click="vm.candidateRegister()">Confirm and Register</button>
 	</div>

@@ -131,8 +131,10 @@
         };
         
         service.getCandidateImpl = function(url,data){
+        	var obj = {};
+        	obj.id = data;
         	var deferred = $q.defer();
-            Core_HttpRequest.post(url,data)
+            Core_HttpRequest.post(url,obj)
                     .then(function (response) {
                         deferred.resolve(response)
                     }, function (error) {
@@ -163,7 +165,18 @@
                     }, function (error) {
                         return error;
                     });
-        }
+        };
+        
+        service.getFormattedDate = function (intDate) {
+        	var dateStr = new Date(intDate);
+        	var dd = dateStr.getDate();
+        	var mm = dateStr.getMonth()+1;
+        	var yyyy = dateStr.getFullYear();
+        	if(dd<10){dd='0'+dd}
+        	if(mm<10){mm='0'+mm}
+        	var returnDate = yyyy+'-'+mm+'-'+dd;
+            return returnDate;
+        };
     };
     Core_Service.$inject = ['$rootScope', 'Core_HttpRequest', 'Base64', '$state', '$cookieStore', '$sessionStorage', '$http', '$q', '$timeout'];
     angular.module('app.common')

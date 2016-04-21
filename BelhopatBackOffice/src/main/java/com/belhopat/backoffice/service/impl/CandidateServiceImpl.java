@@ -16,11 +16,13 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
 
 import com.belhopat.backoffice.model.Candidate;
+import com.belhopat.backoffice.model.Skill;
 import com.belhopat.backoffice.model.User;
 import com.belhopat.backoffice.repository.CandidateRepository;
 import com.belhopat.backoffice.service.BaseService;
 import com.belhopat.backoffice.service.CandidateService;
 import com.belhopat.backoffice.session.SessionManager;
+import com.belhopat.backoffice.util.ResponseObject;
 import com.belhopat.backoffice.util.sequence.SequenceGenerator;
 
 @Component
@@ -50,10 +52,12 @@ public class CandidateServiceImpl implements CandidateService {
 	@Override
 	public ResponseEntity<Candidate> getCandidate(Long candidateId) {
 		Candidate candidate = candidateRepository.findById(candidateId);
-		if (candidate == null) {
-			return new ResponseEntity<Candidate>(HttpStatus.NO_CONTENT);
+		if (candidate != null) {
+			List<Skill> unselectedSkillSet = baseService.getUnselectedSkillSet(candidate.getSkillSet());
+			candidate.setUnselectedSkillSet(unselectedSkillSet);
+			return new ResponseEntity<Candidate>(candidate, HttpStatus.OK);
 		}
-		return new ResponseEntity<Candidate>(candidate, HttpStatus.OK);
+		return new ResponseEntity<Candidate>(HttpStatus.NO_CONTENT);
 	}
 
 	@Override
@@ -68,9 +72,9 @@ public class CandidateServiceImpl implements CandidateService {
 			candidate.setUpdateAttributes(loggedInUser);
 		}
 		candidate = candidateRepository.save(candidate);
-		if(candidate!=null){
+		if (candidate != null) {
 			String candidateName = candidate.getFirstName() + " " + candidate.getLastName();
-			return new ResponseEntity<String>(candidateName,HttpStatus.OK);
+			return new ResponseEntity<String>(candidateName, HttpStatus.OK);
 		}
 		return new ResponseEntity<String>(HttpStatus.NO_CONTENT);
 	}
@@ -87,19 +91,21 @@ public class CandidateServiceImpl implements CandidateService {
 	}
 
 	@Override
-	public ResponseEntity<String> deleteCandidate(Long candidateId) {
+	public ResponseEntity<ResponseObject> deleteCandidate(Long candidateId) {
 		if (candidateId != null) {
 			Candidate candidate = candidateRepository.findById(candidateId);
 			User loggedInUser = SessionManager.getCurrentUserAsEntity();
 			candidate.setUpdateAttributes(loggedInUser);
 			candidate.setDeleteAttributes(loggedInUser);
 			candidate = candidateRepository.save(candidate);
-			if(candidate!=null){
+			if (candidate != null) {
 				String candidateName = candidate.getFirstName() + " " + candidate.getLastName();
-				return new ResponseEntity<String>(candidateName,HttpStatus.OK);
+				return new ResponseEntity<ResponseObject>(
+						new ResponseObject(true, candidateName + " successfully deleted"), HttpStatus.OK);
 			}
 		}
-		return new ResponseEntity<String>(HttpStatus.NO_CONTENT);
+		return new ResponseEntity<ResponseObject>(new ResponseObject(true, "Oops..error while deleting!"),
+				HttpStatus.OK);
 	}
 
 }

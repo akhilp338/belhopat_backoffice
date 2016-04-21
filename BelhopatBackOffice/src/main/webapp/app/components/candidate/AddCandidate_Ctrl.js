@@ -1,6 +1,16 @@
 (function () {
-    var AddCandidate_Ctrl = function ($scope, $state, $rootScope, Core_Service, $timeout, Core_HttpRequest, validationService) {
+    var AddCandidate_Ctrl = function ($scope, $state, $rootScope, Core_Service, $stateParams, Core_HttpRequest, validationService) {
         var vm = this;
+        $rootScope.showLoader = true;
+        Core_Service.getCandidateImpl("api/candidate/getCandidate",$stateParams.id).then(function(res){
+            vm.registration = res.data;
+            $rootScope.showLoader = false;
+        },function(err){
+           vm.registration = {};
+           $rootScope.showLoader = false;
+        });
+        if(!$stateParams.id)
+            vm.registration = {}
         vs = new validationService({
             controllerAs: vm
         });
@@ -9,7 +19,6 @@
         vm.subSelectedSkillList = [];
         vm.deSelectedSkills = [];
         vm.confirmedSelectionItems = [];
-        vm.registration = {};
         vs.setGlobalOptions({
             debounce: 1500,
             scope: $scope,
@@ -48,8 +57,7 @@
 
         // Go to a defined step index
         $scope.goToStep = function (index) {
-            if (!_.isUndefined($scope.steps[index]))
-            {
+            if (!_.isUndefined($scope.steps[index])) {
                 $scope.selection = $scope.steps[index];
             }
             Core_Service.calculateSidebarHeight();
@@ -70,8 +78,7 @@
         };
 
         $scope.incrementStep = function () {
-            var stepIndex = $scope.getCurrentStepIndex();
-            //vs.checkFormValidity($scope)
+            var stepIndex = $scope.getCurrentStepIndex();            
             if ($scope.hasNextStep())
             {
                 var nextStep = stepIndex + 1;
@@ -127,12 +134,14 @@
             $state.go("coreuser.candidate")
         };
         vm.candidateRegister = function () {
+            if(vs.checkFormValidity($scope["regForm"])){
             vm.registerUrl = "api/candidate/saveOrUpdateCandidate";
             Core_Service.candidateRegisterImpl(vm.registerUrl, vm.registration)
                     .then(function (response) {
                     }, function (error) {
 
                     });
+        }
         };
         vm.getIndexesToRemove = function (array, data) {
             var indexes = [];
@@ -245,11 +254,12 @@
             	vm.citiesBank =  response.data;
             },function(error){
             });
-        }
+        };
         Core_Service.calculateSidebarHeight();
+        $rootScope.showLoader = false;
     };
 
-    AddCandidate_Ctrl.$inject = ["$scope", '$state', '$rootScope', 'Core_Service', '$timeout', 'Core_HttpRequest', 'validationService'];
+    AddCandidate_Ctrl.$inject = ["$scope", '$state', '$rootScope', 'Core_Service', '$stateParams', 'Core_HttpRequest', 'validationService'];
     angular.module('coreModule')
             .controller('AddCandidate_Ctrl', AddCandidate_Ctrl);
 })();

@@ -63,7 +63,7 @@ public class BaseServiceImpl implements BaseService {
 		dropDownMap.put(Constants.PURPOSE, purposes);
 		dropDownMap.put(Constants.BLOOD_GROUP, bloodGroups);
 		dropDownMap.put(Constants.EMPLOYMENT_STATUS, employmentStatuses);
-		dropDownMap.put(Constants.EMPLOYMENT_STATUS, familyMembers);
+		dropDownMap.put(Constants.FAMILY_MEMBER, familyMembers);
 		dropDownMap.put(Constants.SKILL, skills);
 		dropDownMap.put(Constants.COUNTRY, countries);
 		return new ResponseEntity<Map<String, List<?>>>(dropDownMap, HttpStatus.OK);
@@ -80,6 +80,19 @@ public class BaseServiceImpl implements BaseService {
 		List<City> states = cityRepository.findByState(stateId);
 		return new ResponseEntity<List<City>>(states, HttpStatus.OK);
 	}
+	
+	@Override
+	public List<Skill> getUnselectedSkillSet(List<Skill> selectedSkillSet){
+		List<Skill> skillSet = skillRepository.findAll();
+		if(!selectedSkillSet.isEmpty()){
+			for (Skill skill : selectedSkillSet) {
+				if(skillSet.contains(skill))
+					skillSet.remove(skill);
+			}
+		}
+		return skillSet;
+	}
+
 
 	@Override
 	public <T> Long getSequenceIncrement(Class<T> clazz) {

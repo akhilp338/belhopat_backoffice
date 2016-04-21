@@ -2,6 +2,7 @@
     'use strict';
     var Core_Run = function ($rootScope, $state, $cookieStore, $window, Core_Service, $http) {
         $rootScope.globals = $cookieStore.get('globals') || {};
+        $rootScope.showLoader = false;
         var userName = angular.element("#successUser").text(),
             errorText = angular.element("#erorUser").text()
         if (userName != "") {

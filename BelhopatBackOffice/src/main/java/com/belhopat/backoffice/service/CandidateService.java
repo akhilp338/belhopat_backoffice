@@ -8,19 +8,19 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import com.belhopat.backoffice.model.Candidate;
-
+import com.belhopat.backoffice.util.ResponseObject;
 
 @Service
 public interface CandidateService {
-	
-	DataTablesOutput<Candidate> getCandidates(DataTablesInput input);
-	
-	ResponseEntity<Candidate> getCandidate(Long candidateId);
-	
-	ResponseEntity<String> saveOrUpdateCandidate(Candidate candidate);
-	
-	ResponseEntity<Void> deleteCandidates(List<Long> candidateIds);
 
-	ResponseEntity<String> deleteCandidate(Long candidateId);
+	public DataTablesOutput<Candidate> getCandidates(DataTablesInput input);
+
+	public ResponseEntity<Candidate> getCandidate(Long candidateId);
+
+	public ResponseEntity<String> saveOrUpdateCandidate(Candidate candidate);
+
+	public ResponseEntity<Void> deleteCandidates(List<Long> candidateIds);
+
+	public ResponseEntity<ResponseObject> deleteCandidate(Long candidateId);
 
 }

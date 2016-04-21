@@ -7,17 +7,20 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import com.belhopat.backoffice.model.City;
+import com.belhopat.backoffice.model.Skill;
 import com.belhopat.backoffice.model.State;
 
 @Service
 public interface BaseService {
 
-	ResponseEntity < Map < String, List < ? > > > getCandidateDropDownData();
+	public ResponseEntity < Map < String, List < ? > > > getCandidateDropDownData();
 
-	ResponseEntity < List < State > > getStatesByCountry ( Long countryId );
+	public ResponseEntity < List < State > > getStatesByCountry ( Long countryId );
 
-	ResponseEntity < List < City > > getCitiesByState( Long stateId );
+	public ResponseEntity < List < City > > getCitiesByState( Long stateId );
 
-	< T > Long getSequenceIncrement ( Class < T > clazz );
+	public < T > Long getSequenceIncrement ( Class < T > clazz );
+
+	public List<Skill> getUnselectedSkillSet(List<Skill> selectedSkillSet);
 
 }

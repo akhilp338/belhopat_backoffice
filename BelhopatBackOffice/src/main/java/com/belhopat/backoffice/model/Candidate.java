@@ -5,10 +5,12 @@ import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -60,7 +62,7 @@ public class Candidate extends BaseEntity {
 	@OneToOne(cascade = CascadeType.ALL)
 	private Address onsiteAddress;
 
-	@OneToMany
+	@OneToMany(fetch=FetchType.EAGER)
 	@JsonIgnore
 	private List<Skill> skillSet;
 
@@ -105,6 +107,9 @@ public class Candidate extends BaseEntity {
 	private LookupDetail registrationStatus;
 
 	private String sourcedBy;
+	
+	@Transient
+	private List<Skill> unselectedSkillSet;
 
 	public String getCandidateId() {
 		return candidateId;
@@ -392,6 +397,14 @@ public class Candidate extends BaseEntity {
 
 	public void setSourcedBy(String sourcedBy) {
 		this.sourcedBy = sourcedBy;
+	}
+
+	public List<Skill> getUnselectedSkillSet() {
+		return unselectedSkillSet;
+	}
+
+	public void setUnselectedSkillSet(List<Skill> unselectedSkillSet) {
+		this.unselectedSkillSet = unselectedSkillSet;
 	}
 
 }

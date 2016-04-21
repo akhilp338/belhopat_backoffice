@@ -1079,3 +1079,51 @@ md-datepicker {
     border: 1px solid #DDDDDD;
 }
 /*Overriding material themes and styles*/
+
+
+#close {
+   display: inline-block;
+    padding: 3px 9px;
+    background: #282B2A;
+    position: absolute;
+    right: -11px;
+    border-radius: 50%;
+    top: -10px;
+    cursor: pointer;
+}
+
+.candidate-details-wrapper {
+    max-height: 375px!important;
+    float: left;
+    overflow: auto;
+}
+
+.response-loader {
+    display: none;
+    height: 100%;
+    opacity: 0.5;
+    position: fixed;
+    width: 100%;
+    background: #fff url("../images/loader-img.gif") no-repeat 50% 50%;
+    z-index: 1000;
+    margin-bottom: 0;
+}
+
+body.loader-visible {
+    overflow: hidden;
+}
+
+.loader-language {
+    margin-left: -24px;
+    margin-top: -60px;
+    position: absolute;
+    top: 50%;
+    width: 54px;
+}
+
+.loader-img {
+    left: 50%;
+    margin: 0 0 40px -27.5px;
+    position: relative;
+    width: 55px;
+}
