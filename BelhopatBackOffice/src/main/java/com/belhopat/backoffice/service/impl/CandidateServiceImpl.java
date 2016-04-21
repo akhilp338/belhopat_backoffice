@@ -69,7 +69,6 @@ public class CandidateServiceImpl implements CandidateService {
 		} else {
 			newCandidate = updateCandidate(loggedInUser,candidateObj);
 		}
-		newCandidate = candidateRepository.save(newCandidate);
 		if (newCandidate != null) {
 			String candidateName = newCandidate.getFirstName() + " " + newCandidate.getLastName();
 			return new ResponseEntity<String>(candidateName, HttpStatus.OK);
@@ -79,7 +78,7 @@ public class CandidateServiceImpl implements CandidateService {
 
 	private Candidate updateCandidate(User loggedInUser, Candidate candidateObj) {
 		Candidate newCandidate = candidateRepository.findById(candidateObj.getId());
-		if(candidateObj.getBankAccount()!=null){
+		/*if(candidateObj.getBankAccount()!=null){
 			newCandidate.setBankAccount(candidateObj.getBankAccount());
 		}
 		if(candidateObj.getBloodGroup()!=null){
@@ -103,7 +102,7 @@ public class CandidateServiceImpl implements CandidateService {
 		if(candidateObj.getEmploymentStatus()!=null){
 			newCandidate.setEmploymentStatus(candidateObj.getEmploymentStatus());
 		}
-		if(!candidateObj.getFamilyMembers().isEmpty()){
+		if(candidateObj.getFamilyMembers()!=null && !candidateObj.getFamilyMembers().isEmpty()){
 			newCandidate.setFamilyMembers(candidateObj.getFamilyMembers());
 		}
 		if(candidateObj.getOfficialDetails()!=null){
@@ -124,11 +123,12 @@ public class CandidateServiceImpl implements CandidateService {
 		if(candidateObj.getRegistrationStatus()!=null){
 			newCandidate.setRegistrationStatus(candidateObj.getRegistrationStatus());
 		}
-		if(!candidateObj.getSkillSet().isEmpty()){
+		if(candidateObj.getSkillSet()!=null&&!candidateObj.getSkillSet().isEmpty()){
 			newCandidate.setSkillSet(candidateObj.getSkillSet());
-		}
+		}*/
 		newCandidate.setUpdateAttributes(loggedInUser);
-		return newCandidate;
+		Candidate persisted = candidateRepository.save(newCandidate);
+		return persisted;
 	}
 
 	private Candidate registerNewCandidate(User loggedInUser, Candidate candidate) {
@@ -136,7 +136,8 @@ public class CandidateServiceImpl implements CandidateService {
 		Long increment = baseService.getSequenceIncrement(Candidate.class);
 		String candidateId = SequenceGenerator.generateCandidateId(increment);
 		candidate.setCandidateId(candidateId);
-		return candidate;
+		Candidate persisted = candidateRepository.save(candidate);
+		return persisted;
 	}
 
 	@Override
