@@ -61,22 +61,82 @@ public class CandidateServiceImpl implements CandidateService {
 	}
 
 	@Override
-	public ResponseEntity<String> saveOrUpdateCandidate(Candidate candidate) {
+	public ResponseEntity<String> saveOrUpdateCandidate(Candidate candidateObj) {
+		Candidate newCandidate = null;
 		User loggedInUser = SessionManager.getCurrentUserAsEntity();
-		if (candidate.getId() == null) {
-			candidate.setBaseAttributes(loggedInUser);
-			Long increment = baseService.getSequenceIncrement(Candidate.class);
-			String candidateId = SequenceGenerator.generateCandidateId(increment);
-			candidate.setCandidateId(candidateId);
+		if (candidateObj.getId() == null) {
+			newCandidate = registerNewCandidate(loggedInUser,candidateObj);
 		} else {
-			candidate.setUpdateAttributes(loggedInUser);
+			newCandidate = updateCandidate(loggedInUser,candidateObj);
 		}
-		candidate = candidateRepository.save(candidate);
-		if (candidate != null) {
-			String candidateName = candidate.getFirstName() + " " + candidate.getLastName();
+		newCandidate = candidateRepository.save(newCandidate);
+		if (newCandidate != null) {
+			String candidateName = newCandidate.getFirstName() + " " + newCandidate.getLastName();
 			return new ResponseEntity<String>(candidateName, HttpStatus.OK);
 		}
 		return new ResponseEntity<String>(HttpStatus.NO_CONTENT);
+	}
+
+	private Candidate updateCandidate(User loggedInUser, Candidate candidateObj) {
+		Candidate newCandidate = candidateRepository.findById(candidateObj.getId());
+		if(candidateObj.getBankAccount()!=null){
+			newCandidate.setBankAccount(candidateObj.getBankAccount());
+		}
+		if(candidateObj.getBloodGroup()!=null){
+			newCandidate.setBloodGroup(candidateObj.getBloodGroup());
+		}
+		if(candidateObj.getCountryOfOrigin()!=null){
+			newCandidate.setCountryOfOrigin(candidateObj.getCountryOfOrigin());
+		}
+		if(candidateObj.getCountryToVisit()!=null){
+			newCandidate.setCountryToVisit(candidateObj.getCountryToVisit());
+		}
+		if(candidateObj.getCurrentAddress()!=null){
+			newCandidate.setCurrentAddress(candidateObj.getCurrentAddress());
+		}
+		if(candidateObj.getDesignation()!=null){
+			newCandidate.setDesignation(candidateObj.getDesignation());
+		}
+		if(candidateObj.getDivision()!=null){
+			newCandidate.setDivision(candidateObj.getDivision());
+		}
+		if(candidateObj.getEmploymentStatus()!=null){
+			newCandidate.setEmploymentStatus(candidateObj.getEmploymentStatus());
+		}
+		if(!candidateObj.getFamilyMembers().isEmpty()){
+			newCandidate.setFamilyMembers(candidateObj.getFamilyMembers());
+		}
+		if(candidateObj.getOfficialDetails()!=null){
+			newCandidate.setOfficialDetails(candidateObj.getOfficialDetails());
+		}
+		if(candidateObj.getOnsiteAddress()!=null){
+			newCandidate.setOnsiteAddress(candidateObj.getOnsiteAddress());
+		}
+		if(candidateObj.getPassport()!=null){
+			newCandidate.setPassport(candidateObj.getPassport());
+		}
+		if(candidateObj.getPermanentAddress()!=null){
+			newCandidate.setPermanentAddress(candidateObj.getPermanentAddress());
+		}
+		if(candidateObj.getPurpose()!=null){
+			newCandidate.setPurpose(candidateObj.getPurpose());
+		}
+		if(candidateObj.getRegistrationStatus()!=null){
+			newCandidate.setRegistrationStatus(candidateObj.getRegistrationStatus());
+		}
+		if(!candidateObj.getSkillSet().isEmpty()){
+			newCandidate.setSkillSet(candidateObj.getSkillSet());
+		}
+		newCandidate.setUpdateAttributes(loggedInUser);
+		return newCandidate;
+	}
+
+	private Candidate registerNewCandidate(User loggedInUser, Candidate candidate) {
+		candidate.setBaseAttributes(loggedInUser);
+		Long increment = baseService.getSequenceIncrement(Candidate.class);
+		String candidateId = SequenceGenerator.generateCandidateId(increment);
+		candidate.setCandidateId(candidateId);
+		return candidate;
 	}
 
 	@Override
