@@ -2,14 +2,27 @@
     var AddCandidate_Ctrl = function ($scope, $state, $rootScope, Core_Service, $stateParams, Core_HttpRequest, validationService) {
         var vm = this;
         $rootScope.showLoader = true;
-        Core_Service.getCandidateImpl("api/candidate/getCandidate", $stateParams.id).then(function (res) {
-            vm.registration = res.data;
-            $rootScope.showLoader = false;
-        }, function (err) {
-            vm.registration = {};
-        });
-        if (!$stateParams.id)
-            vm.registration = {}
+        var countryType = ["permenant", "current", "onsite", "bank"]
+        vm.setDpOpenStatus = function (id) {
+            vm[id] = true
+        };
+
+        vm.registration = {}
+        if ($stateParams.id) {
+            Core_Service.getCandidateImpl("api/candidate/getCandidate", $stateParams.id).then(function (res) {
+                vm.registration = res.data;
+                for (var i = 0; i < countryType.length; i++) {
+                    vm.getStatesByCountry(vm.registration.permanentAddress.city.state.country.id,countryType[i]);
+                    vm.getCitiesByStates(vm.registration.permanentAddress.city.state.id,countryType[i]);
+                }
+                vm.isCheckboxEnable = true;
+                vm.isChecked = true;
+                $rootScope.showLoader = false;
+            }, function (err) {
+                vm.registration = {};
+            });
+        }
+
         vs = new validationService({
             controllerAs: vm
         });
@@ -17,10 +30,10 @@
         vm.urlForLookups = "api/candidate/getDropDownData";
         Core_Service.getAllLookupValues(vm.urlForLookups)
                 .then(function (response) {
-                    vm.lookups = Core_Service.processDateObjects(['dob','doj'],response.data);
+                    vm.lookups = Core_Service.processDateObjects(['dob', 'doj'], response.data);
                     vm.mainSkillList = vm.lookups.SKILL;
                 }, function (error) {
-       });
+                });
 
         vm.mainSelectedSkillList = [];
         vm.subSelectedSkillList = [];
@@ -173,26 +186,56 @@
             vm.confirmedSelectionItems = selected;
         };
         //To Do(move these methods to base controller)
-        vm.getStatesByCountryPerm = function (countryId) {
+        vm.getStatesByCountry = function (countryId, flag) {
             var data = {"id": countryId};
             vm.apiUrl = "api/getStatesByCountry";
             Core_Service.defaultApiByIdAndUrlImpl(vm.apiUrl, data)
                     .then(function (response) {
-                        vm.statesPerm = response.data;
+                        switch (flag) {
+                            case "permenant":
+                                vm.statesPerm = response.data;
+                                break;
+                            case "current":
+                                vm.statesCurnt = response.data;
+                                break;
+                            case "onsite":
+                                vm.statesOnsite = response.data;
+                                break;
+                            case "bank":
+                                vm.statesBank = response.data;
+                                break;
+                            default:
+                                break;
+                        }
                     }, function (error) {
-                        console.log('theng...')
+                        console.log(error)
                     });
-        }
-        vm.getCitiesByStatesPerm = function (stateId) {
+        };
+        vm.getCitiesByStates = function (stateId, flag) {
             var data = {"id": stateId};
             vm.apiUrl = "api/getCitiesByState";
             Core_Service.defaultApiByIdAndUrlImpl(vm.apiUrl, data)
                     .then(function (response) {
-                        vm.citiesPerm = response.data;
+                        switch (flag) {
+                            case "permenant":
+                                vm.citiesPerm = response.data;
+                                break;
+                            case "current":
+                                vm.citiesCurnt = response.data;
+                                break;
+                            case "onsite":
+                                vm.citiesOnsite = response.data;
+                                break;
+                            case "bank":
+                                vm.citiesBank = response.data;
+                                break;
+                            default:
+                                break;
+                        }
                     }, function (error) {
-                        console.log('theng...')
+                        console.log(error)
                     });
-        }
+        };
         vm.getStatesByCountryCurnt = function (countryId) {
             var data = {"id": countryId};
             vm.apiUrl = "api/getStatesByCountry";
@@ -200,7 +243,7 @@
                     .then(function (response) {
                         vm.statesCurnt = response.data;
                     }, function (error) {
-                        console.log('theng...')
+                        console.log(error)
                     });
         }
         vm.getCitiesByStatesCurnt = function (stateId) {
