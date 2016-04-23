@@ -148,8 +148,9 @@
                 vm.registerUrl = "api/candidate/saveOrUpdateCandidate";
                 Core_Service.candidateRegisterImpl(vm.registerUrl, vm.registration)
                         .then(function (response) {
+                            console.log(response)
                         }, function (error) {
-
+ console.log(error)
                         });
             }
         };
@@ -236,56 +237,7 @@
                         console.log(error)
                     });
         };
-        vm.getStatesByCountryCurnt = function (countryId) {
-            var data = {"id": countryId};
-            vm.apiUrl = "api/getStatesByCountry";
-            Core_Service.defaultApiByIdAndUrlImpl(vm.apiUrl, data)
-                    .then(function (response) {
-                        vm.statesCurnt = response.data;
-                    }, function (error) {
-                        console.log(error)
-                    });
-        }
-        vm.getCitiesByStatesCurnt = function (stateId) {
-            var data = {"id": stateId};
-            vm.apiUrl = "api/getCitiesByState";
-            Core_Service.defaultApiByIdAndUrlImpl(vm.apiUrl, data)
-                    .then(function (response) {
-                        vm.citiesCurnt = response.data;
-                    }, function (error) {
-                        console.log('theng...')
-                    });
-        }
-        vm.getStatesByCountryOnsite = function (countryId) {
-            var data = {"id": countryId};
-            vm.apiUrl = "api/getStatesByCountry";
-            Core_Service.defaultApiByIdAndUrlImpl(vm.apiUrl, data)
-                    .then(function (response) {
-                        vm.statesOnsite = response.data;
-                    }, function (error) {
-                        console.log('theng...')
-                    });
-        }
-        vm.getCitiesByStatesOnsite = function (stateId) {
-            var data = {"id": stateId};
-            vm.apiUrl = "api/getCitiesByState";
-            Core_Service.defaultApiByIdAndUrlImpl(vm.apiUrl, data)
-                    .then(function (response) {
-                        vm.citiesOnsite = response.data;
-                    }, function (error) {
-                        console.log('theng...')
-                    });
-        }
-        vm.getStatesByCountryBank = function (countryId) {
-            var data = {"id": countryId};
-            vm.apiUrl = "api/getStatesByCountry";
-            Core_Service.defaultApiByIdAndUrlImpl(vm.apiUrl, data)
-                    .then(function (response) {
-                        vm.statesBank = response.data;
-                    }, function (error) {
-                        console.log('theng...')
-                    });
-        }
+        
         vm.getCitiesByStatesBank = function (stateId) {
             var data = {"id": stateId};
             vm.apiUrl = "api/getCitiesByState";
