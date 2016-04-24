@@ -98,13 +98,17 @@
         };
 
         $rootScope.active = 'candidate';
-        vm.copyAddress = function () {
+        vm.copyAddress = function ($event) {
             if (vm.registration.permanentAddress) {
+            	var _this = $event.target;
                 vm.registration.currentAddress = {};
                 vm.isCheckboxEnable = true;
                 for (var key in vm.registration.permanentAddress) {
                     vm.registration.currentAddress[key] = vm.registration.permanentAddress[key];
                 }
+//                angular.element('.permntCountry').triggerHandler('change');//temp
+                vm.statesCurnt = vm.statesPerm;
+                vm.citiesCurnt =vm.citiesPerm;
             } else {
                 vm.isCheckboxEnable = false;
             }
@@ -112,6 +116,8 @@
                  for(var key in vm.registration.currentAddress){
                      vm.registration.currentAddress[key] = "";
                  }
+                 vm.statesCurnt = [];
+                 vm.citiesCurnt =[];
             }
         };
 
@@ -209,6 +215,7 @@
             Core_Service.defaultApiByIdAndUrlImpl(vm.apiUrl,data)
             .then( function(response) {
             	vm.citiesCurnt =  response.data;
+//            	angular.element('.permntState').triggerHandler('change');//temp
             },function(error){
             	console.log('theng...')
             });
@@ -252,6 +259,9 @@
             },function(error){
             });
         };
+        
+//        $('#defaultPopup').datepick(); 
+        
         Core_Service.calculateSidebarHeight();
         $rootScope.showLoader = false;
     };
