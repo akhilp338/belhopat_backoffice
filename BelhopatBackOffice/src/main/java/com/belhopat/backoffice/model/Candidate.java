@@ -62,11 +62,11 @@ public class Candidate extends BaseEntity {
 		this.fathersName = fathersName;
 	}
 
-	public String getMotersName() {
+	public String getMothersName() {
 		return mothersName;
 	}
 
-	public void setMotersName(String motersName) {
+	public void setMothersName(String motersName) {
 		this.mothersName = motersName;
 	}
 

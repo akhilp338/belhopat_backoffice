@@ -359,7 +359,7 @@
 							<div class="controls">
 								<select class="skills" size="5" id="skillList" multiple
 									ng-multiple="true" ng-model="vm.subSelectedSkillList"
-									ng-options="skill.skill for skill in vm.mainSkillList"></select>
+									ng-options="skill.skillName for skill in vm.lookups.SKILL"></select>
 							</div>
 						</div>
 						<div
@@ -775,7 +775,7 @@
 								Contact 2</label>
 							<div class="controls">
 								<input type="text" name="familyContact1" id="familyContact1"
-									ng-model="vm.registration..familyContact2"
+									ng-model="vm.registration.familyContact2"
 									class="form-input width-100" placeholder="Family Contact 2"
 									validation="required:alt=Required field" />
 							</div>

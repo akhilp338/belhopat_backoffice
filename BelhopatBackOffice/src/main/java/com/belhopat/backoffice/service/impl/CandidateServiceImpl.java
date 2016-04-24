@@ -15,6 +15,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
 
+import com.belhopat.backoffice.model.BankAccount;
 import com.belhopat.backoffice.model.Candidate;
 import com.belhopat.backoffice.model.Skill;
 import com.belhopat.backoffice.model.User;
@@ -78,8 +79,9 @@ public class CandidateServiceImpl implements CandidateService {
 
 	private Candidate updateCandidate(User loggedInUser, Candidate candidateObj) {
 		Candidate newCandidate = candidateRepository.findById(candidateObj.getId());
-		/*if(candidateObj.getBankAccount()!=null){
-			newCandidate.setBankAccount(candidateObj.getBankAccount());
+		newCandidate = getUpdatedWithBaseAttributes(candidateObj,newCandidate);
+		if(candidateObj.getBankAccount()!=null){
+			newCandidate = setBankAccountInDetail(candidateObj.getBankAccount(),newCandidate);
 		}
 		if(candidateObj.getBloodGroup()!=null){
 			newCandidate.setBloodGroup(candidateObj.getBloodGroup());
@@ -125,10 +127,49 @@ public class CandidateServiceImpl implements CandidateService {
 		}
 		if(candidateObj.getSkillSet()!=null&&!candidateObj.getSkillSet().isEmpty()){
 			newCandidate.setSkillSet(candidateObj.getSkillSet());
-		}*/
+		}
 		newCandidate.setUpdateAttributes(loggedInUser);
 		Candidate persisted = candidateRepository.save(newCandidate);
 		return persisted;
+	}
+
+	private Candidate getUpdatedWithBaseAttributes(Candidate candidateObj, Candidate newCandidate) {
+		newCandidate.setFirstName(candidateObj.getFirstName());
+		newCandidate.setLastName(candidateObj.getLastName());
+		newCandidate.setMiddleName(candidateObj.getMiddleName());
+		newCandidate.setGender(candidateObj.getGender());
+		newCandidate.setPersonalEmail(candidateObj.getPersonalEmail());
+		newCandidate.setPersonalContactNo(candidateObj.getPersonalContactNo());
+		newCandidate.setOfficialEmail(candidateObj.getOfficialEmail());
+		newCandidate.setOfficialContactNo(candidateObj.getOfficialContactNo());
+		newCandidate.setFamilyContact1(candidateObj.getFamilyContact1());
+		newCandidate.setFamilyContact2(candidateObj.getFamilyContact2());
+		newCandidate.setFamilyEmail(candidateObj.getFamilyEmail());
+		newCandidate.setOnsiteContactNo(candidateObj.getOnsiteContactNo());
+		newCandidate.setFathersName(candidateObj.getFathersName());
+		newCandidate.setMothersName(candidateObj.getMothersName());
+		newCandidate.setPriorExperienceMonth(candidateObj.getPriorExperienceMonth());
+		newCandidate.setPriorExperienceYear(candidateObj.getPriorExperienceYear());
+		newCandidate.setClient(candidateObj.getClient());
+		newCandidate.setPartner(candidateObj.getPartner());
+		newCandidate.setSourcedBy(candidateObj.getSourcedBy());
+		newCandidate.setDob(candidateObj.getDob());
+		newCandidate.setDoj(candidateObj.getDoj());
+		return newCandidate;
+	}
+
+	private Candidate setBankAccountInDetail(BankAccount bankAccount, Candidate newCandidate) {
+		if(newCandidate.getBankAccount()!=null){
+			newCandidate.getBankAccount().setAccountHolderName(bankAccount.getAccountHolderName());
+			newCandidate.getBankAccount().setAccountNo(bankAccount.getAccountNo());
+			newCandidate.getBankAccount().setBankAddress(bankAccount.getBankAddress());
+			newCandidate.getBankAccount().setBankName(bankAccount.getBankName());
+			newCandidate.getBankAccount().setBranch(bankAccount.getBranch());
+			newCandidate.getBankAccount().setIFSCCode(bankAccount.getIFSCCode());
+		}else{
+			
+		}
+		return newCandidate;
 	}
 
 	private Candidate registerNewCandidate(User loggedInUser, Candidate candidate) {
