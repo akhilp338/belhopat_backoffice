@@ -153,7 +153,7 @@
 								<select
 									ng-model="vm.registration.permanentAddress.city.state.country.id"
 									class="form-input width-100 permntCountry"
-									ng-change="vm.getStatesByCountryPerm(vm.registration.permanentAddress.city.state.country.id)">
+									ng-change="vm.getStatesByCountry(vm.registration.permanentAddress.city.state.country.id,'permenant')">
 									<option ng-repeat="country in vm.lookups.COUNTRY"
 										value="{{country.id}}">{{country.description}}</option>
 								</select>
@@ -165,7 +165,7 @@
 								<select
 									ng-model="vm.registration.permanentAddress.city.state.id"
 									class="form-input width-100 permntState"
-									ng-change="vm.getCitiesByStatesPerm(vm.registration.permanentAddress.city.state.id)">
+									ng-change="vm.getCitiesByStates(vm.registration.permanentAddress.city.state.id,'permenant')">
 									<option ng-repeat="states in vm.statesPerm"
 										value="{{states.id}}">{{states.description}}</option>
 								</select>
@@ -226,7 +226,7 @@
 								<select
 									ng-model="vm.registration.currentAddress.city.state.country.id"
 									class="form-input width-100"
-									ng-change="vm.getStatesByCountryCurnt(vm.registration.currentAddress.city.state.country.id)">
+									ng-change="vm.getStatesByCountry(vm.registration.currentAddress.city.state.country.id,'current')">
 									<option ng-repeat="country in vm.lookups.COUNTRY"
 										value="{{country.id}}">{{country.description}}</option>
 								</select>
@@ -237,7 +237,7 @@
 							<div class="controls">
 								<select ng-model="vm.registration.currentAddress.city.state.id"
 									class="form-input width-100"
-									ng-change="vm.getCitiesByStatesCurnt(vm.registration.currentAddress.city.state.id)">
+									ng-change="vm.getCitiesByStates(vm.registration.currentAddress.city.state.id,'current')">
 									<option ng-repeat="states in vm.statesCurnt"
 										value="{{states.id}}">{{states.description}}</option>
 								</select>
@@ -414,7 +414,7 @@
 								<select
 									ng-model="vm.registration.onsiteAddress.city.state.country.id"
 									class="form-input width-100"
-									ng-change="vm.getStatesByCountryOnsite(vm.registration.onsiteAddress.city.state.country.id)">
+									ng-change="vm.getStatesByCountry(vm.registration.onsiteAddress.city.state.country.id,'onsite')">
 									<option ng-repeat="country in vm.lookups.COUNTRY"
 										value="{{country.id}}">{{country.description}}</option>
 								</select>
@@ -425,7 +425,7 @@
 							<div class="controls">
 								<select ng-model="vm.registration.onsiteAddress.city.state.id"
 									class="form-input width-100"
-									ng-change="vm.getCitiesByStatesOnsite(vm.registration.onsiteAddress.city.state.id)">
+									ng-change="vm.getCitiesByStates(vm.registration.onsiteAddress.city.state.id,'onsite')">
 									<option ng-repeat="states in vm.statesOnsite"
 										value="{{states.id}}">{{states.description}}</option>
 								</select>
@@ -559,7 +559,7 @@
 								<select
 									ng-model="vm.registration.bankAccount.bankAddress.city.state.country.id"
 									class="form-input width-100"
-									ng-change="vm.getStatesByCountryBank(vm.registration.bankAccount.bankAddress.city.state.country.id)">
+									ng-change="vm.getStatesByCountry(vm.registration.bankAccount.bankAddress.city.state.country.id,'bank')">
 									<option ng-repeat="country in vm.lookups.COUNTRY"
 										value="{{country.id}}">{{country.description}}</option>
 								</select>
@@ -571,7 +571,7 @@
 								<select
 									ng-model="vm.registration.bankAccount.bankAddress.city.state.id"
 									class="form-input width-100"
-									ng-change="vm.getCitiesByStatesBank(vm.registration.bankAccount.bankAddress.city.state.id)">
+									ng-change="vm.getCitiesByStates(vm.registration.bankAccount.bankAddress.city.state.id,'bank')">
 									<option ng-repeat="states in vm.statesBank"
 										value="{{states.id}}">{{states.description}}</option>
 								</select>
