@@ -9,6 +9,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name = "Employee")
 public class Employee extends BaseEntity{
@@ -19,23 +21,27 @@ public class Employee extends BaseEntity{
 	
 	private Date joiningDate;
 	
-	@OneToOne(cascade=CascadeType.ALL,fetch=FetchType.EAGER)
+	@OneToOne(fetch=FetchType.EAGER)
 	private Candidate employeeMaster;
 	
 	private String officialEmail;
 	
 	private String employeeId;
 
-	@ManyToOne
+	@JsonIgnore
+	@ManyToOne(fetch=FetchType.LAZY)
 	private Employee reportingManager;
 
-	@ManyToOne
+	@JsonIgnore
+	@ManyToOne(fetch=FetchType.EAGER)
 	private BusinessUnit businessUnit;
 	
-	@ManyToOne
+	@JsonIgnore
+	@ManyToOne(fetch=FetchType.LAZY)
 	private Employee accountManager;
 	
-	@ManyToOne
+	@JsonIgnore
+	@ManyToOne(fetch=FetchType.LAZY)
 	private Employee hrManager;
 	
 	@ManyToOne

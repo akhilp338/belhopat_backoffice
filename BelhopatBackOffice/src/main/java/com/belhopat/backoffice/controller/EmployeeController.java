@@ -1,6 +1,10 @@
 package com.belhopat.backoffice.controller;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.jpa.datatables.mapping.DataTablesInput;
+import org.springframework.data.jpa.datatables.mapping.DataTablesOutput;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -26,7 +30,13 @@ public class EmployeeController {
 	
 	@ResponseBody
 	@RequestMapping(value = "/saveOrUpdateEmployee", method = RequestMethod.POST)
-	public ResponseEntity<String> saveOrUpdateCandidate(@RequestBody Employee employee) {
+	public ResponseEntity<String> saveOrUpdateEmployee(@RequestBody Employee employee) {
 		return employeeService.saveOrUpdateEmployee(employee);
+	}
+	
+	@ResponseBody
+	@RequestMapping(value = "/getEmployee", method = RequestMethod.GET)
+	public DataTablesOutput<Employee> getEmployee(@Valid DataTablesInput input) {
+		return employeeService.getEmployee(input);
 	}
 }
