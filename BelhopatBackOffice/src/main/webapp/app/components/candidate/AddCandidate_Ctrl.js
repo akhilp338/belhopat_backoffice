@@ -2,19 +2,39 @@
     var AddCandidate_Ctrl = function ($scope, $state, $rootScope, Core_Service, $stateParams, Core_HttpRequest, validationService) {
         var vm = this;
         $rootScope.showLoader = true;
-        Core_Service.getCandidateImpl("api/candidate/getCandidate",$stateParams.id).then(function(res){
-            vm.registration = res.data;
-            $rootScope.showLoader = false;
-        },function(err){
-           vm.registration = {};
-           $rootScope.showLoader = false;
-        });
-        if(!$stateParams.id)
-            vm.registration = {}
+        var countryType = ["permenant", "current", "onsite", "bank"]
+        vm.setDpOpenStatus = function (id) {
+            vm[id] = true
+        };
+
+        vm.registration = {}
+        if ($stateParams.id) {
+            Core_Service.getCandidateImpl("api/candidate/getCandidate", $stateParams.id).then(function (res) {
+                vm.registration = res.data;
+                for (var i = 0; i < countryType.length; i++) {
+                    vm.getStatesByCountry(vm.registration.permanentAddress.city.state.country.id,countryType[i]);
+                    vm.getCitiesByStates(vm.registration.permanentAddress.city.state.id,countryType[i]);
+                }
+                vm.isCheckboxEnable = true;
+                vm.isChecked = true;
+                $rootScope.showLoader = false;
+            }, function (err) {
+                vm.registration = {};
+            });
+        }
+
         vs = new validationService({
             controllerAs: vm
         });
-        vm.mainSkillList = [{id: 1, skill: 'javascript'}, {id: 2, skill: 'java'}, {id: 3, skill: 'css'}, {id: 4, skill: 'c++'}, {id: 5, skill: 'c'}, {id: 6, skill: 'html'}, {id: 7, skill: 'cobol'}]
+        vm.isCheckboxEnable = false;
+        vm.urlForLookups = "api/candidate/getDropDownData";
+        Core_Service.getAllLookupValues(vm.urlForLookups)
+                .then(function (response) {
+                    vm.lookups = Core_Service.processDateObjects(['dob', 'doj'], response.data);
+                    vm.mainSkillList = vm.lookups.SKILL;
+                }, function (error) {
+                });
+
         vm.mainSelectedSkillList = [];
         vm.subSelectedSkillList = [];
         vm.deSelectedSkills = [];
@@ -35,14 +55,7 @@
             vm.removeFromSelectedListArray(vm.getIndexesToRemove(vm.mainSelectedSkillList, vm.deSelectedSkills));
         };
 
-        vm.isCheckboxEnable = false;
-        vm.urlForLookups = "api/candidate/getDropDownData";
-        Core_Service.getAllLookupValues(vm.urlForLookups)
-                .then(function (response) {
-                    vm.lookups = response.data;
-                }, function (error) {
 
-                });
 
         $scope.steps = [
             'Step 1: Personal Information',
@@ -78,7 +91,7 @@
         };
 
         $scope.incrementStep = function () {
-            var stepIndex = $scope.getCurrentStepIndex();            
+            var stepIndex = $scope.getCurrentStepIndex();
             if ($scope.hasNextStep())
             {
                 var nextStep = stepIndex + 1;
@@ -98,13 +111,17 @@
         };
 
         $rootScope.active = 'candidate';
-        vm.copyAddress = function () {
+        vm.copyAddress = function ($event) {
             if (vm.registration.permanentAddress) {
+            	var _this = $event.target;
                 vm.registration.currentAddress = {};
                 vm.isCheckboxEnable = true;
                 for (var key in vm.registration.permanentAddress) {
                     vm.registration.currentAddress[key] = vm.registration.permanentAddress[key];
                 }
+//                angular.element('.permntCountry').triggerHandler('change');//temp
+                vm.statesCurnt = vm.statesPerm;
+                vm.citiesCurnt =vm.citiesPerm;
             } else {
                 vm.isCheckboxEnable = false;
             }
@@ -112,19 +129,21 @@
                  for(var key in vm.registration.currentAddress){
                      vm.registration.currentAddress[key] = "";
                  }
+                 vm.statesCurnt = [];
+                 vm.citiesCurnt =[];
             }
         };
 
-        vm.checkAddress = function () {            
-                if (vm.registration.permanentAddress) {
-                    for (var key in vm.registration.permanentAddress) {
-                        if (vm.registration.permanentAddress[key] != "") {
-                            vm.isCheckboxEnable = true;
-                            return;
-                        }
+        vm.checkAddress = function () {
+            if (vm.registration.permanentAddress) {
+                for (var key in vm.registration.permanentAddress) {
+                    if (vm.registration.permanentAddress[key] != "") {
+                        vm.isCheckboxEnable = true;
+                        return;
                     }
-                    vm.isCheckboxEnable = false;
-                }           
+                }
+                vm.isCheckboxEnable = false;
+            }
         };
         vm.addCandidate = function () {
             $state.go("coreuser.candidate.add");
@@ -134,14 +153,15 @@
             $state.go("coreuser.candidate")
         };
         vm.candidateRegister = function () {
-            if(vs.checkFormValidity($scope["regForm"])){
-            vm.registerUrl = "api/candidate/saveOrUpdateCandidate";
-            Core_Service.candidateRegisterImpl(vm.registerUrl, vm.registration)
-                    .then(function (response) {
-                    }, function (error) {
-
-                    });
-        }
+            if (vs.checkFormValidity($scope["regForm"])) {
+                vm.registerUrl = "api/candidate/saveOrUpdateCandidate";
+                Core_Service.candidateRegisterImpl(vm.registerUrl, vm.registration)
+                        .then(function (response) {
+                            console.log(response)
+                        }, function (error) {
+ console.log(error)
+                        });
+            }
         };
         vm.getIndexesToRemove = function (array, data) {
             var indexes = [];
@@ -176,87 +196,70 @@
             vm.confirmedSelectionItems = selected;
         };
         //To Do(move these methods to base controller)
-        vm.getStatesByCountryPerm = function(countryId){
-        	var data = {"id":countryId};
-        	vm.apiUrl = "api/getStatesByCountry";
-            Core_Service.defaultApiByIdAndUrlImpl(vm.apiUrl,data)
-            .then( function(response) {
-            	vm.statesPerm =  response.data;
-            },function(error){
-            	console.log('theng...')
-            });
-        }
-        vm.getCitiesByStatesPerm = function(stateId){
-        	var data = {"id":stateId};
-        	vm.apiUrl = "api/getCitiesByState";
-            Core_Service.defaultApiByIdAndUrlImpl(vm.apiUrl,data)
-            .then( function(response) {
-            	vm.citiesPerm =  response.data;
-            },function(error){
-            	console.log('theng...')
-            });
-        }
-        vm.getStatesByCountryCurnt = function(countryId){
-        	var data = {"id":countryId};
-        	vm.apiUrl = "api/getStatesByCountry";
-            Core_Service.defaultApiByIdAndUrlImpl(vm.apiUrl,data)
-            .then( function(response) {
-            	vm.statesCurnt =  response.data;
-            },function(error){
-            	console.log('theng...')
-            });
-        }
-        vm.getCitiesByStatesCurnt = function(stateId){
-        	var data = {"id":stateId};
-        	vm.apiUrl = "api/getCitiesByState";
-            Core_Service.defaultApiByIdAndUrlImpl(vm.apiUrl,data)
-            .then( function(response) {
-            	vm.citiesCurnt =  response.data;
-            },function(error){
-            	console.log('theng...')
-            });
-        }        
-        vm.getStatesByCountryOnsite = function(countryId){
-        	var data = {"id":countryId};
-        	vm.apiUrl = "api/getStatesByCountry";
-            Core_Service.defaultApiByIdAndUrlImpl(vm.apiUrl,data)
-            .then( function(response) {
-            	vm.statesOnsite =  response.data;
-            },function(error){
-            	console.log('theng...')
-            });
-        }
-        vm.getCitiesByStatesOnsite = function(stateId){
-        	var data = {"id":stateId};
-        	vm.apiUrl = "api/getCitiesByState";
-            Core_Service.defaultApiByIdAndUrlImpl(vm.apiUrl,data)
-            .then( function(response) {
-            	vm.citiesOnsite =  response.data;
-            },function(error){
-            	console.log('theng...')
-            });
-        }      
-        vm.getStatesByCountryBank = function(countryId){
-        	var data = {"id":countryId};
-        	vm.apiUrl = "api/getStatesByCountry";
-            Core_Service.defaultApiByIdAndUrlImpl(vm.apiUrl,data)
-            .then( function(response) {
-            	vm.statesBank =  response.data;
-            },function(error){
-            	console.log('theng...')
-            });
-        }
-        vm.getCitiesByStatesBank = function(stateId){
-        	var data = {"id":stateId};
-        	vm.apiUrl = "api/getCitiesByState";
-            Core_Service.defaultApiByIdAndUrlImpl(vm.apiUrl,data)
-            .then( function(response) {
-            	vm.citiesBank =  response.data;
-            },function(error){
-            });
+        vm.getStatesByCountry = function (countryId, flag) {
+            var data = {"id": countryId};
+            vm.apiUrl = "api/getStatesByCountry";
+            Core_Service.defaultApiByIdAndUrlImpl(vm.apiUrl, data)
+                    .then(function (response) {
+                        switch (flag) {
+                            case "permenant":
+                                vm.statesPerm = response.data;
+                                break;
+                            case "current":
+                                vm.statesCurnt = response.data;
+                                break;
+                            case "onsite":
+                                vm.statesOnsite = response.data;
+                                break;
+                            case "bank":
+                                vm.statesBank = response.data;
+                                break;
+                            default:
+                                break;
+                        }
+                    }, function (error) {
+                        console.log(error)
+                    });
         };
+        vm.getCitiesByStates = function (stateId, flag) {
+            var data = {"id": stateId};
+            vm.apiUrl = "api/getCitiesByState";
+            Core_Service.defaultApiByIdAndUrlImpl(vm.apiUrl, data)
+                    .then(function (response) {
+                        switch (flag) {
+                            case "permenant":
+                                vm.citiesPerm = response.data;
+                                break;
+                            case "current":
+                                vm.citiesCurnt = response.data;
+                                break;
+                            case "onsite":
+                                vm.citiesOnsite = response.data;
+                                break;
+                            case "bank":
+                                vm.citiesBank = response.data;
+                                break;
+                            default:
+                                break;
+                        }
+                    }, function (error) {
+                        console.log(error)
+                    });
+        };
+        
+        vm.getCitiesByStatesBank = function (stateId) {
+            var data = {"id": stateId};
+            vm.apiUrl = "api/getCitiesByState";
+            Core_Service.defaultApiByIdAndUrlImpl(vm.apiUrl, data)
+                    .then(function (response) {
+                        vm.citiesBank = response.data;
+                    }, function (error) {
+                    });
+        };
+        
+//        $('#defaultPopup').datepick(); 
+        
         Core_Service.calculateSidebarHeight();
-        $rootScope.showLoader = false;
     };
 
     AddCandidate_Ctrl.$inject = ["$scope", '$state', '$rootScope', 'Core_Service', '$stateParams', 'Core_HttpRequest', 'validationService'];

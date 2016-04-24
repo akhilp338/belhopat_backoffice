@@ -44,6 +44,7 @@
 							<div class="controls">
 								<md-datepicker name="dob" ng-model="vm.registration.dob"
 									md-placeholder="Enter date"></md-datepicker>
+<!-- 									<input id="defaultPopup" size="10" class="is-datepick"> -->
 							</div>
 						</div>
 						<div class="control-group width-30 pull-left margin-left-5">
@@ -151,7 +152,7 @@
 							<div class="controls">
 								<select
 									ng-model="vm.registration.permanentAddress.city.state.country.id"
-									class="form-input width-100"
+									class="form-input width-100 permntCountry"
 									ng-change="vm.getStatesByCountryPerm(vm.registration.permanentAddress.city.state.country.id)">
 									<option ng-repeat="country in vm.lookups.COUNTRY"
 										value="{{country.id}}">{{country.description}}</option>
@@ -163,7 +164,7 @@
 							<div class="controls">
 								<select
 									ng-model="vm.registration.permanentAddress.city.state.id"
-									class="form-input width-100"
+									class="form-input width-100 permntState"
 									ng-change="vm.getCitiesByStatesPerm(vm.registration.permanentAddress.city.state.id)">
 									<option ng-repeat="states in vm.statesPerm"
 										value="{{states.id}}">{{states.description}}</option>
@@ -196,7 +197,7 @@
 					<div class="checkbox">
 						<input type="checkbox" id="checkbox1" ng-model="vm.isChecked"
 							class="styled" ng-disabled="!vm.isCheckboxEnable"
-							ng-change="vm.copyAddress()"> <label for="checkbox1">
+							ng-click="vm.copyAddress($event)"> <label for="checkbox1">
 							Same as permanent address </label>
 					</div>
 					<div class="span4">
@@ -728,7 +729,7 @@
 								Name</label>
 							<div class="controls">
 								<input type="text" name="spouse" id="spouse"
-									ng-model="vm.registration.familyMembers.name"
+									ng-model="vm.registration.familyMembers.name1"
 									class="form-input width-100" placeholder="Spouse's Name"
 									validation="required:alt=Required field" />
 							</div>
@@ -736,7 +737,7 @@
 						<div class="control-group width-30 pull-left margin-left-5">
 							<label class="control-label" for="middleName">Children</label>
 							<div class="controls">
-								<input type="text" name="" id="children"                                     ng-model="vm.registration.familyMembers.name"
+								<input type="text" name="" id="children" ng-model="vm.registration.familyMembers.name"
 									class="form-input width-100" placeholder="Children" />
 							</div>
 						</div>
@@ -744,7 +745,7 @@
 							<label class="control-label" for="lastName">Father's Name</label>
 							<div class="controls">
 								<input type="text" name="fathersName" id="fathersName"
-									ng-model="vm.registration.familyMembers.name"
+									ng-model="vm.registration.fathersName"
 									class="form-input width-100" placeholder="Father's Name"
 									validation="required:alt=Required field" />
 							</div>
@@ -753,7 +754,7 @@
 							<label class="control-label" for="dob">Mother's Name</label>
 							<div class="controls">
 								<input type="text" name="mothersName" id="mothersName"
-									ng-model="vm.registration.familyMembers.name"
+									ng-model="vm.registration.mothersName"
 									class="form-input width-100" placeholder=" Mother's Name"
 									validation="required:alt=Required field" />
 							</div>
@@ -764,7 +765,7 @@
 								1</label>
 							<div class="controls">
 								<input type="text" name="familyContact1" id="familyContact1"
-									ng-model="vm.registration.familyMembers.name"
+									ng-model="vm.registration.familyContact1"
 									class="form-input width-100" placeholder="Family Contact 1"
 									validation="required:alt=Required field" />
 							</div>
@@ -774,7 +775,7 @@
 								Contact 2</label>
 							<div class="controls">
 								<input type="text" name="familyContact1" id="familyContact1"
-									ng-model="vm.registration.familyMembers.name"
+									ng-model="vm.registration..familyContact2"
 									class="form-input width-100" placeholder="Family Contact 2"
 									validation="required:alt=Required field" />
 							</div>
@@ -783,7 +784,7 @@
 							<label class="control-label" for="coo">Family Email</label>
 							<div class="controls">
 								<input type="text" name="familyEmail" id="familyEmail"
-									ng-model="vm.registration.familyMembers.name"
+									ng-model="vm.registration.familyEmail"
 									class="form-input width-100" placeholder="Family Email"
 									validation="required:alt=Required field" />
 							</div>

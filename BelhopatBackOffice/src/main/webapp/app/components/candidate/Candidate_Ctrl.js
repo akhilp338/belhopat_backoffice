@@ -78,6 +78,7 @@
             $('#pro_expander').toggle();
         };
 
+        
         vm.copyAddress = function () {
             console.log(vm.registration.permenant)
             if (vm.registration.permenant) {
@@ -183,7 +184,7 @@
                 $rootScope.id = this.getAttribute('value');
                 $state.go('coreuser.candidate.edit', {id: $rootScope.id});
             });
-
+            
         });
         
         vm.getCandidate = function(id){
