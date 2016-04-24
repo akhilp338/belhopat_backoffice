@@ -1127,3 +1127,13 @@ body.loader-visible {
     position: relative;
     width: 55px;
 }
+
+input.date-form{
+    width: 112%;
+}
+
+.input-group .btn-sm, .btn-group-sm>.btn,
+.input-group .btn{
+    border-radius: 0!important;
+}
+

@@ -107,13 +107,20 @@
             return deferred.promise;
         }
         
+        service.processDateObjects  =function(keys, data){
+            for(var i=0; i<keys.length; i++){
+                data[keys[i]] = new Date(data[keys[i]]);
+            }
+            return  data;
+        }
         service.candidateRegisterImpl = function(url,postData){
-        	var deferred = $q.defer();
-        	console.log(postData);
+        	var deferred = $q.defer();        	
             Core_HttpRequest.post(url,postData)
                     .then(function (response) {
+                        console.log(response);
                         deferred.resolve(response)
                     }, function (error) {
+                        console.log(error);
                         deferred.reject(error)
                     });
             return deferred.promise;
