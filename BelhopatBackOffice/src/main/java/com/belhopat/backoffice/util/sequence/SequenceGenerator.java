@@ -12,6 +12,15 @@ public class SequenceGenerator {
         return candidateId;
 
     }
+    
+    public static String generateEmployeeId( Long increment ) {
+
+        String candidateId = "BHP-E-";
+        Long sequence = getSequenceNumber( increment );
+        candidateId = candidateId + sequence;
+        return candidateId;
+
+    }
 
     private static Long getSequenceNumber( Long increment ) {
         Long sequence = BASE_GENERATOR + increment;

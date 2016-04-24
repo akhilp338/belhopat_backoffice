@@ -12,7 +12,7 @@
 <link rel="stylesheet" ng-href="app/assets/libs/css/jquery.dataTables.min.css">
 	<!-- Libraries -->
 <script src="app/assets/libs/js/jquery-2.2.3.min.js"></script>
-<script src="app/assets/libs/js/angular.min.js"></script>
+<script src="app/assets/libs/js/angular.js"></script>
 <script src="app/assets/libs/js/angular-ui-router.js"></script>
 <script src="app/assets/libs/js/angular-cookies.js"></script>
 <script src="app/assets/libs/js/ngstorage.js"></script>
@@ -59,6 +59,7 @@
 <script src="app/components/holiday/Holiday_Ctrl.js"></script>
 <script src="app/components/opportunity/Opp_Ctrl.js"></script>
 <script src="app/components/candidate/ViewCandidate_Ctrl.js"></script>
+<script src="app/components/employee/AddEmployee_Ctrl.js"></script>
 
 <style>
 [ng:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
