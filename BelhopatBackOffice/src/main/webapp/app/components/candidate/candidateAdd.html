@@ -9,6 +9,18 @@
         <!-- First Step -->
         <div ng-switch-when="Step 1: Personal Information">
             <form name="step_0" id="form_0" novalidate>
+
+                <fieldset class="scheduler-border">
+                    <legend class="scheduler-border">Start Time</legend>
+                    <div class="control-group">
+                        <label class="control-label input-label" for="startTime">Start :</label>
+                        <div class="controls bootstrap-timepicker">
+                            <input type="text" class="datetime" type="text" id="startTime" name="startTime" placeholder="Start Time" />
+                            <i class="icon-time"></i>
+                        </div>
+                    </div>
+                </fieldset>
+
                 <div class="row">
                     <span class="sub-section width-100">Basic Information</span>
                     <div class="span4">
@@ -773,22 +785,22 @@
                             </div>
                         </div>
                     </div>
-				</div>
-			</form>
-		</div>
-	</div>
-	<div class="clearfix"></div>
-	<ul class="pager pull-left">
-		<li class="" ng-class="{disabled: !hasPreviousStep()}"><a
-			href="javascript:void(0);" ng-click="decrementStep()">&larr;
-				Previous Step</a></li>
-		<li class="" ng-class="{disabled: !hasNextStep()}"><a
-			href="javascript:void(0);" ng-click="incrementStep()">Next Step
-				&rarr;</a></li>
-	</ul>
-	<div ng-if="!hasNextStep()" class="pull-right">
-		<button style="margin: 20px 0;" class="logout-button"
-			ng-click="vm.candidateRegister()">Confirm and Register</button>
-	</div>
-	<div class="clearfix"></div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="clearfix"></div>
+    <ul class="pager pull-left">
+        <li class="" ng-class="{disabled: !hasPreviousStep()}"><a
+                href="javascript:void(0);" ng-click="decrementStep()">&larr;
+                Previous Step</a></li>
+        <li class="" ng-class="{disabled: !hasNextStep()}"><a
+                href="javascript:void(0);" ng-click="incrementStep()">Next Step
+                &rarr;</a></li>
+    </ul>
+    <div ng-if="!hasNextStep()" class="pull-right">
+        <button style="margin: 20px 0;" class="logout-button"
+                ng-click="vm.candidateRegister()">Confirm and Register</button>
+    </div>
+    <div class="clearfix"></div>
 </div>

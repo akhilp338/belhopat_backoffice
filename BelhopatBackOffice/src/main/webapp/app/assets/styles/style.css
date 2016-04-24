@@ -13,11 +13,11 @@
 }
 
 body {
-    background-color: #fafafa;
+    background-color: #FFFFFF;
 }
 
 .page-content-div {
-    margin-top: 70px;
+    margin-top: 80px;
     width: 81.5%;
     float: right;
 }
@@ -88,6 +88,7 @@ body {
     margin-left: 24%!important;
     height: 35px;
     margin-top: 10px;
+    border-radius: 0;
 }
 
 .form-group {
@@ -208,11 +209,26 @@ body {
     top: 0;
     bottom: auto;
     z-index: 100;
-    height: 70px !important;
+    height: 70px !important;    
+}
+
+.logo-img {
     background-image: url("../images/BelHoPat-Logo.png");
     background-repeat: no-repeat;
-    background-position: 2% center;
+    background-position: center center;
     background-size: 170px;
+    width: 185px;
+    height: 50px;
+    border-radius: 4px;
+    margin-top: 11px;
+    margin-left: 1.5%;
+}
+
+.logout.link {
+    margin-top: 19px;
+    color: white;
+    float: left;
+    margin-left: 30px;
 }
 
 .header-div x:not(.login-page) {
@@ -232,6 +248,7 @@ body {
     float: left;
     position: relative;
     padding: 16px;
+    color: white;
 }
 
 .user-details {
@@ -529,6 +546,18 @@ p.label-error, .label-error, .text-danger, .hasError, span.required {
 
 .width-18{
     width: 18% !important;
+}
+
+.width-5{
+    width: 5% !important;
+}
+
+.width-9{
+    width: 9% !important;
+}
+
+.width-12{
+    width: 12% !important;
 }
 
 .width-100{
@@ -997,7 +1026,7 @@ input[type="search"] {
     background-repeat: no-repeat;
     background-size: 24px;
     border-radius: 27px;
-    border: 1px solid #8FD8D1;
+    border: 1px solid #CC2727;
     background-color: white!important;
     padding-left: 40px;
     height: 36px;
@@ -1010,12 +1039,15 @@ div#candidatesList_length {
 div#candidatesList_length select {
     width: 70px;
     height: 25px;
-    border: 1px solid #8FD8D1;
+    border: 1px solid #CC2727;
     border-radius: 10px;
 }
 
+.dataTables_wrapper .dataTables_length, .dataTables_wrapper .dataTables_filter, .dataTables_wrapper .dataTables_info, .dataTables_wrapper .dataTables_processing, .dataTables_wrapper .dataTables_paginate{
+  color: #CC2727!important;  
+}
 div#candidatesList_length {
-    color: #009688;
+    color: #CC2727;
     margin-top: 10px;
 }
 
@@ -1138,3 +1170,193 @@ md-datepicker {
     border: 1px solid #DDDDDD;
 }
 /*Overriding material themes and styles*/
+
+
+/*theme4*/
+.radio-group{
+    margin-left: 18%;
+    margin-top: 20px;
+}
+
+.theme4 .inner-header {
+    background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #ffb76b), color-stop(100, #ff7f04));
+    background-image: -webkit-linear-gradient(top, #ffb76b 0%, #ff7f04 100%);
+    background-image: linear-gradient(to bottom, #ffb76b 0%, #ff7f04 100%);
+}
+
+.nav-tabs{
+  /* IE10+ */ 
+background-image: -ms-linear-gradient(top, #FCEABB 0%, #F8B500 100%);
+
+/* Mozilla Firefox */ 
+background-image: -moz-linear-gradient(top, #FCEABB 0%, #F8B500 100%);
+
+/* Opera */ 
+background-image: -o-linear-gradient(top, #FCEABB 0%, #F8B500 100%);
+
+/* Webkit (Safari/Chrome 10) */ 
+background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #FCEABB), color-stop(100, #F8B500));
+
+/* Webkit (Chrome 11+) */ 
+background-image: -webkit-linear-gradient(top, #FCEABB 0%, #F8B500 100%);
+
+/* W3C Markup */ 
+background-image: linear-gradient(to bottom, #FCEABB 0%, #F8B500 100%);
+ 
+}
+
+.nav-tabs .active a{
+     background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #ffb76b), color-stop(100, #ff7f04));
+    background-image: -webkit-linear-gradient(top, #ffb76b 0%, #ff7f04 100%);
+    background-image: linear-gradient(to bottom, #ffb76b 0%, #ff7f04 100%);
+}
+
+.theme4 .nav-pills>li.active>a,
+.theme4 .nav-pills>li.active>a:hover,
+.theme4 .nav-pills>li.active>a:focus {
+   background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #ffb76b), color-stop(100, #ff7f04));
+    background-image: -webkit-linear-gradient(top, #ffb76b 0%, #ff7f04 100%);
+    background-image: linear-gradient(to bottom, #ffb76b 0%, #ff7f04 100%);
+}
+
+.theme4 #sidebar-wrapper {
+    background-image: -webkit-gradient(linear, left top, right top, color-stop(0, #FBDF93), color-stop(100, #FCCD4D));
+    background-image: -webkit-linear-gradient(left, #FBDF93 0%, #FCCD4D 100%);
+    background-image: linear-gradient(to right, #FBDF93 0%, #FCCD4D 100%);
+}
+
+.theme4 .logout-button{
+    background-color: #CC2727;;
+}
+
+.theme4 footer.footer-div-content {
+    background-color: #004D40; 
+}
+
+.theme4 .nav-tabs a{
+    color:#37474F;  
+}
+
+
+/*.theme4 body:not(.login-page){
+    background-color: rgba(224, 242, 241, 0.3)
+}*/
+
+.theme4 .form-input,
+.theme4 input[type="search"]{
+    background-color: rgba(175, 193, 192, 0.3); 
+}
+
+.theme4 .nav>li>a:hover,
+.theme4 .nav>li>a:focus{
+    background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #ffb76b), color-stop(100, #ff7f04));
+    background-image: -webkit-linear-gradient(top, #ffb76b 0%, #ff7f04 100%);
+    background-image: linear-gradient(to bottom, #ffb76b 0%, #ff7f04 100%);
+}
+
+.theme4 .login-page {
+    background-color: #E0F2F1;
+}
+
+.theme4 .login-page { 
+    background: url(../images/bhp-2.png) no-repeat;
+    background-size: cover;
+}
+
+.login-form h3{
+    color: white;  
+}
+
+.theme4 table.dataTable thead tr,
+.theme4 table.dataTable tfoot tr{
+    background: rgba(76,76,76,1);
+    background: -moz-linear-gradient(top, rgba(76,76,76,1) 0%, rgba(89,89,89,1) 12%, rgba(102,102,102,1) 25%, rgba(71,71,71,1) 39%, rgba(44,44,44,1) 50%, rgba(0,0,0,1) 51%, rgba(17,17,17,1) 60%, rgba(43,43,43,1) 76%, rgba(28,28,28,1) 91%, rgba(19,19,19,1) 100%);
+    background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(76,76,76,1)), color-stop(12%, rgba(89,89,89,1)), color-stop(25%, rgba(102,102,102,1)), color-stop(39%, rgba(71,71,71,1)), color-stop(50%, rgba(44,44,44,1)), color-stop(51%, rgba(0,0,0,1)), color-stop(60%, rgba(17,17,17,1)), color-stop(76%, rgba(43,43,43,1)), color-stop(91%, rgba(28,28,28,1)), color-stop(100%, rgba(19,19,19,1)));
+    background: -webkit-linear-gradient(top, rgba(76,76,76,1) 0%, rgba(89,89,89,1) 12%, rgba(102,102,102,1) 25%, rgba(71,71,71,1) 39%, rgba(44,44,44,1) 50%, rgba(0,0,0,1) 51%, rgba(17,17,17,1) 60%, rgba(43,43,43,1) 76%, rgba(28,28,28,1) 91%, rgba(19,19,19,1) 100%);
+    background: -o-linear-gradient(top, rgba(76,76,76,1) 0%, rgba(89,89,89,1) 12%, rgba(102,102,102,1) 25%, rgba(71,71,71,1) 39%, rgba(44,44,44,1) 50%, rgba(0,0,0,1) 51%, rgba(17,17,17,1) 60%, rgba(43,43,43,1) 76%, rgba(28,28,28,1) 91%, rgba(19,19,19,1) 100%);
+    background: -ms-linear-gradient(top, rgba(76,76,76,1) 0%, rgba(89,89,89,1) 12%, rgba(102,102,102,1) 25%, rgba(71,71,71,1) 39%, rgba(44,44,44,1) 50%, rgba(0,0,0,1) 51%, rgba(17,17,17,1) 60%, rgba(43,43,43,1) 76%, rgba(28,28,28,1) 91%, rgba(19,19,19,1) 100%);
+    background: linear-gradient(to bottom, rgba(76,76,76,1) 0%, rgba(89,89,89,1) 12%, rgba(102,102,102,1) 25%, rgba(71,71,71,1) 39%, rgba(44,44,44,1) 50%, rgba(0,0,0,1) 51%, rgba(17,17,17,1) 60%, rgba(43,43,43,1) 76%, rgba(28,28,28,1) 91%, rgba(19,19,19,1) 100%);
+}
+
+.theme4 table.dataTable thead th,
+.theme4 table.dataTable tfoot th{
+    color: white; 
+}
+
+.theme4 #candidatesList tbody tr.odd {
+    background-color: #FBDF92;
+}
+
+.theme4 table.dataTable.display tbody tr.odd>.sorting_1,
+.theme4 table.dataTable.order-column.stripe tbody tr.odd>.sorting_1 {
+    background-color: #E0F2F1;
+}
+
+.theme4 table.dataTable.display tbody tr.even>.sorting_1,
+.theme4 table.dataTable.order-column.stripe tbody tr.even>.sorting_1 {
+    background-color: #FFFFFF;
+}
+.action-view i {
+    color: #0222D4;
+}
+span.actions.action-edit i {
+    color: #CC2727;
+}
+
+.theme4 .pager li>a:hover,
+.theme4 .pager li>a:focus {
+    text-decoration: none;
+    background-color: #E0F2F1;
+}
+
+.theme4 table.dataTable.hover tbody tr:hover,
+.theme4 table.dataTable.display tbody tr:hover{
+    background-color: #ffffff;
+}
+
+.theme4 a.paginate_button.current{
+    width: 20px;
+    height: 20px;
+    padding: 0;
+    border: none!important;
+    background: #CC2727!important;    
+}
+.theme4 .dataTables_wrapper .dataTables_paginate .paginate_button{
+    padding: 0;
+    border-radius: 0;
+}
+
+.theme4 .dataTables_wrapper .dataTables_paginate .paginate_button:hover,
+.theme4 #candidatesList_previous:hover{
+    border: none!important;
+    background: #CC2727!important; 
+}
+
+.theme4 a#candidatesList_previous:hover {
+    color: white!important;
+}
+
+.theme4 .dataTables_wrapper .dataTables_paginate .paginate_button.current,
+.theme4 .dataTables_wrapper .dataTables_paginate .paginate_button.current:hover{
+    color: white!important;
+}
+
+.theme4 a#candidatesList_next,
+.theme4 a#candidatesList_previous{
+    padding: 0 5px;
+}
+/*them 4 end*/
+
+fieldset.scheduler-border {
+    border: 1px groove #ddd !important;
+    padding: 0 1.4em 1.4em 1.4em !important;
+    margin: 0 0 1.5em 0 !important;
+    -webkit-box-shadow:  0px 0px 0px 0px #000;
+            box-shadow:  0px 0px 0px 0px #000;
+}
+
+legend {
+    width: auto;
+     border-bottom: none; 
+     font-size: 14px;
+}
