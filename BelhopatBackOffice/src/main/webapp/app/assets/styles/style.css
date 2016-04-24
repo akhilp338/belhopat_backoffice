@@ -45,15 +45,15 @@ body {
 .login-form {
     width: 350px;
     padding: 40px 30px;
-    background: white;
+    background: rgba(0,0,0,.7);
     -moz-border-radius: 4px;
     -webkit-border-radius: 4px;
     border-radius: 4px;
     margin: auto;
     position: absolute;
     left: 0;
-    right: 0;
-    top: 50%;
+    right: 44%;
+    top: 70%;
     -moz-transform: translateY(-50%);
     -ms-transform: translateY(-50%);
     -webkit-transform: translateY(-50%);
@@ -61,6 +61,33 @@ body {
     -webkit-box-shadow: 10px 13px 33px -8px rgba(0, 0, 0, 0.75);
     -moz-box-shadow: 10px 13px 33px -8px rgba(0, 0, 0, 0.75);
     box-shadow: 10px 13px 33px -8px rgba(0, 0, 0, 0.75);
+}
+
+.login-form .form-group {
+    width: 48%!important;
+    display: inline-block;
+    margin-bottom: 0;
+    margin-left: 3px;
+}
+
+.login-form .form-group input {
+    height: 35px;
+}
+
+.login-form .link{
+    position: relative;
+    float: left;
+    width: 100%;
+    text-align: center;
+    margin-top: 10px;
+    color: white;
+}
+.login-form .log-btn{    
+    background-color: #FF6600; 
+    width: 49%;
+    margin-left: 24%!important;
+    height: 35px;
+    margin-top: 10px;
 }
 
 .form-group {
@@ -702,6 +729,15 @@ button#logout {
 }
 .theme3 .login-page {
     background-color: #E0F2F1;
+}
+
+.theme4 .login-page { 
+    background: url(../images/bh-1.jpg) no-repeat;
+    background-size: cover;
+}
+
+.login-form h3{
+    color: white;  
 }
 
 .theme3 table.dataTable thead tr,

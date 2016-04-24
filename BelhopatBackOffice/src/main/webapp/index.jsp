@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html ng-app="coreModule" class="theme3">
+<html ng-app="coreModule" class="theme4">
 <head>
 <link rel="shortcut icon" href="app/assets/images/B-Icon.ico">
 <title>Belhopat Global Services Pvt Ltd</title>

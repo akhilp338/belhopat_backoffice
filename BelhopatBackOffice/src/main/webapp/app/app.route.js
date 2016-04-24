@@ -30,7 +30,7 @@ $locationProvider.html5Mode(true);
                     url: urlConfig.root_path,
                     views: {
                         'content@': {
-                            templateUrl: 'app/components/login/login.html',
+                            templateUrl: 'app/components/login/login-sample.html',
                             controller: 'Login_Ctrl',
                             controllerAs: 'vm'
                         }
