@@ -8,10 +8,12 @@
 <link rel="stylesheet" ng-href="app/assets/libs/css/awesome-checkbox.css">
 <link rel="stylesheet" ng-href="app/assets/libs/css/angular-material.css">
 <link rel="stylesheet" ng-href="app/assets/libs/css/sweetalert.css">
+<link rel="stylesheet" ng-href="app/assets/styles/sidebar.css">
 <link rel="stylesheet" ng-href="app/assets/styles/style.css">
 <link rel="stylesheet" ng-href="app/assets/libs/css/jquery.dataTables.min.css">
 	<!-- Libraries -->
 <script src="app/assets/libs/js/jquery-2.2.3.min.js"></script>
+<script src="app/components/common/sidebar.js"></script>
 <script src="app/assets/libs/js/angular.min.js"></script>
 <script src="app/assets/libs/js/angular-ui-router.js"></script>
 <script src="app/assets/libs/js/angular-cookies.js"></script>
@@ -74,6 +76,6 @@ display: none !important;
 <img src="/images/loader-img.gif" class="loader-img loader-language" ng-if="languageSwitching" alt="loader">
     <header ui-view="header" class="header-div"></header>
     <div ui-view="sidebar" class="page-side-bar"></div>
-    <div ui-view="content" class="page-content-div" ng-class="{'add-candidate':addPage}"></div>
+    <div ui-view="content" class="main" ng-class="{'add-candidate':addPage}"></div>
     <footer ui-view="footer" class="footer-div"></footer>
 </html>

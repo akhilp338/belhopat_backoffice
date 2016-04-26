@@ -16,13 +16,14 @@ body {
     background-color: #fafafa;
 }
 
-.page-content-div {
+.main {
     margin-top: 70px;
-    width: 81.5%;
+    width: 82.5%;
     float: right;
+    position: relative;
 }
 
-.login-page .page-content-div {
+.login-page .main {
     margin-top: 0;
     width: 0;
     clear: right;
@@ -783,9 +784,9 @@ button#logout {
 }
 
 .page-side-bar {
-    float: left;
-    width: 18%;
-    position: fixed;
+    position: fixed; 
+    margin-top: 70px;
+    height: 100%;
 }
 
 .add-candidate {
@@ -1082,7 +1083,7 @@ md-datepicker {
 
 
 #close {
-   display: inline-block;
+    display: inline-block;
     padding: 3px 9px;
     background: #282B2A;
     position: absolute;

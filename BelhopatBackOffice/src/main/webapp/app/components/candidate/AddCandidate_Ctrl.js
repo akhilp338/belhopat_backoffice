@@ -73,7 +73,7 @@
             if (!_.isUndefined($scope.steps[index])) {
                 $scope.selection = $scope.steps[index];
             }
-            Core_Service.calculateSidebarHeight();
+            //ore_Service.calculateSidebarHeight();
         };
 
         $scope.hasNextStep = function () {
@@ -97,7 +97,7 @@
                 var nextStep = stepIndex + 1;
                 $scope.selection = $scope.steps[nextStep];
             }
-            Core_Service.calculateSidebarHeight();
+            
         };
 
         $scope.decrementStep = function () {
@@ -107,7 +107,7 @@
                 var previousStep = stepIndex - 1;
                 $scope.selection = $scope.steps[previousStep];
             }
-            Core_Service.calculateSidebarHeight();
+            
         };
 
         $rootScope.active = 'candidate';
@@ -247,7 +247,7 @@
                     }, function (error) {
                     });
         };
-        Core_Service.calculateSidebarHeight();
+        
     };
 
     AddCandidate_Ctrl.$inject = ["$scope", '$state', '$rootScope', 'Core_Service', '$stateParams', 'Core_HttpRequest', 'validationService'];
