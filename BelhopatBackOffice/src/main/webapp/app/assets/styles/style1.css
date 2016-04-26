@@ -881,6 +881,7 @@ button#logout {
     position: fixed; 
     margin-top: 70px;
     height: 100%;
+    z-index: 10;
 }
 
 .add-candidate {
@@ -1197,6 +1198,7 @@ md-datepicker {
     padding-top: 0;
     padding-bottom: 0;
     width: 100%;
+    color: black!important;
 }
 
 .theme4 .inner-header {
@@ -1226,7 +1228,8 @@ background-image: linear-gradient(to bottom, #FCEABB 0%, #F8B500 100%);
  
 }
 
-.nav-tabs .active a{
+.nav-tabs .active a,
+.navbar-nav li.active a{
      background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #ffb76b), color-stop(100, #ff7f04));
     background-image: -webkit-linear-gradient(top, #ffb76b 0%, #ff7f04 100%);
     background-image: linear-gradient(to bottom, #ffb76b 0%, #ff7f04 100%);
@@ -1234,17 +1237,22 @@ background-image: linear-gradient(to bottom, #FCEABB 0%, #F8B500 100%);
 
 .theme4 .nav-pills>li.active>a,
 .theme4 .nav-pills>li.active>a:hover,
-.theme4 .nav-pills>li.active>a:focus {
+.theme4 .nav-pills>li.active>a:focus,
+.theme4 .navbar-nav li.active a,
+.theme4 .navbar-nav li.active a:hover,
+.theme4 .navbar-nav li.active a:focus{
    background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #ffb76b), color-stop(100, #ff7f04));
     background-image: -webkit-linear-gradient(top, #ffb76b 0%, #ff7f04 100%);
     background-image: linear-gradient(to bottom, #ffb76b 0%, #ff7f04 100%);
 }
 
-.theme4 #sidebar-wrapper {
+.theme4 .page-side-bar,
+.theme4 .navbar-inverse{
     background-image: -webkit-gradient(linear, left top, right top, color-stop(0, #FBDF93), color-stop(100, #FCCD4D));
     background-image: -webkit-linear-gradient(left, #FBDF93 0%, #FCCD4D 100%);
     background-image: linear-gradient(to right, #FBDF93 0%, #FCCD4D 100%);
 }
+
 
 .theme4 .logout-button{
     background-color: #CC2727;;
