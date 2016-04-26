@@ -1,85 +1,157 @@
 package com.belhopat.backoffice.model;
 
+import java.util.Date;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.FetchType;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name = "Employee")
-public class Employee {
+public class Employee extends BaseEntity{
 
-	@Id
-	@GeneratedValue
-	private long id;
+	
+	@OneToOne(cascade=CascadeType.ALL)
+	private User employeeUser;
+	
+	private Date joiningDate;
+	
+	@OneToOne(fetch=FetchType.EAGER)
+	private Candidate employeeMaster;
+	
+	private String officialEmail;
+	
+	private String employeeId;
 
-	private String username;
+	@JsonIgnore
+	@ManyToOne(fetch=FetchType.LAZY)
+	private Employee reportingManager;
 
-	private String address;
+	@JsonIgnore
+	@ManyToOne(fetch=FetchType.EAGER)
+	private BusinessUnit businessUnit;
+	
+	@JsonIgnore
+	@ManyToOne(fetch=FetchType.LAZY)
+	private Employee accountManager;
+	
+	@JsonIgnore
+	@ManyToOne(fetch=FetchType.LAZY)
+	private Employee hrManager;
+	
+	@ManyToOne
+	private City workLocation;
+	
+	@ManyToOne
+	private TimeZone timeZone;
 
-	private String email;
 
-	public Employee() {
-		id = 0;
+	public Employee getReportingManager() {
+		return reportingManager;
 	}
 
-	public long getId() {
-		return id;
+	public void setReportingManager(Employee reportingManager) {
+		this.reportingManager = reportingManager;
 	}
 
-	public void setId(long id) {
-		this.id = id;
+	public BusinessUnit getBusinessUnit() {
+		return businessUnit;
 	}
 
-	public String getUsername() {
-		return username;
+	
+
+	public Date getJoiningDate() {
+		return joiningDate;
 	}
 
-	public void setUsername(String username) {
-		this.username = username;
+	public void setJoiningDate(Date joiningDate) {
+		this.joiningDate = joiningDate;
 	}
 
-	public String getAddress() {
-		return address;
+	public User getEmployeeUser() {
+		return employeeUser;
 	}
 
-	public void setAddress(String address) {
-		this.address = address;
+	public void setEmployeeUser(User employeeUser) {
+		this.employeeUser = employeeUser;
 	}
 
-	public String getEmail() {
-		return email;
+	public Candidate getEmployeeMaster() {
+		return employeeMaster;
 	}
 
-	public void setEmail(String email) {
-		this.email = email;
+	public void setEmployeeMaster(Candidate employeeMaster) {
+		this.employeeMaster = employeeMaster;
 	}
 
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + (int) (id ^ (id >>> 32));
-		return result;
+	public String getOfficialEmail() {
+		return officialEmail;
 	}
 
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (!(obj instanceof Employee))
-			return false;
-		Employee other = (Employee) obj;
-		if (id != other.id)
-			return false;
-		return true;
+	public void setOfficialEmail(String officialEmail) {
+		this.officialEmail = officialEmail;
+	}
+
+	public String getEmployeeId() {
+		return employeeId;
+	}
+
+	public void setEmployeeId(String employeeId) {
+		this.employeeId = employeeId;
+	}
+
+	public void setBusinessUnit(BusinessUnit businessUnit) {
+		this.businessUnit = businessUnit;
+	}
+
+	public Employee getAccountManager() {
+		return accountManager;
+	}
+
+	public void setAccountManager(Employee accountManager) {
+		this.accountManager = accountManager;
+	}
+
+	public Employee getHrManager() {
+		return hrManager;
+	}
+
+	public void setHrManager(Employee hrManager) {
+		this.hrManager = hrManager;
+	}
+
+	public City getWorkLocation() {
+		return workLocation;
+	}
+
+	public void setWorkLocation(City workLocation) {
+		this.workLocation = workLocation;
+	}
+
+
+	public TimeZone getTimeZone() {
+		return timeZone;
+	}
+
+	public void setTimeZone(TimeZone timeZone) {
+		this.timeZone = timeZone;
 	}
 
 	@Override
 	public String toString() {
-		return "User [id=" + id + ", username=" + username + ", address=" + address + ", email=" + email + "]";
+		return "Employee [employeeUser=" + employeeUser + ", employeeMaster=" + employeeMaster + ", officialEmail="
+				+ officialEmail + ", employeeId=" + employeeId + ", reportingManager=" + reportingManager
+				+ ", businessUnit=" + businessUnit + ", accountManager=" + accountManager + ", hrManager=" + hrManager
+				+ ", workLocation=" + workLocation + ", timeZone=" + timeZone + "]";
 	}
+
+	
+	
+
 
 }

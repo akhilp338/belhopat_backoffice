@@ -126,6 +126,20 @@
             return deferred.promise;
         };
         
+         /*employee Register-start*/
+        service.registerImpl = function(url,postData){
+        	var deferred = $q.defer();
+            Core_HttpRequest.post(url,postData)
+                    .then(function (response) {
+                        deferred.resolve(response)
+                    }, function (error) {
+                        deferred.reject(error)
+                    });
+            return deferred.promise;
+        };
+        /*employee register-end*/
+        
+        
         service.candidateDeleteImpl = function(url,data){
         	var deferred = $q.defer();
             Core_HttpRequest.post(url,data)

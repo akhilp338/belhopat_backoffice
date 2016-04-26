@@ -1,0 +1,33 @@
+package com.belhopat.backoffice.model;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+
+@Entity
+public class BusinessUnit {
+
+	@GeneratedValue
+	@Id
+	private Long Id;
+	
+	private String businessUnitName;
+
+	public Long getId() {
+		return Id;
+	}
+
+	public void setId(Long id) {
+		Id = id;
+	}
+
+	public String getBusinessUnitName() {
+		return businessUnitName;
+	}
+
+	public void setBusinessUnitName(String businessUnitName) {
+		this.businessUnitName = businessUnitName;
+	}
+	
+	
+}

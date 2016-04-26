@@ -70,6 +70,28 @@ public class BaseServiceImpl implements BaseService {
 	}
 
 	@Override
+	public ResponseEntity<Map<String, List<?>>> getEmployeeDropDownData() {
+		List<LookupDetail> divisions = lookupDetailRepository.findByLookupKey(Constants.DIVISION);
+		List<LookupDetail> designations = lookupDetailRepository.findByLookupKey(Constants.DESIGNATION);
+		List<LookupDetail> purposes = lookupDetailRepository.findByLookupKey(Constants.PURPOSE);
+		List<LookupDetail> bloodGroups = lookupDetailRepository.findByLookupKey(Constants.BLOOD_GROUP);
+		List<LookupDetail> employmentStatuses = lookupDetailRepository.findByLookupKey(Constants.EMPLOYMENT_STATUS);
+		List<LookupDetail> familyMembers = lookupDetailRepository.findByLookupKey(Constants.FAMILY_MEMBER);
+		List<Skill> skills = skillRepository.findAll();
+		List<Country> countries = countryRepository.findAll();
+		Map<String, List<?>> dropDownMap = new HashMap<>();
+		dropDownMap.put(Constants.DIVISION, divisions);
+		dropDownMap.put(Constants.DESIGNATION, designations);
+		dropDownMap.put(Constants.PURPOSE, purposes);
+		dropDownMap.put(Constants.BLOOD_GROUP, bloodGroups);
+		dropDownMap.put(Constants.EMPLOYMENT_STATUS, employmentStatuses);
+		dropDownMap.put(Constants.FAMILY_MEMBER, familyMembers);
+		dropDownMap.put(Constants.SKILL, skills);
+		dropDownMap.put(Constants.COUNTRY, countries);
+		return new ResponseEntity<Map<String, List<?>>>(dropDownMap, HttpStatus.OK);
+	}
+	
+	@Override
 	public ResponseEntity<List<State>> getStatesByCountry(Long countryId) {
 		List<State> states = stateRepository.findByCountry(countryId);
 		return new ResponseEntity<List<State>>(states, HttpStatus.OK);

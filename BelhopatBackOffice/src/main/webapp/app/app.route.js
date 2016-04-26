@@ -104,6 +104,30 @@ $locationProvider.html5Mode(true);
                     controllerAs: 'vm'
                 }
             }
+        }).state('coreuser.employee.add', {
+            url: '/addEmployee',
+            views: {
+                'sidebar@':{
+                    templateUrl: 'app/components/common/defaultTemplate.html' 
+                },
+                'content@': {
+                    templateUrl: 'app/components/employee/employeeAdd.html',
+                    controller: 'AddEmployee_Ctrl',
+                    controllerAs: 'vm'
+                }
+            }
+        }).state('coreuser.employee.edit', {
+            url: '/edit/:id',
+            views: {
+                'sidebar@':{
+                    templateUrl: 'app/components/common/defaultTemplate.html' 
+                },
+                'content@': {
+                    templateUrl: 'app/components/employee/employeeAdd.html',
+                    controller: 'AddEmployee_Ctrl',
+                    controllerAs: 'vm'
+                }
+            }
         }).state('coreuser.client', {
             url: urlConfig.root_path+'client',
             views: {

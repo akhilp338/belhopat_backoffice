@@ -149,6 +149,9 @@
             $state.go("coreuser.candidate.add");
         };
 
+        vm.cancelRegisteration = function (){
+            $state.go("coreuser.candidate")
+        };
         vm.candidateRegister = function () {
             if (vs.checkFormValidity($scope["regForm"])) {
                 vm.registerUrl = "api/candidate/saveOrUpdateCandidate";
