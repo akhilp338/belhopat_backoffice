@@ -1190,6 +1190,15 @@ md-datepicker {
     margin-top: 20px;
 }
 
+.navbar-nav li a{
+    position: relative;
+    float: left;
+    line-height: 35px;
+    padding-top: 0;
+    padding-bottom: 0;
+    width: 100%;
+}
+
 .theme4 .inner-header {
     background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #ffb76b), color-stop(100, #ff7f04));
     background-image: -webkit-linear-gradient(top, #ffb76b 0%, #ff7f04 100%);
