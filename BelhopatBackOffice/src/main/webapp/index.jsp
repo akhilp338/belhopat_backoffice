@@ -11,6 +11,7 @@
 <link rel="stylesheet" ng-href="app/assets/styles/sidebar.css">
 <link rel="stylesheet" ng-href="app/assets/styles/style.css">
 <link rel="stylesheet" ng-href="app/assets/libs/css/jquery.dataTables.min.css">
+<link rel="stylesheet" ng-href="app/assets/libs/css/jquery.datepick.css">
 	<!-- Libraries -->
 <script src="app/assets/libs/js/jquery-2.2.3.min.js"></script>
 <script src="app/components/common/sidebar.js"></script>
@@ -19,6 +20,9 @@
 <script src="app/assets/libs/js/angular-cookies.js"></script>
 <script src="app/assets/libs/js/ngstorage.js"></script>
 <script src="app/assets/libs/js/jquery.dataTables.min.js"></script>
+<script src="app/assets/libs/js/jquery-ui.js"></script>
+<script src="app/assets/libs/js/jquery.plugin.js"></script>
+<script src="app/assets/libs/js/jquery.datepick.js"></script>
 <!-- <script src="app/assets/libs/js/angular.min.js"></script> -->
 <script src="app/assets/libs/js/underscore.js"></script>
 <script src="app/assets/libs/js/ui-bootstrap-tpls-1.3.1.min.js"></script>
@@ -33,7 +37,6 @@
 <script src="app/assets/libs/js/angular-translate-loader-static-files.min.js"></script>
 <script src="app/assets/libs/js/angular-validation.min.js"></script>
 <script src="app/assets/libs/js/jquery.spring-friendly.min.js"></script>
-
 
 <!-- AngularJS custom codes -->
 

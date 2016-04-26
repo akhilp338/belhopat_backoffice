@@ -111,20 +111,26 @@
         };
 
         $rootScope.active = 'candidate';
-        vm.copyAddress = function () {
+        vm.copyAddress = function ($event) {
             if (vm.registration.permanentAddress) {
+            	var _this = $event.target;
                 vm.registration.currentAddress = {};
                 vm.isCheckboxEnable = true;
                 for (var key in vm.registration.permanentAddress) {
                     vm.registration.currentAddress[key] = vm.registration.permanentAddress[key];
                 }
+//                angular.element('.permntCountry').triggerHandler('change');//temp
+                vm.statesCurnt = vm.statesPerm;
+                vm.citiesCurnt =vm.citiesPerm;
             } else {
                 vm.isCheckboxEnable = false;
             }
-            if (!vm.isChecked) {
-                for (var key in vm.registration.currentAddress) {
-                    vm.registration.currentAddress[key] = "";
-                }
+             if (!vm.isChecked) {
+                 for(var key in vm.registration.currentAddress){
+                     vm.registration.currentAddress[key] = "";
+                 }
+                 vm.statesCurnt = [];
+                 vm.citiesCurnt =[];
             }
         };
 
@@ -247,7 +253,6 @@
                     }, function (error) {
                     });
         };
-        
     };
 
     AddCandidate_Ctrl.$inject = ["$scope", '$state', '$rootScope', 'Core_Service', '$stateParams', 'Core_HttpRequest', 'validationService'];

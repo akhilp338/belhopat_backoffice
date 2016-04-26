@@ -48,6 +48,27 @@ public class Candidate extends BaseEntity {
 	private String familyEmail;
 
 	private String onsiteContactNo;
+	
+	private String fathersName;
+	
+	private String mothersName;
+	
+
+	public String getFathersName() {
+		return fathersName;
+	}
+
+	public void setFathersName(String fathersName) {
+		this.fathersName = fathersName;
+	}
+
+	public String getMothersName() {
+		return mothersName;
+	}
+
+	public void setMothersName(String motersName) {
+		this.mothersName = motersName;
+	}
 
 	@OneToMany
 	@JsonIgnore
