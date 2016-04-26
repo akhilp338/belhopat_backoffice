@@ -11,7 +11,7 @@
 		<form-login 
 		    login-page="/login" 
 		   always-use-default-target="true" authentication-failure-url="/loginerror"
-			default-target-url="/loginSuccess" />
+			default-target-url="/dashboard" />
 		<logout logout-success-url="/"/>
 		
 		<csrf disabled="true"/>

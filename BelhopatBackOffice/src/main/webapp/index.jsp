@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html ng-app="coreModule" class="theme3">
+<html ng-app="coreModule" class="theme4">
 <head>
 <link rel="shortcut icon" href="app/assets/images/B-Icon.ico">
 <title>Belhopat Global Services Pvt Ltd</title>
@@ -9,7 +9,8 @@
 <link rel="stylesheet" ng-href="app/assets/libs/css/angular-material.css">
 <link rel="stylesheet" ng-href="app/assets/libs/css/sweetalert.css">
 <link rel="stylesheet" ng-href="app/assets/styles/sidebar.css">
-<link rel="stylesheet" ng-href="app/assets/styles/style.css">
+<!--<link rel="stylesheet" ng-href="app/assets/styles/style.css">-->
+<link rel="stylesheet" ng-href="app/assets/styles/style1.css">
 <link rel="stylesheet" ng-href="app/assets/libs/css/jquery.dataTables.min.css">
 <link rel="stylesheet" ng-href="app/assets/libs/css/jquery.datepick.css">
 	<!-- Libraries -->
