@@ -39,12 +39,25 @@
                                            validation="required:alt=Required field" />
                                 </div>
                             </div>
-                            <div class="control-group col-lg-3 col-md-3 col-sm-6 col-xs-6 pull-left">
+                            <div class="control-group col-lg-4 col-md-4 col-sm-6 col-xs-6 pull-left">
                                 <label class="control-label" for="dob">Date of Birth</label>
                                 <div class="controls">
-                                    <md-datepicker name="dob" ng-model="vm.registration.dob"
-                                                   md-placeholder="Enter date"></md-datepicker>
-                                    <!-- 									<input id="defaultPopup" size="10" class="is-datepick"> -->
+                                    <p class="input-group">
+                                    <input type="text"
+                                           name="dob"
+                                           show-button-bar ="false"
+                                           class="form-input date-form" 
+                                           uib-datepicker-popup="yyyy/MM/dd"
+                                           ng-model="vm.registration.dob"
+                                           is-open="vm.isDobPickerOpen" />
+                                    <span class="input-group-btn custom-datepick">
+                                        <button type="button" 
+                                                class="btn btn-default" 
+                                                ng-click="vm.setDpOpenStatus('isDobPickerOpen')">
+                                            <i class="glyphicon glyphicon-calendar"></i>
+                                        </button>
+                                    </span>
+                                </p>
                                 </div>
                             </div>
                             <div class="control-group col-lg-3 col-md-3 col-sm-6 col-xs-6 pull-left">
@@ -65,7 +78,7 @@
                                     </select>
                                 </div>
                             </div>
-                            <div class="control-group col-lg-4 col-md-4 col-sm-6 col-xs-6 pull-left">
+                            <div class="control-group col-lg-3 col-md-3 col-sm-6 col-xs-6 pull-left">
                                 <label class="control-label" for="coo">Country Of Origin</label>
                                 <div class="controls">
                                     <select ng-model="vm.registration.countryOfOrigin.id"
@@ -293,8 +306,22 @@
                             <div class="control-group width-30 pull-left margin-left-5">
                                 <label class="control-label" for="doj">Date of Joining</label>
                                 <div class="controls">
-                                    <md-datepicker name="doj" ng-model="vm.registration.doj"
-                                                   md-placeholder="Enter date"></md-datepicker>
+                                    <p class="input-group">
+                                    <input type="text"
+                                           name="doj"
+                                           show-button-bar ="false"
+                                           class="form-input date-form" 
+                                           uib-datepicker-popup="yyyy/MM/dd"
+                                           ng-model="vm.registration.doj"
+                                           is-open="vm.isDojPickerOpen" />
+                                    <span class="input-group-btn custom-datepick">
+                                        <button type="button" 
+                                                class="btn btn-default" 
+                                                ng-click="vm.setDpOpenStatus('isDojPickerOpen')">
+                                            <i class="glyphicon glyphicon-calendar"></i>
+                                        </button>
+                                    </span>
+                                </p>    
                                 </div>
                             </div>
                             <div class="control-group width-30 pull-left margin-left-5">
@@ -642,18 +669,44 @@
                                 <label class="control-label" for="lastName">Passport
                                     Issue Date</label>
                                 <div class="controls">
-                                    <md-datepicker name="issueDate"
-                                                   ng-model="vm.registration.passport.issueDate"
-                                                   md-placeholder="Enter date"></md-datepicker>
+                                    <p class="input-group">
+                                    <input type="text"
+                                           name="issueDate"
+                                           show-button-bar ="false"
+                                           class="form-input date-form" 
+                                           uib-datepicker-popup="yyyy/MM/dd"
+                                           ng-model="vm.registration.passport.issueDate"
+                                           is-open="vm.isIssueDatePickerOpen" />
+                                    <span class="input-group-btn custom-datepick">
+                                        <button type="button" 
+                                                class="btn btn-default" 
+                                                ng-click="vm.setDpOpenStatus('isIssueDatePickerOpen')">
+                                            <i class="glyphicon glyphicon-calendar"></i>
+                                        </button>
+                                    </span>
+                                </p>     
                                 </div>
                             </div>
                             <div class="control-group width-30 pull-left">
                                 <label class="control-label" for="expiryDate">Passport
                                     Expiry Date</label>
                                 <div class="controls">
-                                    <md-datepicker name="expiryDate"
-                                                   ng-model="vm.registration.passport.expiryDate"
-                                                   md-placeholder="Enter date"></md-datepicker>
+                                    <p class="input-group">
+                                    <input type="text"
+                                           name="expiryDate"
+                                           show-button-bar ="false"
+                                           class="form-input date-form" 
+                                           uib-datepicker-popup="yyyy/MM/dd"
+                                           ng-model="vm.registration.passport.expiryDate"
+                                           is-open="vm.isExpiryDatePickerOpen" />
+                                    <span class="input-group-btn custom-datepick">
+                                        <button type="button" 
+                                                class="btn btn-default" 
+                                                ng-click="vm.setDpOpenStatus('isExpiryDatePickerOpen')">
+                                            <i class="glyphicon glyphicon-calendar"></i>
+                                        </button>
+                                    </span>
+                                </p>    
                                 </div>
                             </div>
                         </fieldset>

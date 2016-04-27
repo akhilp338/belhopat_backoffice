@@ -1222,3 +1222,21 @@ legend {
     border-bottom: none; 
     font-size: 14px;
 }
+
+.input-group input{
+    width: 100%;
+}
+
+.custom-datepick button,
+.custom-datepick button:hover{
+    border: 1px solid #DDDDDD;
+    background: #E7EDEC;
+    padding: 2px;
+    border-left: none;
+    top: 3px;
+    padding-top: 1px;
+}
+
+p.input-group input {
+    border-radius: 5px 0 0 5px;
+}
