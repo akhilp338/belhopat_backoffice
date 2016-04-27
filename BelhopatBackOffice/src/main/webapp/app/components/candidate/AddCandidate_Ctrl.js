@@ -58,10 +58,10 @@
 
 
         $scope.steps = [
-            'Step 1: Personal Information',
-            'Step 2: Employment Details',
-            'Step 3: Official Information',
-            'Step 4: Family Details'
+            'Personal',
+            'Employment',
+            'Official',
+            'Family'
         ];
         $scope.selection = $scope.steps[0];
         $scope.getCurrentStepIndex = function () {
