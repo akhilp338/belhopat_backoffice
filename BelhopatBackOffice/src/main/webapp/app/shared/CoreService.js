@@ -99,23 +99,23 @@
             var deferred = $q.defer();
             Core_HttpRequest.post(url)
                     .then(function (response) {
-                    	console.log(response);
+                        console.log(response);
                         deferred.resolve(response)
                     }, function (error) {
                         deferred.reject(error)
                     });
             return deferred.promise;
         }
-        
-        service.processDateObjects  =function(keys, data){
-            for(var i=0; i<keys.length; i++){
+
+        service.processDateObjects = function (keys, data) {
+            for (var i = 0; i < keys.length; i++) {
                 data[keys[i]] = new Date(data[keys[i]]);
             }
             return  data;
         }
-        service.candidateRegisterImpl = function(url,postData){
-        	var deferred = $q.defer();        	
-            Core_HttpRequest.post(url,postData)
+        service.candidateRegisterImpl = function (url, postData) {
+            var deferred = $q.defer();
+            Core_HttpRequest.post(url, postData)
                     .then(function (response) {
                         console.log(response);
                         deferred.resolve(response)
@@ -125,10 +125,10 @@
                     });
             return deferred.promise;
         };
-        
-        service.candidateDeleteImpl = function(url,data){
-        	var deferred = $q.defer();
-            Core_HttpRequest.post(url,data)
+
+        service.candidateDeleteImpl = function (url, data) {
+            var deferred = $q.defer();
+            Core_HttpRequest.post(url, data)
                     .then(function (response) {
                         deferred.resolve(response)
                     }, function (error) {
@@ -136,12 +136,12 @@
                     });
             return deferred.promise;
         };
-        
-        service.getCandidateImpl = function(url,data){
-        	var obj = {};
-        	obj.id = data;
-        	var deferred = $q.defer();
-            Core_HttpRequest.post(url,obj)
+
+        service.getCandidateImpl = function (url, data) {
+            var obj = {};
+            obj.id = data;
+            var deferred = $q.defer();
+            Core_HttpRequest.post(url, obj)
                     .then(function (response) {
                         deferred.resolve(response)
                     }, function (error) {
@@ -149,10 +149,10 @@
                     });
             return deferred.promise;
         };
-        
-        service.defaultApiByIdAndUrlImpl = function(url,data){
-        	var deferred = $q.defer();
-            Core_HttpRequest.post(url,data)
+
+        service.defaultApiByIdAndUrlImpl = function (url, data) {
+            var deferred = $q.defer();
+            Core_HttpRequest.post(url, data)
                     .then(function (response) {
                         deferred.resolve(response)
                     }, function (error) {
@@ -160,12 +160,12 @@
                     });
             return deferred.promise;
         };
-        
-        service.sweetAlert = function(congrats,message,type){
+
+        service.sweetAlert = function (congrats, message, type) {
             swal(congrats, message, type)
         };
-        
-        service.getUserName = function(){
+
+        service.getUserName = function () {
             Core_HttpRequest.post('api/getUserName')
                     .then(function (response) {
                         return response;
@@ -173,15 +173,32 @@
                         return error;
                     });
         };
-        
+
+        service.recall = function () {
+            setTimeout(function () {
+                if (document.createEvent) { // W3C
+                    var ev = document.createEvent('Event');
+                    ev.initEvent('resize', true, true);
+                    window.dispatchEvent(ev);
+                } else { // IE
+                    element = document.documentElement;
+                    var event = document.createEventObject();
+                    element.fireEvent("onresize", event);
+                }
+            }, 10);
+        };
         service.getFormattedDate = function (intDate) {
-        	var dateStr = new Date(intDate);
-        	var dd = dateStr.getDate();
-        	var mm = dateStr.getMonth()+1;
-        	var yyyy = dateStr.getFullYear();
-        	if(dd<10){dd='0'+dd}
-        	if(mm<10){mm='0'+mm}
-        	var returnDate = yyyy+'-'+mm+'-'+dd;
+            var dateStr = new Date(intDate);
+            var dd = dateStr.getDate();
+            var mm = dateStr.getMonth() + 1;
+            var yyyy = dateStr.getFullYear();
+            if (dd < 10) {
+                dd = '0' + dd
+            }
+            if (mm < 10) {
+                mm = '0' + mm
+            }
+            var returnDate = yyyy + '-' + mm + '-' + dd;
             return returnDate;
         };
     };

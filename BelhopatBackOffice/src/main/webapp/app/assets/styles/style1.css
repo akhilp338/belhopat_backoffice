@@ -485,6 +485,8 @@ body {
 #candidatesList {
     border-collapse: separate;
     border: 1px solid #ddd;
+    margin: 0;
+    width: 100%!important;
 }
 /*Temp css ends here*/
 
@@ -951,7 +953,8 @@ input.ng-touched.ng-valid{
 .dataTables_scrollHeadInner,
 .dataTables_scrollHeadInner table,
 .dataTables_scrollBody table{
-    width:100%!important;
+    /*width:100%!important;*/
+    /*margin: 0;*/
 }
 
 .table-btn{
