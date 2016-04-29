@@ -1,7 +1,7 @@
 (function () {
     'use strict';
     var Core_Routes = function ($stateProvider, $locationProvider, $urlRouterProvider,urlConfig) {
-$locationProvider.html5Mode(true);
+//$locationProvider.html5Mode(true);
 //        $urlRouterProvider.otherwise(function () {
 //            window.location = urlConfig.root_path;
 //        });
@@ -12,12 +12,12 @@ $locationProvider.html5Mode(true);
                     abstract: true,
                     views: {
                         'header': {
-                            templateUrl: 'app/components/common/innerHeader.html',
+                            templateUrl: '/BelhopatBackOffice/app/components/common/innerHeader.html',
                             controller: 'Header_Ctrl',
                             controllerAs: 'vm'
                         },
                         'sidebar': {
-                            templateUrl: 'app/components/common/sidebar.html',
+                            templateUrl: '/BelhopatBackOffice/app/components/common/sidebar.html',
                             controller: 'Home_Ctrl',
                             controllerAs: 'vm'
                         }
@@ -27,7 +27,7 @@ $locationProvider.html5Mode(true);
                     url: urlConfig.root_path,
                     views: {
                         'content@': {
-                            templateUrl: 'app/components/login/login-sample.html',
+                            templateUrl: '/BelhopatBackOffice/app/components/login/login-sample.html',
                             controller: 'Login_Ctrl',
                             controllerAs: 'vm'
                         }
@@ -36,7 +36,7 @@ $locationProvider.html5Mode(true);
             url: urlConfig.root_path+'dashboard',
             views: {
                 'content@': {
-                    templateUrl: 'app/components/dashboard/dashboard.html',
+                    templateUrl: '/BelhopatBackOffice/app/components/dashboard/dashboard.html',
                     controller: 'Dash_Ctrl',
                     controllerAs: 'vm'
                 }
@@ -45,7 +45,7 @@ $locationProvider.html5Mode(true);
             url: urlConfig.root_path+'loginSuccess',
             views: {
                 'content@': {
-                    templateUrl: 'app/components/dashboard/dashboard.html',
+                    templateUrl: '/BelhopatBackOffice/app/components/dashboard/dashboard.html',
                     controller: 'Dash_Ctrl',
                     controllerAs: 'vm'
                 }
@@ -54,7 +54,7 @@ $locationProvider.html5Mode(true);
             url: urlConfig.root_path+'loginerror',
             views: {
                 'content@': {
-                    templateUrl: 'app/components/login/login.html',
+                    templateUrl: '/BelhopatBackOffice/app/components/login/login.html',
                     controller: 'Login_Ctrl',
                     controllerAs: 'vm'
                 }
@@ -63,19 +63,19 @@ $locationProvider.html5Mode(true);
             url: urlConfig.root_path+'candidate',
             views: {
                 'content@': {
-                    templateUrl: 'app/components/candidate/candidate.html',
+                    templateUrl: '/BelhopatBackOffice/app/components/candidate/candidate.html',
                     controller: 'Candidate_Ctrl',
                     controllerAs: 'vm'
                 }
             }
         }).state('coreuser.candidate.add', {
-            url: '/add',
+            url: '^/BelhopatBackOffice/candidate/add',
             views: {
                 'sidebar@':{
-                    templateUrl: 'app/components/common/defaultTemplate.html' 
+                    templateUrl: '/BelhopatBackOffice/app/components/common/defaultTemplate.html' 
                 },
                 'content@': {
-                    templateUrl: 'app/components/candidate/candidateAdd.html',
+                    templateUrl: '/BelhopatBackOffice/app/components/candidate/candidateAdd.html',
                     controller: 'AddCandidate_Ctrl',
                     controllerAs: 'vm'
                 }
@@ -84,10 +84,10 @@ $locationProvider.html5Mode(true);
             url: '/edit/:id',
             views: {
                 'sidebar@':{
-                    templateUrl: 'app/components/common/defaultTemplate.html' 
+                    templateUrl: '/BelhopatBackOffice/app/components/common/defaultTemplate.html' 
                 },
                 'content@': {
-                    templateUrl: 'app/components/candidate/candidateAdd.html',
+                    templateUrl: '/BelhopatBackOffice/app/components/candidate/candidateAdd.html',
                     controller: 'AddCandidate_Ctrl',
                     controllerAs: 'vm'
                 }
@@ -96,7 +96,7 @@ $locationProvider.html5Mode(true);
             url: urlConfig.root_path+'employee',
             views: {
                 'content@': {
-                    templateUrl: 'app/components/employee/employee.html',
+                    templateUrl: '/BelhopatBackOffice/app/components/employee/employee.html',
                     controller: 'Employee_Ctrl',
                     controllerAs: 'vm'
                 }
@@ -105,7 +105,7 @@ $locationProvider.html5Mode(true);
             url: urlConfig.root_path+'client',
             views: {
                 'content@': {
-                    templateUrl: 'app/components/client/client.html',
+                    templateUrl: '/BelhopatBackOffice/app/components/client/client.html',
                     controller: 'Client_Ctrl',
                     controllerAs: 'vm'
                 }
@@ -114,7 +114,7 @@ $locationProvider.html5Mode(true);
             url: urlConfig.root_path+'opportunity',
             views: {
                 'content@': {
-                    templateUrl: 'app/components/opportunity/opportunity.html',
+                    templateUrl: '/BelhopatBackOffice/app/components/opportunity/opportunity.html',
                     controller: 'Opp_Ctrl',
                     controllerAs: 'vm'
                 }
@@ -123,7 +123,7 @@ $locationProvider.html5Mode(true);
             url: urlConfig.root_path+'holiday',
             views: {
                 'content@': {
-                    templateUrl: 'app/components/holiday/holiday.html',
+                    templateUrl: '/BelhopatBackOffice/app/components/holiday/holiday.html',
                     controller: 'Holiday_Ctrl',
                     controllerAs: 'vm'
                 }

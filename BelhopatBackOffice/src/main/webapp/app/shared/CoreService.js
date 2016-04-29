@@ -173,7 +173,6 @@
                         return error;
                     });
         };
-
         service.recall = function () {
             setTimeout(function () {
                 if (document.createEvent) { // W3C
