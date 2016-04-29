@@ -15,6 +15,11 @@ import com.belhopat.backoffice.model.City;
 import com.belhopat.backoffice.model.State;
 import com.belhopat.backoffice.service.BaseService;
 
+/**
+ * @author Akhil Prakash
+ * 
+ *
+ */
 @Controller
 @RequestMapping("/api")
 public class BaseController {
@@ -22,12 +27,20 @@ public class BaseController {
 	@Autowired
 	BaseService baseService;
 
+	/**
+	 * @param requestObject
+	 * @return
+	 */
 	@ResponseBody
 	@RequestMapping(value = "/getStatesByCountry", method = RequestMethod.POST)
-	public ResponseEntity<List<State>> getStatesByCountry(@RequestBody RequestObject requestObject) {
+		public ResponseEntity<List<State>> getStatesByCountry(@RequestBody RequestObject requestObject) {
 		return baseService.getStatesByCountry(requestObject.getId());
 	}
 
+	/**
+	 * @param requestObject
+	 * @return
+	 */
 	@ResponseBody
 	@RequestMapping(value = "/getCitiesByState", method = RequestMethod.POST)
 	public ResponseEntity<List<City>> getCitiesByState(@RequestBody RequestObject requestObject) {

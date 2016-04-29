@@ -53,7 +53,7 @@
             $('#employeeList').on('click', '.action-edit', function () {
                 $rootScope.showLoader = true;
                 $rootScope.id = this.getAttribute('value');
-                $state.go('coreuser.candidate.edit', {id: $rootScope.id});
+                $state.go('coreuser.employee.edit', {id: $rootScope.id});
             });
         })
         Core_Service.calculateSidebarHeight();

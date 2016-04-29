@@ -21,6 +21,10 @@ import com.belhopat.backoffice.service.BaseService;
 import com.belhopat.backoffice.service.CandidateService;
 import com.belhopat.backoffice.util.ResponseObject;
 
+/**
+ * @author Akhil Prakash
+ *
+ */
 @Controller
 @RequestMapping("/api/candidate")
 public class CandidateController {
@@ -31,38 +35,67 @@ public class CandidateController {
 	@Autowired
 	CandidateService candidateService;
 
+	/**
+	 * @param input
+	 * @return
+	 */
 	@ResponseBody
 	@RequestMapping(value = "/getCandidates", method = RequestMethod.GET)
+
 	public DataTablesOutput<Candidate> getCandidates(@Valid DataTablesInput input) {
 		return candidateService.getCandidates(input);
 	}
 
+	/**
+	 * @param requestObject
+	 * @return
+	 */
 	@ResponseBody
 	@RequestMapping(value = "/getCandidate", method = RequestMethod.POST)
+
 	public ResponseEntity<Candidate> getCandidate(@RequestBody RequestObject requestObject) {
 		return candidateService.getCandidate(requestObject.getId());
 	}
 
+	/**
+	 * @param candidate
+	 * @return
+	 */
 	@ResponseBody
 	@RequestMapping(value = "/saveOrUpdateCandidate", method = RequestMethod.POST)
+
 	public ResponseEntity<String> saveOrUpdateCandidate(@RequestBody Candidate candidate) {
 		return candidateService.saveOrUpdateCandidate(candidate);
 	}
 
+	/**
+	 * @param candidateIds
+	 * @return
+	 */
 	@ResponseBody
 	@RequestMapping(value = "/deleteCandidates", method = RequestMethod.POST)
+
 	public ResponseEntity<Void> deleteCandidates(@RequestBody List<Long> candidateIds) {
 		return candidateService.deleteCandidates(candidateIds);
 	}
 
+	/**
+	 * @param requestObject
+	 * @return
+	 */
 	@ResponseBody
 	@RequestMapping(value = "/deleteCandidate", method = RequestMethod.POST)
+
 	public ResponseEntity<ResponseObject> deleteCandidate(@RequestBody RequestObject requestObject) {
 		return candidateService.deleteCandidate(requestObject.getId());
 	}
 
+	/**
+	 * @return
+	 */
 	@ResponseBody
 	@RequestMapping(value = "/getDropDownData", method = RequestMethod.POST)
+
 	public ResponseEntity < Map < String, List < ? > > > getDropDownData() {
 		return baseService.getCandidateDropDownData();
 	}
