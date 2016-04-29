@@ -10,10 +10,13 @@
             {name:"holiday",label: "Holiday Management", icon: "fa-paper-plane",state:"coreuser.holiday"}
         ];
         $rootScope.isLogin = false;
+        vm.showMenu = function (e) {
+           $(".collapse").slideToggle("1000");            
+        };
         vm.menuClick = function (e) {
             angular.element('.sidebar-nav li').removeClass("active");
-            angular.element(e.currentTarget).addClass("active");
-            Core_Service.calculateSidebarHeight();            
+            angular.element(e.currentTarget).addClass("active"); 
+                     
         };
     };
 
