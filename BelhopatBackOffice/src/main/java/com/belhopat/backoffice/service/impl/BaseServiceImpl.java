@@ -25,6 +25,10 @@ import com.belhopat.backoffice.repository.StateRepository;
 import com.belhopat.backoffice.service.BaseService;
 import com.belhopat.backoffice.util.Constants;
 
+/**
+ * @author BHP_DEV service implementation for general functionalities
+ *
+ */
 @Component
 public class BaseServiceImpl implements BaseService {
 
@@ -39,7 +43,6 @@ public class BaseServiceImpl implements BaseService {
 
 	@Autowired
 	CityRepository cityRepository;
-	
 
 	@Autowired
 	SkillRepository skillRepository;
@@ -47,6 +50,13 @@ public class BaseServiceImpl implements BaseService {
 	@Autowired
 	CandidateSequenceRepository candidateSequenceRepository;
 
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * com.belhopat.backoffice.service.BaseService#getCandidateDropDownData()
+	 * gets candidate dropdown data and creates a map out of it.
+	 */
 	@Override
 	public ResponseEntity<Map<String, List<?>>> getCandidateDropDownData() {
 		List<LookupDetail> divisions = lookupDetailRepository.findByLookupKey(Constants.DIVISION);
@@ -69,6 +79,13 @@ public class BaseServiceImpl implements BaseService {
 		return new ResponseEntity<Map<String, List<?>>>(dropDownMap, HttpStatus.OK);
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * com.belhopat.backoffice.service.BaseService#getEmployeeDropDownData()
+	 * gets employee dropdown data and creates a map out of it.
+	 */
 	@Override
 	public ResponseEntity<Map<String, List<?>>> getEmployeeDropDownData() {
 		List<LookupDetail> divisions = lookupDetailRepository.findByLookupKey(Constants.DIVISION);
@@ -90,32 +107,60 @@ public class BaseServiceImpl implements BaseService {
 		dropDownMap.put(Constants.COUNTRY, countries);
 		return new ResponseEntity<Map<String, List<?>>>(dropDownMap, HttpStatus.OK);
 	}
-	
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * com.belhopat.backoffice.service.BaseService#getStatesByCountry(java.lang.
+	 * Long) queries the country repo to get its state
+	 */
 	@Override
 	public ResponseEntity<List<State>> getStatesByCountry(Long countryId) {
 		List<State> states = stateRepository.findByCountry(countryId);
 		return new ResponseEntity<List<State>>(states, HttpStatus.OK);
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * com.belhopat.backoffice.service.BaseService#getCitiesByState(java.lang.
+	 * Long) queries the state repo to get its city
+	 */
 	@Override
 	public ResponseEntity<List<City>> getCitiesByState(Long stateId) {
 		List<City> states = cityRepository.findByState(stateId);
 		return new ResponseEntity<List<City>>(states, HttpStatus.OK);
 	}
-	
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * com.belhopat.backoffice.service.BaseService#getUnselectedSkillSet(java.
+	 * util.List) Adds or remove the selected/unselected skills in add candidate
+	 * form
+	 */
 	@Override
-	public List<Skill> getUnselectedSkillSet(List<Skill> selectedSkillSet){
+	public List<Skill> getUnselectedSkillSet(List<Skill> selectedSkillSet) {
 		List<Skill> skillSet = skillRepository.findAll();
-		if(!selectedSkillSet.isEmpty()){
+		if (!selectedSkillSet.isEmpty()) {
 			for (Skill skill : selectedSkillSet) {
-				if(skillSet.contains(skill))
+				if (skillSet.contains(skill))
 					skillSet.remove(skill);
 			}
 		}
 		return skillSet;
 	}
 
-
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * com.belhopat.backoffice.service.BaseService#getSequenceIncrement(java.
+	 * lang.Class) creates and increments the sequence
+	 */
 	@Override
 	public <T> Long getSequenceIncrement(Class<T> clazz) {
 		Long increment = null;

@@ -8,7 +8,11 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import com.belhopat.backoffice.model.State;
-
+/**
+ * @author BHP_DEV
+ * Data repository for state entity 
+ *
+ */
 @Repository
 public interface StateRepository extends JpaRepository<State, Long> {
 

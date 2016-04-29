@@ -1,5 +1,10 @@
 package com.belhopat.backoffice.dto;
 
+/**
+ * @author BHP_DEV
+ * request POJO data transfer object
+ *
+ */
 public class RequestObject {
 
 	private Long id;

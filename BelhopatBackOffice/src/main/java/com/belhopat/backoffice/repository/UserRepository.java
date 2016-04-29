@@ -6,7 +6,11 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import com.belhopat.backoffice.model.User;
-
+/**
+ * @author BHP_DEV
+ * Data repository for user entity 
+ *
+ */
 @Repository
 public interface UserRepository extends JpaRepository< User, Long >  {
 

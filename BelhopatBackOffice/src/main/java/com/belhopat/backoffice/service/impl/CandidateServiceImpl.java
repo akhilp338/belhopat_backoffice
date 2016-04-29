@@ -26,6 +26,9 @@ import com.belhopat.backoffice.session.SessionManager;
 import com.belhopat.backoffice.util.ResponseObject;
 import com.belhopat.backoffice.util.sequence.SequenceGenerator;
 
+/**
+ * @author BHP_DEV Service layer to implement candidates business
+ */
 @Component
 public class CandidateServiceImpl implements CandidateService {
 
@@ -35,6 +38,14 @@ public class CandidateServiceImpl implements CandidateService {
 	@Autowired
 	CandidateRepository candidateRepository;
 
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see com.belhopat.backoffice.service.CandidateService#getCandidates(org.
+	 * springframework.data.jpa.datatables.mapping.DataTablesInput)
+	 * gets the candidates with appropriate specifications
+	 * 
+	 */
 	@Override
 	public DataTablesOutput<Candidate> getCandidates(DataTablesInput input) {
 
@@ -50,6 +61,14 @@ public class CandidateServiceImpl implements CandidateService {
 		return dataTablesOutput;
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * com.belhopat.backoffice.service.CandidateService#getCandidate(java.lang.
+	 * Long)
+	 * gets a single candidate with its id
+	 */
 	@Override
 	public ResponseEntity<Candidate> getCandidate(Long candidateId) {
 		Candidate candidate = candidateRepository.findById(candidateId);
@@ -61,14 +80,22 @@ public class CandidateServiceImpl implements CandidateService {
 		return new ResponseEntity<Candidate>(HttpStatus.NO_CONTENT);
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * com.belhopat.backoffice.service.CandidateService#saveOrUpdateCandidate(
+	 * com.belhopat.backoffice.model.Candidate)
+	 * saves or updates the candidate to the database
+	 */
 	@Override
 	public ResponseEntity<String> saveOrUpdateCandidate(Candidate candidateObj) {
 		Candidate newCandidate = null;
 		User loggedInUser = SessionManager.getCurrentUserAsEntity();
 		if (candidateObj.getId() == null) {
-			newCandidate = registerNewCandidate(loggedInUser,candidateObj);
+			newCandidate = registerNewCandidate(loggedInUser, candidateObj);
 		} else {
-			newCandidate = updateCandidate(loggedInUser,candidateObj);
+			newCandidate = updateCandidate(loggedInUser, candidateObj);
 		}
 		if (newCandidate != null) {
 			String candidateName = newCandidate.getFirstName() + " " + newCandidate.getLastName();
@@ -77,55 +104,63 @@ public class CandidateServiceImpl implements CandidateService {
 		return new ResponseEntity<String>(HttpStatus.NO_CONTENT);
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * com.belhopat.backoffice.service.CandidateService#deleteCandidate(java.
+	 * lang.Long)
+	 * sets the dto to entity
+	 */
 	private Candidate updateCandidate(User loggedInUser, Candidate candidateObj) {
 		Candidate newCandidate = candidateRepository.findById(candidateObj.getId());
-		newCandidate = getUpdatedWithBaseAttributes(candidateObj,newCandidate);
-		if(candidateObj.getBankAccount()!=null){
-			newCandidate = setBankAccountInDetail(candidateObj.getBankAccount(),newCandidate);
+		newCandidate = getUpdatedWithBaseAttributes(candidateObj, newCandidate);
+		if (candidateObj.getBankAccount() != null) {
+			newCandidate = setBankAccountInDetail(candidateObj.getBankAccount(), newCandidate);
 		}
-		if(candidateObj.getBloodGroup()!=null){
+		if (candidateObj.getBloodGroup() != null) {
 			newCandidate.setBloodGroup(candidateObj.getBloodGroup());
 		}
-		if(candidateObj.getCountryOfOrigin()!=null){
+		if (candidateObj.getCountryOfOrigin() != null) {
 			newCandidate.setCountryOfOrigin(candidateObj.getCountryOfOrigin());
 		}
-		if(candidateObj.getCountryToVisit()!=null){
+		if (candidateObj.getCountryToVisit() != null) {
 			newCandidate.setCountryToVisit(candidateObj.getCountryToVisit());
 		}
-		if(candidateObj.getCurrentAddress()!=null){
+		if (candidateObj.getCurrentAddress() != null) {
 			newCandidate.setCurrentAddress(candidateObj.getCurrentAddress());
 		}
-		if(candidateObj.getDesignation()!=null){
+		if (candidateObj.getDesignation() != null) {
 			newCandidate.setDesignation(candidateObj.getDesignation());
 		}
-		if(candidateObj.getDivision()!=null){
+		if (candidateObj.getDivision() != null) {
 			newCandidate.setDivision(candidateObj.getDivision());
 		}
-		if(candidateObj.getEmploymentStatus()!=null){
+		if (candidateObj.getEmploymentStatus() != null) {
 			newCandidate.setEmploymentStatus(candidateObj.getEmploymentStatus());
 		}
-		if(candidateObj.getFamilyMembers()!=null && !candidateObj.getFamilyMembers().isEmpty()){
+		if (candidateObj.getFamilyMembers() != null && !candidateObj.getFamilyMembers().isEmpty()) {
 			newCandidate.setFamilyMembers(candidateObj.getFamilyMembers());
 		}
-		if(candidateObj.getOfficialDetails()!=null){
+		if (candidateObj.getOfficialDetails() != null) {
 			newCandidate.setOfficialDetails(candidateObj.getOfficialDetails());
 		}
-		if(candidateObj.getOnsiteAddress()!=null){
+		if (candidateObj.getOnsiteAddress() != null) {
 			newCandidate.setOnsiteAddress(candidateObj.getOnsiteAddress());
 		}
-		if(candidateObj.getPassport()!=null){
+		if (candidateObj.getPassport() != null) {
 			newCandidate.setPassport(candidateObj.getPassport());
 		}
-		if(candidateObj.getPermanentAddress()!=null){
+		if (candidateObj.getPermanentAddress() != null) {
 			newCandidate.setPermanentAddress(candidateObj.getPermanentAddress());
 		}
-		if(candidateObj.getPurpose()!=null){
+		if (candidateObj.getPurpose() != null) {
 			newCandidate.setPurpose(candidateObj.getPurpose());
 		}
-		if(candidateObj.getRegistrationStatus()!=null){
+		if (candidateObj.getRegistrationStatus() != null) {
 			newCandidate.setRegistrationStatus(candidateObj.getRegistrationStatus());
 		}
-		if(candidateObj.getSkillSet()!=null&&!candidateObj.getSkillSet().isEmpty()){
+		if (candidateObj.getSkillSet() != null && !candidateObj.getSkillSet().isEmpty()) {
 			newCandidate.setSkillSet(candidateObj.getSkillSet());
 		}
 		newCandidate.setUpdateAttributes(loggedInUser);
@@ -133,6 +168,14 @@ public class CandidateServiceImpl implements CandidateService {
 		return persisted;
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * com.belhopat.backoffice.service.CandidateService#deleteCandidate(java.
+	 * lang.Long)
+	 * sets the base attributes
+	 */
 	private Candidate getUpdatedWithBaseAttributes(Candidate candidateObj, Candidate newCandidate) {
 		newCandidate.setFirstName(candidateObj.getFirstName());
 		newCandidate.setLastName(candidateObj.getLastName());
@@ -158,20 +201,36 @@ public class CandidateServiceImpl implements CandidateService {
 		return newCandidate;
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * com.belhopat.backoffice.service.CandidateService#deleteCandidate(java.
+	 * lang.Long)
+	 * sets the account details
+	 */
 	private Candidate setBankAccountInDetail(BankAccount bankAccount, Candidate newCandidate) {
-		if(newCandidate.getBankAccount()!=null){
+		if (newCandidate.getBankAccount() != null) {
 			newCandidate.getBankAccount().setAccountHolderName(bankAccount.getAccountHolderName());
 			newCandidate.getBankAccount().setAccountNo(bankAccount.getAccountNo());
 			newCandidate.getBankAccount().setBankAddress(bankAccount.getBankAddress());
 			newCandidate.getBankAccount().setBankName(bankAccount.getBankName());
 			newCandidate.getBankAccount().setBranch(bankAccount.getBranch());
 			newCandidate.getBankAccount().setIFSCCode(bankAccount.getIFSCCode());
-		}else{
-			
+		} else {
+
 		}
 		return newCandidate;
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * com.belhopat.backoffice.service.CandidateService#deleteCandidate(java.
+	 * lang.Long)
+	 * saves a new candidate to database
+	 */
 	private Candidate registerNewCandidate(User loggedInUser, Candidate candidate) {
 		candidate.setBaseAttributes(loggedInUser);
 		Long increment = baseService.getSequenceIncrement(Candidate.class);
@@ -181,6 +240,13 @@ public class CandidateServiceImpl implements CandidateService {
 		return persisted;
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * com.belhopat.backoffice.service.CandidateService#deleteCandidates(java.
+	 * util.List)
+	 */
 	@Override
 	public ResponseEntity<Void> deleteCandidates(List<Long> candidateIds) {
 		User loggedInUser = SessionManager.getCurrentUserAsEntity();
@@ -192,6 +258,13 @@ public class CandidateServiceImpl implements CandidateService {
 		return new ResponseEntity<Void>(HttpStatus.OK);
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * com.belhopat.backoffice.service.CandidateService#deleteCandidate(java.
+	 * lang.Long)
+	 */
 	@Override
 	public ResponseEntity<ResponseObject> deleteCandidate(Long candidateId) {
 		if (candidateId != null) {

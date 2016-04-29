@@ -22,6 +22,11 @@ import com.belhopat.backoffice.service.UserService;
 import com.belhopat.backoffice.util.Constants;
 import com.belhopat.backoffice.util.ResponseObject;
 
+/**
+ * @author BHP DEV TEAM
+ * Handler for login and logout functionality
+ *
+ */
 @Controller
 @RequestMapping("/*")
 public class LoginController {
@@ -32,11 +37,22 @@ public class LoginController {
 	@Autowired
 	UserService userService;
 	
+	/**
+	 * @return
+	 * Loads the index page
+	 * heart of the application
+	 */
 	@RequestMapping(method = RequestMethod.GET)
 	public String getIndexPage() {
 		return "index";
 	}
 
+	/**
+	 * @param error
+	 * @param logout
+	 * @param request
+	 * @return Handles the login and its validation
+	 */
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
 	public ModelAndView loginPage(@RequestParam(value = "error", required = false) String error,
 			@RequestParam(value = "logout", required = false) String logout, HttpServletRequest request) {
@@ -49,30 +65,48 @@ public class LoginController {
 		return model;
 	}
 
+	/**
+	 * @return
+	 * Once the log in is success , returns a view with user name
+	 */
 	@RequestMapping(value = "/loginSuccess")
 	public ModelAndView loginSuccess() {
 		ModelAndView model = new ModelAndView();
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-		System.out.println("asdasd");
 		if (auth != null) {
-			System.out.println("success");
 			model.addObject("user", auth.getName());
 		}
 		model.setViewName("/index");
 		return model;
 	}
 
+	/**
+	 * @param request
+	 * @throws ServletException
+	 * Log outs and kills the current session
+	 */
 	@RequestMapping(value = "/api/logout", method = RequestMethod.POST)
 	public void logout(HttpServletRequest request) throws ServletException {
 		request.getSession().invalidate();
 		request.logout();
 	}
 
+	/**
+	 * @param request
+	 * @return username
+	 * get the username for current logged in user
+	 */
 	@RequestMapping(value = "api/getUserName", method = RequestMethod.POST)
 	public String getUserName(HttpServletRequest request) {
 		return SecurityContextHolder.getContext().getAuthentication().getName().toString();
 	}
 
+	/**
+	 * @param user
+	 * @return
+	 * @throws MessagingException
+	 * Generates a password and sends that password to users e mail id
+	 */
 	@RequestMapping(value = "/api/forgotPassword", method = RequestMethod.POST)
 	public ResponseEntity<ResponseObject> forgotPassword(@RequestBody User user) throws MessagingException {
 		boolean userStatus = userService.generatePasswordResetLink(user.getEmail());

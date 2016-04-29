@@ -20,12 +20,23 @@ import com.belhopat.backoffice.repository.UserRepository;
 import com.belhopat.backoffice.service.LoginService;
 import com.belhopat.backoffice.session.SessionUser;
 
+/**
+ * @author Akhil Prakash
+ * Spring security login service
+ */
 @Service("loginService")
 public class LoginServiceImpl implements UserDetailsService, LoginService {
 
 	@Autowired
 	UserRepository userRepo;
 
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see org.springframework.security.core.userdetails.UserDetailsService#
+	 * loadUserByUsername(java.lang.String)
+	 * loads the user by its username and authenticates
+	 */
 	@Transactional
 	@Override
 	public UserDetails loadUserByUsername(String username) {
@@ -37,12 +48,24 @@ public class LoginServiceImpl implements UserDetailsService, LoginService {
 		}
 		return null;
 	}
-
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see org.springframework.security.core.userdetails.UserDetailsService#
+	 * loadUserByUsername(java.lang.String)
+	 * builds the userauthentication
+	 */
 	private SessionUser buildUserForAuthentication(User user, List<GrantedAuthority> authorities) {
 		return new SessionUser(user.getId(), user.getRole(), user.getUsername(), user.getPassword(), user.getEmail(),
 				authorities);
 	}
-
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see org.springframework.security.core.userdetails.UserDetailsService#
+	 * loadUserByUsername(java.lang.String)
+	 * builds user authority
+	 */
 	private List<GrantedAuthority> buildUserAuthority(String role) {
 		Set<GrantedAuthority> setAuths = new HashSet<GrantedAuthority>();
 		setAuths.add(new SimpleGrantedAuthority("ROLE_" + role));

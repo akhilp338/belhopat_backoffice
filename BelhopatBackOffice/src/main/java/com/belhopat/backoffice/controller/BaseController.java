@@ -16,8 +16,8 @@ import com.belhopat.backoffice.model.State;
 import com.belhopat.backoffice.service.BaseService;
 
 /**
- * @author Akhil Prakash
- * 
+ * @author Belhopat dev team
+ * Serves as a webservice handler class
  *
  */
 @Controller
@@ -29,7 +29,8 @@ public class BaseController {
 
 	/**
 	 * @param requestObject
-	 * @return
+	 * @return response entity
+	 * Lookup method fetches states for a country
 	 */
 	@ResponseBody
 	@RequestMapping(value = "/getStatesByCountry", method = RequestMethod.POST)
@@ -39,7 +40,8 @@ public class BaseController {
 
 	/**
 	 * @param requestObject
-	 * @return
+	 * @return responseEntity
+	 * Returns the list of cities for a state
 	 */
 	@ResponseBody
 	@RequestMapping(value = "/getCitiesByState", method = RequestMethod.POST)

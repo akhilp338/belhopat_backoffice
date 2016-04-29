@@ -1,5 +1,10 @@
 package com.belhopat.backoffice.util;
 
+/**
+ * @author BHP_DEV
+ * Generic response object
+ *
+ */
 public class ResponseObject {
 
 	private boolean success;

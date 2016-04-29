@@ -22,7 +22,8 @@ import com.belhopat.backoffice.service.CandidateService;
 import com.belhopat.backoffice.util.ResponseObject;
 
 /**
- * @author Akhil Prakash
+ * @author Belhopat dev team
+ * Handler for all candidate related service calls
  *
  */
 @Controller
@@ -36,8 +37,9 @@ public class CandidateController {
 	CandidateService candidateService;
 
 	/**
-	 * @param input
-	 * @return
+	 * @param  datatablesinput
+	 * @return list of candidates
+	 * fetches the datatable output for candidates. List all the candidates
 	 */
 	@ResponseBody
 	@RequestMapping(value = "/getCandidates", method = RequestMethod.GET)
@@ -48,7 +50,8 @@ public class CandidateController {
 
 	/**
 	 * @param requestObject
-	 * @return
+	 * @return Candidate
+	 * For edit candidate , gets the id and fetches the candidate from database
 	 */
 	@ResponseBody
 	@RequestMapping(value = "/getCandidate", method = RequestMethod.POST)
@@ -59,7 +62,8 @@ public class CandidateController {
 
 	/**
 	 * @param candidate
-	 * @return
+	 * @return resposeString
+	 * To save the candidate after edit or add
 	 */
 	@ResponseBody
 	@RequestMapping(value = "/saveOrUpdateCandidate", method = RequestMethod.POST)
@@ -70,7 +74,8 @@ public class CandidateController {
 
 	/**
 	 * @param candidateIds
-	 * @return
+	 * @return response entity
+	 * To delete a list of candidates
 	 */
 	@ResponseBody
 	@RequestMapping(value = "/deleteCandidates", method = RequestMethod.POST)
@@ -81,7 +86,8 @@ public class CandidateController {
 
 	/**
 	 * @param requestObject
-	 * @return
+	 * @return responseObject
+	 * Deletes a single candidate
 	 */
 	@ResponseBody
 	@RequestMapping(value = "/deleteCandidate", method = RequestMethod.POST)
@@ -91,7 +97,8 @@ public class CandidateController {
 	}
 
 	/**
-	 * @return
+	 * @return Map of dropdown data
+	 * gets a key value pair list of drop down data
 	 */
 	@ResponseBody
 	@RequestMapping(value = "/getDropDownData", method = RequestMethod.POST)

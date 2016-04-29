@@ -8,7 +8,11 @@ import org.springframework.stereotype.Repository;
 
 import com.belhopat.backoffice.model.Candidate;
 import com.belhopat.backoffice.model.Employee;
-
+/**
+ * @author BHP_DEV
+ * Data repository for employee entity 
+ *
+ */
 @Repository
 public interface EmployeeRepository extends JpaRepository<Employee, Long>, DataTablesRepository<Employee, Long> {
 

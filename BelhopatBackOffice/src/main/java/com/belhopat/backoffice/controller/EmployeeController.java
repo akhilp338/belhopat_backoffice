@@ -19,8 +19,8 @@ import com.belhopat.backoffice.service.BaseService;
 import com.belhopat.backoffice.service.CandidateService;
 import com.belhopat.backoffice.service.EmployeeService;
 /**
- * @author Akhil Prakash
- *
+ * @author Belhopat dev team
+ * Handler for all Employee related service calls
  */
 @Controller
 @RequestMapping("/api/employee")
@@ -35,7 +35,8 @@ public class EmployeeController {
 	
 	/**
 	 * @param employee
-	 * @return
+	 * @return response string
+	 * Adds and edits the employee . Calls the service layer for persistance
 	 */
 	@ResponseBody
 	@RequestMapping(value = "/saveOrUpdateEmployee", method = RequestMethod.POST)
@@ -45,7 +46,8 @@ public class EmployeeController {
 	
 	/**
 	 * @param input
-	 * @return
+	 * @return employee list
+	 * returns a list of employee entity for datatable population
 	 */
 	@ResponseBody
 	@RequestMapping(value = "/getEmployee", method = RequestMethod.GET)
@@ -55,7 +57,8 @@ public class EmployeeController {
 	
 	/**
 	 * @param requestObject
-	 * @return
+	 * @return employeeEntity
+	 * gets an employee entity for edit functionality
 	 */
 	@ResponseBody
 	@RequestMapping(value = "/getAnEmployee", method = RequestMethod.POST)
