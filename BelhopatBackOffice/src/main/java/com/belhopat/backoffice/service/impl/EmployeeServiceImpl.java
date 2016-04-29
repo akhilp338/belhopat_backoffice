@@ -1,5 +1,7 @@
 package com.belhopat.backoffice.service.impl;
 
+import java.util.List;
+
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Predicate;
@@ -15,6 +17,7 @@ import org.springframework.stereotype.Component;
 
 import com.belhopat.backoffice.model.Candidate;
 import com.belhopat.backoffice.model.Employee;
+import com.belhopat.backoffice.model.Skill;
 import com.belhopat.backoffice.model.User;
 import com.belhopat.backoffice.repository.EmployeeRepository;
 import com.belhopat.backoffice.service.BaseService;
@@ -62,5 +65,14 @@ public class EmployeeServiceImpl implements EmployeeService{
 			};
 			DataTablesOutput<Employee> dataTablesOutput = employeeRepository.findAll(input, specification);
 			return dataTablesOutput;
+	}
+
+	@Override
+	public ResponseEntity<Employee> getAnEmployee(Long id) {
+		Employee employee = employeeRepository.findById( id);
+		if (employee != null) {
+			return new ResponseEntity<Employee>(employee, HttpStatus.OK);
+		}
+		return new ResponseEntity<Employee>(HttpStatus.NO_CONTENT);
 	}
 }
