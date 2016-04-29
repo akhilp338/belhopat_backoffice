@@ -71,21 +71,17 @@
                             <div class="control-group col-lg-2 col-md-2 col-sm-6 col-xs-6 pull-left">
                                 <label class="control-label" for="dob">Blood Group</label>
                                 <div class="controls">
-                                    <select ng-model="vm.registration.bloodGroup.id"
-                                            class="form-input width-100">
-                                        <option ng-repeat="bloodGroup in vm.lookups.BG"
-                                                value="{{bloodGroup.id}}">{{bloodGroup.code}}</option>
-                                    </select>
+                                   <select ng-model="vm.registration.bloodGroup.id"
+                                        class="form-input width-100" ng-options="bloodGroup.id as (bloodGroup.code) for bloodGroup in vm.lookups.BG">
+                                </select>
                                 </div>
                             </div>
                             <div class="control-group col-lg-3 col-md-3 col-sm-6 col-xs-6 pull-left">
                                 <label class="control-label" for="coo">Country Of Origin</label>
                                 <div class="controls">
                                     <select ng-model="vm.registration.countryOfOrigin.id"
-                                            class="form-input width-100">
-                                        <option ng-repeat="country in vm.lookups.COUNTRY"
-                                                value="{{country.id}}">{{country.description}}</option>
-                                    </select>
+                                        class="form-input width-100" ng-options="country.id as (country.description) for country in vm.lookups.COUNTRY">
+                                </select>
                                 </div>
                             </div>
                         </fieldset>
@@ -165,34 +161,27 @@
                             <div class="control-group width-30 pull-left margin-left-5">
                                 <label class="control-label" for="country">Country</label>
                                 <div class="controls">
-                                    <select
-                                        ng-model="vm.registration.permanentAddress.city.state.country.id"
-                                        class="form-input width-100 permntCountry"
-                                        ng-change="vm.getStatesByCountry(vm.registration.permanentAddress.city.state.country.id, 'permenant')">
-                                        <option ng-repeat="country in vm.lookups.COUNTRY"
-                                                value="{{country.id}}">{{country.description}}</option>
-                                    </select>
+                                    <select ng-model="vm.registration.permanentAddress.city.state.country.id"
+                                        ng-change="vm.getStatesByCountry(vm.registration.permanentAddrgetStatesByCountryess.city.state.country.id,'permenant')"
+                                        class="form-input width-100" ng-options="country.id as (country.description) for country in vm.lookups.COUNTRY">
+                                </select>
                                 </div>
                             </div>
                             <div class="control-group width-30 pull-left">
                                 <label class="control-label" for="state">State</label>
                                 <div class="controls">
-                                    <select
-                                        ng-model="vm.registration.permanentAddress.city.state.id"
-                                        class="form-input width-100 permntState"
-                                        ng-change="vm.getCitiesByStates(vm.registration.permanentAddress.city.state.id, 'permenant')">
-                                        <option ng-repeat="states in vm.statesPerm"
-                                                value="{{states.id}}">{{states.description}}</option>
-                                    </select>
+                                    <select ng-model="vm.registration.permanentAddress.city.state.id"
+                                        ng-change="vm.getCitiesByStates(vm.registration.permanentAddress.city.state.id,'permenant')"
+                                        class="form-input width-100" ng-options="states.id as (states.description) for states in vm.statesPerm">
+                                </select>
                                 </div>
                             </div>
                             <div class="control-group width-30 pull-left margin-left-5">
                                 <label class="control-label" for="city">City</label>
                                 <div class="controls">
                                     <select ng-model="vm.registration.permanentAddress.city.id"
-                                            class="form-input width-100">
-                                        <option ng-repeat="city in vm.citiesPerm" value="{{city.id}}">{{city.description}}</option>
-                                    </select>
+                                        class="form-input width-100" ng-options="city.id as (city.description) for city in vm.citiesPerm">
+                                </select> 
                                 </div>
                             </div>
                             <div class="control-group width-30 pull-left margin-left-5">
@@ -241,33 +230,27 @@
                             <div class="control-group width-30 pull-left margin-left-5">
                                 <label class="control-label" for="country">Country</label>
                                 <div class="controls">
-                                    <select
-                                        ng-model="vm.registration.currentAddress.city.state.country.id"
-                                        class="form-input width-100"
-                                        ng-change="vm.getStatesByCountry(vm.registration.currentAddress.city.state.country.id, 'current')">
-                                        <option ng-repeat="country in vm.lookups.COUNTRY"
-                                                value="{{country.id}}">{{country.description}}</option>
-                                    </select>
+                                    <select ng-model="vm.registration.currentAddress.city.state.country.id"
+                                        ng-change="vm.getStatesByCountry(vm.registration.currentAddress.city.state.country.id,'current')"
+                                        class="form-input width-100" ng-options="country.id as (country.description) for country in vm.lookups.COUNTRY">
+                                </select> 
                                 </div>
                             </div>
                             <div class="control-group width-30 pull-left">
                                 <label class="control-label" for="state">State</label>
                                 <div class="controls">
                                     <select ng-model="vm.registration.currentAddress.city.state.id"
-                                            class="form-input width-100"
-                                            ng-change="vm.getCitiesByStates(vm.registration.currentAddress.city.state.id, 'current')">
-                                        <option ng-repeat="states in vm.statesCurnt"
-                                                value="{{states.id}}">{{states.description}}</option>
-                                    </select>
+                                        ng-change="vm.getCitiesByStates(vm.registration.currentAddress.city.state.id,'current')"
+                                        class="form-input width-100" ng-options="states.id as (states.description) for states in vm.statesCurnt">
+                                </select>
                                 </div>
                             </div>
                             <div class="control-group width-30 pull-left margin-left-5">
                                 <label class="control-label" for="city">City</label>
                                 <div class="controls">
-                                    <select ng-model="vm.registration.currentAddress.city.id"
-                                            class="form-input width-100" ng-change="vm.checkAddress()">
-                                        <option ng-repeat="city in vm.citiesCurnt" value="{{city.id}}">{{city.description}}</option>
-                                    </select>
+                                    <select ng-model="vm.registration.permanentAddress.city.id"
+                                        class="form-input width-100" ng-options="city.id as (city.description) for city in vm.citiesCurnt">
+                                </select> 
                                 </div>
                             </div>
                             <div class="control-group width-30 pull-left margin-left-5">
@@ -328,20 +311,16 @@
                                 <label class="control-label" for="division">Division</label>
                                 <div class="controls">
                                     <select ng-model="vm.registration.division.id"
-                                            class="form-input width-100">
-                                        <option ng-repeat="division in vm.lookups.DIV"
-                                                value="{{division.id}}">{{division.description}}</option>
-                                    </select>
+                                        class="form-input width-100" ng-options="division.id as (division.description) for division in vm.lookups.DIV">
+                                </select>
                                 </div>
                             </div>
                             <div class="control-group width-30 pull-left">
                                 <label class="control-label" for="designation">Designation</label>
                                 <div class="controls">
                                     <select ng-model="vm.registration.designation.id"
-                                            class="form-input width-100">
-                                        <option ng-repeat="designation in vm.lookups.DESIG"
-                                                value="{{designation.id}}">{{designation.description}}</option>
-                                    </select>
+                                        class="form-input width-100" ng-options="designation.id as (designation.description) for designation in vm.lookups.DESIG">
+                                </select>
                                 </div>
                             </div>
 
@@ -350,20 +329,16 @@
                                     Status</label>
                                 <div class="controls">
                                     <select ng-model="vm.registration.employmentStatus.id"
-                                            class="form-input width-100">
-                                        <option ng-repeat="empStatus in vm.lookups.ESTATS"
-                                                value="{{empStatus.id}}">{{empStatus.description}}</option>
-                                    </select>
+                                        class="form-input width-100" ng-options="employmentStatus.id as (employmentStatus.description) for employmentStatus in vm.lookups.ESTATS">
+                                </select>
                                 </div>
                             </div>
                             <div class="control-group width-30 pull-left margin-left-5">
                                 <label class="control-label" for="purpose">Purpose</label>
                                 <div class="controls">
                                     <select ng-model="vm.registration.purpose.id"
-                                            class="form-input width-100">
-                                        <option ng-repeat="purpose in vm.lookups.PURPO"
-                                                value="{{purpose.id}}">{{purpose.description}}</option>
-                                    </select>
+                                        class="form-input width-100" ng-options="purpose.id as (purpose.description) for purpose in vm.lookups.PURPO">
+                                </select>
                                 </div>
                             </div>
                             <div class="control-group width-30 pull-left">
@@ -450,33 +425,27 @@
                             <div class="control-group width-30 pull-left margin-left-5">
                                 <label class="control-label" for="country">Country</label>
                                 <div class="controls">
-                                    <select
-                                        ng-model="vm.registration.onsiteAddress.city.state.country.id"
-                                        class="form-input width-100"
-                                        ng-change="vm.getStatesByCountry(vm.registration.onsiteAddress.city.state.country.id, 'onsite')">
-                                        <option ng-repeat="country in vm.lookups.COUNTRY"
-                                                value="{{country.id}}">{{country.description}}</option>
-                                    </select>
+                                    <select ng-model="vm.registration.onsiteAddress.city.state.country.id"
+                                        ng-change="vm.getStatesByCountry(vm.registration.onsiteAddress.city.state.country.id,'onsite')"
+                                        class="form-input width-100" ng-options="country.id as (country.description) for country in vm.lookups.COUNTRY">
+                                </select> 
                                 </div>
                             </div>
                             <div class="control-group width-30 pull-left">
                                 <label class="control-label" for="state">State</label>
                                 <div class="controls">
                                     <select ng-model="vm.registration.onsiteAddress.city.state.id"
-                                            class="form-input width-100"
-                                            ng-change="vm.getCitiesByStates(vm.registration.onsiteAddress.city.state.id, 'onsite')">
-                                        <option ng-repeat="states in vm.statesOnsite"
-                                                value="{{states.id}}">{{states.description}}</option>
-                                    </select>
+                                        ng-change="vm.getCitiesByStates(vm.registration.onsiteAddress.city.state.id,'onsite')"
+                                        class="form-input width-100" ng-options="states.id as (states.description) for states in vm.statesOnsite">
+                                </select> 
                                 </div>
                             </div>
                             <div class="control-group width-30 pull-left margin-left-5">
                                 <label class="control-label" for="city">City</label>
                                 <div class="controls">
                                     <select ng-model="vm.registration.onsiteAddress.city.id"
-                                            class="form-input width-100">
-                                        <option ng-repeat="city in vm.citiesOnsite" value="{{city.id}}">{{city.description}}</option>
-                                    </select>
+                                        class="form-input width-100" ng-options="city.id as (city.description) for city in vm.citiesOnsite">
+                                </select> 
                                 </div>
                             </div>
                             <div class="control-group width-30 pull-left margin-left-5">
@@ -494,10 +463,8 @@
                                     To Visit</label>
                                 <div class="controls">
                                     <select ng-model="vm.registration.countryToVisit.id"
-                                            class="form-input width-100">
-                                        <option ng-repeat="country in vm.lookups.COUNTRY"
-                                                value="{{country.id}}">{{country.description}}</option>
-                                    </select>
+                                        class="form-input width-100" ng-options="country.id as (country.description) for country in vm.lookups.COUNTRY">
+                                </select> 
                                 </div>
                             </div>
                             <div class="control-group width-30 pull-left margin-left-5">
@@ -598,35 +565,27 @@
                             <div class="control-group width-30 pull-left margin-left-5">
                                 <label class="control-label" for="country">Country</label>
                                 <div class="controls">
-                                    <select
-                                        ng-model="vm.registration.bankAccount.bankAddress.city.state.country.id"
-                                        class="form-input width-100"
-                                        ng-change="vm.getStatesByCountry(vm.registration.bankAccount.bankAddress.city.state.country.id, 'bank')">
-                                        <option ng-repeat="country in vm.lookups.COUNTRY"
-                                                value="{{country.id}}">{{country.description}}</option>
-                                    </select>
+                                    <select ng-model="vm.registration.bankAccount.bankAddress.city.state.country.id"
+                                        ng-change="vm.getStatesByCountry(vm.registration.bankAccount.bankAddress.city.state.country.id,'bank')"
+                                        class="form-input width-100" ng-options="country.id as (country.description) for country in vm.lookups.COUNTRY">
+                                </select> 
                                 </div>
                             </div>
                             <div class="control-group width-30 pull-left">
                                 <label class="control-label" for="state">State</label>
                                 <div class="controls">
-                                    <select
-                                        ng-model="vm.registration.bankAccount.bankAddress.city.state.id"
-                                        class="form-input width-100"
-                                        ng-change="vm.getCitiesByStates(vm.registration.bankAccount.bankAddress.city.state.id, 'bank')">
-                                        <option ng-repeat="states in vm.statesBank"
-                                                value="{{states.id}}">{{states.description}}</option>
-                                    </select>
+                                    <select ng-model="vm.registration.bankAccount.bankAddress.city.state.id"
+                                        ng-change="vm.getCitiesByStates(vm.registration.bankAccount.bankAddress.city.state.id,'bank')"
+                                        class="form-input width-100" ng-options="states.id as (states.description) for states in vm.statesBank">
+                                </select>
                                 </div>
                             </div>
                             <div class="control-group width-30 pull-left margin-left-5">
                                 <label class="control-label" for="city">City</label>
                                 <div class="controls">
-                                    <select
-                                        ng-model="vm.registration.bankAccount.bankAddress.city.id"
-                                        class="form-input width-100" ng-change="vm.checkAddress()">
-                                        <option ng-repeat="city in vm.citiesBank" value="{{city.id}}">{{city.description}}</option>
-                                    </select>
+                                     <select ng-model="vm.registration.bankAccount.bankAddress.city.id"
+                                        class="form-input width-100" ng-options="city.id as (city.description) for city in vm.citiesBank">
+                                </select>
                                 </div>
                             </div>
                             <div class="control-group width-30 pull-left margin-left-5">
@@ -660,10 +619,8 @@
                                     Country</label>
                                 <div class="controls">
                                     <select ng-model="vm.registration.passport.country.id"
-                                            class="form-input width-100">
-                                        <option ng-repeat="country in vm.lookups.COUNTRY"
-                                                value="{{country.id}}">{{country.description}}</option>
-                                    </select>
+                                        class="form-input width-100" ng-options="country.id as (country.description) for country in vm.lookups.COUNTRY">
+                                </select>
                                 </div>
                             </div>
                             <div class="control-group width-30 pull-left margin-left-5">
