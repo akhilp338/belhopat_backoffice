@@ -12,8 +12,8 @@
             Core_Service.getCandidateImpl("api/candidate/getCandidate", $stateParams.id).then(function (res) {
                 vm.registration = res.data;
                 for (var i = 0; i < countryType.length; i++) {
-                    vm.getStatesByCountry(vm.registration.permanentAddress.city.state.country.id,countryType[i]);
-                    vm.getCitiesByStates(vm.registration.permanentAddress.city.state.id,countryType[i]);
+                    vm.getStatesByCountry(vm.registration.permanentAddress.city.state.country.id, countryType[i]);
+                    vm.getCitiesByStates(vm.registration.permanentAddress.city.state.id, countryType[i]);
                 }
                 vm.isCheckboxEnable = true;
                 vm.isChecked = true;
@@ -46,6 +46,7 @@
             preValidateFormElements: false,
             displayOnlyLastErrorMsg: true
         });
+
         vm.addSkills = function () {
             vm.mainSelectedSkillList = vm.mainSelectedSkillList.concat(vm.subSelectedSkillList);
             vm.removeFromMainListArray(vm.getIndexesToRemove(vm.mainSkillList, vm.subSelectedSkillList));
@@ -56,12 +57,11 @@
         };
 
 
-
         $scope.steps = [
-            'Step 1: Personal Information',
-            'Step 2: Employment Details',
-            'Step 3: Official Information',
-            'Step 4: Family Details'
+            'Personal',
+            'Employment',
+            'Official',
+            'Family'
         ];
         $scope.selection = $scope.steps[0];
         $scope.getCurrentStepIndex = function () {
@@ -73,7 +73,7 @@
             if (!_.isUndefined($scope.steps[index])) {
                 $scope.selection = $scope.steps[index];
             }
-            Core_Service.calculateSidebarHeight();
+            //ore_Service.calculateSidebarHeight();
         };
 
         $scope.hasNextStep = function () {
@@ -97,7 +97,7 @@
                 var nextStep = stepIndex + 1;
                 $scope.selection = $scope.steps[nextStep];
             }
-            Core_Service.calculateSidebarHeight();
+
         };
 
         $scope.decrementStep = function () {
@@ -107,13 +107,13 @@
                 var previousStep = stepIndex - 1;
                 $scope.selection = $scope.steps[previousStep];
             }
-            Core_Service.calculateSidebarHeight();
+
         };
 
         $rootScope.active = 'candidate';
         vm.copyAddress = function ($event) {
             if (vm.registration.permanentAddress) {
-            	var _this = $event.target;
+                var _this = $event.target;
                 vm.registration.currentAddress = {};
                 vm.isCheckboxEnable = true;
                 for (var key in vm.registration.permanentAddress) {
@@ -121,16 +121,16 @@
                 }
 //                angular.element('.permntCountry').triggerHandler('change');//temp
                 vm.statesCurnt = vm.statesPerm;
-                vm.citiesCurnt =vm.citiesPerm;
+                vm.citiesCurnt = vm.citiesPerm;
             } else {
                 vm.isCheckboxEnable = false;
             }
-             if (!vm.isChecked) {
-                 for(var key in vm.registration.currentAddress){
-                     vm.registration.currentAddress[key] = "";
-                 }
-                 vm.statesCurnt = [];
-                 vm.citiesCurnt =[];
+            if (!vm.isChecked) {
+                for (var key in vm.registration.currentAddress) {
+                    vm.registration.currentAddress[key] = "";
+                }
+                vm.statesCurnt = [];
+                vm.citiesCurnt = [];
             }
         };
 
@@ -159,7 +159,7 @@
                         .then(function (response) {
                             console.log(response)
                         }, function (error) {
- console.log(error)
+                            console.log(error)
                         });
             }
         };
@@ -246,7 +246,7 @@
                         console.log(error)
                     });
         };
-        
+
         vm.getCitiesByStatesBank = function (stateId) {
             var data = {"id": stateId};
             vm.apiUrl = "api/getCitiesByState";
@@ -256,11 +256,9 @@
                     }, function (error) {
                     });
         };
-        
-//        $('#defaultPopup').datepick(); 
-        
-        Core_Service.calculateSidebarHeight();
+
     };
+
 
     AddCandidate_Ctrl.$inject = ["$scope", '$state', '$rootScope', 'Core_Service', '$stateParams', 'Core_HttpRequest', 'validationService'];
     angular.module('coreModule')

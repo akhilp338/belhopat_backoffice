@@ -14,7 +14,7 @@
             preValidateFormElements: false,
             displayOnlyLastErrorMsg: true
         });
-        Core_Service.calculateSidebarHeight();
+        
         vm.isCheckboxEnable = false;
         $scope.steps = [
             'Step 1: Personal Information',
@@ -35,7 +35,7 @@
             {
                 $scope.selection = $scope.steps[index];
             }
-            Core_Service.calculateSidebarHeight();
+            
         };
 
         $scope.hasNextStep = function () {
@@ -60,7 +60,7 @@
                 var nextStep = stepIndex + 1;
                 $scope.selection = $scope.steps[nextStep];
             }
-            Core_Service.calculateSidebarHeight();
+            
         };
 
         $scope.decrementStep = function () {
@@ -70,7 +70,7 @@
                 var previousStep = stepIndex - 1;
                 $scope.selection = $scope.steps[previousStep];
             }
-            Core_Service.calculateSidebarHeight();
+            
         };
 
         $rootScope.active = 'candidate';
@@ -128,7 +128,7 @@
                 responsive: true,
                 sScrollX: '100%',                
                 fnDrawCallback: function (settings, ajax) {
-                    Core_Service.calculateSidebarHeight();
+                    
                 },
                 language: {
                 	zeroRecords: 'No data to dispay',
@@ -208,7 +208,7 @@
             });
         };
         
-        Core_Service.calculateSidebarHeight();
+        
     };
 
     Candidate_Ctrl.$inject = ["$scope", '$state', '$rootScope', 'Core_Service', 'urlConfig', 'Core_ModalService', 'validationService'];

@@ -5,6 +5,11 @@ import java.security.SecureRandom;
 
 import org.springframework.stereotype.Component;
 
+/**
+ * @author BHP_DEV
+ * Generates random password
+ *
+ */
 @Component
 public class RandomPasswordGenerator {
 	  private SecureRandom random = new SecureRandom();

@@ -9,7 +9,11 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import com.belhopat.backoffice.model.City;
-
+/**
+ * @author BHP_DEV
+ * Data repository for City entity 
+ *
+ */
 @Repository
 public interface CityRepository extends JpaRepository<City, Long>, DataTablesRepository<City, Long> {
 

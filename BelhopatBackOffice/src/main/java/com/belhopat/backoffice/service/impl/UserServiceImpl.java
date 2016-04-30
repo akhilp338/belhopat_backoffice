@@ -17,6 +17,10 @@ import com.belhopat.backoffice.service.MailService;
 import com.belhopat.backoffice.service.UserService;
 import com.belhopat.backoffice.util.RandomPasswordGenerator;
 
+/**
+ * @author BHP_DEV
+ * Logged in user service
+ */
 @Component
 @Transactional
 public class UserServiceImpl implements UserService{
@@ -41,7 +45,6 @@ public class UserServiceImpl implements UserService{
 	public List<User> findAllUsers() {
 		return users;
 	}
-	
 	public User findById(long id) {
 		for(User user : users){
 			if(user.getId() == id){
@@ -50,7 +53,6 @@ public class UserServiceImpl implements UserService{
 		}
 		return null;
 	}
-	
 	public User findByName(String name) {
 		for(User user : users){
 			if(user.getUsername().equalsIgnoreCase(name)){
@@ -59,18 +61,15 @@ public class UserServiceImpl implements UserService{
 		}
 		return null;
 	}
-	
 	public void saveUser(User user) {
 		userRepo.save(user);
 		user.setId(counter.incrementAndGet());
 		users.add(user);
 	}
-
 	public void updateUser(User user) {
 		int index = users.indexOf(user);
 		users.set(index, user);
 	}
-
 	public void deleteUserById(long id) {
 		
 		for (Iterator<User> iterator = users.iterator(); iterator.hasNext(); ) {
@@ -80,7 +79,6 @@ public class UserServiceImpl implements UserService{
 		    }
 		}
 	}
-
 	public boolean isUserExist(User user) {
 		return findByName(user.getUsername())!=null;
 	}

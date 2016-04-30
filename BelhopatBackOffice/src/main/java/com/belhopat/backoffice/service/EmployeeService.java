@@ -15,4 +15,6 @@ public interface EmployeeService {
 
 	public DataTablesOutput<Employee> getEmployee(DataTablesInput input);
 
+	public ResponseEntity<Employee> getAnEmployee(Long id);
+
 }
