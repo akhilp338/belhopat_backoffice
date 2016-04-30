@@ -2,7 +2,7 @@
     var AddCandidate_Ctrl = function ($scope, $state, $rootScope, Core_Service, $stateParams, Core_HttpRequest, validationService) {
         var vm = this;
         $rootScope.showLoader = true;
-        var countryType = ["permenant", "current", "onsite", "bank"]
+        var countryType = ["permenant", "current", "onsite", "bank"];
         vm.setDpOpenStatus = function (id) {
             vm[id] = true
         };
@@ -157,6 +157,7 @@
                 vm.registerUrl = "api/candidate/saveOrUpdateCandidate";
                 Core_Service.candidateRegisterImpl(vm.registerUrl, vm.registration)
                         .then(function (response) {
+                        	Core_Service.sweetAlert("Done!",response.Message,"success");  
                             console.log(response)
                         }, function (error) {
                             console.log(error)

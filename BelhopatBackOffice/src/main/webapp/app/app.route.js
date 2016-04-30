@@ -105,10 +105,10 @@
             url: '/addEmployee',
             views: {
                 'sidebar@':{
-                    templateUrl: 'app/components/common/defaultTemplate.html' 
+                    templateUrl: '/BelhopatBackOffice/app/components/common/defaultTemplate.html' 
                 },
                 'content@': {
-                    templateUrl: 'app/components/employee/employeeAdd.html',
+                    templateUrl: '/BelhopatBackOffice/app/components/employee/employeeAdd.html',
                     controller: 'AddEmployee_Ctrl',
                     controllerAs: 'vm'
                 }
@@ -117,10 +117,10 @@
             url: '/edit/:id',
             views: {
                 'sidebar@':{
-                    templateUrl: 'app/components/common/defaultTemplate.html' 
+                    templateUrl: '/BelhopatBackOffice/app/components/common/defaultTemplate.html' 
                 },
                 'content@': {
-                    templateUrl: 'app/components/employee/employeeAdd.html',
+                    templateUrl: '/BelhopatBackOffice/app/components/employee/employeeAdd.html',
                     controller: 'AddEmployee_Ctrl',
                     controllerAs: 'vm'
                 }
