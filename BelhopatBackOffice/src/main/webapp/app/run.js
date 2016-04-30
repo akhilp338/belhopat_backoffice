@@ -24,6 +24,7 @@
         });
 
         $rootScope.$on('$stateChangeStart', function (event, toState, toParams, fromState, fromParams) {
+            $rootScope.showLoader = true;
         });
 
         $rootScope.$on('$stateChangeSuccess', function (event, toState, toParams, fromState, fromParams) {
@@ -31,6 +32,7 @@
                                   toState.name == "coreuser.employee.add" ||
                                   toState.name == "coreuser.candidate.edit" ||
                                   toState.name == "coreuser.employee.edit") ? true : false;
+                           //$rootScope.showLoader = false;
         });
     };
     angular.module('coreModule')
