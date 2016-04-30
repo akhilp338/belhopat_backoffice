@@ -120,6 +120,7 @@
                         console.log(response);
                         deferred.resolve(response)
                     }, function (error) {
+                    	swal(congrats, message, type)
                         console.log(error);
                         deferred.reject(error)
                     });
