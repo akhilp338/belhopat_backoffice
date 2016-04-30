@@ -73,10 +73,9 @@
 
         // Go to a defined step index
         $scope.goToStep = function (index) {
-            if (!_.isUndefined($scope.steps[index])) {
+            if (!_.isUndefined($scope.steps[index]) && vs.checkFormValidity($scope)) {
                 $scope.selection = $scope.steps[index];
             }
-            //ore_Service.calculateSidebarHeight();
         };
 
         $scope.hasNextStep = function () {
@@ -95,7 +94,7 @@
 
         $scope.incrementStep = function () {
             var stepIndex = $scope.getCurrentStepIndex();
-            if ($scope.hasNextStep())
+            if ($scope.hasNextStep() && vs.checkFormValidity($scope))
             {
                 var nextStep = stepIndex + 1;
                 $scope.selection = $scope.steps[nextStep];
