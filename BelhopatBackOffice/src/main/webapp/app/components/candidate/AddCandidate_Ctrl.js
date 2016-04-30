@@ -7,7 +7,12 @@
             vm[id] = true
         };
 
-        vm.registration = {}
+        vm.registration = {};
+        vm.mainSelectedSkillList = [];
+        vm.subSelectedSkillList = [];
+        vm.deSelectedSkills = [];
+        vm.confirmedSelectionItems = [];
+        
         if ($stateParams.id) {
             Core_Service.getCandidateImpl("api/candidate/getCandidate", $stateParams.id).then(function (res) {
                 vm.registration = res.data;
@@ -15,6 +20,7 @@
                     vm.getStatesByCountry(vm.registration.permanentAddress.city.state.country.id, countryType[i]);
                     vm.getCitiesByStates(vm.registration.permanentAddress.city.state.id, countryType[i]);
                 }
+                vm.mainSkillList = res.data.unselectedSkillSet;
                 vm.isCheckboxEnable = true;
                 vm.isChecked = true;
                 $rootScope.showLoader = false;
@@ -31,14 +37,11 @@
         Core_Service.getAllLookupValues(vm.urlForLookups)
                 .then(function (response) {
                     vm.lookups = Core_Service.processDateObjects(['dob', 'doj'], response.data);
+            if (!$stateParams.id)
                     vm.mainSkillList = vm.lookups.SKILL;
                 }, function (error) {
                 });
-
-        vm.mainSelectedSkillList = [];
-        vm.subSelectedSkillList = [];
-        vm.deSelectedSkills = [];
-        vm.confirmedSelectionItems = [];
+        
         vs.setGlobalOptions({
             debounce: 1500,
             scope: $scope,

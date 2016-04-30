@@ -283,10 +283,14 @@ button.link-btn {
     padding: 4px 15px!important;
 }
 .sweet-alert button.confirm {
-    border-radius: 0;
-    background-color: #009688!important;
+    border-radius: 0;    
+    background-color: rgb(204, 39, 39)!important;
 }
-
+.sweet-alert button.confirm:hover {
+display: inline-block;
+    box-shadow: rgba(204, 39, 39, 0.8) 0px 0px 2px, rgba(0, 0, 0, 0.0470588) 0px 0px 0px 1px inset!important;
+    background-color: rgb(204, 39, 39)!important;
+}
 .logout-button:hover{
     text-decoration: none;
     box-shadow: 0 3px 10px rgba(0,0,0,0.23),0 3px 10px rgba(0,0,0,0.16);
@@ -796,7 +800,8 @@ input.ng-touched.ng-invalid {
 }
 
 input.ng-touched.ng-valid{
-    border: 1px solid green;
+  border: 1px solid green;
+    border-right: none!important;
 }
 
 .dataTables_scrollHeadInner,
@@ -979,62 +984,46 @@ table.dataTable tbody th, table.dataTable tbody td {
     padding: 0px 10px!important;
 }
 
-/*Overriding material themes and styles*/
-.md-datepicker-input-container{
-    width: 84%;
-    border-bottom-style: hidden;
+.date-form{
+    margin: 0px!important;
 }
 
-.md-calendar-day-header {
-    margin: 0 auto;
+.ng-touched.ng-valid~.custom-datepick .btn-default,
+.ng-touched.ng-invalid~.custom-datepick .btn-default,
+.date-form:focus~.custom-datepick .btn-default{
+    border-left: none!important;
+   top: 5!important;
 }
 
-.md-datepicker-calendar{
-    text-align: center;
+.ng-touched.ng-valid~.custom-datepick .btn-default{
+       border: 1px solid #008000!important;
+    height: 25px;
+    border-left: none!important;
 }
 
-.md-default-theme .md-calendar-date.md-calendar-selected-date .md-calendar-date-selection-indicator, .md-calendar-date.md-calendar-selected-date .md-calendar-date-selection-indicator, .md-default-theme .md-calendar-date.md-focus.md-calendar-selected-date .md-calendar-date-selection-indicator, .md-calendar-date.md-focus.md-calendar-selected-date .md-calendar-date-selection-indicator{
-    background: rgb(0, 150, 136);
+.ng-touched.ng-invalid~.custom-datepick .btn-default{
+  border: 1px solid #E7EDEC;
 }
 
-table.md-calendar-day-header thead tr th {
-    border: 1px solid rgba(255,255,255,0.87)!important;
+.custom-datepick{
+    top: 3px;
 }
 
-.md-default-theme .md-calendar-day-header, .md-calendar-day-header {
-    background: rgb(0, 150, 136);
-    color: rgba(255,255,255,0.87);
+.date-form:focus~.custom-datepick{
+    top: 0;
 }
 
-table.md-calendar{
-    background-color: #E0F2F1;
+.date-form:focus~.custom-datepick .btn-default{
+box-shadow: 0 0 5px rgba(81, 203, 238, 1);
+    padding: 3px 0px 3px 3px;
+    margin: 5px 1px 3px 0px;
+    border: 1px solid rgba(81, 203, 238, 1);
+    top: 5!important;
 }
-
-.md-default-theme .md-calendar-date.md-calendar-date-today .md-calendar-date-selection-indicator, .md-calendar-date.md-calendar-date-today .md-calendar-date-selection-indicator{
-    border: 1px solid rgb(0, 150, 136);
+.date-form{
+    border-right: none; 
+    margin-top: 5px!important;
 }
-
-.md-default-theme .md-datepicker-open .md-datepicker-calendar-icon, .md-datepicker-open .md-datepicker-calendar-icon {
-    fill: rgb(0, 150, 136);
-}
-
-md-datepicker {
-    white-space: nowrap;
-    overflow: hidden;
-    padding-right: 18px;
-    margin-right: -18px;
-    vertical-align: middle;
-    height: 25px!important;
-    position: relative;
-    float: left;
-    width: 100%;
-    background-color: #E7EDEC;
-    margin-top: 4px;
-    border-radius: 5px;
-    border: 1px solid #DDDDDD;
-}
-/*Overriding material themes and styles*/
-
 
 /*theme4*/
 .radio-group{
@@ -1264,7 +1253,6 @@ legend {
     background: #E7EDEC;
     padding: 2px;
     border-left: none;
-    top: 3px;
     padding-top: 1px;
 }
 
