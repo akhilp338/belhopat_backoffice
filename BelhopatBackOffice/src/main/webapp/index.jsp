@@ -74,13 +74,13 @@ display: none !important;
 </style>
 </head>
 
-<body ng-class="{'login-page':isLogin,'loader-visible': showLoader}" ng-cloak>
+<body ng-class="{'login-page':isLogin,'loader-visible': showLoader,'inner-page':addPage}" ng-cloak>
     <div id="errorUser">${error}</div>
      <div id="successUser">${user}</div>     
 <div class="response-loader" ng-class="{show: showLoader}"></div>
 <img src="/images/loader-img.gif" class="loader-img loader-language" ng-if="languageSwitching" alt="loader">
     <header ui-view="header" class="header-div"></header>
     <div ui-view="sidebar" class="page-side-bar"></div>
-    <div ui-view="content" class="main" ng-class="{'add-candidate':addPage}"></div>
+    <div ui-view="content" class="main"></div>
     <footer ui-view="footer" class="footer-div"></footer>
 </html>
