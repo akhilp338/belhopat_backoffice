@@ -36,7 +36,7 @@ public class EmployeeController {
 	/**
 	 * @param employee
 	 * @return response string
-	 * Adds and edits the employee . Calls the service layer for persistance
+	 * Adds and edits the employee . Calls the service layer for persistence
 	 */
 	@ResponseBody
 	@RequestMapping(value = "/saveOrUpdateEmployee", method = RequestMethod.POST)
