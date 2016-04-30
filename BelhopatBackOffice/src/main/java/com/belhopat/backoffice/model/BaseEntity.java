@@ -2,6 +2,7 @@ package com.belhopat.backoffice.model;
 
 import java.util.Date;
 
+import javax.persistence.Column;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
@@ -12,6 +13,7 @@ public class BaseEntity implements Cloneable {
 
 	@Id
 	@GeneratedValue
+	@Column( name = "ID")
 	private Long id;
 
 	private Date createdDate;

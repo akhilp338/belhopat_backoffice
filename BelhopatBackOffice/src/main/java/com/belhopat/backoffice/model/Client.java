@@ -5,8 +5,6 @@ import java.util.Set;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
@@ -17,13 +15,12 @@ import javax.validation.constraints.NotNull;
 
 @Entity
 @Table ( name = "CLIENT_DTLS" )
-public class Client {
-
-	@Id
-	@GeneratedValue
-	@Column( name = "ID")
-	private Long id;
-
+public class Client extends BaseEntity {
+	
+	@NotNull
+	@Column( name = "CLNT_CID", unique = true )
+	private String clientId;
+	
 	@NotNull
 	@Column( name = "CLNT_NM", unique = true )
 	private String clientName;
@@ -40,12 +37,12 @@ public class Client {
 	@NotNull
 	@ManyToOne
 	@JoinColumn( name = "BHP_BDM" )
-	private Employee bDManager;
+	private Employee bussDManager;
 
 	@NotNull
 	@ManyToOne
 	@JoinColumn( name = "BU_HD" )
-	private Employee bUnitHead;
+	private Employee bussUnitHead;
 	
 	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn( name = "CLNT_ADDR" )
@@ -67,18 +64,18 @@ public class Client {
 	@JoinColumn( name = "CLNT_ST" )
 	private LookupDetail clientStatus;
 
-    @ManyToMany(cascade=CascadeType.ALL)  
+    @ManyToMany 
     @JoinTable( name="CLNT_POC", 
     joinColumns=@JoinColumn ( name = "CLNT_ID" ), 
     inverseJoinColumns=@JoinColumn( name = "POC_ID" ) ) 
 	private Set < PointOfContact > pointOfContactList;
-	
-	public Long getId() {
-		return id;
+
+	public String getClientId() {
+		return clientId;
 	}
 
-	public void setId(Long id) {
-		this.id = id;
+	public void setClientId(String clientId) {
+		this.clientId = clientId;
 	}
 
 	public String getClientName() {
@@ -105,20 +102,20 @@ public class Client {
 		this.accountManager = accountManager;
 	}
 
-	public Employee getbDManager() {
-		return bDManager;
+	public Employee getBussDManager() {
+		return bussDManager;
 	}
 
-	public void setbDManager(Employee bDManager) {
-		this.bDManager = bDManager;
+	public void setBussDManager(Employee bussDManager) {
+		this.bussDManager = bussDManager;
 	}
 
-	public Employee getbUnitHead() {
-		return bUnitHead;
+	public Employee getBussUnitHead() {
+		return bussUnitHead;
 	}
 
-	public void setbUnitHead(Employee bUnitHead) {
-		this.bUnitHead = bUnitHead;
+	public void setBussUnitHead(Employee bussUnitHead) {
+		this.bussUnitHead = bussUnitHead;
 	}
 
 	public Address getClientAddress() {
@@ -169,8 +166,4 @@ public class Client {
 		this.pointOfContactList = pointOfContactList;
 	}
 	
-	
-	
-	
-
 }

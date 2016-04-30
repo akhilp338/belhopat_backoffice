@@ -13,10 +13,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.belhopat.backoffice.dto.RequestObject;
-import com.belhopat.backoffice.model.Candidate;
 import com.belhopat.backoffice.model.Employee;
 import com.belhopat.backoffice.service.BaseService;
-import com.belhopat.backoffice.service.CandidateService;
 import com.belhopat.backoffice.service.EmployeeService;
 /**
  * @author Belhopat dev team
