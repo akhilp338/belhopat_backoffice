@@ -1,6 +1,7 @@
 package com.belhopat.backoffice.service;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.data.jpa.datatables.mapping.DataTablesInput;
 import org.springframework.data.jpa.datatables.mapping.DataTablesOutput;
@@ -17,7 +18,7 @@ public interface CandidateService {
 
 	public ResponseEntity<Candidate> getCandidate(Long candidateId);
 
-	public ResponseEntity<String> saveOrUpdateCandidate(Candidate candidate);
+	public ResponseEntity<Map<String, String>> saveOrUpdateCandidate(Candidate candidate);
 
 	public ResponseEntity<Void> deleteCandidates(List<Long> candidateIds);
 

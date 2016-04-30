@@ -1,6 +1,8 @@
 package com.belhopat.backoffice.service.impl;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
@@ -89,7 +91,8 @@ public class CandidateServiceImpl implements CandidateService {
 	 * saves or updates the candidate to the database
 	 */
 	@Override
-	public ResponseEntity<String> saveOrUpdateCandidate(Candidate candidateObj) {
+	public ResponseEntity<Map<String,String>> saveOrUpdateCandidate(Candidate candidateObj) {
+		Map<String,String> responseMap = new HashMap<>();
 		Candidate newCandidate = null;
 		User loggedInUser = SessionManager.getCurrentUserAsEntity();
 		if (candidateObj.getId() == null) {
@@ -98,10 +101,10 @@ public class CandidateServiceImpl implements CandidateService {
 			newCandidate = updateCandidate(loggedInUser, candidateObj);
 		}
 		if (newCandidate != null) {
-			String candidateName = newCandidate.getFirstName() + " " + newCandidate.getLastName();
-			return new ResponseEntity<String>(candidateName, HttpStatus.OK);
+			responseMap.put("Message", newCandidate.getFirstName() + " " + newCandidate.getLastName());
+			return new ResponseEntity<Map<String,String>>(responseMap, HttpStatus.OK);
 		}
-		return new ResponseEntity<String>(HttpStatus.NO_CONTENT);
+		return new ResponseEntity<Map<String,String>>( responseMap,HttpStatus.NO_CONTENT);
 	}
 
 	/*
