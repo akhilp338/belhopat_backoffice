@@ -6,9 +6,11 @@
         	Core_Service.ClearCredentials();
         	$state.go('login');
         }
-		vm.getTheme = function(){
-			angular.element("html").attr("class",vm.checkedValue);
+		vm.triggerButton = function(event){
+                    event.preventDefault();
+			angular.element(".link-btn").trigger("click");
 		};
+                
         vm.getUserName = localStorage["userName"];
     };
     Header_Ctrl.$inject = ["$scope", '$state', '$rootScope', 'Core_Service'];

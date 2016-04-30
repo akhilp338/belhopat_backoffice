@@ -2,7 +2,7 @@
     var AddCandidate_Ctrl = function ($scope, $state, $rootScope, Core_Service, $stateParams, Core_HttpRequest, validationService) {
         var vm = this;
         $rootScope.showLoader = true;
-        var countryType = ["permenant", "current", "onsite", "bank"]
+        var countryType = ["permenant", "current", "onsite", "bank"];
         vm.setDpOpenStatus = function (id) {
             vm[id] = true
         };
