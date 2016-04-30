@@ -11,7 +11,7 @@
         vm.mainSelectedSkillList = [];
         vm.subSelectedSkillList = [];
         vm.deSelectedSkills = [];
-        vm.confirmedSelectionItems = [];
+        vm.registration.confirmedSelectionItems = [];
         
         if ($stateParams.id) {
             Core_Service.getCandidateImpl("api/candidate/getCandidate", $stateParams.id).then(function (res) {
@@ -187,7 +187,7 @@
             for (var j = 0; j < vm.mainSelectedSkillList.length; j++) {
                 selected.push(vm.mainSelectedSkillList[j].id)
             }
-            vm.confirmedSelectionItems = selected;
+            vm.registration.confirmedSelectionItems = selected;
         };
         vm.removeFromMainListArray = function (indexes) {
             var selected = [];
@@ -197,7 +197,7 @@
             for (var j = 0; j < vm.mainSelectedSkillList.length; j++) {
                 selected.push(vm.mainSelectedSkillList[j].id)
             }
-            vm.confirmedSelectionItems = selected;
+            vm.registration.confirmedSelectionItems = selected;
         };
         //To Do(move these methods to base controller)
         vm.getStatesByCountry = function (countryId, flag) {
