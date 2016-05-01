@@ -112,6 +112,7 @@ var addEmployeeTable
                 }
                 $rootScope.selectedCandId = addEmployeeTable.row($('tr.selected').index()).data().id;
                 localStorage["selectedCandidate"] = addEmployeeTable.row($('tr.selected').index()).data().candidateId;
+                localStorage["selectedCandidateId"] =  $rootScope.selectedCandId ;
             } );
             
             vm.addEmployeeNextStep=function(candidateId){        	

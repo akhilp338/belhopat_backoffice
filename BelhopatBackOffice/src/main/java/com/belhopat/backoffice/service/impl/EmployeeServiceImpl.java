@@ -1,6 +1,5 @@
 package com.belhopat.backoffice.service.impl;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -18,11 +17,12 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
 
+import com.belhopat.backoffice.dto.EmployeeDto;
 import com.belhopat.backoffice.model.Candidate;
 import com.belhopat.backoffice.model.Employee;
 import com.belhopat.backoffice.model.LookupDetail;
-import com.belhopat.backoffice.model.Skill;
 import com.belhopat.backoffice.model.User;
+import com.belhopat.backoffice.repository.CandidateRepository;
 import com.belhopat.backoffice.repository.EmployeeRepository;
 import com.belhopat.backoffice.repository.LookupDetailRepository;
 import com.belhopat.backoffice.service.BaseService;
@@ -45,6 +45,9 @@ public class EmployeeServiceImpl implements EmployeeService {
 	EmployeeRepository employeeRepository;
 
 	@Autowired
+	CandidateRepository candidateRepository;
+
+	@Autowired
 	LookupDetailRepository lookupDetailRepository;
 
 	/*
@@ -52,20 +55,32 @@ public class EmployeeServiceImpl implements EmployeeService {
 	 * 
 	 * @see
 	 * com.belhopat.backoffice.service.EmployeeService#saveOrUpdateEmployee(com.
-	 * belhopat.backoffice.model.Employee)
-	 * saves the employee to the db
+	 * belhopat.backoffice.model.Employee) saves the employee to the db
 	 */
 	@Override
-	public ResponseEntity<String> saveOrUpdateEmployee(Employee employee) {
+	public ResponseEntity<String> saveOrUpdateEmployee(EmployeeDto employeeDto) {
 		User loggedInUser = SessionManager.getCurrentUserAsEntity();
-		if (employee.getId() == null) {
+		Employee hrManager = employeeRepository.findOne(employeeDto.getHrManager());
+		Employee accountManager = employeeRepository.findOne(employeeDto.getAccountManager());
+		LookupDetail businessUnit = lookupDetailRepository.findOne(employeeDto.getBusinessUnit());
+		Candidate employeeMaster = candidateRepository.findOne(employeeDto.getEmployeeMasterId());
+		Employee employee = null;
+		if (employeeDto.getId() == null) {
+			employee = new Employee();
 			employee.setBaseAttributes(loggedInUser);
-			Long increment = baseService.getSequenceIncrement(Candidate.class);
-			String candidateId = SequenceGenerator.generateEmployeeId(increment);
-			employee.setEmployeeId(candidateId);
+			Long increment = baseService.getSequenceIncrement(Employee.class);
+			String employeeId = SequenceGenerator.generateEmployeeId(increment);
+			employee.setEmployeeId(employeeId);
 		} else {
+			employee = employeeRepository.findOne(employeeDto.getId());
 			employee.setUpdateAttributes(loggedInUser);
 		}
+
+		employee.setAccountManager(accountManager);
+		employee.setBusinessUnit(businessUnit);
+		employee.setEmployeeMaster(employeeMaster);
+		employee.setHrManager(hrManager);
+		employee.setJoiningDate(employeeDto.getJoiningDate());
 		employee = employeeRepository.save(employee);
 		if (employee != null) {
 			String employeeName = employee.getEmployeeMaster().getFirstName() + " "
@@ -79,8 +94,8 @@ public class EmployeeServiceImpl implements EmployeeService {
 	 * (non-Javadoc)
 	 * 
 	 * @see com.belhopat.backoffice.service.EmployeeService#getEmployee(org.
-	 * springframework.data.jpa.datatables.mapping.DataTablesInput)
-	 * gets list of employee from database
+	 * springframework.data.jpa.datatables.mapping.DataTablesInput) gets list of
+	 * employee from database
 	 */
 	@Override
 	public DataTablesOutput<Employee> getEmployee(DataTablesInput input) {
@@ -97,12 +112,11 @@ public class EmployeeServiceImpl implements EmployeeService {
 	}
 
 	/*
-	 * (non-Javadoc)
-//	 * 
+	 * (non-Javadoc) // *
+	 * 
 	 * @see
 	 * com.belhopat.backoffice.service.EmployeeService#getAnEmployee(java.lang.
-	 * Long)
-	 * gets an employee from datatase
+	 * Long) gets an employee from datatase
 	 */
 	@Override
 	public ResponseEntity<Employee> getAnEmployee(Long id) {
@@ -123,11 +137,12 @@ public class EmployeeServiceImpl implements EmployeeService {
 		dropDownMap.put(Constants.CEO_DRP, getEmployeeDesignation(Constants.CEO_LOOKUP));
 		dropDownMap.put(Constants.BUH_DRP, getEmployeeDesignation(Constants.BUH_LOOKUP));
 		dropDownMap.put(Constants.BU_DRP, lookupDetailRepository.findByLookupKey(Constants.DIVISION));
-		
+
 		return dropDownMap;
 	}
-	private List<Employee> getEmployeeDesignation(Long lookupId){
+
+	private List<Employee> getEmployeeDesignation(Long lookupId) {
 		return employeeRepository.fectchEmployeeWithDesig(lookupId);
-		
+
 	}
 }

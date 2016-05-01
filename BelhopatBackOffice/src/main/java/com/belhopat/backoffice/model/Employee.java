@@ -29,19 +29,18 @@ public class Employee extends BaseEntity{
 	private String employeeId;
 
 	@JsonIgnore
-	@ManyToOne(fetch=FetchType.LAZY)
+	@ManyToOne(fetch=FetchType.EAGER)
 	private Employee reportingManager;
 
+	
+	@ManyToOne
+	private LookupDetail businessUnit;
+	
 	@JsonIgnore
 	@ManyToOne(fetch=FetchType.EAGER)
-	private BusinessUnit businessUnit;
-	
-	@JsonIgnore
-	@ManyToOne(fetch=FetchType.LAZY)
 	private Employee accountManager;
-	
 	@JsonIgnore
-	@ManyToOne(fetch=FetchType.LAZY)
+	@ManyToOne(fetch=FetchType.EAGER)
 	private Employee hrManager;
 	
 	@ManyToOne
@@ -57,10 +56,6 @@ public class Employee extends BaseEntity{
 
 	public void setReportingManager(Employee reportingManager) {
 		this.reportingManager = reportingManager;
-	}
-
-	public BusinessUnit getBusinessUnit() {
-		return businessUnit;
 	}
 
 	
@@ -105,9 +100,6 @@ public class Employee extends BaseEntity{
 		this.employeeId = employeeId;
 	}
 
-	public void setBusinessUnit(BusinessUnit businessUnit) {
-		this.businessUnit = businessUnit;
-	}
 
 	public Employee getAccountManager() {
 		return accountManager;
@@ -133,6 +125,14 @@ public class Employee extends BaseEntity{
 		this.workLocation = workLocation;
 	}
 
+
+	public LookupDetail getBusinessUnit() {
+		return businessUnit;
+	}
+
+	public void setBusinessUnit(LookupDetail businessUnit) {
+		this.businessUnit = businessUnit;
+	}
 
 	public TimeZone getTimeZone() {
 		return timeZone;
