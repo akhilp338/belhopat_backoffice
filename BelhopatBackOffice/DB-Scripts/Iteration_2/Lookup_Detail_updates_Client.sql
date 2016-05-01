@@ -1,13 +1,6 @@
-INSERT INTO `belhopat_backoffice`.`LookupDetail`
-(`code`,`description`,`lookup_id`)
+INSERT INTO `belhopat_backoffice`.`LookupDetail`(`code`,`description`,`lookup_id`)
 VALUES
 ('ACTIVE','Active',(SELECT id FROM `belhopat_backoffice`.`Lookup` WHERE lookupKey ='CLSTATS')),
-('INACTIVE','INACTIVE',(SELECT id FROM `belhopat_backoffice`.`Lookup` WHERE lookupKey ='CLSTATS'));
-INSERT INTO `belhopat_backoffice`.`LookupDetail` (`code`, `description`, `lookup_id`) 
-VALUES ('INACTIVE', 'Inactive', (SELECT id FROM `belhopat_backoffice`.`Lookup` WHERE lookupKey ='ESTATS'));
-
-INSERT INTO `belhopat_backoffice`.`LookupDetail`
-(`code`,`description`,`lookup_id`)
-VALUES
-('BDM','Business Development Manager',
-	(SELECT id FROM `belhopat_backoffice`.`Lookup` WHERE lookupKey ='DESIG'));
+('INACTIVE','Inactive',(SELECT id FROM `belhopat_backoffice`.`Lookup` WHERE lookupKey ='CLSTATS')),
+('INACTIVE', 'Inactive', (SELECT id FROM `belhopat_backoffice`.`Lookup` WHERE lookupKey ='ESTATS')),
+('BDM','Business Development Manager',(SELECT id FROM `belhopat_backoffice`.`Lookup` WHERE lookupKey ='DESIG'));
