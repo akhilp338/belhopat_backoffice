@@ -37,7 +37,7 @@ public class PointOfContact {
 	private String contactNo;
 	
 	@Column( name = "MOB_NO" )
-	private String mobnO;
+	private String mobNo;
 
 	@NotNull
 	@Column( name = "WORK_AR" )
@@ -84,11 +84,11 @@ public class PointOfContact {
 	}
 
 	public String getMobnO() {
-		return mobnO;
+		return mobNo;
 	}
 
 	public void setMobnO(String mobnO) {
-		this.mobnO = mobnO;
+		this.mobNo = mobnO;
 	}
 
 	public String getAreaOfWork() {
