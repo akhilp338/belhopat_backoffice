@@ -171,7 +171,7 @@
                 }
             }
         }).state('coreuser.employee.nextStep', {
-            url: urlConfig.root_path+'addEmployeeFinal',
+            url: urlConfig.root_path+'addEmployeeFinal/:id:candId',
             views: {
                 'content@': {
                     templateUrl: '/BelhopatBackOffice/app/components/employee/employeeAddFinal.html',

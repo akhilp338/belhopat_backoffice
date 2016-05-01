@@ -1,72 +1,94 @@
 <div class="form-horizontal col-md-12 col-lg-12 col-sm-12 col-xs-12" name="reg_form">
     <form name="regForm" id="form_0" novalidate>
         <div class="row">
-            <div class="col-md-6 col-lg-6 col-sm-6 col-xs-12">
+            <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
                 <fieldset class="scheduler-border">
                     <legend class="scheduler-border">Basic Information</legend>
-                      <div class="control-group width-30 pull-left">
+                      <div class="control-group col-md-3 col-lg-3 col-sm-4 col-xs-12">
                        <label class="control-label" >Candidate  Id</label>
                         <div class="controls">
-                            <label class="control-label" >{{vm.candidateId}}</label>
+                             <input type="text" name="joiningDate" id="joiningDate"
+                                  value="{{vm.candidateId}}" class="form-input width-100" disabled/>                            
                         </div>
                     </div>
-                    <div class="control-group width-30 pull-left">
-                       <label class="control-label" for="firstName">Joining Date</label>
-                        <div class="controls">
-                            <input type="text" name="joiningDate" id="joiningDate"
-                                   ng-model="vm.registration.joiningDate" class="form-input width-100"
-                                   placeholder="Joining Date" validation="required:alt=Required field" />
-                        </div>
-                    </div>
-                    <div class="control-group width-30 pull-left">
-                        <label class="control-label" for="businessUnit">Business Unit</label>
-                        <div class="controls">
-                            <input type="text" name="businessUnit" id="businessUnit"
-                                   ng-model="vm.registration.businessUnit.id" class="form-input width-100"
-                                   placeholder="Business Unite" validation="required:alt=Required field" />
-                        </div>
-                   </div>
-                    <div class="control-group width-30 pull-left">
-                        <label class="control-label" for="reportingManager">Reporting
-                            Manager</label>
-                        <div class="controls">
-                            <input type="text" name="reportingManager" id="reportingManager"
-                                  ng-model="vm.registration.reportingManager.id" class="form-input width-100"
-                                   placeholder="Reporting Manager" validation="required:alt=Required field" />
-                        </div>
-                    </div>
-                    <div class="control-group width-30 pull-left">
-                        <label class="control-label" for="accountManager">Account Manager</label>
-                        <div class="controls">
-                            <input type="text" name="accountManager" id="accountManager"
-                                   ng-model="vm.registration.accountManager.id" class="form-input width-100"
-                                   placeholder="Account Manager" validation="required:alt=Required field" />
-                       </div>
-                    </div>
-                    <div class="control-group width-30 pull-left">
-                        <label class="control-label" for="hrManager">HR</label>
-                        <div class="controls">
-                            <input type="text" name="hrManager" id="hrManager"
-                                   ng-model="vm.registration.hrManager.id" class="form-input width-100"
-                                   placeholder="HR" validation="required:alt=Required field" />
-                        </div>
-                    </div>
-                    <div class="control-group width-30 pull-left">
-                        <label class="control-label" for="workLocation">Work Location</label>
-                        <div class="controls">
-                            <input type="text" name="workLocation" id="workLocation"
-                                   ng-model="vm.registration.workLocation.id" class="form-input width-100"
-                                   placeholder="Work Location" validation="required:alt=Required field" />
-                        </div>
-                    </div>
-                    <div class="control-group width-30 pull-left">
-                       <label class="control-label" for="timeZone">Time Zone</label>
-                        <div class="controls">
-                            <input type="text" name="timeZone" id="timeZone"
-                                   ng-model="vm.registration.timeZone.id" class="form-input width-100"
-                                   placeholder="Time Zone" validation="required:alt=Required field" />
-                        </div>
-                    </div>
+                       <div class="control-group col-lg-4 col-md-4 col-sm-6 col-xs-6 pull-left">
+                                <label class="control-label" for="dob">Joining Date</label>
+                                <div class="controls">
+                                    <p class="input-group">
+                                    <input type="text"
+                                           name="jd"
+                                           show-button-bar ="false"
+                                           class="form-input date-form"                                           
+                                           ng-model="vm.registration.joiningDate"
+                                           is-open="vm.isDobPickerOpen"
+                                           uib-datepicker-popup="yyyy-MM-dd"
+                                           validation="required:alt=Required field"
+                                           readonly/>
+                                    <span class="input-group-btn custom-datepick">
+                                        <button type="button" 
+                                                class="btn btn-default" 
+                                                ng-click="vm.setDpOpenStatus('isDobPickerOpen')">
+                                            <i class="glyphicon glyphicon-calendar"></i>
+                                        </button>
+                                    </span>
+                                </p>
+                                </div>
+                            </div>
+                 	<div
+						class="control-group col-lg-2 col-md-2 col-sm-6 col-xs-6 pull-left">
+						<label class="control-label" for="dob">Business Unit</label>
+						<div class="controls">
+							<select name="bloodGroup"
+								ng-model="vm.registration.bloodGroup.id"
+								validation="required:alt=required" class="form-input width-100"
+								ng-options="business.id as (business.description) for business in vm.lookups.bu">
+								<option style="display: none" value="">...</option>
+							</select>
+						</div>
+					</div>
+                   <div
+						class="control-group col-lg-2 col-md-2 col-sm-6 col-xs-6 pull-left">
+						<label class="control-label" for="dob">Account Manager</label>
+						<div class="controls">
+							<select name="bloodGroup"
+								ng-model="vm.registration.bloodGroup.id"
+								validation="required:alt=required" class="form-input width-100"
+								ng-options="accounts.id as (accounts.employeeId) for accounts in vm.lookups.am">
+								<option style="display: none" value="">...</option>
+							</select>
+						</div>
+					</div>
+					<div
+						class="control-group col-lg-2 col-md-2 col-sm-6 col-xs-6 pull-left">
+						<label class="control-label" for="dob">HR Manager</label>
+						<div class="controls">
+							<select name="bloodGroup"
+								ng-model="vm.registration.bloodGroup.id"
+								validation="required:alt=required" class="form-input width-100"
+								ng-options="accounts.id as (accounts.employeeId) for accounts in vm.lookups.hrm">
+								<option style="display: none" value="">...</option>
+							</select>
+						</div>
+					</div>
+					<div class="control-group width-30 pull-left">
+						<label class="control-label" for="workLocation">Work
+							Location</label>
+						<div class="controls">
+							<input type="text" name="workLocation" id="workLocation"
+								ng-model="vm.registration.workLocation.id"
+								class="form-input width-100" placeholder="Work Location"
+								validation="required:alt=Required field" />
+						</div>
+					</div>
+					<div class="control-group width-30 pull-left">
+						<label class="control-label" for="timeZone">Time Zone</label>
+						<div class="controls">
+							<input type="text" name="timeZone" id="timeZone"
+								ng-model="vm.registration.timeZone.id"
+								class="form-input width-100" placeholder="Time Zone"
+								validation="required:alt=Required field" />
+						</div>
+					</div>
                 </fieldset>
             </div>
         </div>
@@ -77,4 +99,5 @@
 </div>
 
 <div class="clearfix"></div>
- <button type="button"  class="btn btn-default"  ng-click="vm.addEmployeeNextStep(candidateId)">NEXT STEP</button>
+<button type="button" class="btn btn-default"
+	ng-click="vm.addEmployeeNextStep(candidateId)">NEXT STEP</button>

@@ -31,5 +31,20 @@ public class Constants {
 	public static final String CITY = "CITY";
 	public static final String STATE = "STATE";
 	public static final String SKILL = "SKILL";
+	
+	/*Fetch head employee constants*/
+	public static final Long HRM_LOOKUP=16L;
+	public static final Long BUH_LOOKUP=17L;
+	public static final Long AM_LOOKUP=18L;
+	public static final Long HRR_LOOKUP=19L;
+	public static final Long FM_LOOKUP=20L;
+	public static final Long CEO_LOOKUP=21L;
+	public static final String HRM_DRP = "hrm";
+	public static final String HRR_DRP = "hrr";
+	public static final String AM_DRP = "am";
+	public static final String CEO_DRP = "ceo";
+	public static final String FM_DRP = "fm";
+	public static final String BUH_DRP = "buh";
+	public static final String BU_DRP = "bu";
 
 }
