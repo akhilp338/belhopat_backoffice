@@ -84,7 +84,6 @@ public class Candidate extends BaseEntity {
 	private Address onsiteAddress;
 
 	@OneToMany(fetch=FetchType.EAGER)
-	@JsonIgnore
 	private List<Skill> skillSet;
 
 	private Integer priorExperienceYear;
