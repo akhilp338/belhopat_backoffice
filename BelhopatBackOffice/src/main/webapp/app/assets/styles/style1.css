@@ -1252,3 +1252,8 @@ legend {
 p.input-group input {
     border-radius: 5px;
 }
+tr.selected{
+	background-color: #575f59 !important;
+    color: white  !important;
+    font-weight: bolder !important;
+}

@@ -38,6 +38,7 @@
 <script src="/BelhopatBackOffice/app/assets/libs/js/angular-translate-loader-static-files.min.js"></script>
 <script src="/BelhopatBackOffice/app/assets/libs/js/angular-validation.min.js"></script>
 <script src="/BelhopatBackOffice/app/assets/libs/js/jquery.spring-friendly.min.js"></script>
+<script src="/BelhopatBackOffice/app/assets/libs/js/angular-idle.js"></script>
 
 <!-- AngularJS custom codes -->
 
@@ -61,11 +62,13 @@
 <script src="/BelhopatBackOffice/app/components/candidate/ViewCandidate_Ctrl.js"></script>
 <script src="/BelhopatBackOffice/app/components/candidate/DeleteCandidate_Ctrl.js"></script>
 <script src="/BelhopatBackOffice/app/components/employee/Employee_Ctrl.js"></script>
+<script src="/BelhopatBackOffice/app/components/employee/AddEmployee_Ctrl.js"></script>
+<script src="/BelhopatBackOffice/app/components/employee/AddEmployee_Ctrl_Final.js"></script>
 <script src="/BelhopatBackOffice/app/components/client/Client_Ctrl.js"></script>
 <script src="/BelhopatBackOffice/app/components/holiday/Holiday_Ctrl.js"></script>
 <script src="/BelhopatBackOffice/app/components/opportunity/Opp_Ctrl.js"></script>
 <script src="/BelhopatBackOffice/app/components/candidate/ViewCandidate_Ctrl.js"></script>
-<script src="/BelhopatBackOffice/app/components/employee/AddEmployee_Ctrl.js"></script>
+
 
 <style>
 [ng:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {

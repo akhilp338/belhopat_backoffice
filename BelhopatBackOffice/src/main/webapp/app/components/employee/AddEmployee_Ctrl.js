@@ -1,5 +1,5 @@
 (function () {
-    var AddEmployee_Ctrl = function ($scope, $state, $rootScope, Core_Service, $stateParams, Core_HttpRequest, validationService) {
+    var AddEmployee_Ctrl = function ($scope, $state, $rootScope, Core_Service,urlConfig, $stateParams, Core_HttpRequest, validationService) {
         var vm = this;
         $rootScope.showLoader = true;
         vm.registration = {};
@@ -33,11 +33,104 @@
 
                     });
         };
+        vm.addEmployeeNextStep=function(candidateId){
+        	
+        	$scope.candidateId=candidateId;
+        	$state.go('coreuser.employee.nextStep', {id: $rootScope.id});
+        	 Core_Service.getCandidateImpl("api/employee/getAnEmployee", $stateParams.id).then(function (res) {
+                 vm.registration = res.data;               
+                 vm.isCheckboxEnable = true;
+                 vm.isChecked = true;
+                 $rootScope.showLoader = false;
+             }, function (err) {
+                 vm.registration = {};
+             });
+        }
+        angular.element(document).ready(function () {
+            var oTable = angular.element('#candidatesList').DataTable({
+                ajax: urlConfig.http + window.location.host + urlConfig.api_root_path + "candidate/getCandidates",
+                serverSide: true,
+                bDestroy: true,
+                processing: true,
+                responsive: true,
+                sScrollX: '100%',                
+                fnDrawCallback: function (settings, ajax) {
+                    
+                },
+                language: {
+                	zeroRecords: 'No data to dispay',
+                    searchPlaceholder: 'Search',
+                    search: '',
+                    infoEmpty: '',
+                    infoFiltered:''
+                },
+                order: [[ 0, "desc" ]],
+                aoColumns: [ {
+                    	data: 'id',
+                    	visible : false
+                	},{
+                        title: "Candidate ID",
+                        data: 'candidateId',
+                    }, {
+                        title: "Name",
+                        data: 'firstName',
+                    }, {
+                        title: "Contact No",
+                        data: 'officialContactNo',
+                    }, {
+                        title: "Country To Visit",
+                        data: 'countryToVisit.description',
+                    }, {
+                        title: "Division",
+                        data: 'division.description',
+                    }, {
+                        title: "Designation",
+                        data: 'designation.code',
+                    }, {
+                        title: "Employment Status",
+                        data: 'employmentStatus.description',
+                    },{
+                        data: 'id',
+                        bSortable: false,
+                        sClass: "button-column",
+                        render: function (data) {
+                            $rootScope.showLoader = false;
+                            return '<div class="action-buttons">' +
+                                    '<span  value="' + data + '" class="actions action-view fa-stack fa-lg pull-left" title="View">'+
+                                    '<i class="fa fa-eye" aria-hidden="true"></i></span>' +
+                                    '<span value="' + data + '" class="actions action-edit fa-stack fa-lg pull-left" title="Edit">'+
+                                    '<i class="fa fa-pencil-square-o" aria-hidden="true"></i></i></span></div>'
+                        }
+                    }]
+            });
+            $('#candidatesList').on('click', '.action-view', function () {
+            	console.log(this.getAttribute('value'));
+                vm.getCandidate(this.getAttribute('value'));
+            });
+            $('#candidatesList').on('click', '.action-edit', function () {
+            	console.log("asdasd"+this.getAttribute('value'));
+                $rootScope.showLoader = true;
+                $rootScope.id = this.getAttribute('value');
+                $state.go('coreuser.candidate.edit', {id: $rootScope.id});
+            });
+            $('#candidatesList tbody').on( 'click', 'tr', function () {
+            	console.log(oTable.$('tr.selected'));
+                if ( $(this).hasClass('selected') ) {
+                    $(this).removeClass('selected');
+                }
+                else {
+                	oTable.$('tr.selected').removeClass('selected');
+                    $(this).addClass('selected');
+                }
+            } );
+            
+        });
+        
         Core_Service.calculateSidebarHeight();
         $rootScope.showLoader = false;
     };
 
-    AddEmployee_Ctrl.$inject = ["$scope", '$state', '$rootScope', 'Core_Service', '$stateParams', 'Core_HttpRequest', 'validationService'];
+    AddEmployee_Ctrl.$inject = ["$scope", '$state', '$rootScope', 'Core_Service','urlConfig', '$stateParams', 'Core_HttpRequest', 'validationService'];
     angular.module('coreModule')
             .controller('AddEmployee_Ctrl', AddEmployee_Ctrl);
 })();
