@@ -7,23 +7,16 @@
 		}
 		angular.element(document).ready(
 		function() {
-			var oTable = angular.element('#clientList').DataTable({
-						ajax : {
-							url:urlConfig.http+ window.location.host+ urlConfig.api_root_path+ "client/getClients",
-						success: function (data) {
-							data.data = data.data || [{}];
-	                    },
-	                    error: function (request, error) {
-	                          alert('Network error has occurred please try again!');
-	                    }},
-						serverSide : true,
-						bDestroy : true,
-						processing : true,
-						responsive : true,
-						sScrollX : '100%',
-						fnDrawCallback : function(settings, ajax) {
-							Core_Service.calculateSidebarHeight();
-						},
+	                    var oTable = angular.element('#clientList').DataTable({
+	                        ajax:urlConfig.http+ window.location.host+ urlConfig.api_root_path+ "client/getClients",
+	                        serverSide: true,
+	                        bDestroy: true,
+	                        processing: true,
+	                        responsive: true,
+	                        sScrollX: '100%',                
+	                        fnDrawCallback: function (settings, ajax) {
+	                        	Core_Service.calculateSidebarHeight();
+	                        },
 						language : {
 							zeroRecords : 'No data to display',
 							searchPlaceholder : 'Search',
@@ -68,6 +61,7 @@
 									}
 								}],
 					});
+			
             $('#clientList').on('click', '.action-edit', function () {
                 $rootScope.showLoader = true;
                 $rootScope.id = this.getAttribute('value');

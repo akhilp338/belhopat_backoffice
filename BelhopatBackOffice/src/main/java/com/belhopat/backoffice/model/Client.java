@@ -5,6 +5,7 @@ import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
@@ -71,7 +72,7 @@ public class Client extends BaseEntity {
 
 //	@JsonIgnore
 //    @NotNull
-	@OneToMany(cascade = CascadeType.ALL)
+	@OneToMany(fetch=FetchType.EAGER, cascade = CascadeType.ALL)
 //    @JoinTable( name="CLNT_POC", 
 //    joinColumns=@JoinColumn ( name = "CLNT_ID" ), 
 //    inverseJoinColumns=@JoinColumn( name = "POC_ID" ) ) 
