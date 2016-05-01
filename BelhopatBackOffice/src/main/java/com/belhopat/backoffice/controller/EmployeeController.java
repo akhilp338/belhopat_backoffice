@@ -70,7 +70,7 @@ public class EmployeeController {
 	@ResponseBody
 	@RequestMapping(value = "/getEmployeeDropdowns", method = RequestMethod.POST)
 	public Map<String, List<?>> getEmployeeDropdowns() {
-		return employeeService.getEmployeeDropdowns();
+		return baseService.getEmployeeDropdowns();
 	}
 	
 

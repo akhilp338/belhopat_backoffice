@@ -24,5 +24,7 @@ public interface BaseService {
 	public List<Skill> getUnselectedSkillSet(List<Skill> selectedSkillSet);
 
 	ResponseEntity<Map<String, List<?>>> getEmployeeDropDownData();
+	
+	public Map<String, List<?>> getEmployeeDropdowns();
 
 }

@@ -1,8 +1,5 @@
 package com.belhopat.backoffice.service;
 
-import java.util.List;
-import java.util.Map;
-
 import org.springframework.data.jpa.datatables.mapping.DataTablesInput;
 import org.springframework.data.jpa.datatables.mapping.DataTablesOutput;
 import org.springframework.http.ResponseEntity;
@@ -19,7 +16,5 @@ public interface EmployeeService {
 	public DataTablesOutput<Employee> getEmployee(DataTablesInput input);
 
 	public ResponseEntity<Employee> getAnEmployee(Long id);
-
-	public Map<String, List<?>> getEmployeeDropdowns();
 
 }

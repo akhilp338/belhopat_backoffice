@@ -13,29 +13,36 @@
 //                vm.registration = {};
 //            });
 //        }
-//        vm.urlForLookups = "api/client/getDropDownData";
-//        Core_Service.getAllLookupValues(vm.urlForLookups)
-//                .then(function (response) {
-//                    vm.lookups = response.data;
-//                }, function (error) {
-//
-//                });
+        vm.urlForLookups = "api/client/getDropDownData";
+        Core_Service.getAllLookupValues(vm.urlForLookups)
+                .then(function (response) {
+                    vm.lookups = response.data;
+                    console.log(vm.lookups);
+                }, function (error) {
+
+                });
 
         $rootScope.active = 'client';
+        vm.createPocSection = function(){
+        	vm.template = "<div class = 'candidate-details-wrapper'>"
+//        	alert('heres');
+        }
+        
 //        vm.cancelRegisteration = function (){
 //            $state.go("coreuser.client")
 //        };
 //        vm.addClient = function () {
 //            $state.go("coreuser.client.add");
 //        };
-//        vm.clientRegister = function () {
-//            vm.registerUrl = "api/client/saveOrUpdateClient";
-//            Core_Service.registerImpl(vm.registerUrl, vm.registration)
-//                    .then(function (response) {
-//                    }, function (error) {
-//
-//                    });
-//        };
+        vm.clientRegister = function () {
+            vm.registerUrl = "api/client/saveOrUpdateClient";
+            console.log(vm.registration);
+            Core_Service.registerImpl(vm.registerUrl, vm.registration)
+                    .then(function (response) {
+                    }, function (error) {
+
+                    });
+        };
         Core_Service.calculateSidebarHeight();
         $rootScope.showLoader = false;
     };

@@ -3,7 +3,6 @@ package com.belhopat.backoffice.service.impl;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Predicate;
@@ -28,7 +27,6 @@ import com.belhopat.backoffice.repository.LookupDetailRepository;
 import com.belhopat.backoffice.service.BaseService;
 import com.belhopat.backoffice.service.EmployeeService;
 import com.belhopat.backoffice.session.SessionManager;
-import com.belhopat.backoffice.util.Constants;
 import com.belhopat.backoffice.util.sequence.SequenceGenerator;
 
 /**
@@ -127,22 +125,4 @@ public class EmployeeServiceImpl implements EmployeeService {
 		return new ResponseEntity<Employee>(HttpStatus.NO_CONTENT);
 	}
 
-	@Override
-	public Map<String, List<?>> getEmployeeDropdowns() {
-		Map<String, List<?>> dropDownMap = new HashMap<>();
-		dropDownMap.put(Constants.HRM_DRP, getEmployeeDesignation(Constants.HRM_LOOKUP));
-		dropDownMap.put(Constants.HRR_DRP, getEmployeeDesignation(Constants.HRR_LOOKUP));
-		dropDownMap.put(Constants.AM_DRP, getEmployeeDesignation(Constants.AM_LOOKUP));
-		dropDownMap.put(Constants.FM_DRP, getEmployeeDesignation(Constants.FM_LOOKUP));
-		dropDownMap.put(Constants.CEO_DRP, getEmployeeDesignation(Constants.CEO_LOOKUP));
-		dropDownMap.put(Constants.BUH_DRP, getEmployeeDesignation(Constants.BUH_LOOKUP));
-		dropDownMap.put(Constants.BU_DRP, lookupDetailRepository.findByLookupKey(Constants.DIVISION));
-
-		return dropDownMap;
-	}
-
-	private List<Employee> getEmployeeDesignation(Long lookupId) {
-		return employeeRepository.fectchEmployeeWithDesig(lookupId);
-
-	}
 }
