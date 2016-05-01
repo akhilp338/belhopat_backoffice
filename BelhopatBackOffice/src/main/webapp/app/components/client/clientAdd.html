@@ -132,9 +132,9 @@
 			<div class="row">
 
 				<div class="col-md-6 col-lg-6 col-sm-6 col-xs-12">
-					<fieldset class="scheduler-border">
+					<fieldset class="scheduler-border poc-section-wrapper">
 						<legend class="scheduler-border">Point Of Contact Details</legend>
-
+						<div class="poc-section">
 						<div
 							class="control-group col-lg-4 col-md-4 col-sm-6 col-xs-6 pull-left">
 							<label class="control-label" for="pocName">POC Name</label>
@@ -202,12 +202,19 @@
 									validation="required:alt=Required field" />
 							</div>
 						</div>
+						</div>
+						<label class="control-label col-lg-4 col-md-4 col-sm-6 col-xs-6 pull-left add-poc" 
+						for="addPoc" ng-click="vm.createPocSection()">+ Add POC</label>
 					</fieldset>
 				</div>
 			</div>
 
 		</div>
 	</form>
+	    <div class="pull-right">
+        <button style="margin: 20px 0;" class="logout-button"
+                ng-click="vm.clientRegister()">Confirm and Register</button>
+    </div>
 </div>
 
 
