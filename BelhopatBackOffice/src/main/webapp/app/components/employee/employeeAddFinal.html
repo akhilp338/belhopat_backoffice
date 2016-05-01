@@ -1,26 +1,40 @@
-<div class="form-horizontal col-md-12 col-lg-12 col-sm-12 col-xs-12"
-	name="reg_form">
-	<form name="regForm" id="form_0" novalidate>
-		<div class="row">
-			<div class="col-md-6 col-lg-6 col-sm-6 col-xs-12">
-				<fieldset class="scheduler-border">
-					<legend class="scheduler-border">Basic Information</legend>
-					<div class="control-group width-30 pull-left">
-						<label class="control-label">Candidate Id</label>
-						<div class="controls">
-							<label class="control-label">{{vm.candidateId}}</label>
-						</div>
-					</div>
-					<div class="control-group width-30 pull-left">
-						<label class="control-label" for="firstName">Joining Date</label>
-						<div class="controls">
-							<input type="text" name="joiningDate" id="joiningDate"
-								ng-model="vm.registration.joiningDate"
-								class="form-input width-100" placeholder="Joining Date"
-								validation="required:alt=Required field" />
-						</div>
-					</div>
-					<div
+<div class="form-horizontal col-md-12 col-lg-12 col-sm-12 col-xs-12" name="reg_form">
+    <form name="regForm" id="form_0" novalidate>
+        <div class="row">
+            <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
+                <fieldset class="scheduler-border">
+                    <legend class="scheduler-border">Basic Information</legend>
+                      <div class="control-group col-md-3 col-lg-3 col-sm-4 col-xs-12">
+                       <label class="control-label" >Candidate  Id</label>
+                        <div class="controls">
+                             <input type="text" name="joiningDate" id="joiningDate"
+                                  value="{{vm.candidateId}}" class="form-input width-100" disabled/>                            
+                        </div>
+                    </div>
+                       <div class="control-group col-lg-4 col-md-4 col-sm-6 col-xs-6 pull-left">
+                                <label class="control-label" for="dob">Joining Date</label>
+                                <div class="controls">
+                                    <p class="input-group">
+                                    <input type="text"
+                                           name="jd"
+                                           show-button-bar ="false"
+                                           class="form-input date-form"                                           
+                                           ng-model="vm.registration.joiningDate"
+                                           is-open="vm.isDobPickerOpen"
+                                           uib-datepicker-popup="yyyy-MM-dd"
+                                           validation="required:alt=Required field"
+                                           readonly/>
+                                    <span class="input-group-btn custom-datepick">
+                                        <button type="button" 
+                                                class="btn btn-default" 
+                                                ng-click="vm.setDpOpenStatus('isDobPickerOpen')">
+                                            <i class="glyphicon glyphicon-calendar"></i>
+                                        </button>
+                                    </span>
+                                </p>
+                                </div>
+                            </div>
+                 	<div
 						class="control-group col-lg-2 col-md-2 col-sm-6 col-xs-6 pull-left">
 						<label class="control-label" for="dob">Business Unit</label>
 						<div class="controls">
@@ -32,7 +46,7 @@
 							</select>
 						</div>
 					</div>
-					<div
+                   <div
 						class="control-group col-lg-2 col-md-2 col-sm-6 col-xs-6 pull-left">
 						<label class="control-label" for="dob">Account Manager</label>
 						<div class="controls">
@@ -75,13 +89,13 @@
 								validation="required:alt=Required field" />
 						</div>
 					</div>
-				</fieldset>
-			</div>
-		</div>
-	</form>
-	<div class="clearfix"></div>
-	<button style="margin: 20px 0;" class="logout-button"
-		ng-click="vm.employeeRegister()">Confirm and Register</button>
+                </fieldset>
+            </div>
+        </div>
+    </form>
+    <div class="clearfix"></div>
+    <button style="margin: 20px 0;" class="logout-button"
+            ng-click="vm.employeeRegister()">Confirm and Register</button>
 </div>
 
 <div class="clearfix"></div>

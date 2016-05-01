@@ -9,6 +9,7 @@ public class Constants {
 	public static final String BLOOD_GROUP = "BG";
 	public static final String EMPLOYMENT_STATUS = "ESTATS";
 	public static final String FAMILY_MEMBER = "FAMMEM";
+	public static final String CLIENT_STATUS = "CLSTATS";
 
 	/* password reset msg constants */
 	public static final String PASS_RESET_SUCC_MSG = "New password has been sent to your registered email.";

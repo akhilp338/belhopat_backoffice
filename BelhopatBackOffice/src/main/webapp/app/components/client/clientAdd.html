@@ -1,0 +1,136 @@
+<div class="form-horizontal" name="client_reg_form">
+	<form name="regForm" id="form_1" novalidate>
+		<div class="row">
+			<div class="col-md-6 col-lg-6 col-sm-6 col-xs-12">
+				<fieldset class="scheduler-border">
+					<legend class="scheduler-border">Basic Information</legend>
+
+					<div
+						class="control-group col-lg-4 col-md-4 col-sm-6 col-xs-6 pull-left">
+						<label class="control-label" for="clientName">Client Name</label>
+						<div class="controls">
+							<input type="text" name="clientName" id="clientName"
+								ng-model="vm.registration.clientName"
+								class="form-input width-100" placeholder="Client Name"
+								validation="required:alt=Required field" />
+						</div>
+					</div>
+					<div
+						class="control-group col-lg-4 col-md-4 col-sm-6 col-xs-6 pull-left">
+						<label class="control-label" for="revenue">Revenue (%)</label>
+						<div class="controls">
+							<input type="text" name="revenue" id="revenue"
+								ng-model="vm.registration.revenue" class="form-input width-100"
+								placeholder="Revenue (in %)"
+								validation="required:alt=Required field" />
+						</div>
+					</div>
+					<div
+						class="control-group col-lg-4 col-md-4 col-sm-6 col-xs-6 pull-left">
+						<label class="control-label" for="contactNo">Contact no
+							(with Ext. code)</label>
+						<div class="controls">
+							<input type="text" name="contactNo" id="contactNo"
+								ng-model="vm.registration.contactNo"
+								class="form-input width-100"
+								placeholder="Contact No (with Ext.)"
+								validation="required:alt=Required field" />
+						</div>
+					</div>
+					<div
+						class="control-group col-lg-4 col-md-4 col-sm-6 col-xs-6 pull-left">
+						<label class="control-label" for="email">Email</label>
+						<div class="controls">
+							<input type="text" name="email" id="email"
+								ng-model="vm.registration.email" class="form-input width-100"
+								placeholder="Email" validation="required:alt=Required field" />
+						</div>
+					</div>
+					<div
+						class="control-group col-lg-4 col-md-4 col-sm-6 col-xs-6 pull-left">
+						<label class="control-label" for="webUrl">Website URL</label>
+						<div class="controls">
+							<input type="text" name="webUrl" id="webUrl"
+								ng-model="vm.registration.webUrl" class="form-input width-100"
+								placeholder="Website URL"
+								validation="required:alt=Required field" />
+						</div>
+					</div>
+					<div
+						class="control-group col-lg-4 col-md-4 col-sm-6 col-xs-6 pull-left">
+						<label class="control-label" for="clientStatus">Client
+							Status</label>
+						<div class="controls">
+							<select name="clientStatus"
+								ng-model="vm.registration.clientStatus.id"
+								class="form-input width-100"
+								ng-options="clientStatus.id as (clientStatus.description) for clientStatus in vm.lookups.CLSTATS"
+								validation="required:alt=required">
+								<option style="display: none" value="">...</option>
+							</select>
+						</div>
+					</div>
+				</fieldset>
+			</div>
+
+			<div class="col-md-6 col-lg-6 col-sm-6 col-xs-12">
+				<fieldset class="scheduler-border">
+					<legend class="scheduler-border">Belhopat Management
+						Details</legend>
+
+					<div
+						class="control-group col-lg-4 col-md-4 col-sm-6 col-xs-6 pull-left">
+						<label class="control-label" for="division">Business Unit</label>
+						<div class="controls">
+							<select name="division" ng-model="vm.registration.division.id"
+								class="form-input width-100"
+								ng-options="division.id as (division.description) for division in vm.lookups.DIV"
+								validation="required:alt=required">
+								<option style="display: none" value="">...</option>
+							</select>
+						</div>
+					</div>
+					<div
+						class="control-group col-lg-4 col-md-4 col-sm-6 col-xs-6 pull-left">
+						<label class="control-label" for="bussUnitHead">Business
+							Unit Head</label>
+						<div class="controls">
+							<input type="text" name="bussUnitHead" id="bussUnitHead"
+								ng-model="vm.registration.bussUnitHead.id"
+								class="form-input width-100" placeholder="Business Unit Head"
+								validation="required:alt=Required field" />
+						</div>
+					</div>
+					<div
+						class="control-group col-lg-4 col-md-4 col-sm-6 col-xs-6 pull-left">
+						<label class="control-label" for="accountManager">Account
+							Manager</label>
+						<div class="controls">
+							<input type="text" name="accountManager" id="accountManager"
+								ng-model="vm.registration.accountManager.id"
+								class="form-input width-100" placeholder="Account Manager"
+								validation="required:alt=Required field" />
+						</div>
+					</div>
+					<div
+						class="control-group col-lg-4 col-md-4 col-sm-6 col-xs-6 pull-left">
+						<label class="control-label" for="bussDManager">Business
+							Dev Manager</label>
+						<div class="controls">
+							<input type="text" name="bussDManager" id="bussDManager"
+								ng-model="vm.registration.bussDManager.id"
+								class="form-input width-100"
+								placeholder="Business Development Manager"
+								validation="required:alt=Required field" />
+						</div>
+					</div>
+				</fieldset>
+			</div>
+
+		</div>
+	</form>
+</div>
+
+
+
+
