@@ -83,10 +83,8 @@ public class Candidate extends BaseEntity {
 	@OneToOne(cascade = CascadeType.ALL)
 	private Address onsiteAddress;
 
-	@OneToMany(fetch=FetchType.EAGER,cascade = CascadeType.ALL)
+	@OneToMany(fetch=FetchType.EAGER)
 	private List<Skill> skillSet;
-	
-	private String skillString;
 
 	private Integer priorExperienceYear;
 
@@ -427,14 +425,6 @@ public class Candidate extends BaseEntity {
 
 	public void setUnselectedSkillSet(List<Skill> unselectedSkillSet) {
 		this.unselectedSkillSet = unselectedSkillSet;
-	}
-
-	public String getSkillString() {
-		return skillString;
-	}
-
-	public void setSkillString(String skillString) {
-		this.skillString = skillString;
 	}
 
 }

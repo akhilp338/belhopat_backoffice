@@ -158,8 +158,8 @@
         vm.candidateRegister = function () {
             if (vs.checkFormValidity($scope["regForm"])) {
                 vm.registerUrl = "api/candidate/saveOrUpdateCandidate";
-//                var skillSet = vm.getUpdatedSkillSet(vm.registration.skillSet);
-                vm.registration.skillString = JSON.stringify(vm.registration.skillSet);
+                var skillSet = vm.getUpdatedSkillSet(vm.registration.skillSet);
+                vm.registration.skillSet = skillSet;
                 Core_Service.candidateRegisterImpl(vm.registerUrl, vm.registration)
                         .then(function (response) {
                         	Core_Service.sweetAlert("Done!",response.Message,"success");  
@@ -178,7 +178,7 @@
         		skillSet.skillName =param[key]; 
         		array.push(skillSet);
         	}
-        	return skillSet;
+        	return array;
         }
         
         vm.getIndexesToRemove = function (array, data) {
