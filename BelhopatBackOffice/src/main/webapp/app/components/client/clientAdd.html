@@ -127,6 +127,85 @@
 				</fieldset>
 			</div>
 
+
+
+			<div class="row">
+
+				<div class="col-md-6 col-lg-6 col-sm-6 col-xs-12">
+					<fieldset class="scheduler-border">
+						<legend class="scheduler-border">Point Of Contact Details</legend>
+
+						<div
+							class="control-group col-lg-4 col-md-4 col-sm-6 col-xs-6 pull-left">
+							<label class="control-label" for="pocName">POC Name</label>
+							<div class="controls">
+								<input type="text" name="pocName" id="pocName"
+									ng-model="vm.registration.poc.pocName"
+									class="form-input width-100" placeholder="POC Name"
+									validation="required:alt=Required field" />
+							</div>
+						</div>
+						<div 
+							class="control-group col-lg-4 col-md-4 col-sm-6 col-xs-6 pull-left">
+                            <label class="control-label" for="designation">Designation</label>
+                            <div class="controls">
+                                <select name="designation" ng-model="vm.registration.poc.designation.id"
+                                    class="form-input width-100" ng-options="designation.id as (designation.description) for designation in vm.lookups.DESIG"
+                                    validation="required:alt=required">
+                            <option style="display:none" value="">...</option>
+                                </select>
+                            </div>
+                        </div>
+						<div 
+							class="control-group col-lg-4 col-md-4 col-sm-6 col-xs-6 pull-left">
+                            <label class="control-label" for="country">Country</label>
+                            <div class="controls">
+                                <select name="onsiteAddress_country" ng-model="vm.registration.poc.country.id"
+                                    ng-change="vm.getStatesByCountry(vm.registration.poc.country.id,'onsite')"
+                                    class="form-input width-100" ng-options="country.id as (country.description) for country in vm.lookups.COUNTRY"
+                                    validation="required:alt=required">
+                            <option style="display:none" value="">...</option>
+                                </select> 
+                            </div>
+                        </div>
+                        <div
+							class="control-group col-lg-4 col-md-4 col-sm-6 col-xs-6 pull-left">
+							<label class="control-label" for="contactNo">Contact no
+								(with Ext. code)</label>
+							<div class="controls">
+								<input type="text" name="poc.contactNo" id="poc.contactNo"
+									ng-model="vm.registration.poc.contactNo"
+									class="form-input width-100"
+									placeholder="Contact No (with Ext.)"
+									validation="required:alt=Required field" />
+							</div>
+						</div>
+						<div
+							class="control-group col-lg-4 col-md-4 col-sm-6 col-xs-6 pull-left">
+							<label class="control-label" for="contactNo">Mobile no</label>
+							<div class="controls">
+								<input type="text" name="poc.mobNo" id="poc.mobNo"
+									ng-model="vm.registration.poc.mobNo"
+									class="form-input width-100"
+									placeholder="Mobile No"
+									validation="required:alt=Required field" />
+							</div>
+						</div>
+						<div
+							class="control-group col-lg-4 col-md-4 col-sm-6 col-xs-6 pull-left">
+							<label class="control-label" for="areaOfWork">Area Of Work</label>
+							<div class="controls">
+								<input type="text" name="areaOfWork" id="areaOfWork"
+									ng-model="vm.registration.poc.areaOfWork.id"
+									class="form-input width-100"
+									placeholder="Area Of Work"
+									validation="required:alt=Required field" />
+							</div>
+						</div>
+					</fieldset>
+				</div>
+			</div>
+
 		</div>
 	</form>
 </div>
