@@ -121,7 +121,7 @@
         
         angular.element(document).ready(function () {
             var oTable = angular.element('#candidatesList').DataTable({
-                ajax: urlConfig.http + window.location.host + urlConfig.api_root_path + "candidate/getCandidates",
+                ajax: urlConfig.http + window.location.host + urlConfig.api_root_path + "candidate/getCandidates?employee=false",
                 serverSide: true,
                 bDestroy: true,
                 processing: true,

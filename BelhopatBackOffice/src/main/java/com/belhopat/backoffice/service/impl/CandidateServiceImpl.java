@@ -56,14 +56,17 @@ public class CandidateServiceImpl implements CandidateService {
 	 * 
 	 */
 	@Override
-	public DataTablesOutput<Candidate> getCandidates(DataTablesInput input) {
+	public DataTablesOutput<Candidate> getCandidates(DataTablesInput input, boolean employee) {
 
 		Specification<Candidate> specification = new Specification<Candidate>() {
 			@Override
 			public Predicate toPredicate(Root<Candidate> root, CriteriaQuery<?> criteriaQuery,
 					CriteriaBuilder criteriaBuilder) {
 				Predicate isNotDeleted = criteriaBuilder.equal(root.get("deleted"), false);
-				return criteriaBuilder.and(isNotDeleted);
+				// TODO remove employment status from candidate and add in
+				// employee
+				Predicate employeeStatus = criteriaBuilder.notEqual(root.get("employee"), employee);
+				return criteriaBuilder.and(isNotDeleted, employeeStatus);
 			}
 		};
 		DataTablesOutput<Candidate> dataTablesOutput = candidateRepository.findAll(input, specification);
