@@ -44,7 +44,7 @@ public class BaseServiceImpl implements BaseService {
 
 	@Autowired
 	CountryRepository countryRepository;
-	
+
 	@Autowired
 	EmployeeRepository employeeRepository;
 
@@ -59,7 +59,7 @@ public class BaseServiceImpl implements BaseService {
 
 	@Autowired
 	CandidateSequenceRepository candidateSequenceRepository;
-	
+
 	@Autowired
 	EmployeeSequenceRepository employeeSequenceRepository;
 
@@ -180,37 +180,33 @@ public class BaseServiceImpl implements BaseService {
 	@Override
 	public <T> Long getSequenceIncrement(Class<T> clazz) {
 		Long increment = null;
-		if ( clazz.equals(Candidate.class) ) {
-			CandidateSequence candidateSequence = candidateSequenceRepository.save( new CandidateSequence() );
+		if (clazz.equals(Candidate.class)) {
+			CandidateSequence candidateSequence = candidateSequenceRepository.save(new CandidateSequence());
 			increment = candidateSequence.getId();
-		}else if ( clazz.equals( Employee.class) ){
-			EmployeeSequence employeeSequence = employeeSequenceRepository.save( new EmployeeSequence() );
+		} else if (clazz.equals(Employee.class)) {
+			EmployeeSequence employeeSequence = employeeSequenceRepository.save(new EmployeeSequence());
 			increment = employeeSequence.getId();
-		}
-		else if ( clazz.equals( Client.class) ){
-			ClientSequence clientSequence = clientSequenceRepository.save( new ClientSequence() );
+		} else if (clazz.equals(Client.class)) {
+			ClientSequence clientSequence = clientSequenceRepository.save(new ClientSequence());
 			increment = clientSequence.getId();
 		}
 		return increment;
 	}
-	
 
 	@Override
 	public Map<String, List<?>> getEmployeeDropdowns() {
 		Map<String, List<?>> dropDownMap = new HashMap<>();
-		dropDownMap.put(Constants.HRM_DRP, getEmployeeDesignation(Constants.HRM_LOOKUP));
-		dropDownMap.put(Constants.HRR_DRP, getEmployeeDesignation(Constants.HRR_LOOKUP));
-		dropDownMap.put(Constants.AM_DRP, getEmployeeDesignation(Constants.AM_LOOKUP));
-		dropDownMap.put(Constants.FM_DRP, getEmployeeDesignation(Constants.FM_LOOKUP));
-		dropDownMap.put(Constants.CEO_DRP, getEmployeeDesignation(Constants.CEO_LOOKUP));
-		dropDownMap.put(Constants.BUH_DRP, getEmployeeDesignation(Constants.BUH_LOOKUP));
-		dropDownMap.put(Constants.BU_DRP, lookupDetailRepository.findByLookupKey(Constants.DIVISION));
+		dropDownMap.put(Constants.EMP_DESIG_HRM, employeeRepository.findByDesignation(Constants.EMP_DESIG_HRM));
+		dropDownMap.put(Constants.EMP_DESIG_HRR, employeeRepository.findByDesignation(Constants.EMP_DESIG_HRR));
+		dropDownMap.put(Constants.EMP_DESIG_AM, employeeRepository.findByDesignation(Constants.EMP_DESIG_AM));
+		dropDownMap.put(Constants.EMP_DESIG_FM, employeeRepository.findByDesignation(Constants.EMP_DESIG_FM));
+		dropDownMap.put(Constants.EMP_DESIG_CEO, employeeRepository.findByDesignation(Constants.EMP_DESIG_CEO));
+		dropDownMap.put(Constants.EMP_DESIG_BUH, employeeRepository.findByDesignation(Constants.EMP_DESIG_BUH));
+		dropDownMap.put(Constants.CLIENT_STATUS, lookupDetailRepository.findByLookupKey(Constants.CLIENT_STATUS));
 		dropDownMap.put(Constants.COUNTRY, countryRepository.findAll());
+		dropDownMap.put(Constants.DESIGNATION, lookupDetailRepository.findByLookupKey(Constants.DESIGNATION));
+		dropDownMap.put(Constants.DIVISION, lookupDetailRepository.findByLookupKey(Constants.DIVISION));
 		return dropDownMap;
 	}
-	
-	private List<Employee> getEmployeeDesignation(Long lookupId){
-		return employeeRepository.fetchEmployeeWithDesig(lookupId);
-		
-	}
+
 }

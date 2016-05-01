@@ -65,8 +65,12 @@ public class CandidateServiceImpl implements CandidateService {
 				Predicate isNotDeleted = criteriaBuilder.equal(root.get("deleted"), false);
 				// TODO remove employment status from candidate and add in
 				// employee
-				Predicate employeeStatus = criteriaBuilder.notEqual(root.get("employee"), employee);
-				return criteriaBuilder.and(isNotDeleted, employeeStatus);
+				if (employee) {
+					Predicate employeeStatus = criteriaBuilder.equal(root.get("employee"), false);
+					return criteriaBuilder.and(isNotDeleted, employeeStatus);
+					
+				}
+				return criteriaBuilder.and(isNotDeleted);
 			}
 		};
 		DataTablesOutput<Candidate> dataTablesOutput = candidateRepository.findAll(input, specification);

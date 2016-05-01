@@ -11,7 +11,7 @@
         vm.mainSelectedSkillList = [];
         vm.subSelectedSkillList = [];
         vm.deSelectedSkills = [];
-        vm.registration.confirmedSelectionItems = [];
+        vm.registration.skillSet = [];
         
         if ($stateParams.id) {
             Core_Service.getCandidateImpl("api/candidate/getCandidate", $stateParams.id).then(function (res) {
@@ -158,6 +158,8 @@
         vm.candidateRegister = function () {
             if (vs.checkFormValidity($scope["regForm"])) {
                 vm.registerUrl = "api/candidate/saveOrUpdateCandidate";
+                var skillSet = vm.getUpdatedSkillSet(vm.registration.skillSet);
+                vm.registration.skillSet = skillSet;
                 Core_Service.candidateRegisterImpl(vm.registerUrl, vm.registration)
                         .then(function (response) {
                         	Core_Service.sweetAlert("Done!",response.Message,"success");  
@@ -167,6 +169,18 @@
                         });
             }
         };
+        
+        vm.getUpdatedSkillSet = function(param){
+        	var array=[];
+        	for(var key in param){
+        		var skillSet = {};
+        		skillSet.id =param[key];
+        		skillSet.skillName =param[key]; 
+        		array.push(skillSet);
+        	}
+        	return array;
+        }
+        
         vm.getIndexesToRemove = function (array, data) {
             var indexes = [];
             for (var i = 0; i < data.length; i++) {
@@ -187,7 +201,7 @@
             for (var j = 0; j < vm.mainSelectedSkillList.length; j++) {
                 selected.push(vm.mainSelectedSkillList[j].id)
             }
-            vm.registration.confirmedSelectionItems = selected;
+            vm.registration.skillSet = selected;
         };
         vm.removeFromMainListArray = function (indexes) {
             var selected = [];
@@ -197,7 +211,7 @@
             for (var j = 0; j < vm.mainSelectedSkillList.length; j++) {
                 selected.push(vm.mainSelectedSkillList[j].id)
             }
-            vm.registration.confirmedSelectionItems = selected;
+            vm.registration.skillSet = selected;
         };
         //To Do(move these methods to base controller)
         vm.getStatesByCountry = function (countryId, flag) {

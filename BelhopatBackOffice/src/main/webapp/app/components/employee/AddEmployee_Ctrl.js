@@ -87,20 +87,13 @@ var addEmployeeTable
                             return '<div class="action-buttons">' +
                                     '<span  value="' + data + '" class="actions action-view fa-stack fa-lg pull-left" title="View">'+
                                     '<i class="fa fa-eye" aria-hidden="true"></i></span>' +
-                                    '<span value="' + data + '" class="actions action-edit fa-stack fa-lg pull-left" title="Edit">'+
-                                    '<i class="fa fa-pencil-square-o" aria-hidden="true"></i></i></span></div>'
+                                    '</div>'
                         }
                     }]
             });
             $('#candidatesList').on('click', '.action-view', function () {
             	console.log(this.getAttribute('value'));
                 vm.getCandidate(this.getAttribute('value'));
-            });
-            $('#candidatesList').on('click', '.action-edit', function () {
-            	console.log("asdasd"+this.getAttribute('value'));
-                $rootScope.showLoader = true;
-                $rootScope.id = this.getAttribute('value');
-                $state.go('coreuser.candidate.edit', {id: $rootScope.id});
             });
             $('#candidatesList tbody').on( 'click', 'tr', function () {
                 if ( $(this).hasClass('selected') ) {
@@ -112,6 +105,7 @@ var addEmployeeTable
                 }
                 $rootScope.selectedCandId = addEmployeeTable.row($('tr.selected').index()).data().id;
                 localStorage["selectedCandidate"] = addEmployeeTable.row($('tr.selected').index()).data().candidateId;
+                localStorage["selectedCandidateId"] =  $rootScope.selectedCandId ;
             } );
             
             vm.addEmployeeNextStep=function(candidateId){        	
