@@ -16,14 +16,17 @@
                 vm.registration = {};
             });
         }
-        vm.urlForLookups = "api/employee/getDropDownData";
+        vm.setDpOpenStatus = function (id) {
+            vm[id] = true
+        };	
+        vm.urlForLookups = "api/employee/getEmployeeDropdowns";
         Core_Service.getAllLookupValues(vm.urlForLookups)
                 .then(function (response) {
                     vm.lookups = response.data;
+                    console.log(vm.lookups);	
                 }, function (error) {
 
                 });
-
         $rootScope.active = 'employee';
         vm.cancelRegisteration = function (){
             $state.go("coreuser.employee")

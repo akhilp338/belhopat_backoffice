@@ -1,5 +1,8 @@
 package com.belhopat.backoffice.controller;
 
+import java.util.List;
+import java.util.Map;
+
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -63,5 +66,11 @@ public class EmployeeController {
 	public ResponseEntity<Employee> getAnEmployee(@RequestBody RequestObject requestObject) {
 		return employeeService.getAnEmployee(requestObject.getId());
 	}
+	@ResponseBody
+	@RequestMapping(value = "/getEmployeeDropdowns", method = RequestMethod.POST)
+	public Map<String, List<?>> getEmployeeDropdowns() {
+		return employeeService.getEmployeeDropdowns();
+	}
+	
 
 }
