@@ -52,8 +52,7 @@ public class ClientController {
 	 */
 	@ResponseBody
 	@RequestMapping(value = "/getClient", method = RequestMethod.POST)
-
-	public ResponseEntity < Client > getCandidate( @RequestBody RequestObject requestObject ) {
+	public ResponseEntity < Client > getClient( @RequestBody RequestObject requestObject ) {
 		return clientService.getClient( requestObject.getId() );
 	}
 	
