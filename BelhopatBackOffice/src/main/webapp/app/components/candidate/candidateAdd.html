@@ -72,7 +72,7 @@
                                 </div>
                             </div>
                             <div class="control-group col-lg-2 col-md-2 col-sm-6 col-xs-6 pull-left">
-                                <label class="control-label" for="dob">Blood Group</label>
+                                <label class="control-label" for="dob">Blood grp.</label>
                                 <div class="controls">
                                    <select name="bloodGroup" ng-model="vm.registration.bloodGroup.id" validation="required:alt=required"
                                         class="form-input width-100" ng-options="bloodGroup.id as (bloodGroup.code) for bloodGroup in vm.lookups.BG">                   
@@ -95,7 +95,17 @@
                     <div class="col-md-6 col-lg-6 col-sm-6 col-xs-12">
                         <fieldset class="scheduler-border">
                             <legend class="scheduler-border">Contact Information</legend>
-                            <div class="control-group col-lg-4 col-md-4 col-sm-6 col-xs-6 pull-left">
+                            <div class="control-group col-lg-2 col-md-2 col-sm-2 col-xs-2 pull-left">
+                            <label class="control-label" for="coo">Code</label>
+                                <div class="controls">
+                                    <select name="personal_country_code" ng-model="vm.registration.personal_country_code"
+                                        class="form-input width-100" ng-options="country.id as (country.description) for country in vm.lookups.COUNTRY"
+                                        >
+                                        <option style="display:none" value="">...</option>
+                                    </select>                                    
+                                </div>
+                            </div>
+                            <div class="control-group col-lg-4 col-md-4 col-sm-4 col-xs-4 pull-left">
                                 <label class="control-label" for="personal_contact">Personal
                                     Contact No</label>
                                 <div class="controls">
@@ -105,7 +115,7 @@
                                            validation="digits:10:alt=Must be 10 digits|required:alt=Required field" />
                                 </div>
                             </div>
-                            <div class="control-group col-lg-4 col-md-4 col-sm-6 col-xs-6 pull-left">
+                            <div class="control-group col-lg-6 col-md-6 col-sm-6 col-xs-6 pull-left">
                                 <label class="control-label" for="email">Personal Email
                                     Id</label>
                                 <div class="controls">
@@ -115,7 +125,7 @@
                                            validation="email:alt=email id not valid|required:alt=Required field" />
                                 </div>
                             </div>
-                            <div class="control-group col-lg-4 col-md-4 col-sm-6 col-xs-6 pull-left">
+                            <div class="control-group col-lg-6 col-md-6 col-sm-6 col-xs-6 pull-left">
                                 <label class="control-label" for="ofc_email">Official
                                     Email Id</label>
                                 <div class="controls">
@@ -125,7 +135,17 @@
                                            validation="email:alt=email id not valid|required:alt=Required field" />
                                 </div>
                             </div>
-                            <div class="control-group col-lg-4 col-md-4 col-sm-6 col-xs-6 pull-left">
+                            <div class="control-group col-lg-2 col-md-2 col-sm-2 col-xs-2 pull-left">
+                            <label class="control-label" for="coo">Code</label>
+                                <div class="controls">
+                                    <select name="ofc_contact_country_code" ng-model="vm.registration.ofc_contact_country_code"
+                                        class="form-input width-100" ng-options="country.id as (country.description) for country in vm.lookups.COUNTRY"
+                                        >
+                                        <option style="display:none" value="">...</option>
+                                    </select>                                    
+                                </div>
+                            </div>
+                            <div class="control-group col-lg-4 col-md-4 col-sm-4 col-xs-4 pull-left">
                                 <label class="control-label" for="ofc_contact">Official
                                     Contact</label>
                                 <div class="controls">
@@ -373,7 +393,7 @@
                                 <div class="controls">
                                     <input type="text" name="client" id="client"
                                            ng-model="vm.registration.client" class="form-input width-100"
-                                           placeholder="Client" validation="required:alt=Required field" />
+                                           placeholder="Client"/>
                                 </div>
                             </div>
                             <div class="control-group col-lg-4 col-md-4 col-sm-6 col-xs-6 pull-left">
@@ -381,7 +401,7 @@
                                 <div class="controls">
                                     <input type="text" name="partner" id="partner"
                                            ng-model="vm.registration.partner" class="form-input width-100"
-                                           placeholder="Partner" validation="required:alt=Required field" />
+                                           placeholder="Partner" />
                                 </div>
                             </div>
                             <div class="control-group col-lg-4 col-md-4 col-sm-6 col-xs-6 pull-left">
@@ -390,7 +410,7 @@
                                     <input type="text" name="sourcedBy" id="sourcedBy"
                                            ng-model="vm.registration.sourcedBy"
                                            class="form-input width-100" placeholder="Sourced By"
-                                           validation="required:alt=Required field" />
+                                           />
                                 </div>
                             </div>
                             

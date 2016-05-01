@@ -73,7 +73,8 @@
 
         // Go to a defined step index
         $scope.goToStep = function (index) {
-            if (!_.isUndefined($scope.steps[index]) && vs.checkFormValidity($scope)) {
+            var flag = index > $scope.getCurrentStepIndex();
+            if (!_.isUndefined($scope.steps[index]) && (!flag || vs.checkFormValidity($scope))) {
                 $scope.selection = $scope.steps[index];
             }
         };
