@@ -65,6 +65,7 @@
 <script src="/BelhopatBackOffice/app/components/employee/AddEmployee_Ctrl.js"></script>
 <script src="/BelhopatBackOffice/app/components/employee/AddEmployee_Ctrl_Final.js"></script>
 <script src="/BelhopatBackOffice/app/components/client/Client_Ctrl.js"></script>
+<script src="/BelhopatBackOffice/app/components/client/AddClient_Ctrl.js"></script>
 <script src="/BelhopatBackOffice/app/components/holiday/Holiday_Ctrl.js"></script>
 <script src="/BelhopatBackOffice/app/components/opportunity/Opp_Ctrl.js"></script>
 <script src="/BelhopatBackOffice/app/components/candidate/ViewCandidate_Ctrl.js"></script>
@@ -81,7 +82,7 @@ display: none !important;
     <div id="errorUser">${error}</div>
      <div id="successUser">${user}</div>     
 <div class="response-loader" ng-class="{show: showLoader}"></div>
-<img src="/images/loader-img.gif" class="loader-img loader-language" ng-if="languageSwitching" alt="loader">
+<img src="/BelhopatBackOffice/app/assets/images/loader-img.gif" class="loader-img loader-language" ng-if="languageSwitching" alt="loader">
     <header ui-view="header" class="header-div"></header>
     <div ui-view="sidebar" class="page-side-bar"></div>
     <div ui-view="content" class="main"></div>
