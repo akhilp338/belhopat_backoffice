@@ -130,7 +130,7 @@ public class BaseServiceImpl implements BaseService {
 	 */
 	@Override
 	public ResponseEntity<List<City>> getCitiesByState(Long stateId) {
-		List<City> states = cityRepository.findByState(stateId);
+		List<City> states = cityRepository.findByStateId(stateId);
 		return new ResponseEntity<List<City>>(states, HttpStatus.OK);
 	}
 
