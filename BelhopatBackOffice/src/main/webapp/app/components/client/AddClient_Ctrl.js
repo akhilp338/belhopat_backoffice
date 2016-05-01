@@ -43,6 +43,56 @@
 
                     });
         };
+        
+        vm.getStatesByCountry = function (countryId, flag) {
+            var data = {"id": countryId};
+            vm.apiUrl = "api/getStatesByCountry";
+            Core_Service.defaultApiByIdAndUrlImpl(vm.apiUrl, data)
+                    .then(function (response) {
+                        switch (flag) {
+                            case "client":
+                                vm.statesPerm = response.data;
+                                break;
+                            case "current":
+                                vm.statesCurnt = response.data;
+                                break;
+                            default:
+                                break;
+                        }
+                    }, function (error) {
+                        console.log(error)
+                    });
+        };
+        vm.getCitiesByStates = function (stateId, flag) {
+            var data = {"id": stateId};
+            vm.apiUrl = "api/getCitiesByState";
+            Core_Service.defaultApiByIdAndUrlImpl(vm.apiUrl, data)
+                    .then(function (response) {
+                        switch (flag) {
+                            case "client":
+                                vm.citiesPerm = response.data;
+                                break;
+                            case "current":
+                                vm.citiesCurnt = response.data;
+                                break;
+                            default:
+                                break;
+                        }
+                    }, function (error) {
+                        console.log(error)
+                    });
+        };
+
+        vm.getCitiesByStatesBank = function (stateId) {
+            var data = {"id": stateId};
+            vm.apiUrl = "api/getCitiesByState";
+            Core_Service.defaultApiByIdAndUrlImpl(vm.apiUrl, data)
+                    .then(function (response) {
+                        vm.citiesBank = response.data;
+                    }, function (error) {
+                    });
+        };
+        
         Core_Service.calculateSidebarHeight();
         $rootScope.showLoader = false;
     };

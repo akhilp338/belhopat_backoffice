@@ -84,7 +84,7 @@
 						<div class="controls">
 							<select name="division" ng-model="vm.registration.division.id"
 								class="form-input width-100"
-								ng-options="division.id as (division.description) for division in vm.lookups.DIV"
+								ng-options="division.id as (division.description) for division in vm.lookups.bu"
 								validation="required:alt=required">
 								<option style="display: none" value="">...</option>
 							</select>
@@ -92,12 +92,12 @@
 					</div>
 					<div
 						class="control-group col-lg-4 col-md-4 col-sm-6 col-xs-6 pull-left">
-						<label class="control-label" for="dob">Business Unit</label>
+						<label class="control-label" for="dob">Business Unit Head</label>
 						<div class="controls">
 							<select name="businessUnitHead"
 								ng-model="vm.registration.bussUnitHead.id"
 								validation="required:alt=required" class="form-input width-100"
-								ng-options="business.id as (business.description) for business in vm.lookups.bu">
+								ng-options="business.id as (business.description) for business in vm.lookups.buh">
 								<option style="display: none" value="">...</option>
 							</select>
 						</div>
@@ -156,8 +156,8 @@
                             <div class="control-group col-lg-4 col-md-4 col-sm-6 col-xs-6 pull-left">
                                 <label class="control-label" for="permanentAddress_country">Country</label>
                                 <div class="controls">
-                                    <select name="permanentAddress_country" ng-model="vm.registration.permanentAddress.city.state.country.id"
-                                        ng-change="vm.getStatesByCountry(vm.registration.permanentAddress.city.state.country.id,'permenant')"
+                                    <select name="clientAddress_country" ng-model="vm.registration.clientAddress.city.state.country.id"
+                                        ng-change="vm.getStatesByCountry(vm.registration.clientAddress.city.state.country.id,'client')"
                                         class="form-input width-100" ng-options="country.id as (country.description) for country in vm.lookups.COUNTRY"
                                         validation="required:alt=required">
                                         <option style="display:none" value="">...</option>
@@ -168,7 +168,7 @@
                                 <label class="control-label" for="permanentAddress_state">State</label>
                                 <div class="controls">
                                     <select name="permanentAddress_state" ng-model="vm.registration.permanentAddress.city.state.id"
-                                        ng-change="vm.getCitiesByStates(vm.registration.permanentAddress.city.state.id,'permenant')"
+                                        ng-change="vm.getCitiesByStates(vm.registration.permanentAddress.city.state.id,'client')"
                                         class="form-input width-100" ng-options="states.id as (states.description) for states in vm.statesPerm"
                                         validation="required:alt=required">
                                  <option style="display:none" value="">...</option>
