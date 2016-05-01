@@ -1,5 +1,6 @@
 package com.belhopat.backoffice.controller;
 
+import java.util.List;
 import java.util.Map;
 
 import javax.validation.Valid;
@@ -65,6 +66,12 @@ public class ClientController {
 	@RequestMapping(value = "/saveOrUpdateClient", method = RequestMethod.POST)
 	public ResponseEntity<Map<String, String>> saveOrUpdateClient(@RequestBody Client client) {
 		return clientService.saveOrUpdateClient(client);
+	}
+	
+	@ResponseBody
+	@RequestMapping(value = "/getEmployeeDropdowns", method = RequestMethod.POST)
+	public Map<String, List<?>> getEmployeeDropdowns() {
+		return baseService.getEmployeeDropdowns();
 	}
 
 }
