@@ -13,10 +13,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.belhopat.backoffice.dto.RequestObject;
-import com.belhopat.backoffice.model.Candidate;
 import com.belhopat.backoffice.model.Employee;
 import com.belhopat.backoffice.service.BaseService;
-import com.belhopat.backoffice.service.CandidateService;
 import com.belhopat.backoffice.service.EmployeeService;
 /**
  * @author Belhopat dev team
@@ -36,7 +34,7 @@ public class EmployeeController {
 	/**
 	 * @param employee
 	 * @return response string
-	 * Adds and edits the employee . Calls the service layer for persistance
+	 * Adds and edits the employee . Calls the service layer for persistence
 	 */
 	@ResponseBody
 	@RequestMapping(value = "/saveOrUpdateEmployee", method = RequestMethod.POST)

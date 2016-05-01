@@ -62,12 +62,11 @@ public class CandidateController {
 
 	/**
 	 * @param candidate
-	 * @return resposeString
+	 * @return responseString
 	 * To save the candidate after edit or add
 	 */
 	@ResponseBody
 	@RequestMapping(value = "/saveOrUpdateCandidate", method = RequestMethod.POST)
-
 	public ResponseEntity<Map<String,String>> saveOrUpdateCandidate(@RequestBody Candidate candidate) {
 		return candidateService.saveOrUpdateCandidate(candidate);
 	}

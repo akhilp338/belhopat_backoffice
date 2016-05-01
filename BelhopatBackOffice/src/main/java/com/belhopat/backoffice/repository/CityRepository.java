@@ -18,6 +18,6 @@ import com.belhopat.backoffice.model.City;
 public interface CityRepository extends JpaRepository<City, Long>, DataTablesRepository<City, Long> {
 
 	@Query("select c from City c where c.state.id =:stateId")
-	List<City> findByState(@Param("stateId") Long stateId);
+	List<City> findByStateId(@Param("stateId") Long stateId);
 
 }
