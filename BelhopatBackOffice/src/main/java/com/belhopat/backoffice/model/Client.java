@@ -69,9 +69,9 @@ public class Client extends BaseEntity {
 	@JoinColumn( name = "BU" )
 	private LookupDetail businessUnit;
 
-	@JsonIgnore
-    @NotNull
-	@OneToMany
+//	@JsonIgnore
+//    @NotNull
+	@OneToMany(cascade = CascadeType.ALL)
 //    @JoinTable( name="CLNT_POC", 
 //    joinColumns=@JoinColumn ( name = "CLNT_ID" ), 
 //    inverseJoinColumns=@JoinColumn( name = "POC_ID" ) ) 

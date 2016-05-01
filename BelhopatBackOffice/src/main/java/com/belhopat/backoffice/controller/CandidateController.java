@@ -14,6 +14,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.belhopat.backoffice.dto.CandidateViewDTO;
@@ -46,8 +47,8 @@ public class CandidateController {
 	@ResponseBody
 	@RequestMapping(value = "/getCandidates", method = RequestMethod.GET)
 
-	public DataTablesOutput<Candidate> getCandidates(@Valid DataTablesInput input) {
-		return candidateService.getCandidates(input);
+	public DataTablesOutput<Candidate> getCandidates(@Valid DataTablesInput input, @RequestParam boolean employee) {
+		return candidateService.getCandidates(input,employee);
 	}
 
 	/**
