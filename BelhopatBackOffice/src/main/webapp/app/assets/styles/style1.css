@@ -490,7 +490,8 @@ button.link-btn {
 }
 
 #candidatesList,
-#employeeList{
+#employeeList,
+#clientList{
     border-collapse: separate;
     border: 1px solid #ddd;
     margin: 0;
@@ -603,7 +604,8 @@ span.text-danger{
 
 .form-horizontal,
 #candidatesList_wrapper,
-#employeeList_wrapper{
+#employeeList_wrapper,
+#clientList_wrapper{
     padding: 0 20px 0 20px;
 }
 
@@ -902,13 +904,15 @@ input[type="search"] {
 }
 
 div#candidatesList_length,
-div#employeeList_length{
+div#employeeList_length,
+div#clientList_length{
     color: #CC2727;
     margin-top: 10px;
 }
 
 div#candidatesList_length select,
-div#employeeList_length select{
+div#employeeList_length select,
+div#clientList_length select{
     width: 70px;
     height: 25px;
     border: 1px solid #CC2727;
@@ -1146,7 +1150,8 @@ table.dataTable tbody th, table.dataTable tbody td {
 }
 
 .theme4 #candidatesList tbody tr.odd,
-.theme4 #employeeList tbody tr.odd{
+.theme4 #clientList tbody tr.odd,
+.theme4 #clientList tbody tr.odd{
     background-color: #FBDF92;
 }
 
