@@ -1,16 +1,17 @@
 <div class="form-horizontal col-md-12 col-lg-12 col-sm-12 col-xs-12" name="reg_form">
     <form name="regForm" id="form_0" novalidate>
         <div class="row">
-            <div class="col-md-6 col-lg-6 col-sm-6 col-xs-12">
+            <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
                 <fieldset class="scheduler-border">
                     <legend class="scheduler-border">Basic Information</legend>
-                      <div class="control-group width-30 pull-left">
+                      <div class="control-group col-md-3 col-lg-3 col-sm-4 col-xs-12">
                        <label class="control-label" >Candidate  Id</label>
                         <div class="controls">
-                            <label class="control-label" >{{vm.candidateId}}</label>
+                             <input type="text" name="joiningDate" id="joiningDate"
+                                  value="{{vm.candidateId}}" class="form-input width-100" disabled/>                            
                         </div>
                     </div>
-                    <div class="control-group width-30 pull-left">
+                    <div class="control-group col-md-3 col-lg-3 col-sm-4 col-xs-12">
                        <label class="control-label" for="firstName">Joining Date</label>
                         <div class="controls">
                             <input type="text" name="joiningDate" id="joiningDate"
@@ -18,7 +19,7 @@
                                    placeholder="Joining Date" validation="required:alt=Required field" />
                         </div>
                     </div>
-                    <div class="control-group width-30 pull-left">
+                    <div class="control-group col-md-3 col-lg-3 col-sm-4 col-xs-12">
                         <label class="control-label" for="businessUnit">Business Unit</label>
                         <div class="controls">
                             <input type="text" name="businessUnit" id="businessUnit"
@@ -26,7 +27,7 @@
                                    placeholder="Business Unite" validation="required:alt=Required field" />
                         </div>
                    </div>
-                    <div class="control-group width-30 pull-left">
+                    <div class="control-group col-md-3 col-lg-3 col-sm-4 col-xs-12">
                         <label class="control-label" for="reportingManager">Reporting
                             Manager</label>
                         <div class="controls">
@@ -35,7 +36,7 @@
                                    placeholder="Reporting Manager" validation="required:alt=Required field" />
                         </div>
                     </div>
-                    <div class="control-group width-30 pull-left">
+                    <div class="control-group col-md-3 col-lg-3 col-sm-4 col-xs-12">
                         <label class="control-label" for="accountManager">Account Manager</label>
                         <div class="controls">
                             <input type="text" name="accountManager" id="accountManager"
@@ -43,7 +44,7 @@
                                    placeholder="Account Manager" validation="required:alt=Required field" />
                        </div>
                     </div>
-                    <div class="control-group width-30 pull-left">
+                    <div class="control-group col-md-3 col-lg-3 col-sm-4 col-xs-12">
                         <label class="control-label" for="hrManager">HR</label>
                         <div class="controls">
                             <input type="text" name="hrManager" id="hrManager"
@@ -51,7 +52,7 @@
                                    placeholder="HR" validation="required:alt=Required field" />
                         </div>
                     </div>
-                    <div class="control-group width-30 pull-left">
+                    <div class="control-group col-md-3 col-lg-3 col-sm-4 col-xs-12">
                         <label class="control-label" for="workLocation">Work Location</label>
                         <div class="controls">
                             <input type="text" name="workLocation" id="workLocation"
@@ -59,7 +60,7 @@
                                    placeholder="Work Location" validation="required:alt=Required field" />
                         </div>
                     </div>
-                    <div class="control-group width-30 pull-left">
+                    <div class="control-group col-md-3 col-lg-3 col-sm-4 col-xs-12">
                        <label class="control-label" for="timeZone">Time Zone</label>
                         <div class="controls">
                             <input type="text" name="timeZone" id="timeZone"

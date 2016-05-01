@@ -1,3 +1,4 @@
+var addEmployeeTable
 (function () {
     var AddEmployee_Ctrl = function ($scope, $state, $rootScope, Core_Service,urlConfig, $stateParams, Core_HttpRequest, validationService) {
         var vm = this;
@@ -32,22 +33,10 @@
                     }, function (error) {
 
                     });
-        };
-        vm.addEmployeeNextStep=function(candidateId){
-        	
-        	$scope.candidateId=candidateId;
-        	$state.go('coreuser.employee.nextStep', {id: $rootScope.id});
-        	 Core_Service.getCandidateImpl("api/employee/getAnEmployee", $stateParams.id).then(function (res) {
-                 vm.registration = res.data;               
-                 vm.isCheckboxEnable = true;
-                 vm.isChecked = true;
-                 $rootScope.showLoader = false;
-             }, function (err) {
-                 vm.registration = {};
-             });
-        }
+        };        
+        
         angular.element(document).ready(function () {
-            var oTable = angular.element('#candidatesList').DataTable({
+                addEmployeeTable = angular.element('#candidatesList').DataTable({
                 ajax: urlConfig.http + window.location.host + urlConfig.api_root_path + "candidate/getCandidates",
                 serverSide: true,
                 bDestroy: true,
@@ -114,15 +103,29 @@
                 $state.go('coreuser.candidate.edit', {id: $rootScope.id});
             });
             $('#candidatesList tbody').on( 'click', 'tr', function () {
-            	console.log(oTable.$('tr.selected'));
                 if ( $(this).hasClass('selected') ) {
                     $(this).removeClass('selected');
                 }
                 else {
-                	oTable.$('tr.selected').removeClass('selected');
+                    addEmployeeTable.$('tr.selected').removeClass('selected');
                     $(this).addClass('selected');
                 }
+                $rootScope.selectedCandId = addEmployeeTable.row($('tr.selected').index()).data().id;
+                localStorage["selectedCandidate"] = addEmployeeTable.row($('tr.selected').index()).data().candidateId;
             } );
+            
+            vm.addEmployeeNextStep=function(candidateId){        	
+        	$scope.candidateId=candidateId;
+        	$state.go('coreuser.employee.nextStep', {id: $rootScope.selectedCandId});
+        	 Core_Service.getCandidateImpl("api/employee/getAnEmployee", $stateParams.id).then(function (res) {
+                 vm.registration = res.data;               
+                 vm.isCheckboxEnable = true;
+                 vm.isChecked = true;
+                 $rootScope.showLoader = false;
+             }, function (err) {
+                 vm.registration = {};
+             });
+        }
             
         });
         
