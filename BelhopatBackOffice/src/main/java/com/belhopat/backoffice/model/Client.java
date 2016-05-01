@@ -1,45 +1,46 @@
 package com.belhopat.backoffice.model;
 
-import java.util.Set;
+import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table ( name = "CLIENT_DTLS" )
 public class Client extends BaseEntity {
 	
-	@NotNull
+//	@NotNull
 	@Column( name = "CLNT_CID", unique = true )
 	private String clientId;
 	
-	@NotNull
+//	@NotNull
 	@Column( name = "CLNT_NM", unique = true )
 	private String clientName;
 	
-	@NotNull
+//	@NotNull
 	@Column( name = "RVNUE_PC" )
 	private Float revenue;
 	
-	@NotNull
+//	@NotNull
 	@ManyToOne
 	@JoinColumn( name = "BHP_AM" )
 	private Employee accountManager;
 	
-	@NotNull
+//	@NotNull
 	@ManyToOne
 	@JoinColumn( name = "BHP_BDM" )
 	private Employee bussDManager;
 
-	@NotNull
+//	@NotNull
 	@ManyToOne
 	@JoinColumn( name = "BU_HD" )
 	private Employee bussUnitHead;
@@ -48,27 +49,34 @@ public class Client extends BaseEntity {
 	@JoinColumn( name = "CLNT_ADDR" )
 	private Address clientAddress;
 	
-	@NotNull
+//	@NotNull
 	@Column( name = "PH_NO" )
 	private String contactNo;
 
-	@NotNull
+//	@NotNull
 	@Column( name = "EML_ID" )
 	private String emailId;
 
-	@NotNull
+//	@NotNull
 	@Column( name = "WEB_URL" )
 	private String webUrl;
 	
 	@ManyToOne
 	@JoinColumn( name = "CLNT_ST" )
 	private LookupDetail clientStatus;
+	
+	@ManyToOne
+	@JoinColumn( name = "BU" )
+	private LookupDetail businessUnit;
 
-    @ManyToMany 
-    @JoinTable( name="CLNT_POC", 
-    joinColumns=@JoinColumn ( name = "CLNT_ID" ), 
-    inverseJoinColumns=@JoinColumn( name = "POC_ID" ) ) 
-	private Set < PointOfContact > pointOfContactList;
+	@JsonIgnore
+    @NotNull
+	@OneToMany
+//    @JoinTable( name="CLNT_POC", 
+//    joinColumns=@JoinColumn ( name = "CLNT_ID" ), 
+//    inverseJoinColumns=@JoinColumn( name = "POC_ID" ) ) 
+	@JoinColumn( name = "POC_ID" )
+	private List < PointOfContact > pointOfContactList;
 
 	public String getClientId() {
 		return clientId;
@@ -158,12 +166,20 @@ public class Client extends BaseEntity {
 		this.clientStatus = clientStatus;
 	}
 
-	public Set<PointOfContact> getPointOfContactList() {
+	public List<PointOfContact> getPointOfContactList() {
 		return pointOfContactList;
 	}
 
-	public void setPointOfContactList(Set<PointOfContact> pointOfContactList) {
+	public void setPointOfContactList(List<PointOfContact> pointOfContactList) {
 		this.pointOfContactList = pointOfContactList;
+	}
+	
+	public LookupDetail getBusinessUnit() {
+		return businessUnit;
+	}
+
+	public void setBusinessUnit(LookupDetail businessUnit) {
+		this.businessUnit = businessUnit;
 	}
 	
 }
