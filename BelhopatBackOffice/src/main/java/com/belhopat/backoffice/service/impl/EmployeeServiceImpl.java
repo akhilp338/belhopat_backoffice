@@ -1,6 +1,5 @@
 package com.belhopat.backoffice.service.impl;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -20,8 +19,6 @@ import org.springframework.stereotype.Component;
 
 import com.belhopat.backoffice.model.Candidate;
 import com.belhopat.backoffice.model.Employee;
-import com.belhopat.backoffice.model.LookupDetail;
-import com.belhopat.backoffice.model.Skill;
 import com.belhopat.backoffice.model.User;
 import com.belhopat.backoffice.repository.EmployeeRepository;
 import com.belhopat.backoffice.repository.LookupDetailRepository;
