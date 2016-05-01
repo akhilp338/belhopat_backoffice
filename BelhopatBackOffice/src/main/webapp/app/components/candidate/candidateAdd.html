@@ -313,7 +313,16 @@
                     <div class="col-md-6 col-lg-6 col-sm-6 col-xs-12">
                         <fieldset class="scheduler-border">
                             <legend class="scheduler-border">Basic Information</legend>
-                            <div class="control-group col-lg-4 col-md-4 col-sm-6 col-xs-6 pull-left">
+                            <div class="control-group col-lg-2 col-md-2 col-sm-3 col-xs-3 pull-left">
+                                <label class="control-label" for="experience">Experience</label>
+                                <div class="controls">
+                                    <input type="text" name="experience" id="experience"
+                                           ng-model="vm.registration.experience"
+                                           class="form-input width-100" placeholder="Experience"
+                                           validation="required:alt=Required field" />
+                                </div>
+                            </div>
+                            <div class="control-group col-lg-2 col-md-2 col-sm-3 col-xs-3 pull-left">
                                 <label class="control-label" for="experience">Experience</label>
                                 <div class="controls">
                                     <input type="text" name="experience" id="experience"
