@@ -83,8 +83,7 @@ public class Candidate extends BaseEntity {
 	@OneToOne(cascade = CascadeType.ALL)
 	private Address onsiteAddress;
 
-	@OneToMany(fetch=FetchType.EAGER)
-	@JsonIgnore
+	@OneToMany(fetch=FetchType.EAGER,cascade = CascadeType.ALL)
 	private List<Skill> skillSet;
 
 	private Integer priorExperienceYear;
