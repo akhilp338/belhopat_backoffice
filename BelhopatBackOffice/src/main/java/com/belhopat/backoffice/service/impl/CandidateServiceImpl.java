@@ -21,7 +21,6 @@ import org.springframework.stereotype.Component;
 import com.belhopat.backoffice.dto.AddressDTO;
 import com.belhopat.backoffice.dto.CandidateViewDTO;
 import com.belhopat.backoffice.dto.EmploymentInfoDTO;
-import com.belhopat.backoffice.dto.FamilyInfoDTO;
 import com.belhopat.backoffice.dto.OfficialInfoDTO;
 import com.belhopat.backoffice.dto.PersonalInfoDTO;
 import com.belhopat.backoffice.model.BankAccount;
@@ -203,11 +202,6 @@ public class CandidateServiceImpl implements CandidateService {
 		officialInfo.setForexCardNo(candidate.getOfficialDetails().getForexCardNo());
 		officialInfo.setForexCardAgency(candidate.getOfficialDetails().getForexCardAgency());
 		return officialInfo;
-	}
-
-	private FamilyInfoDTO getFamilyInfo(Candidate candidate) {
-		// TODO Auto-generated method stub
-		return null;
 	}
 
 	/*

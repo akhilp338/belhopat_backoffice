@@ -1,7 +1,6 @@
 package com.belhopat.backoffice.service.impl;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -21,8 +20,7 @@ import com.belhopat.backoffice.service.LoginService;
 import com.belhopat.backoffice.session.SessionUser;
 
 /**
- * @author Akhil Prakash
- * Spring security login service
+ * @author Akhil Prakash Spring security login service
  */
 @Service("loginService")
 public class LoginServiceImpl implements UserDetailsService, LoginService {
@@ -34,8 +32,8 @@ public class LoginServiceImpl implements UserDetailsService, LoginService {
 	 * (non-Javadoc)
 	 * 
 	 * @see org.springframework.security.core.userdetails.UserDetailsService#
-	 * loadUserByUsername(java.lang.String)
-	 * loads the user by its username and authenticates
+	 * loadUserByUsername(java.lang.String) loads the user by its username and
+	 * authenticates
 	 */
 	@Transactional
 	@Override
@@ -48,23 +46,23 @@ public class LoginServiceImpl implements UserDetailsService, LoginService {
 		}
 		return null;
 	}
+
 	/*
 	 * (non-Javadoc)
 	 * 
 	 * @see org.springframework.security.core.userdetails.UserDetailsService#
-	 * loadUserByUsername(java.lang.String)
-	 * builds the userauthentication
+	 * loadUserByUsername(java.lang.String) builds the userauthentication
 	 */
 	private SessionUser buildUserForAuthentication(User user, List<GrantedAuthority> authorities) {
 		return new SessionUser(user.getId(), user.getRole(), user.getUsername(), user.getPassword(), user.getEmail(),
 				authorities);
 	}
+
 	/*
 	 * (non-Javadoc)
 	 * 
 	 * @see org.springframework.security.core.userdetails.UserDetailsService#
-	 * loadUserByUsername(java.lang.String)
-	 * builds user authority
+	 * loadUserByUsername(java.lang.String) builds user authority
 	 */
 	private List<GrantedAuthority> buildUserAuthority(String role) {
 		Set<GrantedAuthority> setAuths = new HashSet<GrantedAuthority>();
