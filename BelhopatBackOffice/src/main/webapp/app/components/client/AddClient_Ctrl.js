@@ -37,6 +37,7 @@
         vm.clientRegister = function () {
             vm.registerUrl = "api/client/saveOrUpdateClient";
             console.log(vm.registration);
+            vm.registration.pointOfContactList = vm.registration.poc;
             Core_Service.registerImpl(vm.registerUrl, vm.registration)
                     .then(function (response) {
                     }, function (error) {
