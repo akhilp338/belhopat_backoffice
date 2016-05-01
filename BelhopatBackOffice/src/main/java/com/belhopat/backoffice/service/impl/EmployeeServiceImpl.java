@@ -1,8 +1,5 @@
 package com.belhopat.backoffice.service.impl;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Predicate;
@@ -81,9 +78,14 @@ public class EmployeeServiceImpl implements EmployeeService {
 		employee.setJoiningDate(employeeDto.getJoiningDate());
 		employee = employeeRepository.save(employee);
 		if (employee != null) {
-			String employeeName = employee.getEmployeeMaster().getFirstName() + " "
-					+ employee.getEmployeeMaster().getLastName();
-			return new ResponseEntity<String>(employeeName, HttpStatus.OK);
+			Candidate candidate = candidateRepository.findById(employeeDto.getEmployeeMasterId());
+			candidate.setEmployee(true);
+			candidate = candidateRepository.save(candidate);
+			if (candidate != null) {
+				String employeeName = employee.getEmployeeMaster().getFirstName() + " "
+						+ employee.getEmployeeMaster().getLastName();
+				return new ResponseEntity<String>(employeeName, HttpStatus.OK);
+			}
 		}
 		return new ResponseEntity<String>(HttpStatus.NO_CONTENT);
 	}
@@ -117,12 +119,8 @@ public class EmployeeServiceImpl implements EmployeeService {
 	 * Long) gets an employee from datatase
 	 */
 	@Override
-	public ResponseEntity<Employee> getAnEmployee(Long id) {
-		Employee employee = employeeRepository.findById(id);
-		if (employee != null) {
-			return new ResponseEntity<Employee>(employee, HttpStatus.OK);
-		}
-		return new ResponseEntity<Employee>(HttpStatus.NO_CONTENT);
+	public Employee getAnEmployee(Long id) {
+		return employeeRepository.findById(id);
 	}
 
 }

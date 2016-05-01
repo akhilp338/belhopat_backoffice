@@ -16,7 +16,7 @@ import com.belhopat.backoffice.util.ResponseObject;
 @Service
 public interface CandidateService {
 
-	public DataTablesOutput<Candidate> getCandidates(DataTablesInput input);
+	public DataTablesOutput<Candidate> getCandidates(DataTablesInput input, boolean employee);
 
 	public ResponseEntity<Candidate> getCandidate(Long candidateId);
 

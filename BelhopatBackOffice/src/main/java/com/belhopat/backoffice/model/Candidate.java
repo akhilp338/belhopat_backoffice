@@ -52,23 +52,6 @@ public class Candidate extends BaseEntity {
 	private String fathersName;
 	
 	private String mothersName;
-	
-
-	public String getFathersName() {
-		return fathersName;
-	}
-
-	public void setFathersName(String fathersName) {
-		this.fathersName = fathersName;
-	}
-
-	public String getMothersName() {
-		return mothersName;
-	}
-
-	public void setMothersName(String motersName) {
-		this.mothersName = motersName;
-	}
 
 	@OneToMany
 	@JsonIgnore
@@ -127,6 +110,8 @@ public class Candidate extends BaseEntity {
 	private LookupDetail registrationStatus;
 
 	private String sourcedBy;
+	
+	private boolean employee;
 	
 	@Transient
 	private List<Skill> unselectedSkillSet;
@@ -251,6 +236,22 @@ public class Candidate extends BaseEntity {
 		this.onsiteContactNo = onsiteContactNo;
 	}
 
+	public String getFathersName() {
+		return fathersName;
+	}
+
+	public void setFathersName(String fathersName) {
+		this.fathersName = fathersName;
+	}
+
+	public String getMothersName() {
+		return mothersName;
+	}
+
+	public void setMothersName(String motersName) {
+		this.mothersName = motersName;
+	}
+	
 	public List<FamilyMember> getFamilyMembers() {
 		return familyMembers;
 	}
@@ -417,6 +418,14 @@ public class Candidate extends BaseEntity {
 
 	public void setSourcedBy(String sourcedBy) {
 		this.sourcedBy = sourcedBy;
+	}
+	
+	public boolean isEmployee() {
+		return employee;
+	}
+
+	public void setEmployee(boolean employee) {
+		this.employee = employee;
 	}
 
 	public List<Skill> getUnselectedSkillSet() {

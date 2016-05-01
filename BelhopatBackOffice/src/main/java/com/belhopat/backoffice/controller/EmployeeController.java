@@ -64,7 +64,7 @@ public class EmployeeController {
 	 */
 	@ResponseBody
 	@RequestMapping(value = "/getAnEmployee", method = RequestMethod.POST)
-	public ResponseEntity<Employee> getAnEmployee(@RequestBody RequestObject requestObject) {
+	public Employee getAnEmployee(@RequestBody RequestObject requestObject) {
 		return employeeService.getAnEmployee(requestObject.getId());
 	}
 	@ResponseBody

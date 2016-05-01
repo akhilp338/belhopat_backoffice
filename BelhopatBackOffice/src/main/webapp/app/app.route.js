@@ -120,8 +120,8 @@
                     templateUrl: '/BelhopatBackOffice/app/components/common/defaultTemplate.html' 
                 },
                 'content@': {
-                    templateUrl: '/BelhopatBackOffice/app/components/employee/employeeAdd.html',
-                    controller: 'AddEmployee_Ctrl',
+                    templateUrl: '/BelhopatBackOffice/app/components/employee/employeeAddFinal.html',
+                    controller: 'AddEmployee_Ctrl_Final',
                     controllerAs: 'vm'
                 }
             }

@@ -25,4 +25,7 @@ public interface EmployeeRepository extends JpaRepository<Employee, Long>, DataT
 	@Query("select e from Employee e where e.employeeMaster.designation.id in (:employeeDesgLookupList)")
 	List<Employee> fetchEmployeeWithDesig(@Param("employeeDesgLookupList") Long employeeDesgLookId);
 
+	@Query("select e from Employee e where e.employeeMaster.designation.code=:designation")
+	List<Employee> findByDesignation(@Param("designation") String designation);
+
 }

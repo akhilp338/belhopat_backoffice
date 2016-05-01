@@ -28,20 +28,24 @@ public class Employee extends BaseEntity{
 	
 	private String employeeId;
 
-	@JsonIgnore
-	@ManyToOne(fetch=FetchType.EAGER)
-	private Employee reportingManager;
-
-	
 	@ManyToOne
 	private LookupDetail businessUnit;
 	
 	@JsonIgnore
 	@ManyToOne(fetch=FetchType.EAGER)
 	private Employee accountManager;
+	
+	@JsonIgnore
+	@ManyToOne(fetch=FetchType.EAGER)
+	private Employee hrRecruiter;
+
 	@JsonIgnore
 	@ManyToOne(fetch=FetchType.EAGER)
 	private Employee hrManager;
+	
+	@JsonIgnore
+	@ManyToOne(fetch=FetchType.EAGER)
+	private Employee reportingManager;
 	
 	@ManyToOne
 	private City workLocation;
@@ -49,16 +53,13 @@ public class Employee extends BaseEntity{
 	@ManyToOne
 	private TimeZone timeZone;
 
-
-	public Employee getReportingManager() {
-		return reportingManager;
+	public User getEmployeeUser() {
+		return employeeUser;
 	}
 
-	public void setReportingManager(Employee reportingManager) {
-		this.reportingManager = reportingManager;
+	public void setEmployeeUser(User employeeUser) {
+		this.employeeUser = employeeUser;
 	}
-
-	
 
 	public Date getJoiningDate() {
 		return joiningDate;
@@ -66,14 +67,6 @@ public class Employee extends BaseEntity{
 
 	public void setJoiningDate(Date joiningDate) {
 		this.joiningDate = joiningDate;
-	}
-
-	public User getEmployeeUser() {
-		return employeeUser;
-	}
-
-	public void setEmployeeUser(User employeeUser) {
-		this.employeeUser = employeeUser;
 	}
 
 	public Candidate getEmployeeMaster() {
@@ -100,6 +93,13 @@ public class Employee extends BaseEntity{
 		this.employeeId = employeeId;
 	}
 
+	public LookupDetail getBusinessUnit() {
+		return businessUnit;
+	}
+
+	public void setBusinessUnit(LookupDetail businessUnit) {
+		this.businessUnit = businessUnit;
+	}
 
 	public Employee getAccountManager() {
 		return accountManager;
@@ -107,6 +107,14 @@ public class Employee extends BaseEntity{
 
 	public void setAccountManager(Employee accountManager) {
 		this.accountManager = accountManager;
+	}
+
+	public Employee getHrRecruiter() {
+		return hrRecruiter;
+	}
+
+	public void setHrRecruiter(Employee hrRecruiter) {
+		this.hrRecruiter = hrRecruiter;
 	}
 
 	public Employee getHrManager() {
@@ -117,21 +125,20 @@ public class Employee extends BaseEntity{
 		this.hrManager = hrManager;
 	}
 
+	public Employee getReportingManager() {
+		return reportingManager;
+	}
+
+	public void setReportingManager(Employee reportingManager) {
+		this.reportingManager = reportingManager;
+	}
+
 	public City getWorkLocation() {
 		return workLocation;
 	}
 
 	public void setWorkLocation(City workLocation) {
 		this.workLocation = workLocation;
-	}
-
-
-	public LookupDetail getBusinessUnit() {
-		return businessUnit;
-	}
-
-	public void setBusinessUnit(LookupDetail businessUnit) {
-		this.businessUnit = businessUnit;
 	}
 
 	public TimeZone getTimeZone() {
@@ -141,17 +148,5 @@ public class Employee extends BaseEntity{
 	public void setTimeZone(TimeZone timeZone) {
 		this.timeZone = timeZone;
 	}
-
-	@Override
-	public String toString() {
-		return "Employee [employeeUser=" + employeeUser + ", employeeMaster=" + employeeMaster + ", officialEmail="
-				+ officialEmail + ", employeeId=" + employeeId + ", reportingManager=" + reportingManager
-				+ ", businessUnit=" + businessUnit + ", accountManager=" + accountManager + ", hrManager=" + hrManager
-				+ ", workLocation=" + workLocation + ", timeZone=" + timeZone + "]";
-	}
-
 	
-	
-
-
 }
