@@ -24,6 +24,7 @@ import com.belhopat.backoffice.repository.CandidateSequenceRepository;
 import com.belhopat.backoffice.repository.CityRepository;
 import com.belhopat.backoffice.repository.ClientSequenceRepository;
 import com.belhopat.backoffice.repository.CountryRepository;
+import com.belhopat.backoffice.repository.EmployeeRepository;
 import com.belhopat.backoffice.repository.EmployeeSequenceRepository;
 import com.belhopat.backoffice.repository.LookupDetailRepository;
 import com.belhopat.backoffice.repository.SkillRepository;
@@ -43,6 +44,9 @@ public class BaseServiceImpl implements BaseService {
 
 	@Autowired
 	CountryRepository countryRepository;
+	
+	@Autowired
+	EmployeeRepository employeeRepository;
 
 	@Autowired
 	StateRepository stateRepository;
@@ -188,5 +192,25 @@ public class BaseServiceImpl implements BaseService {
 			increment = clientSequence.getId();
 		}
 		return increment;
+	}
+	
+
+	@Override
+	public Map<String, List<?>> getEmployeeDropdowns() {
+		Map<String, List<?>> dropDownMap = new HashMap<>();
+		dropDownMap.put(Constants.HRM_DRP, getEmployeeDesignation(Constants.HRM_LOOKUP));
+		dropDownMap.put(Constants.HRR_DRP, getEmployeeDesignation(Constants.HRR_LOOKUP));
+		dropDownMap.put(Constants.AM_DRP, getEmployeeDesignation(Constants.AM_LOOKUP));
+		dropDownMap.put(Constants.FM_DRP, getEmployeeDesignation(Constants.FM_LOOKUP));
+		dropDownMap.put(Constants.CEO_DRP, getEmployeeDesignation(Constants.CEO_LOOKUP));
+		dropDownMap.put(Constants.BUH_DRP, getEmployeeDesignation(Constants.BUH_LOOKUP));
+		dropDownMap.put(Constants.BU_DRP, lookupDetailRepository.findByLookupKey(Constants.DIVISION));
+		dropDownMap.put(Constants.COUNTRY, countryRepository.findAll());
+		return dropDownMap;
+	}
+	
+	private List<Employee> getEmployeeDesignation(Long lookupId){
+		return employeeRepository.fetchEmployeeWithDesig(lookupId);
+		
 	}
 }
