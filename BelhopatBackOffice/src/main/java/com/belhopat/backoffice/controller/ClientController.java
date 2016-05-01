@@ -70,7 +70,7 @@ public class ClientController {
 	
 	@ResponseBody
 	@RequestMapping(value = "/getDropDownData", method = RequestMethod.POST)
-	public Map<String, List<?>> getEmployeeDropdowns() {
+	public Map<String, List<?>> getDropDownData() {
 		return baseService.getEmployeeDropdowns();
 	}
 
