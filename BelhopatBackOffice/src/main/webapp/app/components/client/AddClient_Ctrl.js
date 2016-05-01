@@ -37,13 +37,32 @@
         vm.clientRegister = function () {
             vm.registerUrl = "api/client/saveOrUpdateClient";
             console.log(vm.registration);
-            vm.registration.pointOfContactList = vm.registration.poc;
+            var pointOfContactList = vm.getPocList(vm.registration.poc);
+            vm.registration.pointOfContactList = pointOfContactList;
             Core_Service.registerImpl(vm.registerUrl, vm.registration)
                     .then(function (response) {
                     }, function (error) {
 
                     });
         };
+        vm.getPocList=function(poc){
+        	var array = [];
+//        	for(var key in poc){
+        		var obj={},
+        		countryObj={},
+        		desgnObj = {};
+        		countryObj.id = poc.country.id;
+        		obj.pocCountry=countryObj;
+        		obj.pocName = poc.pocName;
+        		desgnObj.id = poc.designation.id;
+        		obj.pocDesignation=desgnObj;
+        		obj.contactNo=poc.contactNo;
+        		obj.mobNo=poc.mobNo;
+        		obj.areaOfWork=poc.areaOfWork;
+        		array.push(obj);
+//        	}
+        	return array;
+        }
         
         vm.getStatesByCountry = function (countryId, flag) {
             var data = {"id": countryId};
