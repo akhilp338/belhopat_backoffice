@@ -5,6 +5,7 @@
         $rootScope.showLoader = true;
         console.log($stateParams.id); 
         vm.candidateId = localStorage["selectedCandidate"];
+        vm.candId = localStorage["selectedCandidateId"];
         vm.registration = {};
         if ($stateParams.id) {
             Core_Service.getCandidateImpl("api/employee/getAnEmployee", $stateParams.id).then(function (res) {
@@ -33,6 +34,7 @@
         };
         vm.employeeRegister = function () {
             vm.registerUrl = "api/employee/saveOrUpdateEmployee";
+            vm.registration.employeeMasterId=vm.candId ;
             Core_Service.registerImpl(vm.registerUrl, vm.registration)
                     .then(function (response) {
                     }, function (error) {
