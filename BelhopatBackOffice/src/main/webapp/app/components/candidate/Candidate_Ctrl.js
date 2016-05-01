@@ -184,6 +184,15 @@
                 $rootScope.id = this.getAttribute('value');
                 $state.go('coreuser.candidate.edit', {id: $rootScope.id});
             });
+            $('#candidatesList tbody').on( 'click', 'tr', function () {
+                if ( $(this).hasClass('selected') ) {
+                    $(this).removeClass('selected');
+                }
+                else {
+                	oTable.$('tr.selected').removeClass('selected');
+                    $(this).addClass('selected');
+                }
+            } );
             
         });
         

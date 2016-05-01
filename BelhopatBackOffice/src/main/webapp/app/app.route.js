@@ -134,6 +134,24 @@
                     controllerAs: 'vm'
                 }
             }
+        }).state('coreuser.client.add', {
+            url: '^/BelhopatBackOffice/client/add',
+            views: {
+                'content@': {
+                    templateUrl: '/BelhopatBackOffice/app/components/client/clientAdd.html',
+                    controller: 'AddClient_Ctrl',
+                    controllerAs: 'vm'
+                }
+            }
+        }).state('coreuser.client.edit', {
+            url: '/edit/:id',
+            views: {
+                'content@': {
+                    templateUrl: '/BelhopatBackOffice/app/components/client/clientAdd.html',
+                    controller: 'AddClient_Ctrl',
+                    controllerAs: 'vm'
+                }
+            }
         }).state('coreuser.opportunity', {
             url: urlConfig.root_path+'opportunity',
             views: {
@@ -149,6 +167,15 @@
                 'content@': {
                     templateUrl: '/BelhopatBackOffice/app/components/holiday/holiday.html',
                     controller: 'Holiday_Ctrl',
+                    controllerAs: 'vm'
+                }
+            }
+        }).state('coreuser.employee.nextStep', {
+            url: urlConfig.root_path+'addEmployeeFinal/:id:candId',
+            views: {
+                'content@': {
+                    templateUrl: '/BelhopatBackOffice/app/components/employee/employeeAddFinal.html',
+                    controller: 'AddEmployee_Ctrl_Final',
                     controllerAs: 'vm'
                 }
             }
