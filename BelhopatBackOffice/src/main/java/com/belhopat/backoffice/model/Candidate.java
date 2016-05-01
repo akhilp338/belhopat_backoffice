@@ -85,6 +85,8 @@ public class Candidate extends BaseEntity {
 
 	@OneToMany(fetch=FetchType.EAGER,cascade = CascadeType.ALL)
 	private List<Skill> skillSet;
+	
+	private String skillString;
 
 	private Integer priorExperienceYear;
 
@@ -425,6 +427,14 @@ public class Candidate extends BaseEntity {
 
 	public void setUnselectedSkillSet(List<Skill> unselectedSkillSet) {
 		this.unselectedSkillSet = unselectedSkillSet;
+	}
+
+	public String getSkillString() {
+		return skillString;
+	}
+
+	public void setSkillString(String skillString) {
+		this.skillString = skillString;
 	}
 
 }
