@@ -117,12 +117,8 @@ public class EmployeeServiceImpl implements EmployeeService {
 	 * Long) gets an employee from datatase
 	 */
 	@Override
-	public ResponseEntity<Employee> getAnEmployee(Long id) {
-		Employee employee = employeeRepository.findById(id);
-		if (employee != null) {
-			return new ResponseEntity<Employee>(employee, HttpStatus.OK);
-		}
-		return new ResponseEntity<Employee>(HttpStatus.NO_CONTENT);
+	public Employee getAnEmployee(Long id) {
+		return  employeeRepository.findById(id);
 	}
 
 }
