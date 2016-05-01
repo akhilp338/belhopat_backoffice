@@ -44,11 +44,11 @@ public class Employee extends BaseEntity{
 	@ManyToOne(fetch=FetchType.LAZY)
 	private Employee hrManager;
 	
-	@ManyToOne
-	private City workLocation;
+	//@ManyToOne
+	private String workLocation;
 	
-	@ManyToOne
-	private TimeZone timeZone;
+	//@ManyToOne
+	private String timeZone;
 
 
 	public Employee getReportingManager() {
@@ -125,20 +125,20 @@ public class Employee extends BaseEntity{
 		this.hrManager = hrManager;
 	}
 
-	public City getWorkLocation() {
+	
+	public String getWorkLocation() {
 		return workLocation;
 	}
 
-	public void setWorkLocation(City workLocation) {
+	public void setWorkLocation(String workLocation) {
 		this.workLocation = workLocation;
 	}
 
-
-	public TimeZone getTimeZone() {
+	public String getTimeZone() {
 		return timeZone;
 	}
 
-	public void setTimeZone(TimeZone timeZone) {
+	public void setTimeZone(String timeZone) {
 		this.timeZone = timeZone;
 	}
 
