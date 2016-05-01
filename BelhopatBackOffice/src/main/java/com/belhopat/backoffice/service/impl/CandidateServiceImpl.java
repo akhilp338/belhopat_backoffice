@@ -1,6 +1,8 @@
 package com.belhopat.backoffice.service.impl;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
@@ -89,7 +91,8 @@ public class CandidateServiceImpl implements CandidateService {
 	 * saves or updates the candidate to the database
 	 */
 	@Override
-	public ResponseEntity<String> saveOrUpdateCandidate(Candidate candidateObj) {
+	public ResponseEntity<Map<String,String>> saveOrUpdateCandidate(Candidate candidateObj) {
+		Map<String,String> responseMap = new HashMap<>();
 		Candidate newCandidate = null;
 		User loggedInUser = SessionManager.getCurrentUserAsEntity();
 		if (candidateObj.getId() == null) {
@@ -98,18 +101,17 @@ public class CandidateServiceImpl implements CandidateService {
 			newCandidate = updateCandidate(loggedInUser, candidateObj);
 		}
 		if (newCandidate != null) {
-			String candidateName = newCandidate.getFirstName() + " " + newCandidate.getLastName();
-			return new ResponseEntity<String>(candidateName, HttpStatus.OK);
+			responseMap.put("Message", newCandidate.getFirstName() + " " + newCandidate.getLastName());
+			return new ResponseEntity<Map<String,String>>(responseMap, HttpStatus.OK);
 		}
-		return new ResponseEntity<String>(HttpStatus.NO_CONTENT);
+		return new ResponseEntity<Map<String,String>>( responseMap,HttpStatus.NO_CONTENT);
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see
-	 * com.belhopat.backoffice.service.CandidateService#deleteCandidate(java.
-	 * lang.Long)
+	
+	/**
+	 * @param loggedInUser
+	 * @param candidateObj
+	 * @return Candidate
 	 * sets the dto to entity
 	 */
 	private Candidate updateCandidate(User loggedInUser, Candidate candidateObj) {
@@ -168,12 +170,10 @@ public class CandidateServiceImpl implements CandidateService {
 		return persisted;
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see
-	 * com.belhopat.backoffice.service.CandidateService#deleteCandidate(java.
-	 * lang.Long)
+	/**
+	 * @param candidateObj
+	 * @param newCandidate
+	 * @return Candidate
 	 * sets the base attributes
 	 */
 	private Candidate getUpdatedWithBaseAttributes(Candidate candidateObj, Candidate newCandidate) {
@@ -201,12 +201,10 @@ public class CandidateServiceImpl implements CandidateService {
 		return newCandidate;
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see
-	 * com.belhopat.backoffice.service.CandidateService#deleteCandidate(java.
-	 * lang.Long)
+	/**
+	 * @param bankAccount
+	 * @param newCandidate
+	 * @return Candidate
 	 * sets the account details
 	 */
 	private Candidate setBankAccountInDetail(BankAccount bankAccount, Candidate newCandidate) {
@@ -223,12 +221,10 @@ public class CandidateServiceImpl implements CandidateService {
 		return newCandidate;
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see
-	 * com.belhopat.backoffice.service.CandidateService#deleteCandidate(java.
-	 * lang.Long)
+	/**
+	 * @param loggedInUser
+	 * @param candidate
+	 * @return Candidate
 	 * saves a new candidate to database
 	 */
 	private Candidate registerNewCandidate(User loggedInUser, Candidate candidate) {

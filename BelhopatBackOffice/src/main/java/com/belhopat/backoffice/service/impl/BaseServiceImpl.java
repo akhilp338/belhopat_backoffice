@@ -12,13 +12,19 @@ import org.springframework.stereotype.Component;
 import com.belhopat.backoffice.model.Candidate;
 import com.belhopat.backoffice.model.CandidateSequence;
 import com.belhopat.backoffice.model.City;
+import com.belhopat.backoffice.model.Client;
+import com.belhopat.backoffice.model.ClientSequence;
 import com.belhopat.backoffice.model.Country;
+import com.belhopat.backoffice.model.Employee;
+import com.belhopat.backoffice.model.EmployeeSequence;
 import com.belhopat.backoffice.model.LookupDetail;
 import com.belhopat.backoffice.model.Skill;
 import com.belhopat.backoffice.model.State;
 import com.belhopat.backoffice.repository.CandidateSequenceRepository;
 import com.belhopat.backoffice.repository.CityRepository;
+import com.belhopat.backoffice.repository.ClientSequenceRepository;
 import com.belhopat.backoffice.repository.CountryRepository;
+import com.belhopat.backoffice.repository.EmployeeSequenceRepository;
 import com.belhopat.backoffice.repository.LookupDetailRepository;
 import com.belhopat.backoffice.repository.SkillRepository;
 import com.belhopat.backoffice.repository.StateRepository;
@@ -49,6 +55,12 @@ public class BaseServiceImpl implements BaseService {
 
 	@Autowired
 	CandidateSequenceRepository candidateSequenceRepository;
+	
+	@Autowired
+	EmployeeSequenceRepository employeeSequenceRepository;
+
+	@Autowired
+	ClientSequenceRepository clientSequenceRepository;
 
 	/*
 	 * (non-Javadoc)
@@ -164,9 +176,16 @@ public class BaseServiceImpl implements BaseService {
 	@Override
 	public <T> Long getSequenceIncrement(Class<T> clazz) {
 		Long increment = null;
-		if (clazz.equals(Candidate.class)) {
-			CandidateSequence candidateSequence = candidateSequenceRepository.save(new CandidateSequence());
+		if ( clazz.equals(Candidate.class) ) {
+			CandidateSequence candidateSequence = candidateSequenceRepository.save( new CandidateSequence() );
 			increment = candidateSequence.getId();
+		}else if ( clazz.equals( Employee.class) ){
+			EmployeeSequence employeeSequence = employeeSequenceRepository.save( new EmployeeSequence() );
+			increment = employeeSequence.getId();
+		}
+		else if ( clazz.equals( Client.class) ){
+			ClientSequence clientSequence = clientSequenceRepository.save( new ClientSequence() );
+			increment = clientSequence.getId();
 		}
 		return increment;
 	}

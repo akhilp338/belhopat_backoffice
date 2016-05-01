@@ -266,9 +266,12 @@ body {
     padding: 10px;
 }
 
+button.link-btn {
+    background: transparent;
+    border: none;
+}
+
 .logout-button {
-    float: right;
-    margin: 7px;
     border: none;
     padding: 6px 15px;
     background-color: #8DC63F;
@@ -280,10 +283,14 @@ body {
     padding: 4px 15px!important;
 }
 .sweet-alert button.confirm {
-    border-radius: 0;
-    background-color: #009688!important;
+    border-radius: 0;    
+    background-color: rgb(204, 39, 39)!important;
 }
-
+.sweet-alert button.confirm:hover {
+    display: inline-block;
+    box-shadow: rgba(204, 39, 39, 0.8) 0px 0px 2px, rgba(0, 0, 0, 0.0470588) 0px 0px 0px 1px inset!important;
+    background-color: rgb(204, 39, 39)!important;
+}
 .logout-button:hover{
     text-decoration: none;
     box-shadow: 0 3px 10px rgba(0,0,0,0.23),0 3px 10px rgba(0,0,0,0.16);
@@ -482,7 +489,8 @@ body {
     border-radius: 4px;
 }
 
-#candidatesList {
+#candidatesList,
+#employeeList{
     border-collapse: separate;
     border: 1px solid #ddd;
     margin: 0;
@@ -594,7 +602,8 @@ span.text-danger{
 }
 
 .form-horizontal,
-#candidatesList_wrapper{
+#candidatesList_wrapper,
+#employeeList_wrapper{
     padding: 0 20px 0 20px;
 }
 
@@ -708,7 +717,7 @@ span.user-list-head {
     z-index: 10;
 }
 
-.add-candidate {
+.inner-page .main {
     width: 100%;
     margin-left: 0;
 }
@@ -720,13 +729,35 @@ span.user-list-head {
 }
 
 .modal-header {
-    background-color: #009688;
     color: white;
+    background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #ffb76b), color-stop(100, #ff7f04));
+    background-image: -webkit-linear-gradient(top, #ffb76b 0%, #ff7f04 100%);
+    background-image: linear-gradient(to bottom, #ffb76b 0%, #ff7f04 100%);
 }
 
 .modal-dialog{
     width: 30%;
     margin: 100px auto;
+}
+
+.modal-header #close{
+    position: absolute;
+    right: -14px;
+    padding: 2px 10px;
+    border-radius: 50%;
+    outline: none;
+    font-size: 18px;
+    top: -16px;
+    background-color: #CC2727;
+    cursor: pointer;
+}
+
+.modal-body {
+    position: relative;
+    padding: 20px;
+    max-height: 333px;
+    float: left;
+    overflow-y: scroll;
 }
 
 .view-modal .modal-dialog{
@@ -759,17 +790,17 @@ input[type=text], textarea {
 
 input[type=text]:focus, textarea:focus {
     box-shadow: 0 0 5px rgba(81, 203, 238, 1);
-    padding: 3px 0px 3px 3px;
     margin: 5px 1px 3px 0px;
     border: 1px solid rgba(81, 203, 238, 1);
 }
 
-input.ng-touched.ng-invalid {
+.ng-touched.ng-invalid {
     border: 1px solid red;
 }
 
-input.ng-touched.ng-valid{
+.ng-touched.ng-valid{
     border: 1px solid green;
+    border-right: none!important;
 }
 
 .dataTables_scrollHeadInner,
@@ -870,11 +901,14 @@ input[type="search"] {
     height: 36px;
 }
 
-div#candidatesList_length {
+div#candidatesList_length,
+div#employeeList_length{
+    color: #CC2727;
     margin-top: 10px;
 }
 
-div#candidatesList_length select {
+div#candidatesList_length select,
+div#employeeList_length select{
     width: 70px;
     height: 25px;
     border: 1px solid #CC2727;
@@ -883,10 +917,6 @@ div#candidatesList_length select {
 
 .dataTables_wrapper .dataTables_length, .dataTables_wrapper .dataTables_filter, .dataTables_wrapper .dataTables_info, .dataTables_wrapper .dataTables_processing, .dataTables_wrapper .dataTables_paginate{
     color: #CC2727!important;  
-}
-div#candidatesList_length {
-    color: #CC2727;
-    margin-top: 10px;
 }
 
 .cat-row span {
@@ -953,62 +983,40 @@ table.dataTable tbody th, table.dataTable tbody td {
     padding: 0px 10px!important;
 }
 
-/*Overriding material themes and styles*/
-.md-datepicker-input-container{
-    width: 84%;
-    border-bottom-style: hidden;
+.date-form{
+    margin: 0px!important;
 }
 
-.md-calendar-day-header {
-    margin: 0 auto;
+.custom-datepick{
+    position: absolute;
+    right: 16px;
+    top: 5px;
+}
+/*.ng-touched.ng-valid~.custom-datepick .btn-default,
+.ng-touched.ng-invalid~.custom-datepick .btn-default,
+.date-form:focus~.custom-datepick .btn-default{
+    border-left: none!important;
+   top: 5!important;
 }
 
-.md-datepicker-calendar{
-    text-align: center;
+.ng-touched.ng-valid~.custom-datepick .btn-default{
+       border: 1px solid #008000!important;
+    height: 25px;
+    border-left: none!important;
 }
 
-.md-default-theme .md-calendar-date.md-calendar-selected-date .md-calendar-date-selection-indicator, .md-calendar-date.md-calendar-selected-date .md-calendar-date-selection-indicator, .md-default-theme .md-calendar-date.md-focus.md-calendar-selected-date .md-calendar-date-selection-indicator, .md-calendar-date.md-focus.md-calendar-selected-date .md-calendar-date-selection-indicator{
-    background: rgb(0, 150, 136);
+.ng-touched.ng-invalid~.custom-datepick .btn-default{
+  border: 1px solid #E7EDEC;
+}*/
+
+.custom-datepick{
+    top: 3px;
 }
 
-table.md-calendar-day-header thead tr th {
-    border: 1px solid rgba(255,255,255,0.87)!important;
+.date-form{
+    border-right: none; 
+    margin-top: 5px!important;
 }
-
-.md-default-theme .md-calendar-day-header, .md-calendar-day-header {
-    background: rgb(0, 150, 136);
-    color: rgba(255,255,255,0.87);
-}
-
-table.md-calendar{
-    background-color: #E0F2F1;
-}
-
-.md-default-theme .md-calendar-date.md-calendar-date-today .md-calendar-date-selection-indicator, .md-calendar-date.md-calendar-date-today .md-calendar-date-selection-indicator{
-    border: 1px solid rgb(0, 150, 136);
-}
-
-.md-default-theme .md-datepicker-open .md-datepicker-calendar-icon, .md-datepicker-open .md-datepicker-calendar-icon {
-    fill: rgb(0, 150, 136);
-}
-
-md-datepicker {
-    white-space: nowrap;
-    overflow: hidden;
-    padding-right: 18px;
-    margin-right: -18px;
-    vertical-align: middle;
-    height: 25px!important;
-    position: relative;
-    float: left;
-    width: 100%;
-    background-color: #E7EDEC;
-    margin-top: 4px;
-    border-radius: 5px;
-    border: 1px solid #DDDDDD;
-}
-/*Overriding material themes and styles*/
-
 
 /*theme4*/
 .radio-group{
@@ -1032,7 +1040,8 @@ md-datepicker {
     background-image: linear-gradient(to bottom, #ffb76b 0%, #ff7f04 100%);
 }
 
-.nav-tabs{
+.nav-tabs,
+.theme4 .nav>li>a:focus{
     /* IE10+ */ 
     background-image: -ms-linear-gradient(top, #FCEABB 0%, #F8B500 100%);
 
@@ -1101,8 +1110,7 @@ md-datepicker {
     background-color: rgba(175, 193, 192, 0.3); 
 }
 
-.theme4 .nav>li>a:hover,
-.theme4 .nav>li>a:focus{
+.theme4 .nav>li>a:hover{
     background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #ffb76b), color-stop(100, #ff7f04));
     background-image: -webkit-linear-gradient(top, #ffb76b 0%, #ff7f04 100%);
     background-image: linear-gradient(to bottom, #ffb76b 0%, #ff7f04 100%);
@@ -1137,7 +1145,8 @@ md-datepicker {
     color: white; 
 }
 
-.theme4 #candidatesList tbody tr.odd {
+.theme4 #candidatesList tbody tr.odd,
+.theme4 #employeeList tbody tr.odd{
     background-color: #FBDF92;
 }
 
@@ -1185,12 +1194,14 @@ fieldset.scheduler-border legend{
 }
 
 .theme4 .dataTables_wrapper .dataTables_paginate .paginate_button:hover,
-.theme4 #candidatesList_previous:hover{
+.theme4 #candidatesList_previous:hover,
+.theme4 #employeeList_previous:hover{
     border: none!important;
     background: #CC2727!important; 
 }
 
-.theme4 a#candidatesList_previous:hover {
+.theme4 a#candidatesList_previous:hover,
+.theme4 #employeeList_previous:hover{
     color: white!important;
 }
 
@@ -1199,6 +1210,8 @@ fieldset.scheduler-border legend{
     color: white!important;
 }
 
+.theme4 a#employeeList_next,
+.theme4 a#employeeList_previous,
 .theme4 a#candidatesList_next,
 .theme4 a#candidatesList_previous{
     padding: 0 5px;
@@ -1210,7 +1223,7 @@ fieldset.scheduler-border legend{
 }
 
 fieldset.scheduler-border {
-        border: 1px groove #ddd !important;
+    border: 1px groove #ddd !important;
     padding: 0 1.4em .5em 1.4em !important;
     margin: 0 0 1em 0 !important;
     -webkit-box-shadow:  0px 0px 0px 0px #000;
@@ -1229,14 +1242,13 @@ legend {
 
 .custom-datepick button,
 .custom-datepick button:hover{
-    border: 1px solid #DDDDDD;
-    background: #E7EDEC;
-    padding: 2px;
+   border: none;
+    background: transparent;
+    padding: 5px 0px;
     border-left: none;
-    top: 3px;
-    padding-top: 1px;
+    outline: none;
 }
 
 p.input-group input {
-    border-radius: 5px 0 0 5px;
+    border-radius: 5px;
 }

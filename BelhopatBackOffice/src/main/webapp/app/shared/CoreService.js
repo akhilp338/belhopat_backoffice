@@ -125,11 +125,11 @@
                     });
             return deferred.promise;
         };
-        
-         /*employee Register-start*/
-        service.registerImpl = function(url,postData){
-        	var deferred = $q.defer();
-            Core_HttpRequest.post(url,postData)
+
+        /*employee Register-start*/
+        service.registerImpl = function (url, postData) {
+            var deferred = $q.defer();
+            Core_HttpRequest.post(url, postData)
                     .then(function (response) {
                         deferred.resolve(response)
                     }, function (error) {
@@ -138,11 +138,11 @@
             return deferred.promise;
         };
         /*employee register-end*/
-        
-        
-        service.candidateDeleteImpl = function(url,data){
-        	var deferred = $q.defer();
-            Core_HttpRequest.post(url,data)
+
+
+        service.candidateDeleteImpl = function (url, data) {
+            var deferred = $q.defer();
+            Core_HttpRequest.post(url, data)
                     .then(function (response) {
                         deferred.resolve(response)
                     }, function (error) {
@@ -175,8 +175,18 @@
             return deferred.promise;
         };
 
-        service.sweetAlert = function (congrats, message, type) {
-            swal(congrats, message, type)
+        service.sweetAlert = function (congrats, message, type) {            
+            swal({
+                title: congrats,
+                text: message,
+                type:type,
+                showCancelButton: false,
+                confirmButtonColor: "#CC2727",
+                confirmButtonText: "OK",
+                closeOnConfirm: true},
+                    function () {
+                        $state.go("coreuser.candidate");
+                    });
         };
 
         service.getUserName = function () {

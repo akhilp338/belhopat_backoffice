@@ -2,15 +2,10 @@
     var AddEmployee_Ctrl = function ($scope, $state, $rootScope, Core_Service, $stateParams, Core_HttpRequest, validationService) {
         var vm = this;
         $rootScope.showLoader = true;
-      
         vm.registration = {};
         if ($stateParams.id) {
             Core_Service.getCandidateImpl("api/employee/getAnEmployee", $stateParams.id).then(function (res) {
-                vm.registration = res.data;
-                for (var i = 0; i < countryType.length; i++) {
-                    vm.getStatesByCountry(vm.registration.permanentAddress.city.state.country.id,countryType[i]);
-                    vm.getCitiesByStates(vm.registration.permanentAddress.city.state.id,countryType[i]);
-                }
+                vm.registration = res.data;               
                 vm.isCheckboxEnable = true;
                 vm.isChecked = true;
                 $rootScope.showLoader = false;

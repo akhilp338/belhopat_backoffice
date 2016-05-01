@@ -2,12 +2,17 @@
     var AddCandidate_Ctrl = function ($scope, $state, $rootScope, Core_Service, $stateParams, Core_HttpRequest, validationService) {
         var vm = this;
         $rootScope.showLoader = true;
-        var countryType = ["permenant", "current", "onsite", "bank"]
+        var countryType = ["permenant", "current", "onsite", "bank"];
         vm.setDpOpenStatus = function (id) {
             vm[id] = true
         };
 
-        vm.registration = {}
+        vm.registration = {};
+        vm.mainSelectedSkillList = [];
+        vm.subSelectedSkillList = [];
+        vm.deSelectedSkills = [];
+        vm.registration.confirmedSelectionItems = [];
+        
         if ($stateParams.id) {
             Core_Service.getCandidateImpl("api/candidate/getCandidate", $stateParams.id).then(function (res) {
                 vm.registration = res.data;
@@ -15,6 +20,7 @@
                     vm.getStatesByCountry(vm.registration.permanentAddress.city.state.country.id, countryType[i]);
                     vm.getCitiesByStates(vm.registration.permanentAddress.city.state.id, countryType[i]);
                 }
+                vm.mainSkillList = res.data.unselectedSkillSet;
                 vm.isCheckboxEnable = true;
                 vm.isChecked = true;
                 $rootScope.showLoader = false;
@@ -31,14 +37,11 @@
         Core_Service.getAllLookupValues(vm.urlForLookups)
                 .then(function (response) {
                     vm.lookups = Core_Service.processDateObjects(['dob', 'doj'], response.data);
+            if (!$stateParams.id)
                     vm.mainSkillList = vm.lookups.SKILL;
                 }, function (error) {
                 });
-
-        vm.mainSelectedSkillList = [];
-        vm.subSelectedSkillList = [];
-        vm.deSelectedSkills = [];
-        vm.confirmedSelectionItems = [];
+        
         vs.setGlobalOptions({
             debounce: 1500,
             scope: $scope,
@@ -70,10 +73,9 @@
 
         // Go to a defined step index
         $scope.goToStep = function (index) {
-            if (!_.isUndefined($scope.steps[index])) {
+            if (!_.isUndefined($scope.steps[index]) && vs.checkFormValidity($scope)) {
                 $scope.selection = $scope.steps[index];
             }
-            //ore_Service.calculateSidebarHeight();
         };
 
         $scope.hasNextStep = function () {
@@ -92,7 +94,7 @@
 
         $scope.incrementStep = function () {
             var stepIndex = $scope.getCurrentStepIndex();
-            if ($scope.hasNextStep())
+            if ($scope.hasNextStep() && vs.checkFormValidity($scope))
             {
                 var nextStep = stepIndex + 1;
                 $scope.selection = $scope.steps[nextStep];
@@ -157,6 +159,7 @@
                 vm.registerUrl = "api/candidate/saveOrUpdateCandidate";
                 Core_Service.candidateRegisterImpl(vm.registerUrl, vm.registration)
                         .then(function (response) {
+                        	Core_Service.sweetAlert("Done!",response.Message,"success");  
                             console.log(response)
                         }, function (error) {
                             console.log(error)
@@ -183,7 +186,7 @@
             for (var j = 0; j < vm.mainSelectedSkillList.length; j++) {
                 selected.push(vm.mainSelectedSkillList[j].id)
             }
-            vm.confirmedSelectionItems = selected;
+            vm.registration.confirmedSelectionItems = selected;
         };
         vm.removeFromMainListArray = function (indexes) {
             var selected = [];
@@ -193,7 +196,7 @@
             for (var j = 0; j < vm.mainSelectedSkillList.length; j++) {
                 selected.push(vm.mainSelectedSkillList[j].id)
             }
-            vm.confirmedSelectionItems = selected;
+            vm.registration.confirmedSelectionItems = selected;
         };
         //To Do(move these methods to base controller)
         vm.getStatesByCountry = function (countryId, flag) {
