@@ -55,6 +55,17 @@
                 $rootScope.id = this.getAttribute('value');
                 $state.go('coreuser.employee.edit', {id: $rootScope.id});
             });
+            $('#employeeList tbody').on( 'click', 'tr', function () {
+            	
+                if ( $(this).hasClass('selected') ) {
+                    $(this).removeClass('selected');
+                }
+                else {
+                	oTable.$('tr.selected').removeClass('selected');
+                    $(this).addClass('selected');
+                }
+            } );
+         
         })
         Core_Service.calculateSidebarHeight();
          };

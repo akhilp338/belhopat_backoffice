@@ -689,12 +689,12 @@ span.user-list-head {
 .form-horizontal form{
     background-color: white;
     padding-top: 50px;
-    border-left: 1px solid #DDDDDD;
-    border-right: 1px solid #DDDDDD;
-    border-bottom: 1px solid #DDDDDD;
+    border: 1px solid #DDDDDD;
 
 }
-
+.form-input[disabled]{
+   cursor: not-allowed; 
+}
 .sweet-alert h2{
     font-size: 19px!important;
     margin-top: 0;
@@ -1251,4 +1251,9 @@ legend {
 
 p.input-group input {
     border-radius: 5px;
+}
+tr.selected{
+    background-color: #FFC107 !important;
+    color: white  !important;
+    font-weight: bolder !important;
 }

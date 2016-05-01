@@ -152,6 +152,15 @@
                     controllerAs: 'vm'
                 }
             }
+        }).state('coreuser.employee.nextStep', {
+            url: urlConfig.root_path+'addEmployeeFinal/:id:candId',
+            views: {
+                'content@': {
+                    templateUrl: '/BelhopatBackOffice/app/components/employee/employeeAddFinal.html',
+                    controller: 'AddEmployee_Ctrl_Final',
+                    controllerAs: 'vm'
+                }
+            }
         });
     };
     angular.module('coreModule')

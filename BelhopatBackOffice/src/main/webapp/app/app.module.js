@@ -14,13 +14,17 @@
         'ngCookies',
         'ngStorage',
         'ngAria',
-        'ngMaterial'
+        'ngMaterial',
+        'ngIdle'
     ]);
-    window.app.config(['$locationProvider', function ($locationProvider) {
+    window.app.config(['$locationProvider','KeepaliveProvider', 'IdleProvider', function ($locationProvider,KeepaliveProvider, IdleProvider) {
             $locationProvider.html5Mode({
                 enabled: true,
                 requireBase: false
             });
+            IdleProvider.idle(300);
+            IdleProvider.timeout(300);
+            KeepaliveProvider.interval(300);
         }]);
 
 })();
