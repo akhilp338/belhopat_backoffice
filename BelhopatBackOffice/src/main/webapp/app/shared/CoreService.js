@@ -53,7 +53,7 @@
 
         service.sendPassword = function (data) {
             var deferred = $q.defer();
-            var url = "api/forgotPassword"
+            var url = "/forgotPassword";
             Core_HttpRequest.post(url, data).then(function (res) {
                 if (res.success) {
                     deferred.resolve(res);
@@ -63,6 +63,7 @@
             }, function (error) {
                 deferred.reject(error);
             });
+            console.log("here4");
             return deferred.promise;
         };
         service.SetCredentials = function (username, password) {

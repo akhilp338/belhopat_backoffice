@@ -107,7 +107,7 @@ public class LoginController {
 	 * @throws MessagingException
 	 * Generates a password and sends that password to users e mail id
 	 */
-	@RequestMapping(value = "/api/forgotPassword", method = RequestMethod.POST)
+	@RequestMapping(value = "/forgotPassword", method = RequestMethod.POST)
 	public ResponseEntity<ResponseObject> forgotPassword(@RequestBody User user) throws MessagingException {
 		boolean userStatus = userService.generatePasswordResetLink(user.getEmail());
 		if (userStatus)

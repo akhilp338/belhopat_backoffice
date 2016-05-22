@@ -1,9 +1,13 @@
 
 package com.belhopat.backoffice.service.impl;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import javax.mail.MessagingException;
 
 import org.apache.log4j.Logger;
+import org.apache.velocity.app.VelocityEngine;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.PropertySource;
@@ -11,6 +15,7 @@ import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
 import org.springframework.stereotype.Service;
+import org.springframework.ui.velocity.VelocityEngineUtils;
 
 import com.belhopat.backoffice.service.MailService;
 import com.belhopat.backoffice.service.session.MailMessageObject;
@@ -29,6 +34,9 @@ public class MailServiceImpl implements MailService {
 
 	@Autowired
 	JavaMailSender mailSender;
+	
+	@Autowired
+	VelocityEngine velocityEngine;
 
 	@Autowired
 	ThreadPoolTaskExecutor threadExecutor;
@@ -68,10 +76,12 @@ public class MailServiceImpl implements MailService {
 	 * sends reseted password
 	 */
 	@Override
-	public void sendPasswordResetMail(String userEmail, String emailBody) throws MessagingException {
+	public void sendPasswordResetMail(String userEmail, String generatedPassword) throws MessagingException {
 
-		String emailHtmlBody = "<html>" + "<head></head>" + "<body>" + "<div><p><strong>" + "Belhopat Admin"
-				+ "</strong></p><p></p></div>" + "<div> " + emailBody + " </div>" + "</body></html>";
+		Map<String, Object> model = new HashMap < String, Object > ();
+		model.put( Constants.GENERATED_PASSWORD, generatedPassword );
+        String emailHtmlBody = VelocityEngineUtils.mergeTemplateIntoString(
+                velocityEngine, Constants.PASSWORD_RESET_TEMPLATE, Constants.UTF_8, model);
 		MailMessageObject mailObject = new MailMessageObject(userEmail, MAIL_FROM, Constants.PASS_RESET_MAIL_SUB,
 				emailHtmlBody, mailSender);
 		sendMail(mailObject);
