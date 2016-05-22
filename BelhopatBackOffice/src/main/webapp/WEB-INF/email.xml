@@ -34,11 +34,7 @@
 	</bean>
 	
 	<bean id="velocityEngine" class="org.springframework.ui.velocity.VelocityEngineFactoryBean">
-	    <property name="velocityProperties">
-	        <props>
-	            <prop key="class.resource.loader.class">${class.resource.loader.class}</prop>
-	        </props>
-	    </property>
+		<property name="resourceLoaderPath" value="classpath:${template.folder.path}"/>
 	</bean>
 	
 	<util:properties id="emailConfiguration" location="classpath:email.properties" />

@@ -4,14 +4,13 @@
 	<body>
 		<div>
 			<p><strong>
-			Belhopat Admin
+				Belhopat Admin
 			</strong>
 			</p>
 			<p></p>
-		</div>"
-		
+		</div>
 		<div> 
-			Your new password is: $generatedPassword
+			$content $!generatedPassword
 		</div>
 	</body>
 </html>

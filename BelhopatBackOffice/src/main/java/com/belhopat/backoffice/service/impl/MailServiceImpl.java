@@ -9,6 +9,7 @@ import javax.mail.MessagingException;
 import org.apache.log4j.Logger;
 import org.apache.velocity.app.VelocityEngine;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Required;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.mail.javamail.JavaMailSender;
@@ -36,11 +37,11 @@ public class MailServiceImpl implements MailService {
 	JavaMailSender mailSender;
 	
 	@Autowired
-	VelocityEngine velocityEngine;
-
-	@Autowired
 	ThreadPoolTaskExecutor threadExecutor;
 
+	@Autowired
+    private VelocityEngine velocityEngine;
+	
 	protected static final Logger LOGGER = Logger.getLogger(MailServiceImpl.class.getName());
 
 	/*
@@ -79,13 +80,25 @@ public class MailServiceImpl implements MailService {
 	public void sendPasswordResetMail(String userEmail, String generatedPassword) throws MessagingException {
 
 		Map<String, Object> model = new HashMap < String, Object > ();
+		model.put( Constants.CONTENT, "Your new password is: " );
 		model.put( Constants.GENERATED_PASSWORD, generatedPassword );
-        String emailHtmlBody = VelocityEngineUtils.mergeTemplateIntoString(
-                velocityEngine, Constants.PASSWORD_RESET_TEMPLATE, Constants.UTF_8, model);
+        String emailHtmlBody = generateEmailBodyFromVelocityTemplate( Constants.DEFAULT_EMAIL_TEMPLATE, model );
 		MailMessageObject mailObject = new MailMessageObject(userEmail, MAIL_FROM, Constants.PASS_RESET_MAIL_SUB,
 				emailHtmlBody, mailSender);
 		sendMail(mailObject);
+//		velocityEngine.setApplicationAttribute("javax.servlet.ServletContext", servletContext);
+	}
 
+	/**
+	 * @param passwordResetTemplate
+	 * @param model
+	 * @return htmlEmailBody
+	 * Accepts a velocity template name and model map containing objects to be merged with the template and merges them into a string
+	 */
+	private String generateEmailBodyFromVelocityTemplate( String templateName, Map<String, Object> model ) {
+		String emailHtmlBody = VelocityEngineUtils.mergeTemplateIntoString(
+                velocityEngine, Constants.DEFAULT_EMAIL_TEMPLATE, Constants.UTF_8, model);
+		return emailHtmlBody;
 	}
 
 	/*
@@ -94,13 +107,14 @@ public class MailServiceImpl implements MailService {
 	 * @see
 	 * com.belhopat.backoffice.service.MailService#sendCandidateRegMail(java.
 	 * lang.String, java.lang.String)
-	 * sends mail on canidate registration success
+	 * sends mail on candidate registration success
 	 */
 	@Override
-	public void sendCandidateRegMail(String userEmail, String emailBody) throws MessagingException {
+	public void sendCandidateRegMail(String userEmail, String mailContent ) throws MessagingException {
 
-		String emailHtmlBody = "<html>" + "<head></head>" + "<body>" + "<div><p><strong>" + "Belhopat Admin"
-				+ "</strong></p><p></p></div>" + "<div> " + emailBody + " </div>" + "</body></html>";
+		Map<String, Object> model = new HashMap < String, Object > ();
+		model.put( Constants.CONTENT, mailContent );
+		String emailHtmlBody = generateEmailBodyFromVelocityTemplate( Constants.DEFAULT_EMAIL_TEMPLATE, model);
 		MailMessageObject mailObject = new MailMessageObject(userEmail, MAIL_FROM, Constants.CAND_REG_SUCC_MAIL_SUB,
 				emailHtmlBody, mailSender);
 		sendMail(mailObject);

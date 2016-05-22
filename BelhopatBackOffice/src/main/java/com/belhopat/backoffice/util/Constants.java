@@ -21,9 +21,10 @@ public class Constants {
 	public static final String CAND_REG_SUCC_MAIL_SUB = "Welcome to Belhopat Global Services";
 	
 	/* mail templates */
-	public static final String PASSWORD_RESET_TEMPLATE = "/passwordReset.vm";
+	public static final String DEFAULT_EMAIL_TEMPLATE = "/default-email-template.vm";
 
 	/* mail map keys */
+	public static final String CONTENT = "content";
 	public static final String GENERATED_PASSWORD = "generatedPassword";
 	
 	/* data constants */
