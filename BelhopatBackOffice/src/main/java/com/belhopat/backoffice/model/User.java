@@ -1,9 +1,16 @@
 package com.belhopat.backoffice.model;
 
+import java.util.HashSet;
+import java.util.Set;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
@@ -22,18 +29,14 @@ public class User {
 
 	private String email;
 	
-	private String role;
+	
+	@ManyToMany(cascade = {CascadeType.ALL})
+    @JoinTable(name="User_Roles", 
+                joinColumns={@JoinColumn(name="user_id")}, 
+                inverseJoinColumns={@JoinColumn(name="role_id")})
+    private Set<MasterRoles> roles = new HashSet<MasterRoles>();
 	
 	
-
-	public String getRole() {
-		return role;
-	}
-
-	public void setRole(String role) {
-		this.role = role;
-	}
-
 	public Long getId() {
 		return id;
 	}
@@ -55,6 +58,7 @@ public class User {
 		this.designation = designation;
 	}
 
+	
 	public User() {
 	}
 	
