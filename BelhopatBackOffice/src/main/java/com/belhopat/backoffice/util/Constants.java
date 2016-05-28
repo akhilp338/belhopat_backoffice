@@ -39,21 +39,26 @@ public class Constants {
 	public static final String CITY = "CITY";
 	public static final String STATE = "STATE";
 	public static final String SKILL = "SKILL";
-	
+
 	/* lookup detail code */
-	public static final String EMP_DESIG_HRM="HRM";
-	public static final String EMP_DESIG_BUH="BUH";
-	public static final String EMP_DESIG_AM="AM";
-	public static final String EMP_DESIG_HRR="HRR";
-	public static final String EMP_DESIG_FM="FM";
-	public static final String EMP_DESIG_CEO="CEO";
+	public static final String EMP_DESIG_HRM = "HRM";
+	public static final String EMP_DESIG_BUH = "BUH";
+	public static final String EMP_DESIG_AM = "AM";
+	public static final String EMP_DESIG_HRR = "HRR";
+	public static final String EMP_DESIG_FM = "FM";
+	public static final String EMP_DESIG_CEO = "CEO";
 	public static final String EMP_STS_INACTIVE = "INACTIVE";
 	
 	/*	AOP CONSTANTS */
 	public static final String WEBSERVICE_MODULE = "Controller";
 	public static final String SERVICE_MODULE = "Service";
 	public static final String PERSISTENCE_MODULE = "Repository";
-	
-	
+
+	/* event recur frequency code */
+	public static final String NO_REPEAT = "NO_REPEAT";
+	public static final String DAILY_REPEAT = "DAILY_REPEAT";
+	public static final String WEEKLY_REPEAT = "WEEKLY_REPEAT";
+	public static final String MONTHLY_REPEAT = "MONTHLY_REPEAT";
+	public static final String YEARLY_REPEAT = "YEARLY_REPEAT";
 
 }

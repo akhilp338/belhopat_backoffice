@@ -3,6 +3,7 @@ package com.belhopat.backoffice.service.impl;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.List;
 
 import javax.mail.MessagingException;
 
@@ -118,6 +119,12 @@ public class MailServiceImpl implements MailService {
 				emailHtmlBody, mailSender);
 		sendMail(mailObject);
 
+	}
+
+	@Override
+	public void sendEventInvitaionMail(List<String> guestEmails, String emailBody) throws MessagingException {
+		// TODO Auto-generated method stub
+		
 	}
 
 }
