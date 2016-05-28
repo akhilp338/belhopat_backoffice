@@ -20,6 +20,7 @@ public class Event extends BaseEntity {
 
 	private Date toDate;
 
+	@ManyToOne
 	private TimeZone timeZone;
 
 	private String location;
