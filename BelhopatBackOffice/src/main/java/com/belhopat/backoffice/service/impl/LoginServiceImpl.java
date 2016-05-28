@@ -41,7 +41,7 @@ public class LoginServiceImpl implements UserDetailsService, LoginService {
 		List<GrantedAuthority> authorities = null;
 		User user = userRepo.findByUsername(username);
 		if (user != null) {
-			authorities = buildUserAuthority(user.getRole());
+			authorities = buildUserAuthority(user.getRoles().iterator().next().getRoleName());
 			return buildUserForAuthentication(user, authorities);
 		}
 		return null;
@@ -54,7 +54,7 @@ public class LoginServiceImpl implements UserDetailsService, LoginService {
 	 * loadUserByUsername(java.lang.String) builds the userauthentication
 	 */
 	private SessionUser buildUserForAuthentication(User user, List<GrantedAuthority> authorities) {
-		return new SessionUser(user.getId(), user.getRole(), user.getUsername(), user.getPassword(), user.getEmail(),
+		return new SessionUser(user.getId(), user.getRoles().iterator().next().getRoleName(), user.getUsername(), user.getPassword(), user.getEmail(),
 				authorities);
 	}
 
