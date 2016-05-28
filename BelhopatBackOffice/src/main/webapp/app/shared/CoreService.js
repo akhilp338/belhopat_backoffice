@@ -176,7 +176,7 @@
             return deferred.promise;
         };
 
-        service.sweetAlert = function (congrats, message, type) {            
+        service.sweetAlert = function (congrats, message, type, redirectState) {            
             swal({
                 title: congrats,
                 text: message,
@@ -186,7 +186,9 @@
                 confirmButtonText: "OK",
                 closeOnConfirm: true},
                     function () {
-                        $state.go("coreuser.candidate");
+                	if(redirectState)
+                		$state.go( redirectState );
+//                        $state.go("coreuser.candidate");
                     });
         };
 

@@ -68,6 +68,10 @@ public class ClientController {
 		return clientService.saveOrUpdateClient(client);
 	}
 	
+	/**
+	 * @return Map of dropdown data
+	 * gets a key value pair list of drop down data
+	 */
 	@ResponseBody
 	@RequestMapping(value = "/getDropDownData", method = RequestMethod.POST)
 	public Map<String, List<?>> getDropDownData() {

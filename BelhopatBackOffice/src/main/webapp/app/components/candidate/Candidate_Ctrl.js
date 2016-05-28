@@ -210,10 +210,10 @@
         	vm.deleteUrl = "api/candidate/deleteCandidate";
             Core_Service.candidateDeleteImpl(vm.deleteUrl,id)
             .then( function(response) {
-               Core_Service.sweetAlert("Done!",response.data.data,"success");  
+               Core_Service.sweetAlert("Done!",response.data.data,"success","coreuser.candidate");  
                angular.element('#candidatesList').DataTable().draw();
             },function(error){
-            	Core_Service.sweetAlert("Failed!",response.data.data,"failure");  
+            	Core_Service.sweetAlert("Failed!",response.data.data,"failure","coreuser.candidate");  
             });
         };
         

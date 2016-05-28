@@ -23,7 +23,7 @@ public class BelhopatLoggerAOP {
 	}
     
     @Around( "execution(* com.belhopat.backoffice.repository..*.*(..))" )
-    public Object respositoryAOP( ProceedingJoinPoint proceedingJoinPoint ) throws Throwable {
+    public Object repositoryAOP( ProceedingJoinPoint proceedingJoinPoint ) throws Throwable {
     	return loggerAOP( proceedingJoinPoint, Constants.PERSISTENCE_MODULE );
 	}
     
