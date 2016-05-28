@@ -1,6 +1,8 @@
 
 package com.belhopat.backoffice.service.impl;
 
+import java.util.List;
+
 import javax.mail.MessagingException;
 
 import org.apache.log4j.Logger;
@@ -95,6 +97,12 @@ public class MailServiceImpl implements MailService {
 				emailHtmlBody, mailSender);
 		sendMail(mailObject);
 
+	}
+
+	@Override
+	public void sendEventInvitaionMail(List<String> guestEmails, String emailBody) throws MessagingException {
+		// TODO Auto-generated method stub
+		
 	}
 
 }
