@@ -6,6 +6,7 @@ import java.util.Set;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
@@ -30,13 +31,21 @@ public class User {
 	private String email;
 	
 	
-	@ManyToMany(cascade = {CascadeType.ALL})
+	@ManyToMany(cascade = {CascadeType.ALL},fetch=FetchType.EAGER)
     @JoinTable(name="User_Roles", 
                 joinColumns={@JoinColumn(name="user_id")}, 
                 inverseJoinColumns={@JoinColumn(name="role_id")})
     private Set<MasterRoles> roles = new HashSet<MasterRoles>();
 	
 	
+	public Set<MasterRoles> getRoles() {
+		return roles;
+	}
+
+	public void setRoles(Set<MasterRoles> roles) {
+		this.roles = roles;
+	}
+
 	public Long getId() {
 		return id;
 	}
