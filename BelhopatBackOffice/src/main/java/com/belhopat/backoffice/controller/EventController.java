@@ -3,6 +3,7 @@ package com.belhopat.backoffice.controller;
 import java.util.List;
 import java.util.Map;
 
+import javax.mail.MessagingException;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -50,7 +51,7 @@ public class EventController {
 
 	@ResponseBody
 	@RequestMapping(value = "/saveOrUpdateCandidate", method = RequestMethod.POST)
-	public ResponseEntity<Map<String, String>> saveOrUpdateCandidate(@RequestBody Event event) {
+	public ResponseEntity<Map<String, String>> saveOrUpdateCandidate(@RequestBody Event event) throws MessagingException {
 		return eventService.saveOrUpdateEvent(event);
 	}
 
