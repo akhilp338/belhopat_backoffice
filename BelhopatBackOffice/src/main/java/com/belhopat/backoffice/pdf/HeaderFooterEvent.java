@@ -3,6 +3,7 @@ package com.belhopat.backoffice.pdf;
 import java.io.IOException;
 import java.net.MalformedURLException;
 
+import com.belhopat.backoffice.util.servlet.BelhopatServletContextInfo;
 import com.itextpdf.text.BadElementException;
 import com.itextpdf.text.Document;
 import com.itextpdf.text.Image;
@@ -64,12 +65,12 @@ public class HeaderFooterEvent extends PdfPageEventHelper {
 	protected String getContextPath() {
 		String realPath = "";
 		if (System.getProperty("os.name").equalsIgnoreCase("Linux")) {
-			realPath = ""/* INTLServletContextInfo.getRealPath() */;
+			realPath = BelhopatServletContextInfo.getRealPath();
 		} else if (System.getProperty("os.name").equalsIgnoreCase("Windows")) {
-			String contextPath = ""/* INTLServletContextInfo.getContextPath() */;
+			String contextPath = BelhopatServletContextInfo.getContextPath();
 			realPath = getCatalinaBase().concat("/webapps").concat(contextPath);
 		} else {
-			String contextPath = ""/* INTLServletContextInfo.getContextPath() */;
+			String contextPath = BelhopatServletContextInfo.getContextPath();
 			realPath = getCatalinaBase().concat("/webapps").concat(contextPath);
 		}
 		return realPath;
