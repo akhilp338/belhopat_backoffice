@@ -17,6 +17,9 @@
 							http://www.springframework.org/schema/cache/spring-cache.xsd
 							http://www.springframework.org/schema/beans
 							http://www.springframework.org/schema/beans/spring-beans.xsd">
+	
+	<aop:aspectj-autoproxy />						
+	<bean id="logAspect" class="com.belhopat.backoffice.context.BelhopatLoggerAOP" />
 
 	<bean id="appProperties"
 		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
@@ -24,6 +27,7 @@
 			<list>
 				<value>classpath:jdbc.properties</value>
 				<value>classpath:email.properties</value>
+				<value>classpath:velocity.properties</value>
 			</list>
 		</property>
 	</bean>

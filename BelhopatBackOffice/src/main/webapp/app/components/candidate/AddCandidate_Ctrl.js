@@ -162,7 +162,7 @@
                 vm.registration.skillSet = skillSet;
                 Core_Service.candidateRegisterImpl(vm.registerUrl, vm.registration)
                         .then(function (response) {
-                        	Core_Service.sweetAlert("Done!",response.Message,"success");  
+                        	Core_Service.sweetAlert("Done!",response.Message,"success","coreuser.candidate");  
                             console.log(response)
                         }, function (error) {
                             console.log(error)

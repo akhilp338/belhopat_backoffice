@@ -33,6 +33,10 @@
 	<bean id="mailService" class="com.belhopat.backoffice.service.impl.MailServiceImpl">
 	</bean>
 	
+	<bean id="velocityEngine" class="org.springframework.ui.velocity.VelocityEngineFactoryBean">
+		<property name="resourceLoaderPath" value="classpath:${template.folder.path}"/>
+	</bean>
+	
 	<util:properties id="emailConfiguration" location="classpath:email.properties" />
 
 </beans>

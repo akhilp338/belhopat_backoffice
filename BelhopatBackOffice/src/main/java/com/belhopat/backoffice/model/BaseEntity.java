@@ -116,6 +116,16 @@ public class BaseEntity implements Cloneable {
 		this.deletedBy = user;
 		this.deletedDate = new Date();
 	}
+	
+	public void hideAttributes() {
+		this.id = null;
+		this.createdBy = null;
+		this.createdDate = null;
+		this.updatedBy = null;
+		this.updatedDate = null;
+		this.deletedBy = null;
+		this.deletedDate = null;
+	}
 
 	@Override
 	public String toString() {

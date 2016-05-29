@@ -101,10 +101,9 @@ public class UserServiceImpl implements UserService{
 		User user = userRepo.findByEmail( userEmail );
 		if ( user != null ){
 			
-			String password = randomPasswordGenerator.nextSessionId();
-			String emailBody = "Your new password is: " + password ;
-			mailService.sendPasswordResetMail( userEmail, emailBody );
-			user.setPassword( password );
+			String generatedPassword = randomPasswordGenerator.nextSessionId();
+			mailService.sendPasswordResetMail( userEmail, generatedPassword );
+			user.setPassword( generatedPassword );
 			userRepo.saveAndFlush( user );
 			return true;
 		}

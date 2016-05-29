@@ -6,7 +6,12 @@
 	http://www.springframework.org/schema/security
 	http://www.springframework.org/schema/security/spring-security.xsd">
 
+
 	<http auto-config="true">
+	<!-- TODO	REMOVE AFTER USE -->
+	    <headers>
+        	<frame-options policy="ALLOW-FROM" strategy="static" value="www.responsinator.com"/>
+    	</headers>
 		<intercept-url pattern="/api/**" access="hasRole('ROLE_USER')" />
 		<form-login 
 		    login-page="/login" 
