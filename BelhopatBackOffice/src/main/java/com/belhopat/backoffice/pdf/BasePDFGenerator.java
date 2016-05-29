@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.net.MalformedURLException;
 import java.text.ParseException;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 import com.itextpdf.text.Anchor;
@@ -21,6 +22,9 @@ import com.itextpdf.text.pdf.PdfPTable;
 @Component
 public class BasePDFGenerator {
 
+	@Value("#{pdfConfiguration['pdf.resources.root']}")
+	private String PDF_RES_ROOT_PATH;
+	
 	public Font HEADING_FONT = FontFactory.getFont(FontFactory.HELVETICA, 15f);
 	public Font SUB_HEADING_FONT = FontFactory.getFont(FontFactory.HELVETICA, 12f);
 	public Font TEXT_FONT = FontFactory.getFont(FontFactory.HELVETICA, 14f);
