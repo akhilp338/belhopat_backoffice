@@ -23,6 +23,7 @@ import com.belhopat.backoffice.dto.CandidateViewDTO;
 import com.belhopat.backoffice.dto.EmploymentInfoDTO;
 import com.belhopat.backoffice.dto.OfficialInfoDTO;
 import com.belhopat.backoffice.dto.PersonalInfoDTO;
+import com.belhopat.backoffice.dto.ResponseObject;
 import com.belhopat.backoffice.model.BankAccount;
 import com.belhopat.backoffice.model.Candidate;
 import com.belhopat.backoffice.model.Skill;
@@ -32,7 +33,6 @@ import com.belhopat.backoffice.service.BaseService;
 import com.belhopat.backoffice.service.CandidateService;
 import com.belhopat.backoffice.session.SessionManager;
 import com.belhopat.backoffice.util.DateUtil;
-import com.belhopat.backoffice.util.ResponseObject;
 import com.belhopat.backoffice.util.sequence.SequenceGenerator;
 
 /**

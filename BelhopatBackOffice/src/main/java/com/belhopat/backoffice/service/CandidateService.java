@@ -10,8 +10,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import com.belhopat.backoffice.dto.CandidateViewDTO;
+import com.belhopat.backoffice.dto.ResponseObject;
 import com.belhopat.backoffice.model.Candidate;
-import com.belhopat.backoffice.util.ResponseObject;
 
 @Service
 public interface CandidateService {

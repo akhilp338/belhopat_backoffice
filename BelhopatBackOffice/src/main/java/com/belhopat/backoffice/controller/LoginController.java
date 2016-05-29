@@ -16,11 +16,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.belhopat.backoffice.dto.ResponseObject;
 import com.belhopat.backoffice.model.User;
 import com.belhopat.backoffice.service.LoginService;
 import com.belhopat.backoffice.service.UserService;
 import com.belhopat.backoffice.util.Constants;
-import com.belhopat.backoffice.util.ResponseObject;
 
 /**
  * @author BHP DEV TEAM
