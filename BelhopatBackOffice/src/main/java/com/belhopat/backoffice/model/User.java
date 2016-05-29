@@ -13,6 +13,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -30,7 +31,18 @@ public class User {
 
 	private String email;
 	
+	@OneToOne(fetch = FetchType.EAGER)
+	private MasterRoles primaryRole;
 	
+	
+	public MasterRoles getPrimaryRole() {
+		return primaryRole;
+	}
+
+	public void setPrimaryRole(MasterRoles primaryRole) {
+		this.primaryRole = primaryRole;
+	}
+
 	@ManyToMany(cascade = {CascadeType.ALL},fetch=FetchType.EAGER)
     @JoinTable(name="User_Roles", 
                 joinColumns={@JoinColumn(name="user_id")}, 

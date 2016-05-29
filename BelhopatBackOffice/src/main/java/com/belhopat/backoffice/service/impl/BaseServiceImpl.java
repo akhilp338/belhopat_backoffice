@@ -1,5 +1,6 @@
 package com.belhopat.backoffice.service.impl;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -9,6 +10,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
 
+import com.belhopat.backoffice.dto.RequestObject;
 import com.belhopat.backoffice.model.Candidate;
 import com.belhopat.backoffice.model.CandidateSequence;
 import com.belhopat.backoffice.model.City;
@@ -18,8 +20,11 @@ import com.belhopat.backoffice.model.Country;
 import com.belhopat.backoffice.model.Employee;
 import com.belhopat.backoffice.model.EmployeeSequence;
 import com.belhopat.backoffice.model.LookupDetail;
+import com.belhopat.backoffice.model.MasterTasks;
 import com.belhopat.backoffice.model.Skill;
 import com.belhopat.backoffice.model.State;
+import com.belhopat.backoffice.model.TaskList;
+import com.belhopat.backoffice.model.User;
 import com.belhopat.backoffice.repository.CandidateSequenceRepository;
 import com.belhopat.backoffice.repository.CityRepository;
 import com.belhopat.backoffice.repository.ClientSequenceRepository;
@@ -27,10 +32,14 @@ import com.belhopat.backoffice.repository.CountryRepository;
 import com.belhopat.backoffice.repository.EmployeeRepository;
 import com.belhopat.backoffice.repository.EmployeeSequenceRepository;
 import com.belhopat.backoffice.repository.LookupDetailRepository;
+import com.belhopat.backoffice.repository.MasterTasksRepository;
 import com.belhopat.backoffice.repository.SkillRepository;
 import com.belhopat.backoffice.repository.StateRepository;
+import com.belhopat.backoffice.repository.TaskListRepository;
 import com.belhopat.backoffice.service.BaseService;
+import com.belhopat.backoffice.session.SessionManager;
 import com.belhopat.backoffice.util.Constants;
+import com.belhopat.backoffice.util.TaskConstants;
 
 /**
  * @author BHP_DEV service implementation for general functionalities
@@ -65,6 +74,12 @@ public class BaseServiceImpl implements BaseService {
 
 	@Autowired
 	ClientSequenceRepository clientSequenceRepository;
+	
+	@Autowired
+	MasterTasksRepository masterTasksRepository;
+	
+	@Autowired
+	TaskListRepository taskListRepository;
 
 	/*
 	 * (non-Javadoc)
@@ -208,5 +223,54 @@ public class BaseServiceImpl implements BaseService {
 		dropDownMap.put(Constants.DIVISION, lookupDetailRepository.findByLookupKey(Constants.DIVISION));
 		return dropDownMap;
 	}
+
+	@Override
+	public ResponseEntity<List<TaskList>> createOfferLetter(RequestObject requestObject) {
+		/*offer letter transaction part*/
+		List<TaskList> tasks= createNewTask(TaskConstants.OFFER_LETTER_CREATION);
+		return null;
+	}
+
+	private List<TaskList> createNewTask(String taskName) {
+		User currentUser = SessionManager.getCurrentUserAsEntity();
+		MasterTasks currentTask = masterTasksRepository.findByTaskKey(taskName);
+		List<TaskList> newTasks = new ArrayList<TaskList>();
+		TaskList currentTaskRow = new TaskList();
+		TaskList newTaskRow = new TaskList();
+		currentTaskRow.setBaseAttributes(currentUser);
+		currentTaskRow.setCompleted((byte)1);
+		currentTaskRow.setTask(currentTask);
+		currentTaskRow.setStatus(TaskConstants.CREATED);
+		newTaskRow.setTask(currentTaskRow.getNextTask());
+		newTaskRow.setBaseAttributes(currentUser);
+		newTasks.add(currentTaskRow);
+		newTasks.add(newTaskRow);
+		taskListRepository.save(newTasks);
+		return null;
+	}
+	
+	private List<TaskList> updateTaskList(String taskName) {
+		User currentUser = SessionManager.getCurrentUserAsEntity();
+		MasterTasks currentTask = masterTasksRepository.findByTaskKey(taskName);
+		TaskList taskList = taskListRepository.findByTask(currentTask);
+		List<TaskList> newTasks = new ArrayList<TaskList>();
+		TaskList newTaskRow = new TaskList();
+		taskList.setUpdateAttributes(currentUser);
+		taskList.setCompleted((byte)1);
+		taskList.setStatus(TaskConstants.CREATED);
+		newTaskRow.setTask(taskList.getNextTask());
+		newTaskRow.setBaseAttributes(currentUser);
+		newTasks.add(taskList);
+		newTasks.add(newTaskRow);
+		taskListRepository.save(newTasks);
+		return null;
+	}
+
+	@Override
+	public ResponseEntity<List<TaskList>> getSalarySplit(Double annualCTC) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
 
 }

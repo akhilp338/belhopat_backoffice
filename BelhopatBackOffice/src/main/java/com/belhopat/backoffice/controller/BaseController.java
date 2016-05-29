@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.belhopat.backoffice.dto.RequestObject;
 import com.belhopat.backoffice.model.City;
 import com.belhopat.backoffice.model.State;
+import com.belhopat.backoffice.model.TaskList;
 import com.belhopat.backoffice.service.BaseService;
 
 /**
@@ -47,6 +48,23 @@ public class BaseController {
 	@RequestMapping(value = "/getCitiesByState", method = RequestMethod.POST)
 	public ResponseEntity<List<City>> getCitiesByState(@RequestBody RequestObject requestObject) {
 		return baseService.getCitiesByState(requestObject.getId());
+	}
+	
+	/**
+	 * @param requestObject
+	 * @return responseEntity
+	 * Returns the list of cities for a state
+	 */
+	@ResponseBody
+	@RequestMapping(value = "/createOfferLetter", method = RequestMethod.POST)
+	public ResponseEntity<List<TaskList>> createOfferLetter(@RequestBody RequestObject requestObject) {
+		return baseService.createOfferLetter(requestObject);
+	}
+	
+	@ResponseBody
+	@RequestMapping(value = "/createOfferLetter", method = RequestMethod.POST)
+	public ResponseEntity<List<TaskList>> getSalarySplit(@RequestBody Double annualCTC) {
+		return baseService.getSalarySplit(annualCTC);
 	}
 
 }

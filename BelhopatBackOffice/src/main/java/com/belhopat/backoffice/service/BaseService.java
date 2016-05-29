@@ -6,9 +6,11 @@ import java.util.Map;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
+import com.belhopat.backoffice.dto.RequestObject;
 import com.belhopat.backoffice.model.City;
 import com.belhopat.backoffice.model.Skill;
 import com.belhopat.backoffice.model.State;
+import com.belhopat.backoffice.model.TaskList;
 
 @Service
 public interface BaseService {
@@ -26,5 +28,9 @@ public interface BaseService {
 	ResponseEntity<Map<String, List<?>>> getEmployeeDropDownData();
 	
 	public Map<String, List<?>> getEmployeeDropdowns();
+
+	public ResponseEntity<List<TaskList>> createOfferLetter(RequestObject requestObject);
+
+	public ResponseEntity<List<TaskList>> getSalarySplit(Double annualCTC);
 
 }
