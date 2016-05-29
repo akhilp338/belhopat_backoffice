@@ -227,11 +227,11 @@ public class BaseServiceImpl implements BaseService {
 	@Override
 	public ResponseEntity<List<TaskList>> createOfferLetter(RequestObject requestObject) {
 		/*offer letter transaction part*/
-		List<TaskList> tasks= createNewTask(TaskConstants.OFFER_LETTER_CREATION);
+		List<TaskList> tasks= createNewTaskList(TaskConstants.OFFER_LETTER_CREATION);
 		return null;
 	}
 
-	private List<TaskList> createNewTask(String taskName) {
+	private List<TaskList> createNewTaskList(String taskName) {
 		User currentUser = SessionManager.getCurrentUserAsEntity();
 		MasterTasks currentTask = masterTasksRepository.findByTaskKey(taskName);
 		List<TaskList> newTasks = new ArrayList<TaskList>();

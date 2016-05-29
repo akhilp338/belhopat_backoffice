@@ -62,7 +62,7 @@ public class BaseController {
 	}
 	
 	@ResponseBody
-	@RequestMapping(value = "/createOfferLetter", method = RequestMethod.POST)
+	@RequestMapping(value = "/getSalarySplit", method = RequestMethod.POST)
 	public ResponseEntity<List<TaskList>> getSalarySplit(@RequestBody Double annualCTC) {
 		return baseService.getSalarySplit(annualCTC);
 	}
