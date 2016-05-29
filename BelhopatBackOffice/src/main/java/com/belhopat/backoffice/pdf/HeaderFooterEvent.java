@@ -3,6 +3,8 @@ package com.belhopat.backoffice.pdf;
 import java.io.IOException;
 import java.net.MalformedURLException;
 
+import org.springframework.beans.factory.annotation.Value;
+
 import com.belhopat.backoffice.util.servlet.BelhopatServletContextInfo;
 import com.itextpdf.text.BadElementException;
 import com.itextpdf.text.Document;
@@ -15,6 +17,9 @@ import com.itextpdf.text.pdf.PdfPageEventHelper;
 import com.itextpdf.text.pdf.PdfWriter;
 
 public class HeaderFooterEvent extends PdfPageEventHelper {
+	
+	@Value("#{pdfConfiguration['pdf.resources.root']}")
+	private String pdfResourceRootPath;
 
 	protected PdfPTable header;
 
@@ -45,7 +50,7 @@ public class HeaderFooterEvent extends PdfPageEventHelper {
 		headerCell.setVerticalAlignment(Rectangle.ALIGN_CENTER);
 		headerCell.setBorder(Rectangle.NO_BORDER);
 		headerCell.setFixedHeight(100);
-		String logoPath = getContextPath() + PDFConstants.PDF_IMAGE_PATH + PDFConstants.LOGO_JPG;
+		String logoPath = pdfResourceRootPath + PDFConstants.LOGO_JPG;
 		Image logoImage = Image.getInstance(logoPath);
 		headerCell.addElement(logoImage);
 		headerTable.addCell(headerCell);
@@ -56,7 +61,7 @@ public class HeaderFooterEvent extends PdfPageEventHelper {
 		PdfPTable footerTable = new PdfPTable(1);
 		footerTable.setTotalWidth(PageSize.A4.getWidth());
 		footerTable.getDefaultCell().setBorder(Rectangle.NO_BORDER);
-		String footerPath = getContextPath() + PDFConstants.PDF_IMAGE_PATH + PDFConstants.FOOTER_JPG;
+		String footerPath = pdfResourceRootPath + PDFConstants.FOOTER_JPG;
 		Image footerImage = Image.getInstance(footerPath);
 		footerTable.addCell(footerImage);
 		return footerTable;

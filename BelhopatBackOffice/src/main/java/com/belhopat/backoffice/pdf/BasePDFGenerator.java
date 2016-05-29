@@ -23,7 +23,7 @@ import com.itextpdf.text.pdf.PdfPTable;
 public class BasePDFGenerator {
 
 	@Value("#{pdfConfiguration['pdf.resources.root']}")
-	private String PDF_RES_ROOT_PATH;
+	private String pdfResourceRootPath;
 	
 	public Font HEADING_FONT = FontFactory.getFont(FontFactory.HELVETICA, 15f);
 	public Font SUB_HEADING_FONT = FontFactory.getFont(FontFactory.HELVETICA, 12f);
