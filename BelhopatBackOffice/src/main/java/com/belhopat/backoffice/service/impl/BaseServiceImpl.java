@@ -11,6 +11,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
 
 import com.belhopat.backoffice.dto.RequestObject;
+import com.belhopat.backoffice.dto.SalaryDTO;
 import com.belhopat.backoffice.model.Candidate;
 import com.belhopat.backoffice.model.CandidateSequence;
 import com.belhopat.backoffice.model.City;
@@ -267,7 +268,7 @@ public class BaseServiceImpl implements BaseService {
 	}
 
 	@Override
-	public ResponseEntity<List<TaskList>> getSalarySplit(Double annualCTC) {
+	public ResponseEntity<List<TaskList>> getSalarySplit(SalaryDTO salaryDTO) {
 		// TODO Auto-generated method stub
 		return null;
 	}

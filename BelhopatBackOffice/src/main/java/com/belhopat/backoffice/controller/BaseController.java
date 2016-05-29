@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.belhopat.backoffice.dto.RequestObject;
+import com.belhopat.backoffice.dto.SalaryDTO;
 import com.belhopat.backoffice.model.City;
 import com.belhopat.backoffice.model.State;
 import com.belhopat.backoffice.model.TaskList;
@@ -63,8 +64,8 @@ public class BaseController {
 	
 	@ResponseBody
 	@RequestMapping(value = "/getSalarySplit", method = RequestMethod.POST)
-	public ResponseEntity<List<TaskList>> getSalarySplit(@RequestBody Double annualCTC) {
-		return baseService.getSalarySplit(annualCTC);
+	public ResponseEntity<List<TaskList>> getSalarySplit(@RequestBody SalaryDTO salaryDTO) {
+		return baseService.getSalarySplit(salaryDTO);
 	}
 
 }
