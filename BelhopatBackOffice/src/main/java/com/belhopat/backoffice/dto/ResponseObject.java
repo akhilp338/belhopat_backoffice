@@ -1,4 +1,4 @@
-package com.belhopat.backoffice.util;
+package com.belhopat.backoffice.dto;
 
 /**
  * @author BHP_DEV
